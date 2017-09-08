@@ -7,7 +7,7 @@ import Favorites from "../components/Favorites";
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
-      <Route path="favorites" component={Favorites} />
+    <Route path="favorites" component={Favorites} />
     </Route>
   </Router>
 );

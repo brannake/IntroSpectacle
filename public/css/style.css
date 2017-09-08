@@ -16,10 +16,6 @@ body {
   padding-left: 20px;
 }
 
-.gold {
-  color: gold;
-}
-
 .panel-body {
   padding-top: 20px;
   border: 1px blue solid;
@@ -37,5 +33,9 @@ body {
 }
 
 #submit-form {
+	margin: 20px;
+}
+
+#upfile {
 	margin: 20px;
 }

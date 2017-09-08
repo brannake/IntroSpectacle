@@ -1,16 +1,32 @@
-import React from "react";
+import React, { Component } from "react";
 
-const SubmitForm = () => (
+class SubmitForm extends Component {
+    state = {
+    };
+  
+readFile() {
+    console.log(event);
+}
+
+    render() {
+      return (
         <div className="container">
 		<div className="row">
 			<div className="col s6">
-				<form id="submit-form">
-					<input className="new-item" placeholder="Add a Photo and Caption" type="text" />
-					<button type="submit" className="btn btn-default">Add</button>
+				<form id="submit-form" encType="multipart/form-data" method="post" action="/api/images">
+					<input className="new-item" name="image" placeholder="Add a Photo and Caption" type="text" />
+                    <input id="upload" ref="upload" type="file" accept="image/*"
+                        onChange={(event)=> { 
+                        this.readFile(event) 
+                        }}
+                    />
+                    <button type="submit" className="btn">Add</button>
 				</form>
 			</div>
 		</div>
 	</div>
-);
-    
+      );
+    }
+  }
+
 export default SubmitForm;

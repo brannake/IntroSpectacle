@@ -1,7 +1,7 @@
 var express = require("express");
 var path = require("path");
 
-var apiRoutes = require("./apiRoutes");
+var apiRoutes = require("./api-routes");
 
 var router = new express.Router();
 

@@ -34,17 +34,11 @@ class Favorites extends Component {
   }
   render() {
     return (
-      <div>
-        <div className="jumbotron text-center">
-          <h1>Your Favorite Quotes</h1>
-          <p>Your very best quotes.</p>
-        </div>
         <div className="container">
         <div className="row">
           {this.renderQuotes()}
         </div>
         </div>
-      </div>
     );
   }
 }

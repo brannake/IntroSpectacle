@@ -5,29 +5,13 @@ class Panel extends Component {
 
   render() {
     return (
-      <div className="col-md-3 col-sm-6">
-        <div className="panel panel-default">
+      <div className="col s1">
           <div className="panel-body">
             {this.props.date}
           </div>
-        </div>
       </div>
     );
   }
 }
-
-const styles = {
-  favoriteStyle: {
-    cursor: "pointer",
-    marginRight: 5,
-    float: "left"
-  },
-  deleteStyle: {
-    cursor: "pointer",
-    marginLeft: 5,
-    color: "red",
-    float: "right"
-  }
-};
 
 export default Panel;

@@ -20,6 +20,22 @@ body {
   color: gold;
 }
 
-.quote {
+.panel-body {
   padding-top: 20px;
+  border: 1px blue solid;
+  background: blue;
+  color: white;
+  border-radius:6px;
+}
+
+.calendar{
+	margin: 10px;
+}
+
+.navbar {
+	background: blue;
+}
+
+#submit-form {
+	margin: 20px;
 }

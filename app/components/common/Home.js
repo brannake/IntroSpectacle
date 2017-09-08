@@ -1,33 +1,65 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Panel from "./Panel";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import SubmitForm from "./SubmitForm";
 
 class Home extends Component {
   state = {
-    dates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 , 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    firstRowDates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    secondRowDates: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+    thirdRowDates: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
   };
   // Getting all quotes when the component mounts
   componentDidMount() {
   }
 
-  renderDates() {
-    return this.state.dates.map(date => (
+  renderFirstDates() {
+    return this.state.firstRowDates.map(date => (
       <Panel
         date={date}
       >
       </Panel>
     ));
   }
+  renderSecondDates() {
+    return this.state.secondRowDates.map(date => (
+      <Panel
+        date={date}
+      >
+      </Panel>
+    ));
+  }
+  renderThirdDates() {
+    return this.state.thirdRowDates.map(date => (
+      <Panel
+        date={date}
+      >
+      </Panel>
+    ));
+  }
+
   render() {
     return (
-      <div className="container">
+    <div>
+      <Navbar/>
+      <div className="calendar">
         <div className="row">
+        {this.renderFirstDates()}
         </div>
         <div className="row">
           <hr />
-          {this.renderDates()}
+          {this.renderSecondDates()}
+        </div>
+        <div className="row">
+          <hr />
+          {this.renderThirdDates()}
         </div>
       </div>
+      <Footer/>
+      <SubmitForm/>
+    </div>
     );
   }
 }

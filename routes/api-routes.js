@@ -42,7 +42,7 @@ module.exports = function(app) {
                           date: Date.now(),
                           image: req.files})
       .then(function(dbdateInfo) { 
-        res.send('File uploaded!');
+        res.send(dbdateInfo);
     });
   });
 
@@ -57,7 +57,6 @@ module.exports = function(app) {
     }).then(function(db) {
       res.json(db);
     });
-
   });
 
   // PUT route for updating todos. We can get the updated todo data from req.body

@@ -26,21 +26,33 @@ module.exports = function(app) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
+    console.log(req.files);
+    console.log(req);
+    console.log("AAAAAAAAAAA");
     if (!req.files)
       return res.status(400).send('No files were uploaded.');
    
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files.sampleFile;
-   
-    // Use the mv() method to place the file somewhere on your server
-    sampleFile.mv("/Users/Kevin/IntroSpectacle/images/filename.jpg", function(err) {
-      if (err)
-        return res.status(500).send(err);
+    let sampleFile = req.files;
 
       db.dateInfo.create({user: "Kevin",
-                          text: req.body.caption, 
+                          text: req.body.text, 
                           date: Date.now(),
                           image: req.files})
+      .then(function(dbdateInfo) { 
+        res.send(dbdateInfo);
+    });
+  });
+
+  app.post("/api/text", function(req, res) {
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. In this case we just we pass in an object with a text
+    // and complete property (req.body)
+    console.log(req.body.topicBox);
+      db.dateInfo.create({user: "Kevin",
+                          text: req.body.topicBox, 
+                          date: Date.now(),
+                          image: "image"})
       .then(function(dbdateInfo) { 
         res.send(dbdateInfo);
     });
@@ -80,5 +92,4 @@ module.exports = function(app) {
       res.json(err);
     });
   });
-  });
-}
+  };

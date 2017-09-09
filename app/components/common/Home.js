@@ -4,6 +4,7 @@ import Panel from "./Panel";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
+import SubmitTextForm from "./SubmitTextForm";
 
 class Home extends Component {
   state = {
@@ -59,6 +60,7 @@ class Home extends Component {
       </div>
       <Footer/>
       <SubmitForm/>
+      <SubmitTextForm/>
     </div>
     );
   }

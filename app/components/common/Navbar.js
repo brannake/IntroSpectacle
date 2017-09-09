@@ -11,10 +11,20 @@ class Navbar extends Component {
     };
   }
 
+  handleChange = (event) => {
+      event.preventDefault();
+      let selectedMonth = ($(event.target).text());
+      this.setState({
+        currentMonth: selectedMonth
+      });
+    }
+
   renderMonths() {
     return this.state.months.map(month => (
       <NavItem
-        key={month}>
+        key={month}
+        id={month}
+        onClick={this.handleChange} >
       {month}
       </NavItem>
     ));
@@ -23,24 +33,25 @@ class Navbar extends Component {
   render() {
     return (<div>
       <Dropdown trigger={
-        <Button>Month</Button>
+        <Button>Select Month</Button>
         }>
         {this.renderMonths()}
     </Dropdown>
-<nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
-  <div className="container-fluid">
-    <div className="navbar-header">
+    <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
+      <div className="container-fluid">
+        {this.state.currentMonth}
+      <div className="navbar-header">
+      </div>
+      <ul className="nav navbar-nav">
+        <li className={location.pathname === "/" && "active"}>
+        </li>
+        <li className={location.pathname === "/favorites" && "active"}>
+          <Link to="/favorites">Navbar</Link>
+        </li>
+      </ul>
     </div>
-    <ul className="nav navbar-nav">
-      <li className={location.pathname === "/" && "active"}>
-      </li>
-      <li className={location.pathname === "/favorites" && "active"}>
-        <Link to="/favorites">Navbar</Link>
-      </li>
-    </ul>
+  </nav>
   </div>
-</nav>
-</div>
     );
   }
 }

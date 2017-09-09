@@ -3,10 +3,6 @@ import React, { Component } from "react";
 class SubmitForm extends Component {
     state = {
     };
-  
-readFile() {
-    console.log(event);
-}
 
     render() {
       return (
@@ -18,6 +14,7 @@ readFile() {
                 action='/api/images' 
                 method='post' 
                 encType="multipart/form-data">
+                <input type="text" name="caption"/>
                 <input type="file" name="sampleFile" />
                 <input type='submit' value='Upload!' />
             </form>   

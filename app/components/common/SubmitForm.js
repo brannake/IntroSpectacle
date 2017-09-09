@@ -20,7 +20,6 @@ readFile() {
                 encType="multipart/form-data">
                 <input type="file" name="sampleFile" />
                 <input type='submit' value='Upload!' />
-                <button type="submit" className="btn">Add</button>
             </form>   
 			</div>
 		</div>

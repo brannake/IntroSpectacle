@@ -19,6 +19,7 @@ class Home extends Component {
   renderFirstDates() {
     return this.state.firstRowDates.map(date => (
       <Panel
+        key={date}
         date={date}
       >
       </Panel>
@@ -27,6 +28,7 @@ class Home extends Component {
   renderSecondDates() {
     return this.state.secondRowDates.map(date => (
       <Panel
+        key={date}
         date={date}
       >
       </Panel>
@@ -35,6 +37,7 @@ class Home extends Component {
   renderThirdDates() {
     return this.state.thirdRowDates.map(date => (
       <Panel
+        key={date}
         date={date}
       >
       </Panel>

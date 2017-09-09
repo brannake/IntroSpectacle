@@ -5,9 +5,11 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
+import {Dropdown, Button, NavItem} from 'react-materialize'
 
 class Home extends Component {
   state = {
+    month: '',
     firstRowDates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     secondRowDates: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     thirdRowDates: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]

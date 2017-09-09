@@ -3,6 +3,12 @@ module.exports = function(sequelize, DataTypes) {
     user: {
       type: DataTypes.STRING,
     },
+    month: {
+      type: DataTypes.STRING,
+    },
+    day: {
+      type: DataTypes.STRING,
+    },
     text: {
       type: DataTypes.STRING,
       // AllowNull is a flag that restricts a todo from being entered if it doesn't
@@ -11,12 +17,6 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1, 140]
       }
-    },
-    date: {
-      type: DataTypes.DATEONLY,
-      // defaultValue is a flag that defaults a new todos complete value to false if
-      // it isn't supplied one
-      defaultValue: false
     },
     image: {
       type: DataTypes.BLOB

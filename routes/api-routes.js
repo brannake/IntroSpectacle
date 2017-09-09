@@ -23,23 +23,21 @@ module.exports = function(app) {
 
   // POST route for saving a new todo
   app.post("/api/images", function(req, res) {
-
-    console.log(req.body);
-    console.log(req.files);
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
-    db.Todo.create({
-      text: req.body.text,
-      complete: req.body.complete
-    }).then(function(dbTodo) {
-      // We have access to the new todo as an argument inside of the callback function
-      res.json(dbTodo);
-    })
-    .catch(function(err) {
-      // Whenever a validation or flag fails, an error is thrown
-      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-      res.json(err);
+    if (!req.files)
+      return res.status(400).send('No files were uploaded.');
+   
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    let sampleFile = req.files.sampleFile;
+   
+    // Use the mv() method to place the file somewhere on your server
+    sampleFile.mv("/Users/Kevin/IntroSpectacle/images/filename.jpg", function(err) {
+      if (err)
+        return res.status(500).send(err);
+   
+      res.send('File uploaded!');
     });
   });
 

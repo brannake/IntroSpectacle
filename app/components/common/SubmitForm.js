@@ -13,15 +13,15 @@ readFile() {
         <div className="container">
 		<div className="row">
 			<div className="col s6">
-				<form id="submit-form" encType="multipart/form-data" method="post" action="/api/images">
-					<input className="new-item" name="image" placeholder="Add a Photo and Caption" type="text" />
-                    <input id="upload" ref="upload" type="file" accept="image/*"
-                        onChange={(event)=> { 
-                        this.readFile(event) 
-                        }}
-                    />
-                    <button type="submit" className="btn">Add</button>
-				</form>
+            <form ref='uploadForm' 
+                id='uploadForm' 
+                action='/api/images' 
+                method='post' 
+                encType="multipart/form-data">
+                <input type="file" name="sampleFile" />
+                <input type='submit' value='Upload!' />
+                <button type="submit" className="btn">Add</button>
+            </form>   
 			</div>
 		</div>
 	</div>

@@ -1,30 +1,24 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
 // *** Dependencies
 // =============================================================
-var express = require("express");
-var bb = require('express-busboy');
-var app = express();
+const express = require("express");
+const fileUpload = require('express-fileupload');
+const bodyParser = require("body-parser");
+const app = express();
 
-bb.extend(app, {
-  upload: true,
-  path: '/public',
-  allowedPath: function(url) {
-    return url == '/upload';
-  }
-});
+
 // Sets up the Express App
 // =============================================================
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-var db = require("./models");
+const db = require("./models");
 
 // Sets up the Express app to handle data parsing
 // Static directory
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(fileUpload());
 
 // Routes
 // =============================================================

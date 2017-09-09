@@ -26,9 +26,6 @@ module.exports = function(app) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
-    console.log(req.files);
-    console.log(req);
-    console.log("AAAAAAAAAAA");
     if (!req.files)
       return res.status(400).send('No files were uploaded.');
    
@@ -48,9 +45,9 @@ module.exports = function(app) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
-    console.log(req.body.topicBox);
+    console.log(req.body.text);
       db.dateInfo.create({user: "Kevin",
-                          text: req.body.topicBox, 
+                          text: req.body.text, 
                           date: Date.now(),
                           image: "image"})
       .then(function(dbdateInfo) { 

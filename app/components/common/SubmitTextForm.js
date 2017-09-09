@@ -5,7 +5,7 @@ class SubmitTextForm extends React.Component {
     constructor() {
       super();
       this.state = {
-        topicBox: "",
+        text: "",
       };
       
       this.publish = this.publish.bind(this);
@@ -24,8 +24,10 @@ class SubmitTextForm extends React.Component {
             url: '/api/text',
             data: this.state,
             type: 'POST',
-            success: function(data){
+            success: (data) => {
                 console.log(data);
+                console.log(data.id);
+                this.setState({text:""});
             } 
         });
     }
@@ -34,9 +36,9 @@ class SubmitTextForm extends React.Component {
       return <div>
         <input 
           type="text" 
-          name="topicBox" 
-          placeholder="Enter topic here..." 
-          value={ this.state.topicBox }
+          name="text" 
+          placeholder="Enter caption here" 
+          value={ this.state.text }
           onChange={ this.handleChange } 
         />
         <button value="Send" onClick={ this.publish }>Publish</button>

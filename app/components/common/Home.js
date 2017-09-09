@@ -5,24 +5,37 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
-import {Dropdown, Button, NavItem} from 'react-materialize'
+
 
 class Home extends Component {
   state = {
     month: '',
+    day:'',
     firstRowDates: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     secondRowDates: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     thirdRowDates: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
   };
+
   // Getting all quotes when the component mounts
   componentDidMount() {
   }
+
+myMonthCallback = (dataFromChild) => {
+    this.setState({month: dataFromChild});
+    console.log(this.state.month);
+}
+
+myDayCallback = (dataFromChild) => {
+  this.setState({day: dataFromChild});
+  console.log(this.state.day);
+}
 
   renderFirstDates() {
     return this.state.firstRowDates.map(date => (
       <Panel
         key={date}
         date={date}
+        callbackfromParent = {this.myDayCallback}
       >
       </Panel>
     ));
@@ -32,6 +45,7 @@ class Home extends Component {
       <Panel
         key={date}
         date={date}
+        callbackfromParent = {this.myDayCallback}
       >
       </Panel>
     ));
@@ -41,6 +55,7 @@ class Home extends Component {
       <Panel
         key={date}
         date={date}
+        callbackfromParent = {this.myDayCallback}
       >
       </Panel>
     ));
@@ -49,7 +64,9 @@ class Home extends Component {
   render() {
     return (
     <div>
-      <Navbar/>
+      <Navbar
+      callbackfromParent={this.myMonthCallback}
+      />
       <div className="calendar">
         <div className="row">
         {this.renderFirstDates()}

@@ -7,7 +7,7 @@ class Navbar extends Component {
     super();
     this.state = {
       months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-      currentMonth: ''
+      currentMonth: 'January'
     };
   }
 
@@ -17,6 +17,7 @@ class Navbar extends Component {
       this.setState({
         currentMonth: selectedMonth
       });
+      this.props.callbackfromParent(selectedMonth);
     }
 
   renderMonths() {
@@ -33,13 +34,12 @@ class Navbar extends Component {
   render() {
     return (<div>
       <Dropdown trigger={
-        <Button>Select Month</Button>
+        <Button>{this.state.currentMonth}</Button>
         }>
         {this.renderMonths()}
     </Dropdown>
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
       <div className="container-fluid">
-        {this.state.currentMonth}
       <div className="navbar-header">
       </div>
       <ul className="nav navbar-nav">

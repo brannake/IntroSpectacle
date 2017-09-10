@@ -11,8 +11,9 @@ import {Modal, Button} from 'react-materialize'
 class Home extends Component {
   state = {
     month: '',
-    day:'',
+    day: '',
     dateSelected: '',
+    mounted: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     secondRowDates: [1, 2, 3, 4, 5, 6, 7],
     thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
@@ -21,15 +22,59 @@ class Home extends Component {
     sixthRowDates: [29, 30, 31]
   };
 
-  // Getting all quotes when the component mounts
-  componentDidMount() {
+  //Takes calendar to the current date
+  componentWillMount() {
+    if (this.state.mounted === false ) {
+      let date = new Date();
+      let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
+      this.state.day = dd;
+      let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+      if (MM == "01") {
+        this.setState({month: "January"})
+      }
+      if (MM == "02") {
+        this.setState({month: "February"})
+      }
+      if (MM == "03") {
+        this.setState({month: "March"})
+      }
+      if (MM == "04") {
+        this.setState({month: "April"})
+      }
+      if (MM == "05") {
+        this.setState({month: "May"})
+      }
+      if (MM == "06") {
+        this.setState({month: "June"})
+      }
+      if (MM == "07") {
+        this.setState({month: "July"})
+      }
+      if (MM == "08") {
+        this.setState({month: "August"})
+      }
+      if (MM == "09") {
+        this.setState({month: "September"})
+      }
+      if (MM == "10") {
+        this.setState({month: "October"})
+      }
+      if (MM == "11") {
+        this.setState({month: "November"})
+      }
+      if (MM == "12") {
+        this.setState({month: "December"})
+      }
+    }
+    this.setState({mounted: true});
   }
 
-  //Callback passed down to child components to get back user-selected month
+
+  //Callback passed down to child components (Navbar) to get back user-selected month
   //All the dates for the year are stored here
   //May consider separating this out into another file to reduce clutter
   myMonthCallback = (dataFromChild) => {
-    this.setState({month: dataFromChild}, () => {
+    this.setState({month: dataFromChild, day: ''}, () => {
       if (this.state.month === "January") {
         this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
                        thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
@@ -129,7 +174,7 @@ class Home extends Component {
     });
   };
 
-   //Callback passed down to child components to get back from user-selected day
+   //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromChild) => {
     this.setState({day: dataFromChild});
   }

@@ -39,6 +39,12 @@ body {
 	margin: 20px;
 }
 
+#date-display {
+  position: relative;
+  left: 200px;
+  font-size: 30px;
+}
+
 #upfile {
 	margin: 20px;
 }

@@ -46,7 +46,7 @@ class Navbar extends Component {
         <li className={location.pathname === "/" && "active"}>
         </li>
         <li className={location.pathname === "/favorites" && "active"}>
-          <Link to="/favorites">{this.props.month+" "+this.props.day}
+          <Link id="date-display" to="/favorites">{this.props.month+" "+this.props.day}
           </Link>
         </li>
       </ul>

@@ -33,62 +33,20 @@ myDayCallback = (dataFromChild) => {
   this.setState({day: dataFromChild});
 }
 
-//These are separated out so you can see what it's doing
-//Rendering 10 (or 11) days per row
+//Rendering 7 days per row
+//First 7 panels are for the day headings (Monday, Tuesday, etc...)
   renderFirstDates() {
     return this.state.firstRowDates.map(date => (
       <Panel
         id="day-headings-replace"
         key={date}
         date={date}
-        callbackfromParent = {this.myDayCallback}
       >
       </Panel>
     ));
   }
-  renderSecondDates() {
-    return this.state.secondRowDates.map(date => (
-      <Panel
-        key={date}
-        date={date}
-        callbackfromParent = {this.myDayCallback}
-      >
-      </Panel>
-    ));
-  }
-  renderThirdDates() {
-    return this.state.thirdRowDates.map(date => (
-      <Panel
-        key={date}
-        date={date}
-        callbackfromParent = {this.myDayCallback}
-      >
-      </Panel>
-    ));
-  }
-  renderFourthDates() {
-    return this.state.fourthRowDates.map(date => (
-      <Panel
-        key={date}
-        date={date}
-        callbackfromParent = {this.myDayCallback}
-      >
-      </Panel>
-    ));
-  }
-
-  renderFifthDates() {
-    return this.state.fifthRowDates.map(date => (
-      <Panel
-        key={date}
-        date={date}
-        callbackfromParent = {this.myDayCallback}
-      >
-      </Panel>
-    ));
-  }
-  renderSixthDates() {
-    return this.state.sixthRowDates.map(date => (
+  renderSecondDates(datesArray) {
+    return datesArray.map(date => (
       <Panel
         key={date}
         date={date}
@@ -112,23 +70,23 @@ myDayCallback = (dataFromChild) => {
         </div>
         <div className="row">
           <hr/>
-          {this.renderSecondDates()}
+          {this.renderSecondDates(this.state.secondRowDates)}
         </div>
         <div className="row">
           <hr />
-          {this.renderThirdDates()}
+          {this.renderSecondDates(this.state.thirdRowDates)}
         </div>
         <div className="row">
           <hr />
-          {this.renderFourthDates()}
+          {this.renderSecondDates(this.state.fourthRowDates)}
         </div>
         <div className="row">
           <hr />
-          {this.renderFifthDates()}
+          {this.renderSecondDates(this.state.fifthRowDates)}
         </div>
         <div className="row">
           <hr />
-          {this.renderSixthDates()}
+          {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
         </div>
       <Footer/>
@@ -143,7 +101,7 @@ myDayCallback = (dataFromChild) => {
           <SubmitForm/>
           <SubmitTextForm/>
 	      </Modal>
-</div>;
+      </div>;
     </div>
     );
   }

@@ -12,12 +12,14 @@ class SubmitTextForm extends React.Component {
       this.handleChange = this.handleChange.bind(this);
     }
     
+    //Sets state to the caption text
     handleChange({ target }) {
       this.setState({
         [target.name]: target.value
       });
     }
   
+    //Calls the server, posts the caption text
     publish() {
 
         $.ajax({
@@ -31,7 +33,7 @@ class SubmitTextForm extends React.Component {
             } 
         });
     }
-    
+  
     render() {
       return <div>
         <input 

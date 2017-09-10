@@ -12,7 +12,7 @@ class Home extends Component {
   state = {
     month: '',
     day:'',
-    dateSelected: false,
+    dateSelected: '',
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     secondRowDates: [1, 2, 3, 4, 5, 6, 7],
     thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
@@ -25,18 +25,119 @@ class Home extends Component {
   componentDidMount() {
   }
 
-myMonthCallback = (dataFromChild) => {
-    this.setState({month: dataFromChild});
-}
+  //Callback passed down to child components to get back user-selected month
+  //All the dates for the year are stored here
+  //May consider separating this out into another file to reduce clutter
+  myMonthCallback = (dataFromChild) => {
+    this.setState({month: dataFromChild}, () => {
+      if (this.state.month === "January") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "February") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "March") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "April") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "May") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }               
+      if (this.state.month === "June") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }       
+      if (this.state.month === "July") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "August") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "September") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "October") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "November") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });
+      }
+      if (this.state.month === "December") {
+        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       sixthRowDates: [29, 30, 31]
+                      });     
+      };
+    });
+  };
 
-myDayCallback = (dataFromChild) => {
-  this.setState({day: dataFromChild});
-}
+   //Callback passed down to child components to get back from user-selected day
+  myDayCallback = (dataFromChild) => {
+    this.setState({day: dataFromChild});
+  }
 
 //Rendering 7 days per row
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
-  renderFirstDates() {
-    return this.state.firstRowDates.map(date => (
+  renderFirstDates(datesArray) {
+    return datesArray.map(date => (
       <Panel
         id="day-headings-replace"
         key={date}
@@ -45,6 +146,8 @@ myDayCallback = (dataFromChild) => {
       </Panel>
     ));
   }
+
+  //Renders the actual numeric dates on the calendar
   renderSecondDates(datesArray) {
     return datesArray.map(date => (
       <Panel
@@ -66,7 +169,7 @@ myDayCallback = (dataFromChild) => {
       />
       <div className="calendar">
         <div className="row" id="day-headings">
-        {this.renderFirstDates()}
+        {this.renderFirstDates(this.state.firstRowDates)}
         </div>
         <div className="row">
           <hr/>
@@ -90,18 +193,24 @@ myDayCallback = (dataFromChild) => {
         </div>
         </div>
       <Footer/>
-      <div>
-	      <Button onClick={() => {
-		      $('#foo').modal('open')
-	        }}>Submit</Button>
+      <div className="row">
+        <div className="col s4">
+        </div>;
+	      <Button
+          id="modal-submit" 
+          onClick={() => {
+		        $('#foo').modal('open')
+	          }}>
+          Submit
+        </Button>
 	      <Modal
 		      id='foo'
-		      header='Daily Submission'>
+		      header={this.state.month +" "+ this.state.day}>
 		      Add a photo you think captures your mood and a brief description of what you did.
           <SubmitForm/>
           <SubmitTextForm/>
 	      </Modal>
-      </div>;
+      </div>
     </div>
     );
   }

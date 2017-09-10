@@ -4,12 +4,10 @@ import API from "../../utils/API";
 
 class Panel extends Component {
 
+  //Passes the selected day up to the Home component
   handleDayChange = (event) => {
     event.preventDefault();
     let selectedDay = ($(event.target).text());
-    this.setState({
-      day: selectedDay
-    });
     this.props.callbackfromParent(selectedDay);
   }
 

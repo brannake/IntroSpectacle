@@ -11,6 +11,7 @@ class Navbar extends Component {
     };
   }
 
+  //Sets the selected month to state, passes it up to the Home parent scomponent
   handleChange = (event) => {
       event.preventDefault();
       let selectedMonth = ($(event.target).text());
@@ -20,6 +21,7 @@ class Navbar extends Component {
       this.props.callbackfromParent(selectedMonth);
     }
 
+    //Function to render the individual Nav items for month
   renderMonths() {
     return this.state.months.map(month => (
       <NavItem

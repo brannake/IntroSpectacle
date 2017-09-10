@@ -9,6 +9,7 @@ class SubmitForm extends Component {
         };
     };
 
+    //Posts the image to the server as a blob
     uploadFile = (event) => {
         let fd = new FormData();    
         fd.append('file', ReactDOM.findDOMNode(this.refs.file).files[0]);

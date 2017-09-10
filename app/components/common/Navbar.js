@@ -11,7 +11,7 @@ class Navbar extends Component {
     };
   }
 
-  //Sets the selected month to state, passes it up to the Home parent scomponent
+  //Sets the selected month to state, passes it up to the Home parent component
   handleChange = (event) => {
       event.preventDefault();
       let selectedMonth = ($(event.target).text());

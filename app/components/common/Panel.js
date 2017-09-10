@@ -11,11 +11,18 @@ class Panel extends Component {
     this.props.callbackfromParent(selectedDay);
   }
 
+  //This renders each panel as a plain white square, unless it is the current date or a selected date
   render() {
-    console.log(this.props.date);
-    console.log(this.props.currentdate);
     return (
       <div className="col s1">
+        {(this.props.date == this.props.dateselected) ?
+          <div className="panel-body"
+          id="dateselected"
+          onClick={this.handleDayChange}>
+            {this.props.date}
+          </div>
+          :
+          <div>
         {(this.props.date == this.props.currentdate) ?
           <div className="panel-body"
           id="currentdate"
@@ -25,6 +32,7 @@ class Panel extends Component {
           <div className="panel-body"
           onClick={this.handleDayChange}>
             {this.props.date}
+          </div>}
           </div>}
       </div>
     );

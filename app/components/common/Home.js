@@ -12,7 +12,7 @@ class Home extends Component {
   state = {
     month: '',
     day: '',
-    dateSelected: '',
+    dateSelected: '1',
     mounted: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     secondRowDates: [1, 2, 3, 4, 5, 6, 7],
@@ -176,7 +176,7 @@ class Home extends Component {
 
    //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromChild) => {
-    this.setState({day: dataFromChild});
+    this.setState({dateSelected: dataFromChild});
   }
 
 //Rendering 7 days per row
@@ -199,6 +199,7 @@ class Home extends Component {
         key={date}
         date={date}
         currentdate={this.state.day}
+        dateselected={this.state.dateSelected}
         callbackfromParent = {this.myDayCallback}
       >
       </Panel>
@@ -210,7 +211,7 @@ class Home extends Component {
     <div>
       <Navbar
       callbackfromParent={this.myMonthCallback}
-      day = {this.state.day}
+      day = {this.state.dateSelected}
       month = {this.state.month}
       />
       <div className="calendar">
@@ -251,7 +252,7 @@ class Home extends Component {
         </Button>
 	      <Modal
 		      id='foo'
-		      header={this.state.month +" "+ this.state.day}>
+		      header={this.state.month +" "+ this.state.dateSelected}>
 		      Add a photo you think captures your mood and a brief description of what you did.
           <SubmitForm/>
           <SubmitTextForm/>

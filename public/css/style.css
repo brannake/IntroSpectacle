@@ -50,6 +50,10 @@ body {
 }
 
 #currentdate {
+  background: orange;
+}
+
+#dateselected {
   border: 4px solid blue;
 }
 

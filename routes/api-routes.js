@@ -31,6 +31,11 @@ module.exports = function(app) {
    
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     let sampleFile = req.files;
+    let date = req.month;
+    let date2 = req.files.month;
+
+    console.log(date);
+    console.log(date2);
 
       db.dateInfo.create({user: "Kevin",
                           text: req.body.text, 

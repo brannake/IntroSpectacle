@@ -13,6 +13,8 @@ class SubmitForm extends Component {
     uploadFile = (event) => {
         let fd = new FormData();    
         fd.append('file', ReactDOM.findDOMNode(this.refs.file).files[0]);
+        fd.append('date', this.props.selectedDate);
+        fd.append('month', this.props.month);
 
         $.ajax({
             url: '/api/images',

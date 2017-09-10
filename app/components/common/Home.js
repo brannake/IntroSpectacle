@@ -6,12 +6,13 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
-import InfiniteCalendar from 'react-infinite-calendar';
+import {Modal, Button} from 'react-materialize'
 
 class Home extends Component {
   state = {
     month: '',
     day:'',
+    dateSelected: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     secondRowDates: [1, 2, 3, 4, 5, 6, 7],
     thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
@@ -102,14 +103,15 @@ myDayCallback = (dataFromChild) => {
     <div>
       <Navbar
       callbackfromParent={this.myMonthCallback}
+      day = {this.state.day}
+      month = {this.state.month}
       />
-      <div id="mega-div">
       <div className="calendar">
         <div className="row" id="day-headings">
         {this.renderFirstDates()}
         </div>
         <div className="row">
-          <hr />
+          <hr/>
           {this.renderSecondDates()}
         </div>
         <div className="row">
@@ -129,10 +131,19 @@ myDayCallback = (dataFromChild) => {
           {this.renderSixthDates()}
         </div>
         </div>
-        </div>
       <Footer/>
-      <SubmitForm/>
-      <SubmitTextForm/>
+      <div>
+	      <Button onClick={() => {
+		      $('#foo').modal('open')
+	        }}>Submit</Button>
+	      <Modal
+		      id='foo'
+		      header='Daily Submission'>
+		      Add a photo you think captures your mood and a brief description of what you did.
+          <SubmitForm/>
+          <SubmitTextForm/>
+	      </Modal>
+</div>;
     </div>
     );
   }

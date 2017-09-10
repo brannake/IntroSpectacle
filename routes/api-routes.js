@@ -12,12 +12,15 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of the todos
-  app.get("/api/dates", function(req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.dateInfo.findAll({}).then(function(db) {
+  // GET route for getting all of the images on load
+  app.get("/api/load", function(req, res) {
+    console.log("IT RUNS");
+    console.log(req.body);
+    let userName = req.body.user;
+    db.dateInfo.findAll({where: {user: 'default' }}).then(function(db) {
+      console.log(db);
       // We have access to the todos as an argument inside of the callback function
-      res.json(db);
+      res.send(db);
     });
   });
 
@@ -30,17 +33,18 @@ module.exports = function(app) {
       return res.status(400).send('No files were uploaded.');
    
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files;
-    let date = req.month;
-    let date2 = req.files.month;
+    let newImage = req.files.data;
+    let selectedDate = req.body.date;
+    let selectedMonth = req.body.month;
 
-    console.log(date);
-    console.log(date2);
+    console.log(req.files.data);
 
-      db.dateInfo.create({user: "Kevin",
+      db.dateInfo.create({user: "default",
+                          month: selectedMonth,
+                          day: selectedDate,
                           text: req.body.text, 
                           date: Date.now(),
-                          image: req.files})
+                          image: newImage})
       .then(function(dbdateInfo) { 
         res.send(dbdateInfo);
     });

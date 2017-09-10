@@ -11,10 +11,11 @@ class SubmitForm extends Component {
 
     //Posts the image to the server as a blob
     uploadFile = (event) => {
+        console.log(this.props.selectedDate);
         let fd = new FormData();    
         fd.append('file', ReactDOM.findDOMNode(this.refs.file).files[0]);
         fd.append('date', this.props.selectedDate);
-        fd.append('month', this.props.month);
+        fd.append('month', this.props.selectedMonth);
 
         $.ajax({
             url: '/api/images',

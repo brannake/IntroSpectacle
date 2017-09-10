@@ -255,7 +255,7 @@ class Home extends Component {
 		      header={this.state.month +" "+ this.state.dateSelected}>
 		      Add a photo you think captures your mood and a brief description of what you did.
           <SubmitForm
-            selectedDate={this.state.selectedDate}
+            selectedDate={this.state.dateSelected}
             selectedMonth={this.state.month}/>
           <SubmitTextForm/>
 	      </Modal>

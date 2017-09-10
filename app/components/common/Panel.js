@@ -12,12 +12,20 @@ class Panel extends Component {
   }
 
   render() {
+    console.log(this.props.date);
+    console.log(this.props.currentdate);
     return (
       <div className="col s1">
+        {(this.props.date == this.props.currentdate) ?
+          <div className="panel-body"
+          id="currentdate"
+          onClick={this.handleDayChange}>
+            {this.props.date}
+          </div>:
           <div className="panel-body"
           onClick={this.handleDayChange}>
             {this.props.date}
-          </div>
+          </div>}
       </div>
     );
   }

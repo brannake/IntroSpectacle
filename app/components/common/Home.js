@@ -27,7 +27,7 @@ class Home extends Component {
     if (this.state.mounted === false ) {
       let date = new Date();
       let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
-      this.state.day = dd;
+      this.setState({day: dd});
       let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       if (MM == "01") {
         this.setState({month: "January"})
@@ -198,6 +198,7 @@ class Home extends Component {
       <Panel
         key={date}
         date={date}
+        currentdate={this.state.day}
         callbackfromParent = {this.myDayCallback}
       >
       </Panel>
@@ -240,7 +241,7 @@ class Home extends Component {
       <Footer/>
       <div className="row">
         <div className="col s4">
-        </div>;
+        </div>
 	      <Button
           id="modal-submit" 
           onClick={() => {

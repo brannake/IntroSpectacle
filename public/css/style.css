@@ -16,6 +16,10 @@ body {
   padding-left: 20px;
 }
 
+.panel-body {
+  padding: 10px;
+}
+
 .panel-body:hover {
     cursor: pointer;
 }
@@ -43,6 +47,10 @@ body {
   position: relative;
   left: 300px;
   font-size: 30px;
+}
+
+#currentdate {
+  border: 4px solid blue;
 }
 
 #upfile {

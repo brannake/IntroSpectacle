@@ -18,21 +18,22 @@ body {
 
 .panel-body {
   padding-top: 20px;
-  background:white;
-  color: black;
   border-radius:6px;
 }
 
 .calendar{
-	margin: 10px;
+  margin: 10px;
+  position: relative;
+  left: 100px;
 }
 
 .navbar {
-	background: blue;
+	background: lightblue;
 }
 
-.day-headings-row {
-  background: blue;
+#day-headings {
+  background: lightblue;
+  color: white;
 }
 
 #submit-form {

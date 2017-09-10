@@ -37,6 +37,7 @@ myDayCallback = (dataFromChild) => {
   renderFirstDates() {
     return this.state.firstRowDates.map(date => (
       <Panel
+        id="day-headings-replace"
         key={date}
         date={date}
         callbackfromParent = {this.myDayCallback}
@@ -102,8 +103,9 @@ myDayCallback = (dataFromChild) => {
       <Navbar
       callbackfromParent={this.myMonthCallback}
       />
+      <div id="mega-div">
       <div className="calendar">
-        <div className="row">
+        <div className="row" id="day-headings">
         {this.renderFirstDates()}
         </div>
         <div className="row">
@@ -125,6 +127,7 @@ myDayCallback = (dataFromChild) => {
         <div className="row">
           <hr />
           {this.renderSixthDates()}
+        </div>
         </div>
         </div>
       <Footer/>

@@ -35,11 +35,11 @@ module.exports = function(app) {
     let selectedDate = req.body.date;
     let selectedMonth = req.body.month;
 
-    fs.writeFile((path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
+    fs.writeFile((path.join("public/savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
 
     console.log(path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg"));
 
-    let filepath = path.join("../savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
+    let filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
 
       db.dateInfo.create({user: "default",
                           month: selectedMonth,

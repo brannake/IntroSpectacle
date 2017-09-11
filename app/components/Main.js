@@ -6,28 +6,29 @@ import Home from "./common/Home";
 class Main extends Component {
   state = {
     user: 'default',
-    images: []
+    images: [],
+    loaded: false
   };
 
-moduleDidMount = () => {
+componentWillMount() {
 
-  $.ajax({
-    url: '/api/load',
-    type: 'GET',
-    data: this.state.user,
-    success: (data) => {
+    $.ajax({
+      url: '/api/load',
+      type: 'GET',
+      data: this.state.user,
+      success: (data) => {
         console.log(data);
-        console.log(data[0]);
-        console.log(data[0].image.data);
-      } 
-  });
-}
+        this.setState({images:data});
+          }
+        });
+      }
 
   render() {
-    this.moduleDidMount();
     return (
       <div>
-        <Home/>
+        <Home
+        images={this.state.images}
+        />
       </div>
     );
   }

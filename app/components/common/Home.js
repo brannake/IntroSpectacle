@@ -10,9 +10,11 @@ import {Modal, Button} from 'react-materialize'
 
 class Home extends Component {
   state = {
+    user: 'default',
+    images: [],
     month: '',
     day: '',
-    dateSelected: '1',
+    dateSelected: '',
     mounted: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     secondRowDates: [1, 2, 3, 4, 5, 6, 7],
@@ -68,7 +70,6 @@ class Home extends Component {
     }
     this.setState({mounted: true});
   }
-
 
   //Callback passed down to child components (Navbar) to get back user-selected month
   //All the dates for the year are stored here
@@ -201,6 +202,7 @@ class Home extends Component {
         currentdate={this.state.day}
         dateselected={this.state.dateSelected}
         callbackfromParent = {this.myDayCallback}
+        images={this.props.images}
       >
       </Panel>
     ));

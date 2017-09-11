@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     image: {
-      type: DataTypes.BLOB
+      type: DataTypes.STRING
     }
   });
   return dateInfo;

@@ -6,7 +6,9 @@
 // =============================================================
 
 // Requiring our models
-var db = require("../models");
+const db = require("../models");
+const fs = require("fs");
+const path = require("path");
 
 // Routes
 // =============================================================
@@ -24,27 +26,29 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for saving a new todo
+  // POST route for saving a new image/caption entry
   app.post("/api/images", function(req, res) {
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property (req.body)
     if (!req.files)
       return res.status(400).send('No files were uploaded.');
    
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let newImage = req.files.data;
+    let userName = "default";
+    let newImage = req.files.file.data;
     let selectedDate = req.body.date;
     let selectedMonth = req.body.month;
 
-    console.log(req.files.data);
+    fs.writeFile((path.join("savedimages"+"/"+userName+selectedDate+"."+selectedMonth+".jpeg")), newImage);
+
+    console.log(path.join("savedimages"+"/"+userName+selectedDate+"."+selectedMonth+".jpeg"));
+
+    let filepath = path.join("savedimages"+"/"+userName+selectedDate+"."+selectedMonth+".jpeg");
 
       db.dateInfo.create({user: "default",
                           month: selectedMonth,
                           day: selectedDate,
                           text: req.body.text, 
                           date: Date.now(),
-                          image: newImage})
+                          image: filepath})
       .then(function(dbdateInfo) { 
         res.send(dbdateInfo);
     });

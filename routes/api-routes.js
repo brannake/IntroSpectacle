@@ -39,7 +39,7 @@ module.exports = function(app) {
 
     console.log(path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg"));
 
-    let filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
+    let filepath = path.join("../savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
 
       db.dateInfo.create({user: "default",
                           month: selectedMonth,

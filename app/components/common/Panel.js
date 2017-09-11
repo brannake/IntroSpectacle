@@ -34,7 +34,7 @@ class Panel extends Component {
           id="dateselected"
           onClick={this.handleDayChange}>
             {this.props.date}
-            <img src={this.props.images[0].image}/>
+            <img src={this.props.images[2].image}/>
           </div>
           :
           <div>

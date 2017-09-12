@@ -6,7 +6,7 @@ import Home from "./common/Home";
 class Main extends Component {
   state = {
     user: 'default',
-    images: [],
+    imageData: [],
     loaded: false
   };
 
@@ -18,7 +18,7 @@ componentWillMount() {
       data: this.state.user,
       success: (data) => {
         console.log(data);
-        this.setState({images:data});
+        this.setState({imageData:data});
           }
         });
       }
@@ -27,7 +27,7 @@ componentWillMount() {
     return (
       <div>
         <Home
-        images={this.state.images}
+        imageData={this.state.imageData}
         />
       </div>
     );

@@ -11,7 +11,7 @@ import {Modal, Button} from 'react-materialize'
 class Home extends Component {
   state = {
     user: 'default',
-    images: [],
+    imageData: [],
     month: '',
     day: '',
     dateSelected: '',
@@ -180,6 +180,11 @@ class Home extends Component {
     this.setState({dateSelected: dataFromChild});
   }
 
+  //Takes imageData from Main before passing it down to Panel
+  storeImageData() {
+    this.setState({imageData: this.props.imageData});
+  }
+
 //Rendering 7 days per row
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
   renderFirstDates(datesArray) {
@@ -202,7 +207,7 @@ class Home extends Component {
         currentdate={this.state.day}
         dateselected={this.state.dateSelected}
         callbackfromParent = {this.myDayCallback}
-        images={this.props.images}
+        imageData={this.props.imageData}
       >
       </Panel>
     ));

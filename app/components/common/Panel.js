@@ -13,10 +13,10 @@ class Panel extends Component {
   }
 
   //Renders all the image matches on the page
-  renderImageIfMatch = (datePanelDay, imageArray) => {
+  renderImageIfMatch = (datePanelDay, datePanelMonth, imageArray) => {
     if (this.props.imageData) {
       for (let i=0; i < imageArray.length; i++) {    
-        if (datePanelDay === parseInt(imageArray[i].day)) {
+        if (datePanelDay === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
           return (
             <img
               src={imageArray[i].image}
@@ -41,8 +41,7 @@ class Panel extends Component {
               id="dateselected"
               onClick={this.handleDayChange}>
               {this.props.date}
-                {this.renderImageIfMatch(this.props.date, this.props.imageData)}
-              />
+                {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>
           :
           //This ternary again checks to see if the date being rendered is the current date
@@ -54,13 +53,13 @@ class Panel extends Component {
               id="currentdate"
               onClick={this.handleDayChange}>
               {this.props.date}
-              {this.renderImageIfMatch(this.props.date, this.props.imageData)}
+              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>:
             <div 
               className="panel-body"
               onClick={this.handleDayChange}>
               {this.props.date}
-              {this.renderImageIfMatch(this.props.date, this.props.imageData)}
+              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
               <img/>
             </div>}
           </div>}

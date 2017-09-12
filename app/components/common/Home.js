@@ -205,6 +205,7 @@ class Home extends Component {
         key={date}
         date={date}
         currentdate={this.state.day}
+        currentmonth={this.state.month}
         dateselected={this.state.dateSelected}
         callbackfromParent = {this.myDayCallback}
         imageData={this.props.imageData}

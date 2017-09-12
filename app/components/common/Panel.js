@@ -12,20 +12,19 @@ class Panel extends Component {
     this.props.callbackfromParent(selectedDay);
   }
 
+  //Renders all the image matches on the page
   renderImageIfMatch = (datePanelDay, imageArray) => {
-    for (let i=0; i < imageArray.length; i++) {
-      if (datePanelDay === imageArray[i].day) {
-        return (
-          <img
-            src={imageArray[i].image}
-          />
-        );
-      } else {
-        return (
-          <img
-          src="https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg"
-        />
-        )
+    if (this.props.imageData) {
+      for (let i=0; i < imageArray.length; i++) {    
+        if (datePanelDay === parseInt(imageArray[i].day)) {
+          return (
+            <img
+              src={imageArray[i].image}
+            />
+          );
+        } else {
+          console.log("no matches here");
+        }
       }
     }
   }
@@ -54,11 +53,13 @@ class Panel extends Component {
               className="panel-body"
               id="currentdate"
               onClick={this.handleDayChange}>
+              {this.props.date}
               {this.renderImageIfMatch(this.props.date, this.props.imageData)}
             </div>:
             <div 
               className="panel-body"
               onClick={this.handleDayChange}>
+              {this.props.date}
               {this.renderImageIfMatch(this.props.date, this.props.imageData)}
               <img/>
             </div>}

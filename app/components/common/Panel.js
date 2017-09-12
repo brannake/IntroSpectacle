@@ -12,6 +12,24 @@ class Panel extends Component {
     this.props.callbackfromParent(selectedDay);
   }
 
+  renderImageIfMatch = (datePanelDay, imageArray) => {
+    for (let i=0; i < imageArray.length; i++) {
+      if (datePanelDay === imageArray[i].day) {
+        return (
+          <img
+            src={imageArray[i].image}
+          />
+        );
+      } else {
+        return (
+          <img
+          src="https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg"
+        />
+        )
+      }
+    }
+  }
+
   //This renders each panel as a plain white square, unless it is the current date or a selected date
   //If state has been set, load images.props into each panel by checking the image date
   render() {
@@ -24,7 +42,8 @@ class Panel extends Component {
               id="dateselected"
               onClick={this.handleDayChange}>
               {this.props.date}
-              <img id={this.props}/>
+                {this.renderImageIfMatch(this.props.date, this.props.imageData)}
+              />
             </div>
           :
           //This ternary again checks to see if the date being rendered is the current date
@@ -35,13 +54,12 @@ class Panel extends Component {
               className="panel-body"
               id="currentdate"
               onClick={this.handleDayChange}>
-              {this.props.date}
-              <img id={this.props}/>
+              {this.renderImageIfMatch(this.props.date, this.props.imageData)}
             </div>:
             <div 
               className="panel-body"
               onClick={this.handleDayChange}>
-              {this.props.date}
+              {this.renderImageIfMatch(this.props.date, this.props.imageData)}
               <img/>
             </div>}
           </div>}

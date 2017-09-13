@@ -11,7 +11,7 @@ import {Modal, Button} from 'react-materialize'
 class Home extends Component {
   state = {
     user: 'default',
-    images: [],
+    imageData: [],
     month: '',
     day: '',
     dateSelected: '',
@@ -177,7 +177,13 @@ class Home extends Component {
 
    //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromChild) => {
+    console.log(dataFromChild);
     this.setState({dateSelected: dataFromChild});
+  }
+
+  //Takes imageData from Main before passing it down to Panel
+  storeImageData() {
+    this.setState({imageData: this.props.imageData});
   }
 
 //Rendering 7 days per row
@@ -200,9 +206,10 @@ class Home extends Component {
         key={date}
         date={date}
         currentdate={this.state.day}
+        currentmonth={this.state.month}
         dateselected={this.state.dateSelected}
         callbackfromParent = {this.myDayCallback}
-        images={this.props.images}
+        imageData={this.props.imageData}
       >
       </Panel>
     ));
@@ -213,12 +220,13 @@ class Home extends Component {
     <div>
       <Navbar
       callbackfromParent={this.myMonthCallback}
+      currentdate={this.state.day}
       day = {this.state.dateSelected}
       month = {this.state.month}
       />
       <div className="calendar">
         <div className="row" id="day-headings">
-        {this.renderFirstDates(this.state.firstRowDates)}
+          {this.renderFirstDates(this.state.firstRowDates)}
         </div>
         <div className="row">
           <hr/>
@@ -240,7 +248,7 @@ class Home extends Component {
           <hr />
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
-        </div>
+      </div>
       <Footer/>
       <div className="row">
         <div className="col s4">

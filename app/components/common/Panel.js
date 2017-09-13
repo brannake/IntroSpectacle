@@ -4,82 +4,68 @@ import API from "../../utils/API";
 
 class Panel extends Component {
   state = {
-    images: [],
-    mounted: false
   };
   //Passes the selected day up to the Home component
   handleDayChange = (event) => {
     event.preventDefault();
     let selectedDay = ($(event.target).text());
-    console.log(this.props.images);
+    console.log(selectedDay);
     this.props.callbackfromParent(selectedDay);
   }
 
-  componentDidMount= () => {
-    if (this.state.mounted === false) {
-      console.log("IT REALLY WORKED");
-      this.setState({images: this.props.images, mounted: true});
-    } else {
-      console.log("already loaded!");
-    };
-  };
+  //Renders all the image matches on the page
+  renderImageIfMatch = (datePanelDay, datePanelMonth, imageArray) => {
+    if (this.props.imageData) {
+      for (let i=0; i < imageArray.length; i++) {    
+        if (datePanelDay === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
+          return (
+            <img
+              src={imageArray[i].image}
+            />
+          );
+        } else {
+          console.log("no matches here");
+        }
+      }
+    }
+  }
 
   //This renders each panel as a plain white square, unless it is the current date or a selected date
+  //If state has been set, load the image into each panel by checking the image date
   render() {
-    if (this.state.images) {
-    return (
-      <div className="col s1">
-        {(this.props.date == this.props.dateselected) ?
-          <div className="panel-body"
-          id="dateselected"
-          onClick={this.handleDayChange}>
-            {this.props.date}
-            <img src={this.props.images[2].image}/>
-          </div>
-          :
-          <div>
-        {(this.props.date == this.props.currentdate) ?
-          <div className="panel-body"
-          id="currentdate"
-          onClick={this.handleDayChange}>
-            {this.props.date}
-              <img src={this.state.images}/>
-          </div>:
-          <div className="panel-body"
-          onClick={this.handleDayChange}>
-            {this.props.date}
-              <img src={this.state.images}/>
-          </div>}
-          </div>}
-      </div>
-    )} else{
       return (
+        //This ternary checks to see if the date being rendered is the date selected
         <div className="col s1">
           {(this.props.date == this.props.dateselected) ?
-            <div className="panel-body"
-            id="dateselected"
-            onClick={this.handleDayChange}>
+            <div 
+              className="panel-body"
+              id="dateselected"
+              onClick={this.handleDayChange}>
               {this.props.date}
-              <img src="https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg"/>
+                {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>
-            :
-            <div>
-          {(this.props.date == this.props.currentdate) ?
-            <div className="panel-body"
-            id="currentdate"
-            onClick={this.handleDayChange}>
+          :
+          //This ternary again checks to see if the date being rendered is the current date
+          //Otherwise, render basic date panel
+          <div>
+            {(this.props.date == this.props.currentdate) ?
+            <div
+              className="panel-body"
+              id="currentdate"
+              onClick={this.handleDayChange}>
               {this.props.date}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg"/>
+              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>:
-            <div className="panel-body"
-            onClick={this.handleDayChange}>
+            <div 
+              className="panel-body"
+              onClick={this.handleDayChange}>
               {this.props.date}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg"/>
+              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
+              <img/>
             </div>}
-            </div>}
-        </div>
-      )}
-    }
+          </div>}
+      </div>
+    )} 
   }
 
 export default Panel;

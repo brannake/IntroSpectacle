@@ -15,11 +15,26 @@ module.exports = function(sequelize, DataTypes) {
       // have a text value
       allowNull: true,
       validate: {
-        len: [1, 140]
+        len: [1, 1000]
       }
     },
     image: {
       type: DataTypes.STRING
+    },
+    anger_Score: {
+      type: DataTypes.FLOAT
+    },
+    disgust_Score: {
+      type: DataTypes.FLOAT
+    },
+    fear_Score: {
+      type: DataTypes.FLOAT
+    },
+    joy_Score: {
+      type: DataTypes.FLOAT
+    },
+    sadness_Score: {
+      type: DataTypes.FLOAT
     }
   });
   return dateInfo;

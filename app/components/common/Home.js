@@ -85,27 +85,27 @@ class Home extends Component {
                       });
       }
       if (this.state.month === "February") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
+                       thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
+                       fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
+                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25,],
+                       sixthRowDates: [26, 27, 28]
                       });
       }
       if (this.state.month === "March") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
+                       thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
+                       fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
+                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25,],
+                       sixthRowDates: [26, 27, 28, 29, 30, 31]
                       });
       }
       if (this.state.month === "April") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
+                       thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
+                       fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
+                       fifthRowDates: [16, 17, 18, 19, 20, 21, 22,],
+                       sixthRowDates: [23, 24, 25, 26, 27, 28, 29]
                       });
       }
       if (this.state.month === "May") {
@@ -208,7 +208,7 @@ class Home extends Component {
         currentdate={this.state.day}
         currentmonth={this.state.month}
         dateselected={this.state.dateSelected}
-        callbackfromParent = {this.myDayCallback}
+        callbackfromParent={this.myDayCallback}
         imageData={this.props.imageData}
       >
       </Panel>
@@ -221,8 +221,8 @@ class Home extends Component {
       <Navbar
       callbackfromParent={this.myMonthCallback}
       currentdate={this.state.day}
-      day = {this.state.dateSelected}
-      month = {this.state.month}
+      day={this.state.dateSelected}
+      month={this.state.month}
       />
       <div className="calendar">
         <div className="row" id="day-headings">

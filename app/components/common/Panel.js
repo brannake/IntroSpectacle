@@ -40,9 +40,10 @@ class Panel extends Component {
             <div 
               className="panel-body"
               id="dateselected"
-              onClick={this.handleDayChange}>
+              onClick={this.handleDayChange}
+              >
               {this.props.date}
-                {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
+              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>
           :
           //This ternary again checks to see if the date being rendered is the current date
@@ -52,13 +53,15 @@ class Panel extends Component {
             <div
               className="panel-body"
               id="currentdate"
-              onClick={this.handleDayChange}>
+              onClick={this.handleDayChange}
+              >
               {this.props.date}
               {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>:
             <div 
               className="panel-body"
-              onClick={this.handleDayChange}>
+              onClick={this.handleDayChange}
+              >
               {this.props.date}
               {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
               <img/>

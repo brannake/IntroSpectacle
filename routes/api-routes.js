@@ -9,6 +9,12 @@
 const db = require("../models");
 const fs = require("fs");
 const path = require("path");
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+const tone_analyzer = new ToneAnalyzerV3({
+    username: "e42493bc-6028-4609-b753-92bd6e0ab216",
+    password: "KW77CBKeukoM",
+    version_date: '2016-05-19'
+});
 
 // Routes
 // =============================================================
@@ -56,13 +62,38 @@ module.exports = function(app) {
     // create takes an argument of an object describing the item we want to
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
-    console.log(req.body.text);
-      db.dateInfo.create({user: "Kevin",
-                          text: req.body.text, 
-                          date: Date.now(),
-                          image: "image"})
-      .then(function(dbdateInfo) { 
-        res.send(dbdateInfo);
+
+    let params = {
+      // Get the text from the JSON file.
+      text: req.body.text,
+      tones: 'emotion'
+    };
+    
+    tone_analyzer.tone(params, function(error, response) {
+      if (error)
+        console.log('error:', error);
+      else {
+        console.log(JSON.stringify(response, null, 2));
+
+        let angerScore = response.document_tone.tone_categories[0].tones[0].score;
+        let disgustScore = response.document_tone.tone_categories[0].tones[1].score
+        let fearScore = response.document_tone.tone_categories[0].tones[2].score
+        let joyScore = response.document_tone.tone_categories[0].tones[3].score
+        let sadnessScore = response.document_tone.tone_categories[0].tones[4].score
+
+        db.dateInfo.create({user: "Kevin",
+        text: req.body.text, 
+        date: Date.now(),
+        image: "image",
+        anger_Score: angerScore, 
+        disgust_Score: disgustScore,
+        fear_Score: fearScore,
+        joy_Score: joyScore,
+        sadness_Score: sadnessScore
+      }).then(function(dbdateInfo) { 
+          res.send(dbdateInfo);
+        });
+      }
     });
   });
 

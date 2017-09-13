@@ -9,6 +9,7 @@ class Panel extends Component {
   handleDayChange = (event) => {
     event.preventDefault();
     let selectedDay = ($(event.target).text());
+    console.log(selectedDay);
     this.props.callbackfromParent(selectedDay);
   }
 
@@ -30,7 +31,7 @@ class Panel extends Component {
   }
 
   //This renders each panel as a plain white square, unless it is the current date or a selected date
-  //If state has been set, load images.props into each panel by checking the image date
+  //If state has been set, load the image into each panel by checking the image date
   render() {
       return (
         //This ternary checks to see if the date being rendered is the date selected

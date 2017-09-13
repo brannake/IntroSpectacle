@@ -28,12 +28,13 @@ class Navbar extends Component {
         key={month}
         id={month}
         onClick={this.handleChange} >
-      {month}
+        {month}
       </NavItem>
     ));
   }
 
   render() {
+    console.log(this.props.day);
     return (<div>
       <Dropdown trigger={
         <Button>{this.state.currentMonth}</Button>
@@ -48,7 +49,14 @@ class Navbar extends Component {
         <li className={location.pathname === "/" && "active"}>
         </li>
         <li className={location.pathname === "/favorites" && "active"}>
-          <Link id="date-display" to="/favorites">{this.props.month+" "+this.props.day}
+          <Link id="date-display" to="/favorites">
+          {(this.props.day === "") ?
+            <div>
+              {this.props.month+" "+this.props.currentdate}
+            </div>:
+            <div>
+              {this.props.month+" "+this.props.day}
+            </div>}
           </Link>
         </li>
       </ul>

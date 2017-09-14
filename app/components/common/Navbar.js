@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
 import {Dropdown, Button, NavItem} from 'react-materialize'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+
 
 class Navbar extends Component {
   constructor() {
@@ -28,7 +30,9 @@ class Navbar extends Component {
         key={month}
         id={month}
         onClick={this.handleChange} >
-      {month}
+      
+        {month}
+        
       </NavItem>
     ));
   }
@@ -38,7 +42,14 @@ class Navbar extends Component {
       <Dropdown trigger={
         <Button>{this.state.currentMonth}</Button>
         }>
-        {this.renderMonths()}
+          <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}>
+            {this.renderMonths()}
+          </ReactCSSTransitionGroup>
     </Dropdown>
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
       <div className="container-fluid">

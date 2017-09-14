@@ -4,6 +4,7 @@ const express = require("express");
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
 const app = express();
+const ReactCSSTransitionGroup = require('react-addons-css-transition-group'); // ES5 with npm
 
 
 // Sets up the Express App

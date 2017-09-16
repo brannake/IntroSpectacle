@@ -5,6 +5,8 @@ const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
 const app = express();
 
+const passport = require("./config/passport")
+
 
 // Sets up the Express App
 // =============================================================

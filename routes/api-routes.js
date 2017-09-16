@@ -76,7 +76,7 @@ module.exports = function(app) {
     }
   });
 
-};
+
 
   // POST route for saving a new image/caption entry
   app.post("/api/images", function(req, res) {
@@ -154,4 +154,4 @@ module.exports = function(app) {
       res.json(err);
     });
   });
-  };
+};

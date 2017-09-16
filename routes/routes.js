@@ -10,8 +10,12 @@ router.use("/api", apiRoutes);
 
 // Otherwise send all other requests the index.html page
 // React router will handle routing withing the app
-router.get("*", function(req, res) {
+/*router.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/index.html"));
+});*/
+
+router.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/signup.html"));
 });
 
 module.exports = router;

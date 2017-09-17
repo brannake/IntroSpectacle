@@ -81,7 +81,7 @@ class Home extends Component {
         this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
                        thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
                        fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28],
                        sixthRowDates: [29, 30, 31]
                       });
       }
@@ -89,7 +89,7 @@ class Home extends Component {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
-                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25,],
+                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25],
                        sixthRowDates: [26, 27, 28]
                       });
       }
@@ -97,7 +97,7 @@ class Home extends Component {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
-                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25,],
+                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25],
                        sixthRowDates: [26, 27, 28, 29, 30, 31]
                       });
       }
@@ -105,48 +105,48 @@ class Home extends Component {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
                        thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
                        fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
-                       fifthRowDates: [16, 17, 18, 19, 20, 21, 22,],
+                       fifthRowDates: [16, 17, 18, 19, 20, 21, 22],
                        sixthRowDates: [23, 24, 25, 26, 27, 28, 29]
                       });
       }
       if (this.state.month === "May") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", 1, 2, 3, 4, 5, 6],
+                       thirdRowDates: [7, 8, 9, 10, 11, 12, 13],
+                       fourthRowDates: [14, 15, 16, 17, 18, 19, 20],
+                       fifthRowDates: [21, 22, 23, 24, 25, 26, 27],
+                       sixthRowDates: [28, 29, 30, 31]
                       });
       }               
       if (this.state.month === "June") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", "   ", 1, 2, 3],
+                       thirdRowDates: [4, 5, 6, 7, 8, 9, 10],
+                       fourthRowDates: [11, 12, 13, 14, 15, 16, 17],
+                       fifthRowDates: [18, 19, 20, 21, 22, 23, 24],
+                       sixthRowDates: [25, 26, 27, 28, 29, 30]
                       });
       }       
       if (this.state.month === "July") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+        this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
+                       thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
+                       fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
+                       fifthRowDates: [16, 17, 18, 19, 20, 21, 22],
                        sixthRowDates: [29, 30, 31]
                       });
       }
       if (this.state.month === "August") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", 1, 2, 3, 4, 5],
+                       thirdRowDates: [6, 7, 8, 9, 10, 11, 12],
+                       fourthRowDates: [13, 14, 15, 16, 17, 18, 19],
+                       fifthRowDates: [20, 21, 22, 23, 24, 25, 26],
+                       sixthRowDates: [27, 28, 29, 30, 31]
                       });
       }
       if (this.state.month === "September") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
+                       thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
+                       fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
+                       fifthRowDates: [17, 18, 19, 20, 21, 22, 23],
+                       sixthRowDates: [24, 25, 26, 27, 28, 29, 30]
                       });
       }
       if (this.state.month === "October") {
@@ -158,19 +158,19 @@ class Home extends Component {
                       });
       }
       if (this.state.month === "November") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
+                       thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
+                       fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
+                       fifthRowDates: [19, 20, 21, 22, 23, 24, 25],
+                       sixthRowDates: [26, 27, 28]
                       });
       }
       if (this.state.month === "December") {
-        this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-                       thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-                       fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
-                       fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-                       sixthRowDates: [29, 30, 31]
+        this.setState({secondRowDates: ["", " ", "  ", "    ", "     ", 1, 2],
+                       thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
+                       fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
+                       fifthRowDates: [17, 18, 19, 20, 21, 22, 23],
+                       sixthRowDates: [24, 25, 26, 27, 28, 29, 30, 31]
                       });     
       };
     });
@@ -215,10 +215,20 @@ class Home extends Component {
     ));
   }
 
+  handleModalMessage = (date) => {
+    console.log(date);
+    if (date == "") {
+      return (
+        <div>Please select a date before submitting.</div>
+      )
+    } else {
+      return (
+        <div>Submit a photo and a brief description of your day.</div>
+      )
+    }
+  }
+
   render() {
-    console.log("rendered Home");
-    console.log(this.state.month);
-    console.log(this.state.currentMonth);
     return (
     <div>
       <Navbar
@@ -253,7 +263,7 @@ class Home extends Component {
       </div>
       <Footer/>
       <div className="row">
-        <div className="col s4">
+        <div className="col s3">
         </div>
 	      <Button
           id="modal-submit" 
@@ -265,7 +275,7 @@ class Home extends Component {
 	      <Modal
 		      id='foo'
 		      header={this.state.month +" "+ this.state.dateSelected}>
-		      Add a photo you think captures your mood and a brief description of what you did.
+            {this.handleModalMessage(this.state.dateSelected)}
           <SubmitForm
             selectedDate={this.state.dateSelected}
             selectedMonth={this.state.month}

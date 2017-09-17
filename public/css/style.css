@@ -106,3 +106,9 @@ nav {
 .row .col {
   padding: 0px;
 }
+
+#modal-submit {
+  background: lightblue;
+  position: relative;
+  left: 25px;
+}

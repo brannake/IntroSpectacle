@@ -11,7 +11,6 @@ class SubmitForm extends Component {
 
     //Posts the image to the server with the date and month attached
     uploadFileandRefresh = (event) => {
-        console.log(this.props.selectedDate);
         let fd = new FormData();    
         fd.append('file', ReactDOM.findDOMNode(this.refs.file).files[0]);
         fd.append('date', this.props.selectedDate);

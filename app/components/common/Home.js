@@ -218,10 +218,9 @@ class Home extends Component {
   }
 
   handleModalMessage = (date) => {
-    console.log(date);
-    if (date == "") {
+    if (date.replace(/\s/g, '').length === 0) {
       return (
-        <div>Please select a date before submitting.</div>
+        <div id="warning-modal">Please select a date before submitting.</div>
       )
     } else {
       return (
@@ -270,12 +269,12 @@ class Home extends Component {
 	      <Button
           id="modal-submit" 
           onClick={() => {
-		        $('#foo').modal('open')
+		        $('#modal').modal('open')
 	          }}>
           Submit
         </Button>
 	      <Modal
-		      id='foo'
+		      id="modal"
 		      header={this.state.month +" "+ this.state.dateSelected}>
             {this.handleModalMessage(this.state.dateSelected)}
           <SubmitForm

@@ -121,3 +121,13 @@ nav {
   position: relative;
   left: 25px;
 }
+
+#caption-text {
+  height: 20%;
+  width: 20%;
+}
+
+#warning-modal {
+  color:red;
+  font-weight: bold;
+}

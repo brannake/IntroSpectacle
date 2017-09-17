@@ -37,6 +37,7 @@ class SubmitTextForm extends React.Component {
     render() {
       return <div>
         <input 
+          id="caption-text"
           type="text" 
           name="text" 
           placeholder="Enter caption here" 

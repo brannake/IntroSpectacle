@@ -48,7 +48,7 @@ class Navbar extends Component {
       <div className="nav navbar-nav">
           <div id="date-display">
             {(!this.props.month) ?
-              (!this.props.day || this.props.day === " " || this.props.day === "  " || this.props.day === "   " || this.props.day === "    " || this.props.day === "     " || this.props.day === "      ") ?
+              (this.props.day.replace(/\s/g, '').length === 0) ?
               <Dropdown 
                 trigger={
               <Button
@@ -66,7 +66,7 @@ class Navbar extends Component {
                 {this.renderMonths()}
               </Dropdown>
             :
-              (!this.props.day || this.props.day === " " || this.props.day === "  " || this.props.day === "   " || this.props.day === "    " || this.props.day === "     " || this.props.day === "      ") ?
+              (this.props.day.replace(/\s/g, '').length === 0) ?
               <Dropdown 
                 trigger={
               <Button

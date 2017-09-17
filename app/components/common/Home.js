@@ -13,6 +13,7 @@ class Home extends Component {
     user: 'default',
     imageData: [],
     month: '',
+    currentMonth: '',
     day: '',
     dateSelected: '',
     mounted: false,
@@ -32,40 +33,40 @@ class Home extends Component {
       this.setState({day: dd});
       let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       if (MM == "01") {
-        this.setState({month: "January"})
+        this.setState({month: "January", currentMonth: "January"})
       }
       if (MM == "02") {
-        this.setState({month: "February"})
+        this.setState({month: "February", currentMonth: "February"})
       }
       if (MM == "03") {
-        this.setState({month: "March"})
+        this.setState({month: "March", currentMonth: "March"})
       }
       if (MM == "04") {
-        this.setState({month: "April"})
+        this.setState({month: "April", currentMonth: "April"})
       }
       if (MM == "05") {
-        this.setState({month: "May"})
+        this.setState({month: "May", currentMonth: "May"})
       }
       if (MM == "06") {
-        this.setState({month: "June"})
+        this.setState({month: "June", currentMonth: "June"})
       }
       if (MM == "07") {
-        this.setState({month: "July"})
+        this.setState({month: "July", currentMonth: "July"})
       }
       if (MM == "08") {
-        this.setState({month: "August"})
+        this.setState({month: "August", currentMonth: "August"})
       }
       if (MM == "09") {
-        this.setState({month: "September"})
+        this.setState({month: "September", currentMonth: "September"})
       }
       if (MM == "10") {
-        this.setState({month: "October"})
+        this.setState({month: "October", currentMonth: "October"})
       }
       if (MM == "11") {
-        this.setState({month: "November"})
+        this.setState({month: "November", currentMonth: "November"})
       }
       if (MM == "12") {
-        this.setState({month: "December"})
+        this.setState({month: "December", currentMonth: "December"})
       }
     }
     this.setState({mounted: true});
@@ -73,7 +74,7 @@ class Home extends Component {
 
   //Callback passed down to child components (Navbar) to get back user-selected month
   //All the dates for the year are stored here
-  //May consider separating this out into another file to reduce clutter
+  //NEED TO SEPARATE this out into another file to reduce clutter
   myMonthCallback = (dataFromChild) => {
     this.setState({month: dataFromChild, day: ''}, () => {
       if (this.state.month === "January") {
@@ -176,8 +177,8 @@ class Home extends Component {
   };
 
    //Callback passed down to child components (Panel) to get back user-selected day
-  myDayCallback = (dataFromChild) => {
-    this.setState({dateSelected: dataFromChild});
+  myDayCallback = (dataFromPanel) => {
+    this.setState({dateSelected: dataFromPanel});
   }
 
   //Takes imageData from Main before passing it down to Panel
@@ -190,7 +191,6 @@ class Home extends Component {
   renderFirstDates(datesArray) {
     return datesArray.map(date => (
       <Panel
-        id="day-headings-replace"
         key={date}
         date={date}
       >
@@ -205,7 +205,8 @@ class Home extends Component {
         key={date}
         date={date}
         currentdate={this.state.day}
-        currentmonth={this.state.month}
+        month={this.state.month}
+        currentmonth={this.state.currentMonth}
         dateselected={this.state.dateSelected}
         callbackfromParent={this.myDayCallback}
         imageData={this.props.imageData}
@@ -215,7 +216,9 @@ class Home extends Component {
   }
 
   render() {
-    console.log("rendered Home")
+    console.log("rendered Home");
+    console.log(this.state.month);
+    console.log(this.state.currentMonth);
     return (
     <div>
       <Navbar
@@ -223,6 +226,7 @@ class Home extends Component {
       currentdate={this.state.day}
       day={this.state.dateSelected}
       month={this.state.month}
+      currentMonth={this.state.currentMonth}
       />
       <div className="calendar">
         <div className="row" id="day-headings">

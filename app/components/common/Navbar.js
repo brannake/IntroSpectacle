@@ -33,6 +33,10 @@ class Navbar extends Component {
     ));
   }
 
+
+  //Nested conditional statements here again
+  //If the user has selected a day, display that
+  //Otherwise, display the current day/month
   render() {
     return (
     <div>
@@ -42,7 +46,26 @@ class Navbar extends Component {
       </div>
       <div className="nav navbar-nav">
           <div id="date-display">
-            {(!this.props.day) ?
+            {(!this.props.month) ?
+              (!this.props.day) ?
+              <Dropdown 
+                trigger={
+              <Button
+                style={{color: "lightblue", background: "white"}}
+              >{this.props.currentMonth + " " + this.props.currentdate}</Button>
+              }>
+                {this.renderMonths()}
+              </Dropdown>:
+              <Dropdown 
+                trigger={
+                <Button
+                  style={{ background: "lightblue" }}
+                >{this.props.currentMonth + " " + this.props.day}</Button>
+                }>
+                {this.renderMonths()}
+              </Dropdown>
+            :
+              (!this.props.day) ?
               <Dropdown 
                 trigger={
               <Button

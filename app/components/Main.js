@@ -10,7 +10,7 @@ class Main extends Component {
     loaded: false
   };
 
-componentWillMount() {
+componentWillMount= () => {
 
     $.ajax({
       url: '/api/load',
@@ -28,6 +28,7 @@ componentWillMount() {
       <div>
         <Home
         imageData={this.state.imageData}
+        refreshImages={this.componentWillMount}
         />
       </div>
     );

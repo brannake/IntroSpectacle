@@ -9,8 +9,8 @@ class SubmitForm extends Component {
         };
     };
 
-    //Posts the image to the server as a blob
-    uploadFile = (event) => {
+    //Posts the image to the server with the date and month attached
+    uploadFileandRefresh = (event) => {
         console.log(this.props.selectedDate);
         let fd = new FormData();    
         fd.append('file', ReactDOM.findDOMNode(this.refs.file).files[0]);
@@ -27,6 +27,7 @@ class SubmitForm extends Component {
                 console.log(data);
             } 
         });
+        this.props.refreshImages();
     }
 
     render() {
@@ -34,7 +35,7 @@ class SubmitForm extends Component {
             <div>                
                <form ref="uploadForm" className="uploader" encType="multipart/form-data" >
                     <input ref="file" type="file" name="file" className="upload-file"/>
-                   <input type="button" ref="button" value="Upload" onClick={this.uploadFile} />
+                   <input type="button" ref="button" value="Upload" onClick={this.uploadFileandRefresh}/>
                </form>
             </div>
         )

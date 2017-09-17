@@ -24,6 +24,7 @@ componentWillMount= () => {
       }
 
   render() {
+    console.log("rendered Main");
     return (
       <div>
         <Home

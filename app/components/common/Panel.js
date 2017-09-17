@@ -33,6 +33,7 @@ class Panel extends Component {
   //This renders each panel as a plain white square, unless it is the current date or a selected date
   //If state has been set, load the image into each panel by checking the image date
   render() {
+    console.log("rendered Panel");
       return (
         //This ternary checks to see if the date being rendered is the date selected
         <div className="col s1">

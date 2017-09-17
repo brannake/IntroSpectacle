@@ -36,39 +36,34 @@ class Navbar extends Component {
   render() {
     return (
     <div>
-      {(this.state.currentMonth === "" ) ?
-      <Dropdown trigger={
-        <Button>{this.props.month}</Button>
-        }>
-        {this.renderMonths()}
-    </Dropdown>:
-    <Dropdown trigger={
-      <Button>{this.state.currentMonth}</Button>
-      }>
-      {this.renderMonths()}
-  </Dropdown>
-      }
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
       <div className="container-fluid">
       <div className="navbar-header">
       </div>
-      <ul className="nav navbar-nav">
-        <li className={location.pathname === "/" && "active"}>
-        </li>
-        <li className={location.pathname === "/favorites" && "active"}>
-          <Link id="date-display" to="/favorites">
-          {(this.props.day === "") ?
-            <div>
-              {this.props.month+" "+this.props.currentdate}
-            </div>:
-            <div>
-              {this.props.month+" "+this.props.day}
-            </div>}
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <div className="nav navbar-nav">
+          <div id="date-display">
+            {(!this.props.day) ?
+              <Dropdown 
+                trigger={
+              <Button
+                style={{background: "lightblue"}}
+              >{this.props.month + " " + this.props.currentdate}</Button>
+              }>
+                {this.renderMonths()}
+              </Dropdown>:
+              <Dropdown 
+                trigger={
+                <Button
+                  style={{ background: "lightblue" }}
+                >{this.props.month + " " + this.props.day}</Button>
+                }>
+                {this.renderMonths()}
+              </Dropdown>
+            }
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
     );
   }

@@ -177,7 +177,6 @@ class Home extends Component {
 
    //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromChild) => {
-    console.log(dataFromChild);
     this.setState({dateSelected: dataFromChild});
   }
 
@@ -216,6 +215,7 @@ class Home extends Component {
   }
 
   render() {
+    console.log("rendered Home")
     return (
     <div>
       <Navbar

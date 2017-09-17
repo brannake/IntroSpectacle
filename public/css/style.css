@@ -8,8 +8,8 @@ body {
 }
 
 img {
-  height: 20px;
-  width: 20px;
+  height: 76px;
+  width: 69px;
 }
 
 .footer {
@@ -22,17 +22,26 @@ img {
 }
 
 .panel-body {
-  padding: 10px;
+  height: 80px;
 }
 
 .panel-body:hover {
     cursor: pointer;
 }
 
+.main-panel {
+  border: 1px solid black;
+  height: 80px;
+}
+
 .calendar{
   margin: 10px;
   position: relative;
-  bottom: 40px;
+  bottom: 20px;
+}
+
+.row {
+  margin-bottom: 0px;
 }
 
 .navbar {
@@ -42,7 +51,7 @@ img {
 
 #day-headings {
   background: lightblue;
-  color: white;
+  color: black;
 }
 
 #submit-form {

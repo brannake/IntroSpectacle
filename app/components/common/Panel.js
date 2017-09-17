@@ -36,7 +36,7 @@ class Panel extends Component {
     console.log("rendered Panel");
       return (
         //This ternary checks to see if the date being rendered is the date selected
-        <div className="col s1">
+        <div className="main-panel col s1">
           {(this.props.date == this.props.dateselected) ?
             <div 
               className="panel-body"

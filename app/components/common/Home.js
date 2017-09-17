@@ -229,23 +229,18 @@ class Home extends Component {
           {this.renderFirstDates(this.state.firstRowDates)}
         </div>
         <div className="row">
-          <hr/>
           {this.renderSecondDates(this.state.secondRowDates)}
         </div>
         <div className="row">
-          <hr />
           {this.renderSecondDates(this.state.thirdRowDates)}
         </div>
         <div className="row">
-          <hr />
           {this.renderSecondDates(this.state.fourthRowDates)}
         </div>
         <div className="row">
-          <hr />
           {this.renderSecondDates(this.state.fifthRowDates)}
         </div>
         <div className="row">
-          <hr />
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
       </div>

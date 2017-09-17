@@ -15,14 +15,15 @@ class Home extends Component {
     month: '',
     currentMonth: '',
     day: '',
+    currentDate: '',
     dateSelected: '',
     mounted: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    secondRowDates: [1, 2, 3, 4, 5, 6, 7],
-    thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
-    fourthRowDates: [15, 16, 17, 18, 19, 20, 21,],
-    fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
-    sixthRowDates: [29, 30, 31]
+    secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
+    thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
+    fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
+    fifthRowDates: [17, 18, 19, 20, 21, 22, 23],
+    sixthRowDates: [24, 25, 26, 27, 28, 29, 30]
   };
 
   //Takes calendar to the current date
@@ -30,7 +31,7 @@ class Home extends Component {
     if (this.state.mounted === false ) {
       let date = new Date();
       let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
-      this.setState({day: dd});
+      this.setState({day: dd, currentDate: dd});
       let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       if (MM == "01") {
         this.setState({month: "January", currentMonth: "January"})
@@ -204,7 +205,8 @@ class Home extends Component {
       <Panel
         key={date}
         date={date}
-        currentdate={this.state.day}
+        day={this.state.day}
+        currentdate={this.state.currentDate}
         month={this.state.month}
         currentmonth={this.state.currentMonth}
         dateselected={this.state.dateSelected}

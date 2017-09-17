@@ -261,7 +261,7 @@ class Home extends Component {
         </div>
       </div>
       <div id="side-display-container">
-        <div id="side-display">sdfsdf</div>
+        <div id="side-display"></div>
       </div>
       <Footer/>
       <div className="row">

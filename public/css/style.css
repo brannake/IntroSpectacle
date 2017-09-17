@@ -103,6 +103,15 @@ nav {
   background: white;
 }
 
+#side-display {
+  margin: 10px;
+  height: 100%;
+  width: 100%;
+  background: lightgrey;
+  border-radius: 20px;
+  border: 1px solid black
+}
+
 .row .col {
   padding: 0px;
 }

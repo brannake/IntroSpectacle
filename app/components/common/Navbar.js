@@ -38,6 +38,7 @@ class Navbar extends Component {
   //If the user has selected a day, display that
   //Otherwise, display the current day/month
   render() {
+    //There is a hideous this.props.day === "" check below, must refactor
     return (
     <div>
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
@@ -47,7 +48,7 @@ class Navbar extends Component {
       <div className="nav navbar-nav">
           <div id="date-display">
             {(!this.props.month) ?
-              (!this.props.day) ?
+              (!this.props.day || this.props.day === " " || this.props.day === "  " || this.props.day === "   " || this.props.day === "    " || this.props.day === "     " || this.props.day === "      ") ?
               <Dropdown 
                 trigger={
               <Button
@@ -65,7 +66,7 @@ class Navbar extends Component {
                 {this.renderMonths()}
               </Dropdown>
             :
-              (!this.props.day) ?
+              (!this.props.day || this.props.day === " " || this.props.day === "  " || this.props.day === "   " || this.props.day === "    " || this.props.day === "     " || this.props.day === "      ") ?
               <Dropdown 
                 trigger={
               <Button

@@ -31,7 +31,8 @@ class SubmitForm extends Component {
 
     render() {
         return (
-            <div>                
+            <div>
+                <br/>     
                <form ref="uploadForm" className="uploader" encType="multipart/form-data" >
                     <input ref="file" type="file" name="file" className="upload-file"/>
                    <input type="button" ref="button" value="Upload" onClick={this.uploadFileandRefresh}/>

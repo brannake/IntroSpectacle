@@ -1,25 +1,20 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
 
-class QuoteForm extends Component {
+class SideDisplay extends Component {
   constructor() {
     super();
     this.state = {
       inputValue: ""
     };
-    // Binding handleInputChange and handleButtonClick since we'll be passing them as
-    // callbacks and 'this' will change otherwise
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleButtonClick = this.handleButtonClick.bind(this);
-  }
+  };
+
   handleInputChange(event) {
-    this.setState({ inputValue: event.target.value });
-  }
+    this.setState({inputValue: event.target.value});
+  };
+
   handleButtonClick() {
-    const newQuote = this.state.inputValue;
-    API.saveQuote(newQuote).then(this.props.getQuotes);
-    this.setState({ inputValue: "" });
-  }
+  };
+
   render() {
     return (
       <div className="col-md-6 col-md-offset-3">
@@ -51,15 +46,4 @@ class QuoteForm extends Component {
   }
 }
 
-const styles = {
-  buttonStyle: {
-    float: "right",
-    marginTop: 10
-  },
-  formStyle: {
-    marginBottom: 60,
-    marginTop: 60
-  }
-};
-
-export default QuoteForm;
+export default SideDisplay;

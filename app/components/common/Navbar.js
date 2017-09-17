@@ -46,7 +46,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{background: "lightblue"}}
+                style={{color: "lightblue", background: "white"}}
               >{this.props.month + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}

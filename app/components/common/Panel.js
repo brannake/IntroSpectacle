@@ -24,7 +24,7 @@ class Panel extends Component {
             />
           );
         } else {
-          console.log("no matches here");
+          console.log("no match here");
         }
       }
     }
@@ -43,8 +43,8 @@ class Panel extends Component {
               id="dateselected"
               onClick={this.handleDayChange}
               >
-              {this.props.date}
-              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
+                {this.props.date}
+                {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>
           :
           //This ternary again checks to see if the date being rendered is the current date
@@ -56,18 +56,18 @@ class Panel extends Component {
               id="currentdate"
               onClick={this.handleDayChange}
               >
-              {this.props.date}
-              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
+                {this.props.date}
+                {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>:
             <div 
               className="panel-body"
+              id="normaldate"
               onClick={this.handleDayChange}
               >
-              {this.props.date}
-              {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
-              <img/>
-            </div>}
+                {this.props.date}
+                {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
           </div>}
+        </div>}
       </div>
     )} 
   }

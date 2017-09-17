@@ -8,8 +8,13 @@ body {
 }
 
 img {
-  height: 76px;
-  width: 69px;
+  height: 98%;
+  width: 100%;
+}
+
+nav {
+  position: relative;
+  left: 10px;
 }
 
 .footer {
@@ -23,6 +28,8 @@ img {
 
 .panel-body {
   height: 80px;
+  position: relative;
+  overflow: hidden;
 }
 
 .panel-body:hover {
@@ -32,11 +39,13 @@ img {
 .main-panel {
   border: 1px solid black;
   height: 80px;
+  padding: 0px;
 }
 
 .calendar{
   margin: 10px;
   position: relative;
+  left: 20px;
   bottom: 20px;
 }
 
@@ -66,6 +75,7 @@ img {
 
 #currentdate {
   background: orange;
+  border-bottom: 2px solid black;
 }
 
 #dateselected {
@@ -74,4 +84,24 @@ img {
 
 #upfile {
 	margin: 20px;
+}
+
+#date-holder {
+  position: absolute;
+  color: black;
+  bottom: 0px;
+  left: 0px;
+}
+
+#side-display-container {
+  position: absolute;
+  top: 0px;
+  right: -100px;
+  height: 90%;
+  width: 46.6%;
+  background: white;
+}
+
+.row .col {
+  padding: 0px;
 }

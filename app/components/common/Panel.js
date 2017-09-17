@@ -43,7 +43,11 @@ class Panel extends Component {
               id="dateselected"
               onClick={this.handleDayChange}
               >
-                {this.props.date}
+                <div
+                  id="date-holder"
+                >
+                  {this.props.date}
+                </div>
                 {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>
           :
@@ -56,7 +60,11 @@ class Panel extends Component {
               id="currentdate"
               onClick={this.handleDayChange}
               >
-                {this.props.date}
+              <div
+                  id="date-holder"
+                >
+                  {this.props.date}
+                </div>
                 {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
             </div>:
             <div 
@@ -64,7 +72,11 @@ class Panel extends Component {
               id="normaldate"
               onClick={this.handleDayChange}
               >
-                {this.props.date}
+              <div
+                  id="date-holder"
+                >
+                  {this.props.date}
+                </div>
                 {this.renderImageIfMatch(this.props.date, this.props.currentmonth, this.props.imageData)}
           </div>}
         </div>}

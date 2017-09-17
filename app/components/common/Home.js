@@ -244,6 +244,9 @@ class Home extends Component {
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
       </div>
+      <div id="side-display-container">
+        <div id="side-display">sdfsdf</div>
+      </div>
       <Footer/>
       <div className="row">
         <div className="col s4">

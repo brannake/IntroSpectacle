@@ -217,6 +217,7 @@ class Home extends Component {
     ));
   }
 
+  //Generates the modal message, forces the user to pick a date
   handleModalMessage = (date) => {
     if (date.replace(/\s/g, '').length === 0) {
       return (

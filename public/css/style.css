@@ -71,6 +71,7 @@ nav {
   position: absolute;
   left: 20%;
   font-size: 30px;
+  transition: 0.5s;
 }
 
 #currentdate {

@@ -4,7 +4,7 @@ class SideDisplay extends Component {
   constructor() {
     super();
     this.state = {
-      inputValue: ""
+      imageSrc: ""
     };
   };
 

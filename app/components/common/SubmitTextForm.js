@@ -40,10 +40,11 @@ class SubmitTextForm extends React.Component {
           id="caption-text"
           type="text" 
           name="text" 
-          placeholder="Enter caption here" 
+          placeholder="How was your day?" 
           value={ this.state.text }
           onChange={ this.handleChange } 
         />
+        <br/>
         <button value="Send" onClick={ this.publish }>Publish</button>
       </div>
     }

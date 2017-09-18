@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
-
 
 class Panel extends Component {
   state = {
@@ -17,10 +15,10 @@ class Panel extends Component {
     if (this.props.imageData) {
       for (let i=0; i < imageArray.length; i++) {    
         if (datePanelDay === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
-          console.log(imageArray[i].month);
           return (
             <img
               src={imageArray[i].image}
+              onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
             />
           );
         } else {

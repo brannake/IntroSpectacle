@@ -6,7 +6,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
-import {Modal, Button} from 'react-materialize'
+import SideDisplay from "./SideDisplay";
+import {Modal, Button} from 'react-materialize';
 
 class Home extends Component {
   state = {
@@ -17,6 +18,7 @@ class Home extends Component {
     day: '',
     currentDate: '',
     dateSelected: '',
+    dateSelectedSrc: "",
     mounted: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
@@ -182,6 +184,10 @@ class Home extends Component {
     this.setState({dateSelected: dataFromPanel});
   }
 
+  getImageCallback = (imageSrc) => {
+    this.setState({dateSelectedSrc: imageSrc})
+  }
+
   //Takes imageData from Main before passing it down to Panel
   storeImageData() {
     this.setState({imageData: this.props.imageData});
@@ -211,6 +217,7 @@ class Home extends Component {
         currentmonth={this.state.currentMonth}
         dateselected={this.state.dateSelected}
         callbackfromParent={this.myDayCallback}
+        callbackforImage={this.getImageCallback}
         imageData={this.props.imageData}
       >
       </Panel>
@@ -260,9 +267,9 @@ class Home extends Component {
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
       </div>
-      <div id="side-display-container">
-        <div id="side-display"></div>
-      </div>
+      <SideDisplay
+        imageSrc={this.state.dateSelectedSrc}
+      />
       <Footer/>
       <div className="row">
         <div className="col s3">

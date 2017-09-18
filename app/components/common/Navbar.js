@@ -38,7 +38,6 @@ class Navbar extends Component {
   //If the user has selected a day, display that
   //Otherwise, display the current day/month
   render() {
-    //There is a hideous this.props.day === "" check below, must refactor
     return (
     <div>
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">

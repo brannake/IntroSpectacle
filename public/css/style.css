@@ -17,6 +17,10 @@ nav {
   left: 10px;
 }
 
+hr {
+  background: white;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -24,6 +28,7 @@ nav {
   height: 60px;
   padding-right: 20px;
   padding-left: 20px;
+  background: lightblue;
 }
 
 .panel-body {
@@ -137,3 +142,18 @@ nav {
   font-weight: bold;
 }
 
+#side-display-caption-container {
+  position: absolute;
+  bottom: 0px;
+  height: 48%;
+  width: 77%;
+  margin-left: 10px;
+  background: #7E7C7F;
+  border-radius: 20px;
+  color: white;
+  padding: 10px;
+}
+
+#side-display-img {
+  border-radius: 20px;
+}

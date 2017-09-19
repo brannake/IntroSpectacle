@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "./common/Navbar";
 import Footer from "./common/Footer";
-import Home from "./common/Home";
+import Login from "./common/Login";
 
 class Main extends Component {
   state = {
@@ -10,27 +10,10 @@ class Main extends Component {
     loaded: false
   };
 
-componentWillMount= () => {
-
-    $.ajax({
-      url: '/api/load',
-      type: 'GET',
-      data: this.state.user,
-      success: (data) => {
-        console.log(data);
-        this.setState({imageData:data});
-          }
-        });
-      }
-
   render() {
-    console.log("rendered Main");
     return (
       <div>
-        <Home
-        imageData={this.state.imageData}
-        refreshImages={this.componentWillMount}
-        />
+        <Login/>
       </div>
     );
   }

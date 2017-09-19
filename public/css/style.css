@@ -132,3 +132,24 @@ nav {
   color:red;
   font-weight: bold;
 }
+
+ul.slides {
+  height:550px!important;
+}
+
+div.slider {
+  height: 600px!important;
+}
+div.nav-wrapper {
+  background-color:black;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: purple;
+} 
+
+.slider .slides li img {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+

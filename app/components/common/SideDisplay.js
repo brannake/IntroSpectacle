@@ -10,7 +10,6 @@ class SideDisplay extends Component {
   };
 
   render() {
-    console.log("THIS RAN");
     return (
       <div id="side-display-container">
         <div id="side-display">

@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 
 class Panel extends Component {
   state = {
   };
   //Passes the selected day up to the Home component
-  handleDayChange = (event) => {
+  handleDayChange = () => {
     event.preventDefault();
-    let selectedDay = ($(event.target).text());
-    this.props.callbackfromParent(selectedDay);
+    let domNode = ReactDOM.findDOMNode(this);
+    let calendarDate = domNode.innerText;
+    this.props.callbackfromParent(calendarDate);
   }
 
   //Renders all the image matches on the page
@@ -33,12 +35,14 @@ class Panel extends Component {
   render() {
       return (
         //Checks to see if the date being rendered is the date selected
-        <div className="main-panel col s1">
+        <div 
+          className="main-panel col s1"
+          onClick={this.handleDayChange}
+        >
           {(this.props.date == this.props.dateselected) ?
             <div 
               className="panel-body"
               id="dateselected"
-              onClick={this.handleDayChange}
               >
                 <div
                   id="date-holder"
@@ -56,13 +60,13 @@ class Panel extends Component {
               className="panel-body"
               id="currentdate"
               onClick={this.handleDayChange}
-              >
+            >
               <div
-                  id="date-holder"
-                >
+                id="date-holder"
+              >
                   {this.props.date}
                 </div>
-                {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
+                  {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
             </div>:
             <div 
               className="panel-body"
@@ -74,7 +78,7 @@ class Panel extends Component {
                 >
                   {this.props.date}
                 </div>
-                {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
+                  {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
           </div>}
         </div>}
       </div>

@@ -83,7 +83,8 @@ nav {
 }
 
 #dateselected {
-  border: 1px solid white;
+  border: 2px solid blue;
+  background: blue;
 }
 
 #upfile {

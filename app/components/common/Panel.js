@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 
 class Panel extends Component {
   state = {
+    imageLoaded: false
   };
   //Passes the selected day up to the Home component
   handleDayChange = () => {
     event.preventDefault();
     let domNode = ReactDOM.findDOMNode(this);
-    let calendarDate = domNode.innerText;
+    let calendarDate = domNode.innerText.trim();
     this.props.callbackfromParent(calendarDate);
   }
 
@@ -72,11 +73,11 @@ class Panel extends Component {
               className="panel-body"
               id="normaldate"
               onClick={this.handleDayChange}
-              >
+            >
               <div
                   id="date-holder"
-                >
-                  {this.props.date}
+              >
+                {this.props.date}
                 </div>
                   {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
           </div>}

@@ -35,6 +35,11 @@ module.exports = function(app) {
     let selectedDate = req.body.date;
     let selectedMonth = req.body.month;
 
+    console.log(userName);
+    console.log(newImage);
+    console.log(selectedDate);
+    console.log(selectedMonth);
+
     fs.writeFile((path.join("public/savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
 
     console.log(path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg"));

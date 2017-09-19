@@ -274,7 +274,8 @@ class Home extends Component {
       <div className="row">
         <div className="col s3">
         </div>
-	      <Button
+	      <Button 
+          waves='light'
           id="modal-submit" 
           onClick={() => {
 		        $('#modal').modal('open')

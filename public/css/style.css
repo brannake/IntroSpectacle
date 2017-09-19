@@ -30,10 +30,14 @@ nav {
   height: 80px;
   position: relative;
   overflow: hidden;
+  transition: .5s ease;
 }
 
 .panel-body:hover {
     cursor: pointer;
+    opacity: 0.5;
+    background: grey;
+    transition: .5s ease;
 }
 
 .main-panel {
@@ -132,3 +136,4 @@ nav {
   color:red;
   font-weight: bold;
 }
+

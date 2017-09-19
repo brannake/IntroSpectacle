@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Button} from 'react-materialize';
 import ReactDOM from 'react-dom';
 
 class SubmitTextForm extends React.Component {
@@ -45,7 +46,7 @@ class SubmitTextForm extends React.Component {
           onChange={ this.handleChange } 
         />
         <br/>
-        <button value="Send" onClick={ this.publish }>Publish</button>
+        <Button waves="light" value="Send" onClick={ this.publish }>Publish</Button>
       </div>
     }
   }

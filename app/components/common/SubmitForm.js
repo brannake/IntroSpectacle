@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
+import {Button} from 'react-materialize';
 
 class SubmitForm extends Component {
     constructor() {
@@ -34,8 +35,8 @@ class SubmitForm extends Component {
             <div>
                 <br/>     
                <form ref="uploadForm" className="uploader" encType="multipart/form-data" >
-                    <input ref="file" type="file" name="file" className="upload-file"/>
-                   <input type="button" ref="button" value="Upload" onClick={this.uploadFileandRefresh}/>
+                   <input ref="file" type="file" name="file" className="upload-file"/>
+                   <Button waves="light" type="button" ref="button" value="Upload" onClick={this.uploadFileandRefresh}>Upload</Button>
                </form>
             </div>
         )

@@ -90,6 +90,7 @@ hr {
 #dateselected {
   border: 2px solid blue;
   background: blue;
+  color: white;
 }
 
 #upfile {
@@ -98,7 +99,6 @@ hr {
 
 #date-holder {
   position: absolute;
-  color: black;
   bottom: 0px;
   left: 0px;
   margin-left: 5px;
@@ -120,6 +120,11 @@ hr {
   background: lightgrey;
   border-radius: 20px;
   border: 1px solid black
+}
+
+#side-display-img-container {
+  height: 45%;
+  width: auto;
 }
 
 .row .col {

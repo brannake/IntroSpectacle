@@ -13,19 +13,48 @@ class Login extends Component {
           newUserInput: "",
           passwordInput:""
         };
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.signupUser = this.signupUser.bind(this);
-    }
-//sends user information to the server
-    signupUser () {
-        const newUser = this.state.newUserInput
-        console.log(newUser)
+    //     this.handleInputChange = this.handleInputChange.bind(this);
+    //     this.signupUser = this.signupUser.bind(this);
+    // }
+
+
 
     }
 
-    handleInputChange(event) {
-        this.setState({ newUserInput: event.target.value });
-      }
+    handleInputChange = event => {
+        // Getting the value and name of the input which triggered the change
+        let value = event.target.value;
+        const name = event.target.name;
+        if (name === "password") {
+          value = value.substring(0, 15);
+        }
+        // Updating the input's state
+        this.setState({
+          [name]: value
+        });
+      };
+        handleFormSubmit = event => {
+            // Preventing the default behavior of the form submit (which is to refresh the page)
+            event.preventDefault();
+            if (this.state.newUserInput || this.state.passwordInput) {
+              alert("Fill out all fields please!!");
+            } else if (this.state.password.length < 6) {
+              alert(
+                `Choose a more secure password ${this.state.newUserInput}`);
+            } else {
+              alert(`Hello ${this.state.newUserInput}`);
+            }
+            this.setState({
+                newUserInput: "",
+                passwordInput: ""             
+            });
+          };
+      
+
+
+
+
+
 
   render() {
     return (
@@ -54,7 +83,7 @@ class Login extends Component {
             on your activity over time          
         </Slide>
     </Slider>    
-        <div class="wrapper">
+        <div className="wrapper">
             <Button 
              id="signup-btn"
              waves='light'    
@@ -66,21 +95,26 @@ class Login extends Component {
         <Modal
             id='signup'
             header='Sign up'>
-            <form>
-                <Input s={6} label="User Name"
+            <form className="form">
+                <Input s={6} 
                 value={this.state.newUserInput}
+                name="newUserInput"
+                type="text"
+                label="User Name"         
                 onChange={this.handleInputChange}
-              
-                validate><Icon>account_circle</Icon></Input>
-                <Input s={6} label="Password" validate type='tel'><Icon>lock</Icon></Input>
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} label="Password"               
+                value={this.state.passwordInput}
+                name="passwordInput"
+                type="text"
+                onChange={this.handleInputChange}
+                validate type='tel'><Icon>lock</Icon>
+                </Input>
             </form>
-                <div class="modal-footer">
-                <Button
-                     className="btn waves-effect waves-light modal-action"
-                     onClick={this.signupUser}
-                 > 
-                 Submit
-                </Button>
+                <div className="modal-footer">
+                <Button className="btn waves-effect waves-light modal-action" onClick={this.handleFormSubmit} > Submit </Button>
                 </div>            
         </Modal>
         

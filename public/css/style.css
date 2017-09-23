@@ -39,8 +39,18 @@ img {
 	background: lightblue;
 }
 
+.wrapper {
+  text-align: center !important;
+}
+
+.modal-footer {
+  float: right;
+  margin: 6px 0;
+}
+
 #signup-btn{
-  
+  position: absolute !important;
+  /* top: 50% !important; */
 
 }
 

@@ -9,6 +9,8 @@ import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input} from 'react-
 
 
 
+
+
 class Login extends Component {
   state = {
 
@@ -45,24 +47,46 @@ class Login extends Component {
         </Slide>
     </Slider>
     
-        <div>
+        <div class="wrapper">
         <Button 
+            id="signup-btn"
             waves='light'    
             onClick={() => {
             $('#signup').modal('open')
         }}>Sign up  <Icon right> create </Icon>    
         </Button>
+        </div>
         <Modal
             id='signup'
-            header='Sign up'>
+            header='Sign up'
+            >
                 <Input s={6} label="User Name" validate><Icon>account_circle</Icon></Input>
                 <Input s={6} label="Password" validate type='tel'><Icon>lock</Icon></Input>
+                <div class="modal-footer">
+                <Button
+                     className="btn waves-effect waves-light modal-action"
+                     onClick={this.signupUser}
+                 > 
+                 Submit
+                </Button>
+                </div>
+
                
         </Modal>
-        </div>;
+        
     </div>
     );
   }
 }
+
+
+// const styles = {
+//     buttonStyle: {
+//      position: abolute,
+//      top: 50%
+//     }
+// };
+
+
 
 export default Login;

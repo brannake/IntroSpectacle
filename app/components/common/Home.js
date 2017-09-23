@@ -7,7 +7,8 @@ import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
 import SideDisplay from "./SideDisplay";
-import {Modal, Button} from 'react-materialize';
+import {Modal, Button, Slide, Slider} from 'react-materialize';
+
 
 class Home extends Component {
   state = {

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import { Modal, Button } from 'react-materialize'
 
 class SignupForm extends Component {
@@ -14,35 +15,32 @@ class SignupForm extends Component {
   //Sets the selected month to state, passes it up to the Home parent component
 
     handleSubmit = (event) => {
+      
 
-        
+
+      $.ajax({
+        url: '/api/signup',
+        type: 'POST',
+        success: function(data){
+            console.log(data);
+        }     
+      })
     }
-
-   
-
-
-  userInfo() {
-
-
   }
-
-
-  //Nested conditional statements here again
-  //If the user has selected a day, display that
-  //Otherwise, display the current day/month
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  };
-    
+        <div>                
+           <form ref="uploadForm" className="asdf" >
+              <Row>
+              <Input s={6} label="User Name" validate><Icon>account_circle</Icon></Input>
+              <Input s={6} label="Password" validate type='tel'><Icon>lock</Icon></Input>
+              </Row>
+               <input type="button" ref="button" value="Upload" onClick={this.uploadFile} />
+           </form>
+        </div>
+    )
 };
 
 
-export default SignupForm;;
+  
+export default SignupForm;

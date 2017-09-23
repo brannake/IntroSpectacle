@@ -10,16 +10,22 @@ class Login extends Component {
     constructor() {
         super();
         this.state = {
-          inputValue: ""
+          newUserInput: "",
+          passwordInput:""
         };
-
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.signupUser = this.signupUser.bind(this);
     }
 //sends user information to the server
     signupUser () {
-        console.log("button")
+        const newUser = this.state.newUserInput
+        console.log(newUser)
 
     }
+
+    handleInputChange(event) {
+        this.setState({ newUserInput: event.target.value });
+      }
 
   render() {
     return (
@@ -61,7 +67,11 @@ class Login extends Component {
             id='signup'
             header='Sign up'>
             <form>
-                <Input s={6} label="User Name" validate><Icon>account_circle</Icon></Input>
+                <Input s={6} label="User Name"
+                value={this.state.newUserInput}
+                onChange={this.handleInputChange}
+              
+                validate><Icon>account_circle</Icon></Input>
                 <Input s={6} label="Password" validate type='tel'><Icon>lock</Icon></Input>
             </form>
                 <div class="modal-footer">
@@ -78,14 +88,6 @@ class Login extends Component {
     );
   }
 }
-
-
-// const styles = {
-//     buttonStyle: {
-//      position: abolute,
-//      top: 50%
-//     }
-// };
 
 
 

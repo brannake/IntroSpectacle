@@ -134,11 +134,11 @@ nav {
 }
 
 ul.slides {
-  height:550px!important;
+  height:500px!important;
 }
 
 div.slider {
-  height: 600px!important;
+  height: 450px!important;
 }
 div.nav-wrapper {
   background-color:black;
@@ -152,4 +152,34 @@ div.nav-wrapper {
   opacity: 0.5;
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
+
+.brand-logo {
+  background-image: url("../public/savedimages/introspectiv-logo.png")
+}
+
+footer.page-footer {
+  background-color: black;
+}
+
+/*div.container {
+  text-align: center;
+}
+
+div.row {
+  text-align: center;
+  font-size: 25px;
+}*/
+
+footer.page-footer.example {
+  margin-top: 50px;
+}
+
+div.container {
+  text-align: center;
+}
+
+copyrights {
+  text-align: center;
+}
+
 

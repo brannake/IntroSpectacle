@@ -32,13 +32,6 @@ nav {
   overflow: hidden;
 }
 
-.panel-body:hover {
-    cursor: pointer;
-    opacity: 0.5;
-    background: grey;
-    transition: .5s ease;
-}
-
 .main-panel {
   border: 1px solid black;
   height: 80px;

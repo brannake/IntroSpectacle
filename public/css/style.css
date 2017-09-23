@@ -32,6 +32,10 @@ nav {
   overflow: hidden;
 }
 
+#media-container {
+  height: 100%;
+}
+
 .main-panel {
   border: 1px solid black;
   height: 80px;
@@ -43,6 +47,14 @@ nav {
   position: relative;
   left: 20px;
   bottom: 20px;
+}
+
+.materialboxed {
+  height: 99%;
+}
+
+.material-placeholder {
+  height: 100%;
 }
 
 .row {

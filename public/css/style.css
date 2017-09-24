@@ -46,8 +46,9 @@ nav {
 .calendar{
   margin: 10px;
   position: relative;
-  left: 10%;
+  left: 5%;
   bottom: 20px;
+  text-shadow: 1px 1px;
 }
 
 .materialboxed {
@@ -77,7 +78,7 @@ nav {
 
 #date-display {
   position: absolute;
-  left: 29%;
+  left: 34%;
   font-size: 30px;
   transition: 0.5s;
 }
@@ -117,19 +118,24 @@ nav {
   top: 80px;
   right: 0px;
   height: 90%;
-  width: 31.8%;
+  width: 36.7%;
   background: white;
 }
 
 #side-display {
   position: absolute;
-  left: 5%;
+  left: 3%;
   top: 2%;
-  background: blue;
+  background: ivory;
+  border-radius: 20px;
   color: white;
   height: 80%;
-  width: 90%;
-  border: 1px solid black;
+  width: 94%;
+  border: 2px solid blue;
+}
+
+.collection-item {
+  color: blue;
 }
 
 .row .col {
@@ -148,13 +154,13 @@ nav {
 
 #modal-submit {
   position: absolute;
-  left: 35.8%;
+  left: 40.8%;
   background: blue;
 }
 
 #side-nav {
   position: absolute;
-  top: 10%;
+  top: 11.4%;
   left: 0px;
   height: 50%;
   width: 10%;

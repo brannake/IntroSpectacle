@@ -11,11 +11,11 @@ class SideNav extends Component {
         return (
         <div id="side-nav">
             <Collection>
-                <CollectionItem href='#' active>Images</CollectionItem>
-                <CollectionItem href='#'>Self-Rated Moods</CollectionItem>
-                <CollectionItem href='#'>ALVIN</CollectionItem>
-                <CollectionItem href='#'>ALVIN</CollectionItem>
-                <CollectionItem href='#'>Alvin</CollectionItem>
+                <CollectionItem>Images</CollectionItem>
+                <CollectionItem>Self-Rated Moods</CollectionItem>
+                <CollectionItem>ALVIN</CollectionItem>
+                <CollectionItem>ALVIN</CollectionItem>
+                <CollectionItem>Alvin</CollectionItem>
             </Collection>
         </div>
     )};

@@ -269,8 +269,8 @@ class Home extends Component {
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
       </div>
-      <SideNav/>
       <SideDisplay
+        data= {this.props.imageData}
       />
       <Footer/>
       <div className="row">

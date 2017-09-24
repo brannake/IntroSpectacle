@@ -28,8 +28,8 @@ componentWillMount= () => {
     return (
       <div>
         <Home
-        imageData={this.state.imageData}
-        refreshImages={this.componentWillMount}
+          imageData={this.state.imageData}
+          refreshImages={this.componentWillMount}
         />
       </div>
     );

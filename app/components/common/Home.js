@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { render } from 'react-dom';
 import API from "../../utils/API";
 import Panel from "./Panel";
+import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
@@ -197,11 +198,11 @@ class Home extends Component {
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
   renderFirstDates(datesArray) {
     return datesArray.map(date => (
-      <Panel
+      <DayHeadingPanel
         key={date}
         date={date}
       >
-      </Panel>
+      </DayHeadingPanel>
     ));
   }
 

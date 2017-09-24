@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import Panel from "./Panel";
 import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
+import SideNav from "./SideNav";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
@@ -268,13 +269,11 @@ class Home extends Component {
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
       </div>
+      <SideNav/>
       <SideDisplay
-        imageSrc={this.state.dateSelectedSrc}
       />
       <Footer/>
       <div className="row">
-        <div className="col s3">
-        </div>
 	      <Button 
           waves='light'
           id="modal-submit" 

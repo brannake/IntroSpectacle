@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class DayHeadingPanel extends Component {
-  
+
   render() {
       return (
         <div 
@@ -11,7 +11,7 @@ class DayHeadingPanel extends Component {
               className="panel-body"
               >
                 <div
-                  id="date-holder"
+                  id="panel-day-heading"
                 >
                   {this.props.date}
                 </div>

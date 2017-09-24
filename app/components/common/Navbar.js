@@ -51,7 +51,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "lightblue", background: "white"}}
+                style={{color: "blue", background: "white"}}
               >{this.props.currentMonth + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -59,7 +59,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "lightblue" }}
+                  style={{ background: "blue" }}
                 >{this.props.currentMonth + " " + this.props.day}</Button>
                 }>
                 {this.renderMonths()}
@@ -69,7 +69,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "lightblue", background: "white"}}
+                style={{color: "blue", background: "white"}}
               >{this.props.month + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -77,7 +77,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "lightblue" }}
+                  style={{ background: "blue" }}
                 >{this.props.month + " " + this.props.day}</Button>
                 }>
                 {this.renderMonths()}

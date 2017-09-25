@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import SideNavMod from "./SideNavMod";
 import {Dropdown, Button, NavItem} from 'react-materialize'
 
 class Navbar extends Component {
@@ -43,6 +44,8 @@ class Navbar extends Component {
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
       <div className="container-fluid">
       <div className="navbar-header">
+        <SideNavMod 
+        />
       </div>
       <div className="nav navbar-nav">
           <div id="date-display">

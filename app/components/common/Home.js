@@ -4,7 +4,6 @@ import API from "../../utils/API";
 import Panel from "./Panel";
 import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
-import SideNav from "./SideNav";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SubmitTextForm from "./SubmitTextForm";
@@ -291,7 +290,9 @@ class Home extends Component {
 		      id="modal"
 		      header={this.state.month +" "+ this.state.dateSelected}
         >
-            {this.handleModalMessage(this.props.imageData, this.state.dateSelected, this.state.month)}
+            <div id="caption-text-display">
+              {this.handleModalMessage(this.props.imageData, this.state.dateSelected, this.state.month)}
+            </div>
           <SubmitForm
             data={this.props.imageData}
             selectedDate={this.state.dateSelected}

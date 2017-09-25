@@ -165,3 +165,17 @@ nav {
   background: blue;
   text-shadow: 0px;
 }
+
+#caption-text-display {
+  background: blue;
+}
+
+#SideNavMod {
+  position: absolute;
+  left: 10px;
+}
+
+#SideNavMod > span > button {
+  background: white;
+  color: blue;
+}

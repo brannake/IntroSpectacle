@@ -6,7 +6,6 @@ import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
-import SubmitTextForm from "./SubmitTextForm";
 import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
 
@@ -238,7 +237,7 @@ class Home extends Component {
             return (
               <div>
                 <div>{data[i].text}</div>
-                <div>{data[i]} </div>
+                <div>Overall Mood Score: {parseFloat(data[i].joy_score * 100).toFixed(2)}</div>
               </div>
             )
           }

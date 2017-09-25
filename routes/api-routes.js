@@ -62,7 +62,7 @@ module.exports = function(app) {
     tone_analyzer.tone(params, function(error, response) {
       if (error)
         console.log('error:', error);
-      else
+      else {
         console.log(JSON.stringify(response, null, 2));
 
         console.log("after tones");
@@ -81,7 +81,8 @@ module.exports = function(app) {
           image: filepath})
         .then(function(dbdateInfo) { 
           res.send(dbdateInfo);
-        });
+          });
+        }
       }
     );
   });

@@ -2,8 +2,8 @@ import axios from "axios";
 
 const API = {
   // Retrieves all quotes from the db
-  getQuotes: function() {
-    return axios.get("/api/quotes");
+  saveUser: function() {
+    return axios.post("/api/signup");
   },
   // Saves a new quote to the db
   saveQuote: function(text) {

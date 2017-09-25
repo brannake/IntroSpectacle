@@ -5,20 +5,13 @@ import API from "../../utils/API";
 import SubmitForm from "./SubmitForm";
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input} from 'react-materialize';
 
-
 class Login extends Component {
     constructor() {
         super();
         this.state = {
           newUserInput: "",
           passwordInput:""
-        };
-    //     this.handleInputChange = this.handleInputChange.bind(this);
-    //     this.signupUser = this.signupUser.bind(this);
-    // }
-
-
-
+        }
     }
 
     handleInputChange = event => {
@@ -33,28 +26,31 @@ class Login extends Component {
           [name]: value
         });
       };
-        handleFormSubmit = event => {
+        handleFormSubmit = (event) => {
             // Preventing the default behavior of the form submit (which is to refresh the page)
             event.preventDefault();
-            if (this.state.newUserInput || this.state.passwordInput) {
-              alert("Fill out all fields please!!");
-            } else if (this.state.password.length < 6) {
-              alert(
-                `Choose a more secure password ${this.state.newUserInput}`);
-            } else {
-              alert(`Hello ${this.state.newUserInput}`);
-            }
-            this.setState({
-                newUserInput: "",
-                passwordInput: ""             
-            });
+
+          
+    
+     
+            $.ajax({
+                url: '/api/signup',
+                data:{
+                    user: this.state.newUserInput,
+                    password: this.state.passwordInput
+                },
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function(data){
+                    console.log(data);
+                } 
+            });        
+
+            // console.log("new user: " + this.state.newUserInput);
+            // console.log("password: " + this.state.passwordInput)
           };
-      
-
-
-
-
-
+        
 
   render() {
     return (
@@ -95,7 +91,7 @@ class Login extends Component {
         <Modal
             id='signup'
             header='Sign up'>
-            <form className="form">
+             <form className="form">
                 <Input s={6} 
                 value={this.state.newUserInput}
                 name="newUserInput"
@@ -112,12 +108,11 @@ class Login extends Component {
                 onChange={this.handleInputChange}
                 validate type='tel'><Icon>lock</Icon>
                 </Input>
-            </form>
+             </form>
                 <div className="modal-footer">
                 <Button className="btn waves-effect waves-light modal-action" onClick={this.handleFormSubmit} > Submit </Button>
                 </div>            
         </Modal>
-        
     </div>
     );
   }

@@ -236,7 +236,10 @@ class Home extends Component {
         for (let i=0; i < data.length; i++) {
           if (date === data[i].day && month === data[i].month) {
             return (
-              <div>{data[i].text}</div>
+              <div>
+                <div>{data[i].text}</div>
+                <div>{data[i]} </div>
+              </div>
             )
           }
         }

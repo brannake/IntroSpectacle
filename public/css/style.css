@@ -48,7 +48,6 @@ nav {
   position: relative;
   left: 18%;
   bottom: 20px;
-  text-shadow: 1px 1px;
 }
 
 .materialboxed {
@@ -106,6 +105,7 @@ nav {
   left: 35%;
   font-weight: bold;
   font-size: 2em;
+  text-shadow: 1px 1px;
   z-index: 2;
 }
 
@@ -167,7 +167,9 @@ nav {
 }
 
 #caption-text-display {
-  background: blue;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 #SideNavMod {
@@ -178,4 +180,8 @@ nav {
 #SideNavMod > span > button {
   background: white;
   color: blue;
+}
+
+#modal > div.modal-content > div:nth-child(3) > form > button {
+  background: blue;
 }

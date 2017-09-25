@@ -226,28 +226,33 @@ class Home extends Component {
     ));
   }
 
-  //Generates the modal message, forces the user to pick a date
-  handleModalMessage = (date) => {
+  //Adds the user-submitted caption to the examination modal
+  //Forces the user to pick a date before they can examine
+  handleModalMessage = (data, date, month) => {
     if (date.replace(/\s/g, '').length === 0) {
       return (
-        <div id="warning-modal">Please select a date before submitting.</div>
+        <div id="warning-modal">Please select a date to examine.</div>
       )
     } else {
-      return (
-        <div>Submit a photo and a brief description of your day.</div>
-      )
+        for (let i=0; i < data.length; i++) {
+          if (date === data[i].day && month === data[i].month) {
+            return (
+              <div>{data[i].text}</div>
+            )
+          }
+        }
+      }
     }
-  }
 
   render() {
     return (
     <div>
       <Navbar
-      callbackfromParent={this.myMonthCallback}
-      currentdate={this.state.day}
-      day={this.state.dateSelected}
-      month={this.state.month}
-      currentMonth={this.state.currentMonth}
+        callbackfromParent={this.myMonthCallback}
+        currentdate={this.state.day}
+        day={this.state.dateSelected}
+        month={this.state.month}
+        currentMonth={this.state.currentMonth}
       />
       <div className="calendar">
         <div className="row" id="day-headings">
@@ -280,18 +285,19 @@ class Home extends Component {
           onClick={() => {
 		        $('#modal').modal('open')
 	          }}>
-          Submit
+          Examine
         </Button>
 	      <Modal
 		      id="modal"
-		      header={this.state.month +" "+ this.state.dateSelected}>
-            {this.handleModalMessage(this.state.dateSelected)}
+		      header={this.state.month +" "+ this.state.dateSelected}
+        >
+            {this.handleModalMessage(this.props.imageData, this.state.dateSelected, this.state.month)}
           <SubmitForm
+            data={this.props.imageData}
             selectedDate={this.state.dateSelected}
             selectedMonth={this.state.month}
             refreshImages={this.props.refreshImages}
-            />
-          <SubmitTextForm/>
+          />
 	      </Modal>
       </div>
     </div>

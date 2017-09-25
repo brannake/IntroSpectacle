@@ -2,7 +2,6 @@ import React from "react";
 import { Route, IndexRoute, Router, browserHistory } from "react-router";
 
 import Main from "../components/Main";
-import Favorites from "../components/Favorites";
 
 const routes = (
   <Router history={browserHistory}>

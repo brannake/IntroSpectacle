@@ -6,9 +6,15 @@ class SubmitForm extends Component {
     constructor() {
         super()
         this.state = {
-            inputValue: ''
+            text: ''
         };
     };
+
+    handleChange = (event) => {
+        this.setState({
+            text: event.currentTarget.value
+        });
+      }
 
     //Posts the image to the server with the date and month attached
     uploadFileandRefresh = (event) => {
@@ -16,6 +22,7 @@ class SubmitForm extends Component {
         fd.append('file', ReactDOM.findDOMNode(this.refs.file).files[0]);
         fd.append('date', this.props.selectedDate);
         fd.append('month', this.props.selectedMonth);
+        fd.append('text', this.state.text);
 
         $.ajax({
             url: '/api/images',
@@ -27,6 +34,8 @@ class SubmitForm extends Component {
                 console.log(data);
             } 
         });
+        this.refs.captionText.value = '';
+        this.refs.file.value = '';
         this.props.refreshImages();
     }
 
@@ -36,7 +45,23 @@ class SubmitForm extends Component {
                 <br/>     
                <form ref="uploadForm" className="uploader" encType="multipart/form-data" >
                    <input ref="file" type="file" name="file" className="upload-file"/>
-                   <Button waves="light" type="button" ref="button" value="Upload" onClick={this.uploadFileandRefresh}>Upload</Button>
+                   <input
+                        ref="captionText"
+                        id="caption-text"
+                        type="text" 
+                        name="text" 
+                        placeholder="How was your day?"
+                        onChange={this.handleChange}
+                    />
+                   <Button 
+                        waves="light" 
+                        type="button" 
+                        ref="button"
+                        value="Upload" 
+                        onClick={this.uploadFileandRefresh}
+                    >
+                        Upload
+                    </Button>
                </form>
             </div>
         )

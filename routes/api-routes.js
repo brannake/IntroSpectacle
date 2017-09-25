@@ -57,20 +57,6 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/text", function(req, res) {
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property (req.body)
-    console.log(req.body.text);
-      db.dateInfo.create({user: "Kevin",
-                          text: req.body.text, 
-                          date: Date.now(),
-                          image: "image"})
-      .then(function(dbdateInfo) { 
-        res.send(dbdateInfo);
-    });
-  });
-
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from
   // req.params.id
   app.delete("/api/dates/:id", function(req, res) {

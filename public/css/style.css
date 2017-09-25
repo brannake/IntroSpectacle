@@ -46,7 +46,7 @@ nav {
 .calendar{
   margin: 10px;
   position: relative;
-  left: 5%;
+  left: 18%;
   bottom: 20px;
   text-shadow: 1px 1px;
 }
@@ -68,17 +68,13 @@ nav {
   margin: 10px;
 }
 
-#day-headings {
-  background: blue;
-}
-
 #submit-form {
 	margin: 20px;
 }
 
 #date-display {
   position: absolute;
-  left: 34%;
+  left: 37.8%;
   font-size: 30px;
   transition: 0.5s;
 }
@@ -118,7 +114,7 @@ nav {
   top: 80px;
   right: 0px;
   height: 90%;
-  width: 36.7%;
+  width: 23.6%;
   background: white;
 }
 
@@ -131,7 +127,6 @@ nav {
   color: white;
   height: 80%;
   width: 94%;
-  border: 2px solid blue;
 }
 
 .collection-item {
@@ -154,7 +149,7 @@ nav {
 
 #modal-submit {
   position: absolute;
-  left: 40.8%;
+  left: 43.8%;
   background: blue;
 }
 
@@ -164,4 +159,9 @@ nav {
   left: 0px;
   height: 50%;
   width: 10%;
+}
+
+#day-headings {
+  background: blue;
+  text-shadow: 0px;
 }

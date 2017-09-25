@@ -14,41 +14,48 @@ class SubmitTextForm extends React.Component {
     }
     
     //Sets state to the caption text
-    handleChange({ target }) {
-      this.setState({
-        [target.name]: target.value
+  handleChange({target}) {
+    this.setState({
+      [target.name]: target.value
+    });
+  }
+
+    //Calls the server, posts the caption text
+  publish() {
+
+    $.ajax({
+      url: '/api/text',
+      data: this.state,
+      type: 'POST',
+      success: (data) => {
+        console.log(data);
+        console.log(data.id);
+        this.setState({text:""});
+        } 
       });
     }
-  
-    //Calls the server, posts the caption text
-    publish() {
-
-        $.ajax({
-            url: '/api/text',
-            data: this.state,
-            type: 'POST',
-            success: (data) => {
-                console.log(data);
-                console.log(data.id);
-                this.setState({text:""});
-            } 
-        });
-    }
-  
+    
     render() {
-      return <div>
+      return (
+      <div>
         <input 
           id="caption-text"
           type="text" 
           name="text" 
           placeholder="How was your day?" 
-          value={ this.state.text }
-          onChange={ this.handleChange } 
+          value={this.state.text}
+          onChange={this.handleChange} 
         />
         <br/>
-        <Button waves="light" value="Send" onClick={ this.publish }>Publish</Button>
+        <Button 
+          waves="light" 
+          value="Send" 
+          onClick={this.publish}
+        >
+          Publish
+        </Button>
       </div>
-    }
+    )}
   }
 
 export default SubmitTextForm;

@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
+import CalendarHeatmap from 'react-calendar-heatmap';
 
 class Home extends Component {
   state = {
@@ -236,8 +237,11 @@ class Home extends Component {
           if (date === data[i].day && month === data[i].month) {
             return (
               <div>
-                <div>{data[i].text}</div>
-                <div>Overall Mood Score: {parseFloat(data[i].joy_score * 100).toFixed(2)}</div>
+                <div id="caption-text-display-message">{data[i].text}</div>
+                <div id="overall-mood-score">Overall Mood Score: {parseFloat(data[i].joy_score * 100).toFixed(2)}</div>
+                <div id="anger-mood-score">Anger: {parseFloat(data[i].anger_score * 100).toFixed(2)}</div>
+                <div id="fear-mood-score">Fear: {parseFloat(data[i].fear_score * 100).toFixed(2)}</div>
+                <div id="disgust-mood-score">Disgust: {parseFloat(data[i].disgust_score * 100).toFixed(2)}</div>
               </div>
             )
           }

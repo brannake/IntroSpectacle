@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Home from "./common/Home";
+import CalendarHeatmap from 'react-calendar-heatmap';
 
-class Main extends Component {
+class HeatMaps extends Component {
   state = {
     user: 'default',
     imageData: [],
@@ -24,13 +24,20 @@ componentWillMount= () => {
   render() {
     return (
       <div>
-        <Home
-          imageData={this.state.imageData}
-          refreshImages={this.componentWillMount}
+        <CalendarHeatmap
+        id="calendar-heat-map"
+        endDate={new Date('2017-09-01')}
+        numDays={30}
+        values={[
+            { date: '2016-09-01' },
+            { date: '2016-09-02' },
+            { date: '2016-09-03' },
+            // ...and so on
+        ]}
         />
       </div>
     );
   }
 }
 
-export default Main;
+export default HeatMaps;

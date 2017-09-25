@@ -167,10 +167,62 @@ nav {
 }
 
 #caption-text-display {
-  border: 1px solid grey;
-  border-radius: 20px;
   padding: 10px;
 }
+
+#caption-text-display-message {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+
+.react-calendar-heatmap {
+  height: 100px;
+  width: 100px;
+}
+
+#overall-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: blue;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+#anger-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: red;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+#fear-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: orange;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline;
+}
+
+#disgust-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: green;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline;
+}
+
+
+
 
 #SideNavMod {
   position: absolute;

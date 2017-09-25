@@ -9,6 +9,12 @@
 const db = require("../models");
 const fs = require("fs");
 const path = require("path");
+var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+var tone_analyzer = new ToneAnalyzerV3({
+  username: "f2974f88-c1cc-49d8-a758-b2fd093e519a",
+  password: "vIMDxNMDQMVD",
+  version_date: '2016-05-19'
+});
 
 // Routes
 // =============================================================
@@ -34,6 +40,7 @@ module.exports = function(app) {
     let newImage = req.files.file.data;
     let selectedDate = req.body.date;
     let selectedMonth = req.body.month;
+    let text = req.body.text;
 
     console.log(userName);
     console.log(newImage);
@@ -42,19 +49,41 @@ module.exports = function(app) {
 
     fs.writeFile((path.join("public/savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
 
-    console.log(path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg"));
-
     let filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
 
-      db.dateInfo.create({user: "default",
-                          month: selectedMonth,
-                          day: selectedDate,
-                          text: req.body.text, 
-                          date: Date.now(),
-                          image: filepath})
-      .then(function(dbdateInfo) { 
-        res.send(dbdateInfo);
-    });
+    let params = {
+      // Get the text from the JSON file.
+      text: req.body.text,
+      tones: 'emotion'
+    };
+
+    console.log("before tones");
+
+    tone_analyzer.tone(params, function(error, response) {
+      if (error)
+        console.log('error:', error);
+      else
+        console.log(JSON.stringify(response, null, 2));
+
+        console.log("after tones");
+        console.log(response.document_tone.tone_categories[0].tones[0].score);
+        db.dateInfo.create({
+          user: "default",
+          month: selectedMonth,
+          day: selectedDate,
+          text: text,
+          anger_score: response.document_tone.tone_categories[0].tones[0].score,
+          disgust_score: response.document_tone.tone_categories[0].tones[1].score,
+          fear_score: response.document_tone.tone_categories[0].tones[2].score,
+          joy_score: response.document_tone.tone_categories[0].tones[3].score,
+          sadness_score: response.document_tone.tone_categories[0].tones[4].score,        
+          date: Date.now(),
+          image: filepath})
+        .then(function(dbdateInfo) { 
+          res.send(dbdateInfo);
+        });
+      }
+    );
   });
 
   // DELETE route for deleting todos. We can get the id of the todo to be deleted from

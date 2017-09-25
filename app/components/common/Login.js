@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { render } from 'react-dom';
 import API from "../../utils/API";
-import {Modal, Button, Navbar, NavItem, Slider, Slide, Footer, Row, Input, Icon} from 'react-materialize';
+import {Modal, Button, Navbar, NavItem, Slider, Slide, Footer, Row, Input, Icon, image} from 'react-materialize';
 
 class Login extends Component {
   state = {
@@ -11,7 +11,8 @@ class Login extends Component {
   render() {
     return (
     <div>
-        <Navbar brand='introspectiv' right>
+        
+        <Navbar brand='introspectiv' icon='photo_camera' left> 
             <NavItem href=''>Home</NavItem>
             <NavItem href=''>Analytics</NavItem>
             <NavItem href=''>Login</NavItem>
@@ -76,16 +77,6 @@ class Login extends Component {
                         </div>            
                 </Modal>
             </Footer>;
-            
-            {/*<Row>
-                Get Started and Sign Up!
-            </Row>
-            <Row>
-                <Input s={6} label="Username" validate><Icon>account_circle</Icon></Input>
-                <Input s={6} label="Password" validate type='tel'><Icon>phone</Icon></Input>
-            </Row>
-            <Footer copyrights="Copyright &copy; 2017 introspectiv"/>*/}
-                
     </div>
     );
   }

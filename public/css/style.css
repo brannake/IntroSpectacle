@@ -182,4 +182,20 @@ copyrights {
   text-align: center;
 }
 
+#signup-btn {
+  border: 20px;
+  background-color: purple!important;
+}
 
+div.container {
+  padding: 25px;
+}
+
+.row .col.l6 {
+  width: 100%!important;
+}
+
+data-target {
+  height:0%!important;
+  width: 0px!important;
+}

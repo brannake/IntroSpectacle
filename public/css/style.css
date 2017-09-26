@@ -211,4 +211,6 @@ label.active {
 input#input_4 #input_5 .active {
   border-bottom: 1px solid purple!important;
 }
-
+nav {
+  left: 0px!important;
+}

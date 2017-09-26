@@ -50,17 +50,10 @@ nav {
   bottom: 20px;
 }
 
-#base-container {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-
 #chart-container {
-  margin: 10px;
   position: relative;
-  top: 90px;
-  left: 20%;
+  left: 15%;
+  margin-top: 20px;
 }
 
 #react-FC {

@@ -17,9 +17,9 @@ componentWillMount= () => {
       success: (data) => {
         console.log(data);
         this.setState({imageData:data});
-          }
-        });
       }
+    });
+  }
 
   render() {
     return (

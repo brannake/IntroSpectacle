@@ -30,13 +30,13 @@ class SubmitForm extends Component {
             processData: false,
             contentType: false,
             type: 'POST',
-            success: function(data){
+            success: (data) => {
                 console.log(data);
+                this.props.refreshImages();
             } 
         });
         this.refs.captionText.value = '';
         this.refs.file.value = '';
-        this.props.refreshImages();
     }
 
     render() {

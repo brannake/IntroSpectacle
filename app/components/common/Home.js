@@ -250,6 +250,7 @@ class Home extends Component {
     }
 
   render() {
+    console.log("RENDERED HOME");
     return (
     <div>
       <Navbar

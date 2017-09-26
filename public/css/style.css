@@ -199,3 +199,16 @@ data-target {
   height:0%!important;
   width: 0px!important;
 }
+
+.input-field .prefix.active {
+  color: purple!important;
+}
+
+label.active {
+  color: purple!important;
+}
+
+input#input_4 #input_5 .active {
+  border-bottom: 1px solid purple!important;
+}
+

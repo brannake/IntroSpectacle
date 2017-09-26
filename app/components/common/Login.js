@@ -12,10 +12,45 @@ class Login extends Component {
     return (
     <div>
         
-        <Navbar brand='introspectiv' icon='photo_camera' left> 
-            <NavItem href=''>Home</NavItem>
-            <NavItem href=''>Analytics</NavItem>
-            <NavItem href=''>Login</NavItem>
+        <Navbar brand='introspectiv' icon='photo_camera' left>
+            <NavItem href=''>HOME</NavItem>
+            <NavItem href=''>ANALYTICS</NavItem>
+            <div class="wrapper">
+                    <Button 
+                    id="login-btn"
+                    waves='light'    
+                    onClick={() => {
+                $('#login').modal('open')
+                }}>Login      
+                </Button>
+                </div>
+                <Modal className= "page-footer example"
+                    id='login'
+                    header='Login'>
+                    <form>
+                        <Input 
+                        name="user"
+                        s={6} label="User Name"
+                        value={this.state.newUserInput}
+                        onChange={this.handleInputChange}              
+                        validate><Icon>account_circle</Icon></Input>
+                        <Input
+                        name="Password"
+                        s={6} 
+                        label="Password"
+                        onChange={this.handleInputChange}
+                        value={this.state.passwordInput}                
+                        validate type='tel'><Icon>lock</Icon></Input>
+                    </form>
+                        <div className="modal-footer">
+                        <Button
+                            className="btn waves-effect waves-light modal-action"
+                            onClick={this.loginUser}
+                        > 
+                        Submit
+                        </Button>
+                        </div>            
+                </Modal>
         </Navbar>
         <Slider>
             <Slide
@@ -70,8 +105,7 @@ class Login extends Component {
                         <div className="modal-footer">
                         <Button
                             className="btn waves-effect waves-light modal-action"
-                            onClick={this.signupUser}
-                        > 
+                            onClick={this.signupUser}> 
                         Submit
                         </Button>
                         </div>            

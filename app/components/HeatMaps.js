@@ -23,12 +23,30 @@ class HeatMaps extends Component {
       ]
   };
 
+  componentDidMount= () => {
+    
+        $.ajax({
+          url: '/api/graphs',
+          type: 'GET',
+          data: this.state.user,
+          success: (data) => {
+            console.log(data);
+            this.setState({data2:data});
+          }
+        });
+      }
+
   render() {
     return (
       <div id="base-container">
-        
         <Navbar
-          className="navbar">
+          className="navbar"
+        >
+        <div class="nav navbar-nav">
+          <div id="date-display">
+            {window.CONTEXT.month}
+          </div>
+        </div>
         </Navbar>
         <div id="chart-container">
           <LineChart 

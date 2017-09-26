@@ -39,39 +39,51 @@ class Home extends Component {
       let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       if (MM == "01") {
         this.setState({month: "January", currentMonth: "January"})
+        window.CONTEXT.month = "January";
       }
       if (MM == "02") {
         this.setState({month: "February", currentMonth: "February"})
+        window.CONTEXT.month = "February";
       }
       if (MM == "03") {
         this.setState({month: "March", currentMonth: "March"})
+        window.CONTEXT.month = "March";
       }
       if (MM == "04") {
         this.setState({month: "April", currentMonth: "April"})
+        window.CONTEXT.month = "April";
       }
       if (MM == "05") {
         this.setState({month: "May", currentMonth: "May"})
+        window.CONTEXT.month = "May";
       }
       if (MM == "06") {
         this.setState({month: "June", currentMonth: "June"})
+        window.CONTEXT.month = "June";
       }
       if (MM == "07") {
         this.setState({month: "July", currentMonth: "July"})
+        window.CONTEXT.month = "July";
       }
       if (MM == "08") {
         this.setState({month: "August", currentMonth: "August"})
+        window.CONTEXT.month = "August";
       }
       if (MM == "09") {
         this.setState({month: "September", currentMonth: "September"})
+        window.CONTEXT.month = "September";
       }
       if (MM == "10") {
         this.setState({month: "October", currentMonth: "October"})
+        window.CONTEXT.month = "October";
       }
       if (MM == "11") {
         this.setState({month: "November", currentMonth: "November"})
+        window.CONTEXT.month = "November";
       }
       if (MM == "12") {
         this.setState({month: "December", currentMonth: "December"})
+        window.CONTEXT.month = "December";
       }
     }
     this.setState({mounted: true});
@@ -184,6 +196,7 @@ class Home extends Component {
    //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromPanel) => {
     this.setState({dateSelected: dataFromPanel});
+    window.CONTEXT.date = {date: dataFromPanel} 
   }
 
   getImageCallback = (imageSrc) => {

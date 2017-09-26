@@ -10,6 +10,8 @@ class Main extends Component {
 
 componentWillMount= () => {
 
+  window.CONTEXT = {month: "", day: ""};
+
     $.ajax({
       url: '/api/load',
       type: 'GET',

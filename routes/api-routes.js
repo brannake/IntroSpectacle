@@ -22,7 +22,6 @@ module.exports = function(app) {
 
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {
-    console.log(req.body);
     let userName = req.body.user;
     db.dateInfo.findAll({where: {user: 'default' }}).then(function(db) {
       // We have access to the todos as an argument inside of the callback function
@@ -42,11 +41,6 @@ module.exports = function(app) {
     let selectedMonth = req.body.month;
     let text = req.body.text;
 
-    console.log(userName);
-    console.log(newImage);
-    console.log(selectedDate);
-    console.log(selectedMonth);
-
     fs.writeFile((path.join("public/savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
 
     let filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
@@ -57,16 +51,11 @@ module.exports = function(app) {
       tones: 'emotion'
     };
 
-    console.log("before tones");
-
     tone_analyzer.tone(params, function(error, response) {
-      if (error)
+      if (error) {
         console.log('error:', error);
+      }
       else {
-        console.log(JSON.stringify(response, null, 2));
-
-        console.log("after tones");
-        console.log(response.document_tone.tone_categories[0].tones[0].score);
         db.dateInfo.create({
           user: "default",
           month: selectedMonth,
@@ -87,16 +76,12 @@ module.exports = function(app) {
     );
   });
 
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
-  // req.params.id
-  app.delete("/api/dates/:id", function(req, res) {
-    // We just have to specify which todo we want to destroy with "where"
-    db.dateInfo.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(db) {
-      res.json(db);
+
+  app.get("/api/graphs", function(req, res) {
+    let userName = req.body.user;
+    let month = req.body.month;
+    db.dateInfo.findAll({where: {user: userName, month: month}}).then(function(db) {
+      res.send(db);
     });
   });
 

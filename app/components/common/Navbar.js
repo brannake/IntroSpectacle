@@ -20,6 +20,7 @@ class Navbar extends Component {
         currentMonth: selectedMonth
       });
       this.props.callbackfromParent(selectedMonth);
+      window.CONTEXT.month = selectedMonth;
     }
 
     //Function to render the individual Nav items for month

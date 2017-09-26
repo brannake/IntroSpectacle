@@ -11,6 +11,7 @@ const fs = require("fs");
 const path = require("path");
 const passport = require("../config/passport")
 
+
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -33,18 +34,17 @@ module.exports = function(app) {
     let user = req.body.user;
     let password = req.body.password;
     console.log(req.body);     
-     db.users.create({
+     db.Users.create({
       user: user,    //req.body.email,
       password: password
     }).then(function(users) {
-        res.send(users);
-        // res.redirect(307, "/api/login");
-      }).catch(function(err) {
-        console.log(err);
-        res.send(err);
-        // res.status(422).json(err.errors[0].message);
-      });
+        res.redirect(307, "/api/login");
+    }).catch(function(err) {
+      console.log(err);
+      res.json(err);
+      // res.status(422).json(err.errors[0].message);
     });
+  });
 
     // Route for logging user out
     app.get("/logout", function(req, res) {

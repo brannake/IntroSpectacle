@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input} from 'react-materialize';
+import { Route, IndexRoute, Router, browserHistory } from "react-router";
 
 class LoginForm extends Component {
     constructor() {
@@ -39,12 +40,10 @@ class LoginForm extends Component {
                 type: 'POST',
                 success: (data) => {
                     console.log(data);
-                    console.log(data.id);
                     this.setState({userInput: "",
                     loginPasswordInput:""});
                      }
-                  })
-                  
+                  })                  
                   .then(function(data) {
                        window.location.replace(data);   
                      })
@@ -56,6 +55,7 @@ class LoginForm extends Component {
                      console.log(`welcome ${this.state.userInput}!`)
                  }
              })        
+           
                     
                     // .catch(function(err) {
                     //     console.log(err);

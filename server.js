@@ -3,6 +3,7 @@
 const express = require("express");
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
+const session = require("express-session");
 const app = express();
 
 const passport = require("./config/passport")
@@ -21,6 +22,11 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());
+
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 // =============================================================

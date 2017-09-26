@@ -12,11 +12,8 @@ class Login extends Component {
           newUserInput: "",
           passwordInput:""
         }
-    
-
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-
     };
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
@@ -33,10 +30,21 @@ class Login extends Component {
         handleFormSubmit = (event) => {
             // Preventing the default behavior of the form submit (which is to refresh the page)
             event.preventDefault();
-
+            if (!this.state.newUserInput || !this.state.passwordInput) {
+                alert("Fill out all fieds please!");
+              } else if (this.state.passwordInput.length < 6) {
+                alert(
+                  `Choose a more secure password ${this.state.newUserInput}`
+                );
+              } else {
+                alert(`Hello ${this.state.newUserInput}`);
+              }
+              if (!this.state.newUserInput || !this.state.passwordInput)  {
+                return;
+              }
             let user = this.state.newUserInput      
             let password = this.state.passwordInput
-             
+
             $.ajax({
                 url: '/api/signup',
                 data: { user , password },
@@ -46,8 +54,8 @@ class Login extends Component {
                     console.log(data.id);
                     this.setState({newUserInput: "",
                     passwordInput:""});
-                                }
-                            });       
+                     }
+                  });       
                 console.log("new user: " + this.state.newUserInput);
                 console.log("password: " + this.state.passwordInput)
         };
@@ -55,11 +63,6 @@ class Login extends Component {
   render() {
     return (
     <div>
-        <Navbar brand='introspectiv' right>
-            <NavItem href=''>Home</NavItem>
-            <NavItem href=''>Analytics</NavItem>
-            <NavItem href=''>Login</NavItem>
-        </Navbar>
         <Slider>
         <Slide
             src="https://static.pexels.com/photos/7764/pexels-photo.jpg"

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Navbar from "./common/Navbar";
+import Navbar2 from "./common/Navbar2";
 import Footer from "./common/Footer";
 import Login from "./common/Login";
+
 
 class Main extends Component {
   state = {
@@ -13,7 +14,9 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Login/>
+        <Navbar2 />
+         <Login />
+         
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import SideNavMod from "./SideNavMod";
 import {Dropdown, Button, NavItem} from 'react-materialize'
 
 class Navbar extends Component {
@@ -43,6 +44,8 @@ class Navbar extends Component {
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
       <div className="container-fluid">
       <div className="navbar-header">
+        <SideNavMod 
+        />
       </div>
       <div className="nav navbar-nav">
           <div id="date-display">
@@ -51,7 +54,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "lightblue", background: "white"}}
+                style={{color: "blue", background: "white"}}
               >{this.props.currentMonth + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -59,7 +62,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "lightblue" }}
+                  style={{ background: "blue" }}
                 >{this.props.currentMonth + " " + this.props.day}</Button>
                 }>
                 {this.renderMonths()}
@@ -69,7 +72,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "lightblue", background: "white"}}
+                style={{color: "blue", background: "white"}}
               >{this.props.month + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -77,7 +80,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "lightblue" }}
+                  style={{ background: "blue" }}
                 >{this.props.month + " " + this.props.day}</Button>
                 }>
                 {this.renderMonths()}

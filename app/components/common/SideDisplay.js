@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
+import {Link} from "react-router";
+import HeatMaps from "../../components/HeatMaps";
 
 class SideDisplay extends Component {
   constructor() {
@@ -13,11 +14,8 @@ class SideDisplay extends Component {
     return (
       <div id="side-display-container">
         <div id="side-display">
-          <div id="side-display-img-container">
-            <img 
-              id="side-display-img"
-              src={this.props.imageSrc}
-            />            
+          <div id="side-display-text-container">
+            <Link to="/heatmaps">HeatMaps</Link>
           </div>
         </div>
       </div>

@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-    const User = sequelize.define("User", {
+    const users = sequelize.define("users", {
       id: {
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
       user: {
-                type: DataTypes.STRING,
+        type: DataTypes.STRING,
       },     
       password: {
         type: DataTypes.STRING,
@@ -17,13 +17,13 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
-    User.prototype.validPassword = function(password) {
-      return bcrypt.compareSync(password, this.password);
-    };
+    // User.prototype.validPassword = function(password) {
+    //   return bcrypt.compareSync(password, this.password);
+    // };
 
-    User.hook("beforeCreate", function(user) {
-      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
-    });
-    return User;
+    // User.hook("beforeCreate", function(user) {
+    //   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    // });
+    return users;
   };
   

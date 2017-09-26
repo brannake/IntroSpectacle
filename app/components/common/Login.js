@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from 'react-dom';
-import API from "../../utils/API";
+// import API from "../../utils/API";
 // import SignupForm from "./SignupForm";
 import SubmitForm from "./SubmitForm";
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input} from 'react-materialize';
@@ -12,8 +12,12 @@ class Login extends Component {
           newUserInput: "",
           passwordInput:""
         }
-    }
+    
 
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+
+    };
     handleInputChange = event => {
         // Getting the value and name of the input which triggered the change
         let value = event.target.value;
@@ -30,28 +34,24 @@ class Login extends Component {
             // Preventing the default behavior of the form submit (which is to refresh the page)
             event.preventDefault();
 
-          
-    
-     
+            let user = this.state.newUserInput      
+            let password = this.state.passwordInput
+             
             $.ajax({
                 url: '/api/signup',
-                data:{
-                    user: this.state.newUserInput,
-                    password: this.state.passwordInput
-                },
-                processData: false,
-                contentType: false,
+                data: { user , password },
                 type: 'POST',
-                success: function(data){
+                success: (data) => {
                     console.log(data);
-                } 
-            });        
-
-            // console.log("new user: " + this.state.newUserInput);
-            // console.log("password: " + this.state.passwordInput)
-          };
+                    console.log(data.id);
+                    this.setState({newUserInput: "",
+                    passwordInput:""});
+                                }
+                            });       
+                console.log("new user: " + this.state.newUserInput);
+                console.log("password: " + this.state.passwordInput)
+        };
         
-
   render() {
     return (
     <div>
@@ -106,7 +106,7 @@ class Login extends Component {
                 name="passwordInput"
                 type="text"
                 onChange={this.handleInputChange}
-                validate type='tel'><Icon>lock</Icon>
+                validate type='password'><Icon>lock</Icon>
                 </Input>
              </form>
                 <div className="modal-footer">

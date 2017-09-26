@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Button} from 'react-materialize';
 import ReactDOM from 'react-dom';
 
 class SubmitTextForm extends React.Component {
@@ -37,13 +38,15 @@ class SubmitTextForm extends React.Component {
     render() {
       return <div>
         <input 
+          id="caption-text"
           type="text" 
           name="text" 
-          placeholder="Enter caption here" 
+          placeholder="How was your day?" 
           value={ this.state.text }
           onChange={ this.handleChange } 
         />
-        <button value="Send" onClick={ this.publish }>Publish</button>
+        <br/>
+        <Button waves="light" value="Send" onClick={ this.publish }>Publish</Button>
       </div>
     }
   }

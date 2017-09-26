@@ -1,4 +1,4 @@
-var User = require("../models/user");
+// var User = require("../models/user");
 
 module.exports = {
   // This method handles retrieving Users from the db
@@ -10,7 +10,13 @@ module.exports = {
     else {
       query = req.params.id ? { _id: req.params.id } : {};
     }
-
+    User.find(query)
+    .then(function(doc) {
+      res.json(doc);
+    }).catch(function(err) {
+      res.json(err);
+    });
+  },
   // This method handles creating new Users
   create: function(req, res) {
     User.create(req.body).then(function(doc) {
@@ -24,4 +30,4 @@ module.exports = {
   // This method handles deleting Users
 
 }
-};
+

@@ -6,10 +6,10 @@ class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            userInput: '',
-            passwordInput:''
+            userInput: "",
+            loginPasswordInput:""
         }
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.loginUser = this.loginUser.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         };
 
@@ -26,33 +26,74 @@ class LoginForm extends Component {
             });
           }
 
-          handleFormSubmit = (event) => {
+          loginUser = (event) => {
             // Preventing the default behavior of the form submit (which is to refresh the page)
             event.preventDefault();
-          }
+
+            let userLogin = this.state.userInput      
+            let passwordLogin = this.state.loginPasswordInput
+
+            $.ajax({
+                url: '/api/login',
+                data: { userLogin , passwordLogin },
+                type: 'POST',
+                success: (data) => {
+                    console.log(data);
+                    console.log(data.id);
+                    this.setState({userInput: "",
+                    loginPasswordInput:""});
+                     }
+                  })
+                  
+                  .then(function(data) {
+                       window.location.replace(data);   
+                     })
+             //show who is currently signed in        
+             $.ajax({
+                 url: '/api/user_data',
+                 type: 'GET',
+                 success: (data) => {
+                     console.log(`welcome ${this.state.userInput}!`)
+                 }
+             })        
+                    
+                    // .catch(function(err) {
+                    //     console.log(err);
+                    // })
+                      
+                      
+                console.log("user: " + this.state.userInput);
+                console.log("password: " + this.state.loginPasswordInput)
+        
+
+          };
         
 
         render() {
             return (
              <form>
                 <Input 
-                    name="user"
+                    value={this.state.userInput}
+                    name="userInput"
                     s={6}
+                    type="text"
                     label="User Name"
                     onChange={this.handleInputChange}
                     validate><Icon>account_circle</Icon>
                 </Input>
                 <Input
-                    name="Password"
+                    value={this.state.loginPasswordInput}
+                    name="loginPasswordInput"
                     s={6} 
+                    type="text"
                     label="Password"
                     onChange={this.handleInputChange}
                     validate type='password'><Icon>lock</Icon>
-                </Input>
+                </Input>          
+                <Button className="btn waves-effect waves-light modal-action" onClick={this.loginUser} > Submit </Button>
             </form>
-           
               
-         //add button       
+                 
        
             )
         }

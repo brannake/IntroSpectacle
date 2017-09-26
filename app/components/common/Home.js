@@ -30,6 +30,7 @@ class Home extends Component {
   };
 
   //Takes calendar to the current date
+  //Need to separate these out into other files to reduce clutter
   componentWillMount() {
     if (this.state.mounted === false ) {
       let date = new Date();
@@ -250,7 +251,6 @@ class Home extends Component {
     }
 
   render() {
-    console.log("RENDERED HOME");
     return (
     <div>
       <Navbar

@@ -1,11 +1,11 @@
 import React from "react";
-import { Route, IndexRoute, Router, browserHistory } from "react-router";
+import { Route, IndexRoute, Router, hashHistory } from "react-router";
 
 import Main from "../components/Main";
 import HeatMaps from "../components/HeatMaps";
 
 const routes = (
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path="/" component={Main}/>
     <Route path="/heatmaps" component={HeatMaps} />
   </Router>

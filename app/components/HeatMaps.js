@@ -26,11 +26,9 @@ class HeatMaps extends Component {
   render() {
     return (
       <div id="base-container">
-        <Navbar brand='logo' right>
-          <NavItem href='get-started.html'><Icon>search</Icon></NavItem>
-          <NavItem href='get-started.html'><Icon>view_module</Icon></NavItem>
-          <NavItem href='get-started.html'><Icon>refresh</Icon></NavItem>
-          <NavItem href='get-started.html'><Icon>more_vert</Icon></NavItem>
+        
+        <Navbar
+          className="navbar">
         </Navbar>
         <div id="chart-container">
           <LineChart 

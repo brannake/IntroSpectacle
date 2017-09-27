@@ -36,6 +36,7 @@ class Home extends Component {
       let date = new Date();
       let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
       this.setState({day: dd, currentDate: dd});
+      window.CONTEXT.currentdate = dd;
       let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       if (MM == "01") {
         this.setState({month: "January", currentMonth: "January"})

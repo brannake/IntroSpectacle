@@ -5,12 +5,12 @@ class Main extends Component {
   state = {
     user: 'default',
     imageData: [],
-    loaded: false
   };
 
 componentWillMount= () => {
 
-  window.CONTEXT = {month: "", day: ""};
+  //Hackish way of moving month/day across routes without a state manager
+  window.CONTEXT = {month: "", day: "", currentdate: ""};
 
     $.ajax({
       url: '/api/load',

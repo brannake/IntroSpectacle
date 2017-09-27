@@ -12,10 +12,10 @@ class Login extends Component {
     return (
     <div>
         
-        <Navbar brand='introspectiv' icon='photo_camera' left>
+        <Navbar brand='introspectiv' left>
             <NavItem href=''>HOME</NavItem>
             <NavItem href=''>ANALYTICS</NavItem>
-            <div class="wrapper">
+            <div className="wrapper">
                     <Button 
                     id="login-btn"
                     waves='light'    
@@ -43,7 +43,8 @@ class Login extends Component {
                         validate type='tel'><Icon>lock</Icon></Input>
                     </form>
                         <div className="modal-footer">
-                        <Button
+                        <Button 
+                            id="submit-button"
                             className="btn waves-effect waves-light modal-action"
                             onClick={this.loginUser}
                         > 
@@ -74,8 +75,8 @@ class Login extends Component {
             <Footer copyrights="Copyright &copy; 2017 introspectiv"
                 className='example'
             >
-                    <h5 className="white-text">Get Started and Sign Up!</h5>
-                <div class="wrapper">
+                    <h5 className="white-text">Get started with your photo journal!</h5>
+                <div className="wrapper">
                     <Button 
                     id="signup-btn"
                     waves='light'    
@@ -104,13 +105,14 @@ class Login extends Component {
                     </form>
                         <div className="modal-footer">
                         <Button
+                            id="submit-button"
                             className="btn waves-effect waves-light modal-action"
                             onClick={this.signupUser}> 
                         Submit
                         </Button>
                         </div>            
                 </Modal>
-            </Footer>;
+            </Footer>
     </div>
     );
   }

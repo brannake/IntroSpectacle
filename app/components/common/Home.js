@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { render } from 'react-dom';
 import API from "../../utils/API";
 import Panel from "./Panel";
+import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
-import SubmitTextForm from "./SubmitTextForm";
 import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
+import CalendarHeatmap from 'react-calendar-heatmap';
 
 class Home extends Component {
   state = {
@@ -197,11 +198,11 @@ class Home extends Component {
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
   renderFirstDates(datesArray) {
     return datesArray.map(date => (
-      <Panel
+      <DayHeadingPanel
         key={date}
         date={date}
       >
-      </Panel>
+      </DayHeadingPanel>
     ));
   }
 
@@ -224,28 +225,40 @@ class Home extends Component {
     ));
   }
 
-  //Generates the modal message, forces the user to pick a date
-  handleModalMessage = (date) => {
+  //Adds the user-submitted caption to the examination modal
+  //Forces the user to pick a date before they can examine
+  handleModalMessage = (data, date, month) => {
     if (date.replace(/\s/g, '').length === 0) {
       return (
-        <div id="warning-modal">Please select a date before submitting.</div>
+        <div id="warning-modal">Please select a date to examine.</div>
       )
     } else {
-      return (
-        <div>Submit a photo and a brief description of your day.</div>
-      )
+        for (let i=0; i < data.length; i++) {
+          if (date === data[i].day && month === data[i].month) {
+            return (
+              <div>
+                <div id="caption-text-display-message">{data[i].text}</div>
+                <div id="overall-mood-score">Overall Mood Score: {parseFloat(data[i].joy_score * 100).toFixed(2)}</div>
+                <div id="anger-mood-score">Anger: {parseFloat(data[i].anger_score * 100).toFixed(2)}</div>
+                <div id="fear-mood-score">Fear: {parseFloat(data[i].fear_score * 100).toFixed(2)}</div>
+                <div id="disgust-mood-score">Disgust: {parseFloat(data[i].disgust_score * 100).toFixed(2)}</div>
+              </div>
+            )
+          }
+        }
+      }
     }
-  }
 
   render() {
+    console.log("RENDERED HOME");
     return (
     <div>
       <Navbar
-      callbackfromParent={this.myMonthCallback}
-      currentdate={this.state.day}
-      day={this.state.dateSelected}
-      month={this.state.month}
-      currentMonth={this.state.currentMonth}
+        callbackfromParent={this.myMonthCallback}
+        currentdate={this.state.day}
+        day={this.state.dateSelected}
+        month={this.state.month}
+        currentMonth={this.state.currentMonth}
       />
       <div className="calendar">
         <div className="row" id="day-headings">
@@ -268,29 +281,31 @@ class Home extends Component {
         </div>
       </div>
       <SideDisplay
-        imageSrc={this.state.dateSelectedSrc}
+        data= {this.props.imageData}
       />
       <Footer/>
       <div className="row">
-        <div className="col s3">
-        </div>
-	      <Button
+	      <Button 
+          waves='light'
           id="modal-submit" 
           onClick={() => {
 		        $('#modal').modal('open')
 	          }}>
-          Submit
+          Examine
         </Button>
 	      <Modal
 		      id="modal"
-		      header={this.state.month +" "+ this.state.dateSelected}>
-            {this.handleModalMessage(this.state.dateSelected)}
+		      header={this.state.month +" "+ this.state.dateSelected}
+        >
+            <div id="caption-text-display">
+              {this.handleModalMessage(this.props.imageData, this.state.dateSelected, this.state.month)}
+            </div>
           <SubmitForm
+            data={this.props.imageData}
             selectedDate={this.state.dateSelected}
             selectedMonth={this.state.month}
             refreshImages={this.props.refreshImages}
-            />
-          <SubmitTextForm/>
+          />
 	      </Modal>
       </div>
     </div>

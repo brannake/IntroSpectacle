@@ -18,6 +18,21 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 140]
       }
     },
+    anger_score: {
+      type: DataTypes.DECIMAL(10,10),
+    },
+    disgust_score: {
+      type: DataTypes.DECIMAL(10,10),
+    },
+    fear_score: {
+      type: DataTypes.DECIMAL(10,10),
+    },
+    joy_score: {
+      type: DataTypes.DECIMAL(10,10),
+    },
+    sadness_score: {
+      type: DataTypes.DECIMAL(10,10),
+    },
     image: {
       type: DataTypes.STRING
     }

@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import ReactDOM from 'react-dom';
+import {MediaBox} from 'react-materialize';
 
 class Panel extends Component {
   state = {
+    imageLoaded: false
   };
   //Passes the selected day up to the Home component
   handleDayChange = () => {
     event.preventDefault();
     let domNode = ReactDOM.findDOMNode(this);
-    let calendarDate = domNode.innerText;
+    let calendarDate = domNode.innerText.trim();
     this.props.callbackfromParent(calendarDate);
   }
 
@@ -18,10 +20,12 @@ class Panel extends Component {
       for (let i=0; i < imageArray.length; i++) {    
         if (datePanelDay === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
           return (
-            <img
-              src={imageArray[i].image}
-              onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
-            />
+            <div id="media-container">
+              <MediaBox
+                src={imageArray[i].image}
+                onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
+              />
+            </div>
           );
         } else {
           console.log("no match here");
@@ -72,11 +76,11 @@ class Panel extends Component {
               className="panel-body"
               id="normaldate"
               onClick={this.handleDayChange}
-              >
+            >
               <div
                   id="date-holder"
-                >
-                  {this.props.date}
+              >
+                {this.props.date}
                 </div>
                   {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
           </div>}

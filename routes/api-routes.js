@@ -1,10 +1,3 @@
-// *********************************************************************************
-// api-routes.js - this file offers a set of routes for displaying and saving data to the db
-// *********************************************************************************
-
-// Dependencies
-// =============================================================
-
 // Requiring our models
 const db = require("../models");
 const fs = require("fs");
@@ -30,13 +23,18 @@ module.exports = function(app) {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
-
+    let first_name = req.body.first_name
+    let last_name = req.body.last_name
+    let email = req.body.email    
     let user = req.body.user;
     let password = req.body.password;
-    console.log(req.body);     
+ console.log(req.body);     
      db.Users.create({
-      user: user,    //req.body.email,
-      password: password
+       first_name: first_name,
+       last_name: last_name,
+       email: email,
+       user: user,    //req.body.email,
+       password: password
     }).then(function(users) {
         res.redirect(307, "/api/login");
     }).catch(function(err) {

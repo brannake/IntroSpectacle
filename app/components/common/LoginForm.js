@@ -31,12 +31,12 @@ class LoginForm extends Component {
             // Preventing the default behavior of the form submit (which is to refresh the page)
             event.preventDefault();
 
-            let userLogin = this.state.userInput      
-            let passwordLogin = this.state.loginPasswordInput
+            let user = this.state.userInput      
+            let password = this.state.loginPasswordInput
 
             $.ajax({
                 url: '/api/login',
-                data: { userLogin , passwordLogin },
+                data: { user , password },
                 type: 'POST',
                 success: (data) => {
                     console.log(data);
@@ -44,9 +44,8 @@ class LoginForm extends Component {
                     loginPasswordInput:""});
                      }
                   })                  
-                  .then(function(data) {
-                       window.location.replace(data);   
-                     })
+                  .then(function(data){
+                      console.log("this worked")});
              //show who is currently signed in        
              $.ajax({
                  url: '/api/user_data',
@@ -64,11 +63,9 @@ class LoginForm extends Component {
                       
                 console.log("user: " + this.state.userInput);
                 console.log("password: " + this.state.loginPasswordInput)
-        
 
           };
         
-
         render() {
             return (
              <form>
@@ -77,7 +74,7 @@ class LoginForm extends Component {
                     name="userInput"
                     s={6}
                     type="text"
-                    label="User Name"
+                    label="UserName / Email"
                     onChange={this.handleInputChange}
                     validate><Icon>account_circle</Icon>
                 </Input>
@@ -85,7 +82,7 @@ class LoginForm extends Component {
                     value={this.state.loginPasswordInput}
                     name="loginPasswordInput"
                     s={6} 
-                    type="text"
+                    type="password"
                     label="Password"
                     onChange={this.handleInputChange}
                     validate type='password'><Icon>lock</Icon>

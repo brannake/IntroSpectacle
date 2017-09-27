@@ -2,13 +2,24 @@ import React, { Component } from "react";
 import { render } from 'react-dom';
 // import API from "../../utils/API";
 // import SignupForm from "./SignupForm";
-import SubmitForm from "./SubmitForm";
-import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input} from 'react-materialize';
+// import SubmitForm from "./SubmitForm";
+import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input, Footer} from 'react-materialize';
+
+import { BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from 'react-router-dom'
+
 
 class Login extends Component {
     constructor() {
         super();
         this.state = {
+         firstNameInput: "",
+          lastNameInput: "",
+          emailInput: "",
           newUserInput: "",
           passwordInput:""
         }
@@ -42,24 +53,31 @@ class Login extends Component {
               if (!this.state.newUserInput || !this.state.passwordInput)  {
                 return;
               }
+            
+            let first_name = this.state.firstNameInput      
+            let last_name = this.state.lastNameInput
+            let email = this.state.emailInput
             let user = this.state.newUserInput      
             let password = this.state.passwordInput
 
             $.ajax({
                 url: '/api/signup',
-                data: { user , password },
+                data: { first_name, last_name, email, user , password },
                 type: 'POST',
                 success: (data) => {
                     console.log(data);
                     console.log(data.id);
-                    this.setState({newUserInput: "",
-                    passwordInput:""});
+                    this.setState({
+                      firstNameInput: "",
+                      lastNameInput: "",
+                      emailInput: "",
+                      newUserInput: "",
+                      passwordInput:""});
                      }
                   });       
                 console.log("new user: " + this.state.newUserInput);
-                console.log("password: " + this.state.passwordInput)
+                console.log("password: " + this.state.passwordInput);
         };
-        
   render() {
     return (
     <div>
@@ -82,6 +100,12 @@ class Login extends Component {
             on your activity over time          
         </Slide>
     </Slider>    
+
+    <Footer
+     copyrights="Copyright &copy; 2017 introspectiv"
+                className='example'
+            >
+         <h5 className="white-text">Get started with your photo journal!</h5>
         <div className="wrapper">
             <Button 
              id="signup-btn"
@@ -95,6 +119,33 @@ class Login extends Component {
             id='signup'
             header='Sign up'>
              <form className="form">
+                <Input s={6} 
+                value={this.state.firstNameInput}
+                name="firstNameInput"
+                type="text"
+                label="First Name"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} 
+                value={this.state.lastNameInput}
+                name="lastNameInput"
+                type="text"
+                label="Last Name"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} 
+                value={this.state.emailInput}
+                name="emailInput"
+                type="email"
+                label="Email Address"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
                 <Input s={6} 
                 value={this.state.newUserInput}
                 name="newUserInput"
@@ -112,10 +163,16 @@ class Login extends Component {
                 validate type='password'><Icon>lock</Icon>
                 </Input>
              </form>
-                <div className="modal-footer">
-                <Button className="btn waves-effect waves-light modal-action" onClick={this.handleFormSubmit} > Submit </Button>
-                </div>            
+             <div className="modal-footer">
+             <Button
+                 id="submit-button"
+                 className="btn waves-effect waves-light modal-action"
+                 onClick={this.handleFormSubmit}> 
+             Submit
+             </Button>
+             </div>            
         </Modal>
+        </Footer>
     </div>
     );
   }

@@ -8,6 +8,8 @@ const app = express();
 
 const passport = require("./config/passport")
 
+const authRoute = require('./app/routes/auth.js')(app);
+
 
 // Sets up the Express App
 // =============================================================
@@ -32,6 +34,7 @@ app.use(passport.session());
 // =============================================================
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

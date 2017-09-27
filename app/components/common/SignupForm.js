@@ -29,15 +29,52 @@ class SignupForm extends Component {
   }
   render() {
     return (
-        <div>                
-           <form ref="uploadForm" className="asdf" >
-              <Row>
-              <Input s={6} label="User Name" validate><Icon>account_circle</Icon></Input>
-              <Input s={6} label="Password" validate type='tel'><Icon>lock</Icon></Input>
-              </Row>
-               <input type="button" ref="button" value="Upload" onClick={this.uploadFile} />
-           </form>
-        </div>
+          <form className="form">
+            <Row>
+                <Input s={6} 
+                value={this.state.firstNameInput}
+                name="firstNameInput"
+                type="text"
+                label="First Name"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} 
+                value={this.state.lastNameInput}
+                name="lastNameInput"
+                type="text"
+                label="Last Name"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} 
+                value={this.state.emailInput}
+                name="emailInput"
+                type="email"
+                label="Email Address"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} 
+                value={this.state.newUserInput}
+                name="newUserInput"
+                type="text"
+                label="User Name"         
+                onChange={this.handleInputChange}
+                validate><Icon>account_circle</Icon>
+                </Input>
+
+                <Input s={6} label="Password"               
+                value={this.state.passwordInput}
+                name="passwordInput"
+                type="text"
+                onChange={this.handleInputChange}
+                validate type='password'><Icon>lock</Icon>
+                </Input>
+             </Row>
     )
 };
 

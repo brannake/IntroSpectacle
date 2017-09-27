@@ -8,8 +8,17 @@ body {
 }
 
 img {
-  height: 20px;
-  width: 20px;
+  height: 98%;
+  width: 100%;
+}
+
+nav {
+  position: relative;
+  left: 10px;
+}
+
+hr {
+  background: white;
 }
 
 .footer {
@@ -19,45 +28,48 @@ img {
   height: 60px;
   padding-right: 20px;
   padding-left: 20px;
+  background: lightblue;
 }
 
 .panel-body {
-  padding: 10px;
+  height: 80px;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
 }
 
-.panel-body:hover {
-    cursor: pointer;
+#media-container {
+  height: 100%;
+}
+
+.main-panel {
+  border: 1px solid black;
+  height: 80px;
+  padding: 0px;
 }
 
 .calendar{
   margin: 10px;
   position: relative;
-  left: 100px;
+  left: 18%;
+  bottom: 20px;
+}
+
+.materialboxed {
+  height: 99%;
+}
+
+.material-placeholder {
+  height: 100%;
+}
+
+.row {
+  margin-bottom: 0px;
 }
 
 .navbar {
-	background: lightblue;
-}
-
-.wrapper {
-  text-align: center !important;
-}
-
-.modal-footer {
-  float: right;
-  margin: 6px 0;
-}
-
-#signup-btn{
-  position: absolute !important;
-  /* top: 50% !important; */
-
-}
-
-
-#day-headings {
-  background: lightblue;
-  color: white;
+  background: blue;
+  margin: 10px;
 }
 
 #submit-form {
@@ -65,19 +77,292 @@ img {
 }
 
 #date-display {
-  position: relative;
-  left: 300px;
+  position: absolute;
+  left: 37.8%;
   font-size: 30px;
+  transition: 0.5s;
 }
 
 #currentdate {
   background: orange;
+  border-bottom: 2px solid black;
 }
 
 #dateselected {
-  border: 4px solid blue;
+  border: 2px solid blue;
+  background: blue;
+  color: white;
 }
 
 #upfile {
 	margin: 20px;
 }
+
+#panel-day-heading {
+  color: white;
+  font-size: 140%;
+  text-align: center;
+  line-height: 3.6em;
+}
+
+#date-holder {
+  position: absolute;
+  color: black;
+  bottom: 30%;
+  left: 35%;
+  font-weight: bold;
+  font-size: 2em;
+  text-shadow: 1px 1px;
+  z-index: 2;
+}
+
+#side-display-container {
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  height: 90%;
+  width: 23.6%;
+  background: white;
+}
+
+#side-display {
+  position: absolute;
+  left: 3%;
+  top: 2%;
+  background: ivory;
+  border-radius: 20px;
+  color: white;
+  height: 80%;
+  width: 94%;
+}
+
+.collection-item {
+  color: blue;
+}
+
+#side-display-img-container {
+  height: 45%;
+  width: auto;
+}
+
+.row .col {
+  padding: 0px;
+}
+
+.materialbox-caption {
+  position: relative;
+  bottom: 10%;
+}
+
+#warning-modal {
+  color:red;
+  font-weight: bold;
+}
+
+ul.slides {
+  height:550px!important;
+}
+
+div.slider {
+  height: 500px!important;
+}
+div.nav-wrapper {
+  background-color:black;
+}
+
+#login-btn {
+  background-color: black;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: purple;
+} 
+
+.slider .slides li img {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.brand-logo {
+  background-image: url("../public/savedimages/introspectiv-logo.png")
+}
+
+footer.page-footer {
+  background-color: black;
+}
+
+/*div.container {
+  text-align: center;
+}
+div.row {
+  text-align: center;
+  font-size: 25px;
+}*/
+
+footer.page-footer.example {
+  margin-top: 50px;
+}
+
+div.container {
+  text-align: center;
+}
+
+copyrights {
+  text-align: center;
+}
+
+#signup-btn {
+  border: 20px;
+  background-color: purple!important;
+}
+
+div.container {
+  padding: 25px;
+}
+
+.row .col.l6 {
+  width: 100%!important;
+}
+
+data-target {
+  height:0%!important;
+  width: 0px!important;
+}
+
+.input-field .prefix.active {
+  color: purple!important;
+}
+
+label.active {
+  color: purple!important;
+}
+
+nav {
+  left: 0px!important;
+}
+html,body,#page, header { 
+  height:100%;
+}
+
+input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid purple;
+  box-shadow: 0 1px 0 0 purple;
+}
+
+input[type=tel]:focus:not([readonly]){
+  border-bottom: 1px solid purple;
+  box-shadow: 0 1px 0 0 purple;
+}
+
+#submit-button {
+  background-color: purple!important;
+}
+
+
+
+=======
+<<<<<<< HEAD
+#side-display-caption-container {
+  position: absolute;
+  bottom: 0px;
+  height: 48%;
+  width: 77%;
+  margin-left: 10px;
+  background: #7E7C7F;
+  border-radius: 20px;
+  color: white;
+  padding: 10px;
+}
+
+#side-display-img {
+  border-radius: 20px;
+=======
+#modal-submit {
+  position: absolute;
+  left: 43.8%;
+  background: blue;
+}
+
+#side-nav {
+  position: absolute;
+  top: 11.4%;
+  left: 0px;
+  height: 50%;
+  width: 10%;
+}
+
+#day-headings {
+  background: blue;
+  text-shadow: 0px;
+}
+
+#caption-text-display {
+  padding: 10px;
+}
+
+#caption-text-display-message {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
+
+.react-calendar-heatmap {
+  height: 100px;
+  width: 100px;
+}
+
+#overall-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: blue;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+#anger-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: red;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+}
+
+#fear-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: orange;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline;
+}
+
+#disgust-mood-score {
+  border: 1px solid grey;
+  border-radius: 20px;
+  background: green;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+  display: inline;
+}
+
+
+
+
+#SideNavMod {
+  position: absolute;
+  left: 10px;
+}
+
+#SideNavMod > span > button {
+  background: white;
+  color: blue;
+}
+
+#modal > div.modal-content > div:nth-child(3) > form > button {
+  background: blue;

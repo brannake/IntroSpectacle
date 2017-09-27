@@ -30,7 +30,6 @@ class HeatMaps extends Component {
     for (let i=0; i < arrayResponse.length; i++) {
       pulledScores.unshift({name: arrayResponse[i].day, uv: 100*arrayResponse[i].joy_score})
     }
-    console.log(pulledScores);
     this.setState({data: pulledScores})
   }
 
@@ -170,8 +169,14 @@ class HeatMaps extends Component {
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip />
+          <Tooltip />>
         </LineChart>
+        <div id="X-axis-display">
+            Date
+          </div>
+          <div id="Y-axis-display">
+            Mood
+          </div>
         </div>
       <SideDisplay
       />

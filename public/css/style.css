@@ -131,6 +131,22 @@ nav {
   background: white;
 }
 
+#X-axis-display {
+  position: absolute;
+  bottom: -5%;
+  left: 30%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#Y-axis-display {
+  position: absolute;
+  top: 42%;
+  left: -2%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #side-display-text-container {
   color: grey;
   font-size: 20px;

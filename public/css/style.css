@@ -131,6 +131,12 @@ nav {
   background: white;
 }
 
+#side-display-text-container {
+  color: grey;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #side-display {
   position: absolute;
   left: 3%;

@@ -197,7 +197,7 @@ class Home extends Component {
    //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromPanel) => {
     this.setState({dateSelected: dataFromPanel});
-    window.CONTEXT.date = {date: dataFromPanel} 
+    window.CONTEXT.day = dataFromPanel; 
   }
 
   getImageCallback = (imageSrc) => {

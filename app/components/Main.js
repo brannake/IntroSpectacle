@@ -10,8 +10,9 @@ class Main extends Component {
 componentWillMount= () => {
 
   //Hackish way of moving month/day across routes without a state manager
+  if (!this.state.loaded) {
   window.CONTEXT = {month: "", day: "", currentdate: ""};
-
+  }
     $.ajax({
       url: '/api/load',
       type: 'GET',
@@ -19,6 +20,7 @@ componentWillMount= () => {
       success: (data) => {
         console.log(data);
         this.setState({imageData:data});
+        this.setState({loaded: true});
       }
     });
   }

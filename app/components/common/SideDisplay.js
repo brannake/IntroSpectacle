@@ -15,7 +15,11 @@ class SideDisplay extends Component {
       <div id="side-display-container">
         <div id="side-display">
           <div id="side-display-text-container">
-            <Link to="/heatmaps">Mood Tracker</Link>
+            Views
+            <br/>
+            <Link to="/heatmaps">Trends</Link>
+            <br/>
+            <Link to="/">Calendar</Link>
           </div>
         </div>
       </div>

@@ -10,21 +10,44 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts'
 class HeatMaps extends Component {
   state = {
     user: 'default',
-    imageData: [],
+    data: [],
     currentdate: window.CONTEXT.currentdate,
     month: window.CONTEXT.month,
     date: window.CONTEXT.day,
     data: [
-        {name: 'March', uv: 40, pv: 240, amt: 240},
-        {name: 'April', uv: 30, pv: 138, amt: 221},
-        {name: 'May', uv: 20, pv: 980, amt: 229},
-        {name: 'June', uv: 28, pv: 398, amt: 200},
-        {name: 'July', uv: 19, pv: 480, amt: 218},
-        {name: 'August', uv: 29, pv: 380, amt: 250},
-        {name: 'September', uv: 49, pv: 430, amt: 210},
-      ]
+        {name: 'March', uv: 40},
+        {name: 'April', uv: 30},
+        {name: 'May', uv: 20},
+        {name: 'June', uv: 28},
+        {name: 'July', uv: 19},
+        {name: 'August', uv: 29},
+        {name: 'September', uv: 49},
+      ],
   };
 
+  pullOutEachDayJoyScore = (arrayResponse) => {
+    let pulledScores = [];
+    for (let i=0; i < arrayResponse.length; i++) {
+      pulledScores.unshift({name: arrayResponse[i].day, uv: 100*arrayResponse[i].joy_score})
+    }
+    console.log(pulledScores);
+    this.setState({data: pulledScores})
+  }
+
+  componentWillMount= () => {
+    
+    //Initial API call to load user data
+      $.ajax({
+        url: '/api/load',
+        type: 'GET',
+        data: this.state.user,
+        success: (response) => {
+          console.log(response);
+          this.pullOutEachDayJoyScore(response);
+        }
+      });
+    }
+    
   myMonthCallback = (dataFromChild) => {
     this.setState({month: dataFromChild, day: ''}, () => {
       if (this.state.month === "January") {
@@ -125,19 +148,6 @@ class HeatMaps extends Component {
       };
     });
   };
-
-  componentDidMount= () => {
-    
-        $.ajax({
-          url: '/api/graphs',
-          type: 'GET',
-          data: this.state.user,
-          success: (data) => {
-            console.log(data);
-            this.setState({data2:data});
-          }
-        });
-      }
 
   render() {
     return (

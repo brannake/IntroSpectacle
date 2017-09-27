@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     day: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
     },
     text: {
       type: DataTypes.STRING,

@@ -23,7 +23,7 @@ module.exports = function(app) {
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {
     let userName = req.body.user;
-    db.dateInfo.findAll({where: {user: 'default' }}).then(function(db) {
+    db.dateInfo.findAll({where: {user:'default'}, order: [['day', 'DESC']] }).then(function(db) {
       // We have access to the todos as an argument inside of the callback function
       res.send(db);
     });
@@ -37,7 +37,7 @@ module.exports = function(app) {
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     let userName = "default";
     let newImage = req.files.file.data;
-    let selectedDate = req.body.date;
+    let selectedDate = parseInt(req.body.date);
     let selectedMonth = req.body.month;
     let text = req.body.text;
 
@@ -77,10 +77,15 @@ module.exports = function(app) {
   });
 
 
-  app.get("/api/graphs", function(req, res) {
+  app.post("/api/graphs", function(req, res) {
+    console.log(req.body);
+    console.log("FAT ROOOMMATE IS FAT");
     let userName = req.body.user;
     let month = req.body.month;
-    db.dateInfo.findAll({where: {user: userName, month: month}}).then(function(db) {
+    db.dateInfo.findAll({
+      where: {user: userName, month: month},
+    }).then(function(db) {
+      console.log(db);
       res.send(db);
     });
   });

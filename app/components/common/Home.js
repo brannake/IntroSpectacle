@@ -249,7 +249,7 @@ class Home extends Component {
       )
     } else {
         for (let i=0; i < data.length; i++) {
-          if (date === data[i].day && month === data[i].month) {
+          if (parseInt(date) === parseInt(data[i].day) && month === data[i].month) {
             return (
               <div>
                 <div id="caption-text-display-message">{data[i].text}</div>

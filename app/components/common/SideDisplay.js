@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import {Link} from "react-router";
 import HeatMaps from "../../components/HeatMaps";
+import ReactDOM from 'react-dom';
+import {Button} from 'react-materialize'
 
 class SideDisplay extends Component {
   constructor() {
     super();
     this.state = {
-      imageSrc: ""
     };
   };
 
@@ -17,9 +18,17 @@ class SideDisplay extends Component {
           <div id="side-display-text-container">
             Views
             <br/>
-            <Link to="/heatmaps">Monthly</Link>
+            <Button
+              onClick= {() => {this.props.getView("monthly")}}
+            >
+            Monthly
+            </Button>
             <br/>
-            <Link to="/calendar">Yearly</Link>
+            <Button
+              onClick= {() => {this.props.getView("yearly")}}
+            >
+            Yearly
+            </Button>
           </div>
         </div>
       </div>

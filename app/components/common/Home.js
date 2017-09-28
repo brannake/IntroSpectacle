@@ -18,6 +18,7 @@ class Home extends Component {
     currentMonth: '',
     day: '',
     currentDate: '',
+    selectedView: 'monthly',
     dateSelected: '',
     dateSelectedSrc: "",
     mounted: false,
@@ -209,6 +210,12 @@ class Home extends Component {
     this.setState({imageData: this.props.imageData});
   }
 
+  //Passed down to SideDisplay so it can pass up selected view
+  viewCallback = (selectedView) => {
+    this.setState({view: selectedView});
+    console.log(selectedView);
+  }
+
 //Rendering 7 days per row
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
   renderFirstDates(datesArray) {
@@ -295,7 +302,8 @@ class Home extends Component {
         </div>
       </div>
       <SideDisplay
-        data= {this.props.imageData}
+        getView= {this.viewCallback}
+        selectedView={this.state.selectedView}
       />
       <Footer/>
       <div className="row">

@@ -14,6 +14,8 @@ class HeatMaps extends Component {
     currentdate: window.CONTEXT.currentdate,
     month: window.CONTEXT.month,
     date: window.CONTEXT.day,
+    selectedView: "monthly",
+    monthlyMoodAverages: '',
     data: [
         {name: 'March', uv: 40},
         {name: 'April', uv: 30},
@@ -25,12 +27,44 @@ class HeatMaps extends Component {
       ],
   };
 
+  //Callback to pass view up from Side Display
+  viewCallback = (view) => {
+    this.setState({selectedView: view});
+  }
+
+  findAverage = (elmt) => {
+    let sum = 0;
+      for(let i = 0; i < elmt.length; i++ ){
+        sum += parseInt(elmt[i]);
+    }
+    let avg = sum/elmt.length;
+    return avg;
+  }
+
   pullOutEachDayJoyScore = (arrayResponse) => {
     let pulledScores = [];
     for (let i=0; i < arrayResponse.length; i++) {
-      pulledScores.unshift({name: arrayResponse[i].day, uv: 100*arrayResponse[i].joy_score})
+      pulledScores.unshift({name: arrayResponse[i].day, uv: 100*arrayResponse[i].joy_score});
     }
-    this.setState({data: pulledScores})
+    this.setState({data: pulledScores});
+  }
+
+  calculateMonthlyMoodAverage = (arrayResponse) => {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let monthlyMoodAverages = [];
+    for (let i=0; i < months.length; i++) {
+      let currentMonthRunningTotal = [];
+      for (let j=0; j < arrayResponse.length; j++) {
+        if (months[i] === arrayResponse[j].month) {
+          currentMonthRunningTotal.push(100*arrayResponse[j].joy_score);
+        }
+      }
+      let average = this.findAverage(currentMonthRunningTotal);
+      let monthlyAverage = {name: months[i], average: average};
+      monthlyMoodAverages.push(monthlyAverage);
+    }
+    this.setState({monthlyMoodAverages: monthlyMoodAverages});
+    return monthlyMoodAverages;
   }
 
   componentWillMount= () => {
@@ -41,8 +75,8 @@ class HeatMaps extends Component {
         type: 'GET',
         data: this.state.user,
         success: (response) => {
-          console.log(response);
           this.pullOutEachDayJoyScore(response);
+          this.calculateMonthlyMoodAverage(response);
         }
       });
     }
@@ -179,6 +213,8 @@ class HeatMaps extends Component {
           </div>
         </div>
       <SideDisplay
+        getView= {this.viewCallback}
+        selectedView={this.state.selectedView}
       />
       <Footer
         className = "footer"

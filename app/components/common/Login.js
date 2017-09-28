@@ -13,8 +13,8 @@ class Login extends Component {
     <div>
         
         <Navbar brand='introspectiv' left>
-            <NavItem href=''>MY CALENDAR</NavItem>
             <NavItem href=''>ANALYTICS</NavItem>
+            <NavItem href=''>MY CALENDAR</NavItem>
             <div className="wrapper">
                     <Button 
                     id="login-btn"

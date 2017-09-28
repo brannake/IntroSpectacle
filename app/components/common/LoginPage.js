@@ -13,7 +13,7 @@ import { BrowserRouter as Router,
 } from 'react-router-dom'
 
 
-class Login extends Component {
+class LoginPage extends Component {
     constructor() {
         super();
         this.state = {
@@ -180,4 +180,4 @@ class Login extends Component {
 
 
 
-export default Login;
+export default LoginPage;

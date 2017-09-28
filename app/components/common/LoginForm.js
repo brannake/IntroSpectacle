@@ -7,7 +7,7 @@ class LoginForm extends Component {
     constructor() {
         super()
         this.state = {
-            userInput: "",
+            username: "",
             loginPasswordInput:""
         }
         this.loginUser = this.loginUser.bind(this);
@@ -31,16 +31,16 @@ class LoginForm extends Component {
             // Preventing the default behavior of the form submit (which is to refresh the page)
             event.preventDefault();
 
-            let user = this.state.userInput      
+            let user = this.state.username      
             let password = this.state.loginPasswordInput
 
             $.ajax({
                 url: '/api/login',
-                data: { user , password },
+                data: {},
                 type: 'POST',
                 success: (data) => {
                     console.log(data);
-                    this.setState({userInput: "",
+                    this.setState({username: "",
                     loginPasswordInput:""});
                      }
                   })                  
@@ -51,7 +51,7 @@ class LoginForm extends Component {
                  url: '/api/user_data',
                  type: 'GET',
                  success: (data) => {
-                     console.log(`welcome ${this.state.userInput}!`)
+                     console.log(`welcome ${this.state.username}!`)
                  }
              })        
            
@@ -61,7 +61,7 @@ class LoginForm extends Component {
                     // })
                       
                       
-                console.log("user: " + this.state.userInput);
+                console.log("user: " + this.state.username);
                 console.log("password: " + this.state.loginPasswordInput)
 
           };
@@ -70,8 +70,8 @@ class LoginForm extends Component {
             return (
              <form>
                 <Input 
-                    value={this.state.userInput}
-                    name="userInput"
+                    value={this.state.username}
+                    name="username"
                     s={6}
                     type="text"
                     label="UserName / Email"

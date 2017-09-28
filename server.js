@@ -8,7 +8,8 @@ const app = express();
 
 const passport = require("./config/passport")
 
-const authRoute = require('./app/routes/auth.js')(app);
+//Routes
+// const authRoute = require('./app/routes/auth.js')(app);
 
 
 // Sets up the Express App
@@ -33,7 +34,7 @@ app.use(passport.session());
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app);
-require("./routes/html-routes.js")(app);
+
 
 
 // Syncing our sequelize models and then starting our Express app
@@ -41,5 +42,5 @@ require("./routes/html-routes.js")(app);
 db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
-  });
+  })
 });

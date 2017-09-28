@@ -17,9 +17,9 @@ class SideDisplay extends Component {
           <div id="side-display-text-container">
             Views
             <br/>
-            <Link to="/heatmaps">Trends</Link>
+            <Link to="/heatmaps">Monthly</Link>
             <br/>
-            <Link to="/">Calendar</Link>
+            <Link to="/calendar">Yearly</Link>
           </div>
         </div>
       </div>

@@ -42,11 +42,11 @@ class Navbar extends Component {
   render() {
     return (
     <div>
-    <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
+    <nav className="navbar navbar-inverse">
+      <Link id="trends-button" to="/heatmaps">TRENDS</Link>
+      <Link id="calendar-button" to="/calendar">MY CALENDAR</Link>
       <div className="container-fluid">
       <div className="navbar-header">
-        <SideNavMod 
-        />
       </div>
       <div className="nav navbar-nav">
           <div id="date-display">

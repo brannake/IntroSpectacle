@@ -5,6 +5,8 @@ html {
 
 body {
   margin-bottom: 60px;
+  overflow-y:hidden;
+  overflow-x:hidden;
 }
 
 img {
@@ -79,7 +81,7 @@ nav {
 
 .navbar {
   background: blue;
-  margin: 10px;
+  margin-bottom: 30px;
 }
 
 #submit-form {
@@ -88,10 +90,24 @@ nav {
 
 #date-display {
   position: absolute;
+  top: 1%;
   left: 37.8%;
   font-size: 30px;
   transition: 0.5s;
 }
+
+#trends-button {
+  position: absolute;
+  top:2%;
+  left: 1%;
+}
+
+#calendar-button {
+  position: absolute;
+  top:2%;
+  left: 6.5%;
+}
+
 
 #currentdate {
   background: orange;
@@ -126,9 +142,9 @@ nav {
 
 #side-display-container {
   position: absolute;
-  top: 80px;
+  top: 69px;
   right: 0px;
-  height: 90%;
+  height: 50%;
   width: 23.6%;
   background: white;
 }
@@ -258,8 +274,104 @@ nav {
   display: inline;
 }
 
+ul.slides {
+  height:550px!important;
+}
 
+div.slider {
+  height: 500px!important;
+}
+div.nav-wrapper {
+  background-color:black;
+}
 
+#login-btn {
+  background-color: black;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: purple;
+} 
+
+.slider .slides li img {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+.brand-logo {
+  background-image: url("../public/savedimages/introspectiv-logo.png")
+}
+
+footer.page-footer {
+  background-color: black;
+}
+
+/*div.container {
+  text-align: center;
+}
+div.row {
+  text-align: center;
+  font-size: 25px;
+}*/
+
+footer.page-footer.example {
+  margin-top: 50px;
+}
+
+div.container {
+  text-align: center;
+}
+
+copyrights {
+  text-align: center;
+}
+
+#signup-btn {
+  border: 20px;
+  background-color: purple!important;
+}
+
+div.container {
+  padding: 25px;
+}
+
+.row .col.l6 {
+  width: 100%!important;
+}
+
+data-target {
+  height:0%!important;
+  width: 0px!important;
+}
+
+.input-field .prefix.active {
+  color: purple!important;
+}
+
+label.active {
+  color: purple!important;
+}
+
+nav {
+  left: 0px!important;
+}
+html,body,#page, header { 
+  height:100%;
+}
+
+input[type=text]:focus:not([readonly]) {
+  border-bottom: 1px solid purple;
+  box-shadow: 0 1px 0 0 purple;
+}
+
+input[type=tel]:focus:not([readonly]){
+  border-bottom: 1px solid purple;
+  box-shadow: 0 1px 0 0 purple;
+}
+
+#submit-button {
+  background-color: purple!important;
+}
 
 #SideNavMod {
   position: absolute;

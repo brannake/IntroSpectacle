@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Navbar2 from "./common/Navbar2";
 import Footer from "./common/Footer";
-import Login from "./common/Login";
+import LoginPage from "./common/LoginPage";
 
 
 class Main extends Component {
@@ -15,7 +15,7 @@ class Main extends Component {
     return (
       <div>
         <Navbar2 />
-         <Login />
+         <LoginPage />
          
       </div>
     );

@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { render } from 'react-dom';
-// import API from "../../utils/API";
-// import SignupForm from "./SignupForm";
-// import SubmitForm from "./SubmitForm";
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Icon, Input, Footer} from 'react-materialize';
 
 import { BrowserRouter as Router,
@@ -13,7 +10,7 @@ import { BrowserRouter as Router,
 } from 'react-router-dom'
 
 
-class Login extends Component {
+class LoginPage extends Component {
     constructor() {
         super();
         this.state = {
@@ -180,4 +177,4 @@ class Login extends Component {
 
 
 
-export default Login;
+export default LoginPage;

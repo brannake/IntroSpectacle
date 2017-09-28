@@ -13,7 +13,7 @@ class Login extends Component {
     <div>
         
         <Navbar brand='introspectiv' left>
-            <NavItem href=''>HOME</NavItem>
+            <NavItem href=''>MY CALENDAR</NavItem>
             <NavItem href=''>ANALYTICS</NavItem>
             <div className="wrapper">
                     <Button 
@@ -67,9 +67,9 @@ class Login extends Component {
             </Slide>
             <Slide
                 src="https://static.pexels.com/photos/106344/pexels-photo-106344.jpeg"
-                title="View statistics"
+                title="Gain quantitative insight"
                 placement="right">
-                on your activity over time
+                on your mood over time
             </Slide>
             </Slider>
             <Footer copyrights="Copyright &copy; 2017 introspectiv"

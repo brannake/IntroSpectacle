@@ -8,20 +8,48 @@ const passport = require("../config/passport")
 // Routes
 // =============================================================
 module.exports = function(app) {
+passport.use(new LocalStrategy(
+  
+       {
+      usernameField: "user"
+    },
+    function(user, password, done) {
+      db.Users.findOne({ where: { user: user } 
+      }).then(function( err, user) {
+        if (err) return done(err)
+        if (!user) {
+          return done(null, false, {
+            message: "Incorrect user name."
+          });
+        }
 
- // Using the passport.authenticate middleware with our local strategy.
-  // If the user has valid login credentials, send them to the members page.
-  // Otherwise the user will be sent an error
-  app.post("/api/login", passport.authenticate("local"),
+        else if (!user.validPassword(password)) {
+          return done(null, false, {
+            message: "Incorrect password."
+          });
+        }
+     
+        return done(null, user);
+      });
+    }
+  ));
+
+  app.post("/api/login", passport.authenticate("local",
+  { 
+    successRedirect: "/api/calendar",
+    failureRedirect: "/",
+    failureFlash: true}
+  ),
+  function(req, res) {
+    res.redirect("/");
+  });
                                                   
                                            
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
    
-   function(req, res) {
-    res.redirect("/api/user_data");
-  });
+ 
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -70,7 +98,9 @@ module.exports = function(app) {
   app.get("/api/user_data", function(req, res) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({});
+      res.json({
+        first_name: req.body.first_name,
+        user: req.body.user});
     }
     else {
       // Otherwise send back the user's email and id

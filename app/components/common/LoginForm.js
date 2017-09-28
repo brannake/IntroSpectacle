@@ -45,7 +45,8 @@ class LoginForm extends Component {
                      }
                   })                  
                   .then(function(data){
-                      console.log("this worked")});
+                    // window.location.replace(data)
+                      console.log(data)});
              //show who is currently signed in        
              $.ajax({
                  url: '/api/user_data',

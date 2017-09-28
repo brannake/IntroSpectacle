@@ -39,7 +39,7 @@ class LoginForm extends Component {
                 data: { user , password },
                 type: 'POST',
                 success: (data) => {
-                    console.log(data);
+                    console.log(data); // "/members"
                     this.setState({userInput: "",
                     loginPasswordInput:""});
                      }

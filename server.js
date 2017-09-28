@@ -8,7 +8,7 @@ const app = express();
 
 const passport = require("./config/passport")
 
-const authRoute = require('./app/routes/auth.js')(app);
+
 
 
 // Sets up the Express App

@@ -4,10 +4,7 @@ import { Link } from "react-router";
 import LoginForm from "./LoginForm";
 
 const Navbar2 = () => (
-        <Navbar brand='introspectiv' icon='photo_camera' left>
-            
-          
-            
+        <Navbar brand='introspectiv' icon='photo_camera' left>               
             <NavItem href=''>HOME</NavItem>
             <NavItem href=''>ANALYTICS</NavItem>
             <div className="wrapper">
@@ -27,8 +24,5 @@ const Navbar2 = () => (
         </Navbar>
        
    );
-
-
-
 
 export default Navbar2;

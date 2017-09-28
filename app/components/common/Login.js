@@ -65,7 +65,7 @@ class Login extends Component {
                 data: { first_name, last_name, email, user , password },
                 type: 'POST',
                 success: (data) => {
-                    console.log(data);
+                    console.log(data); // "/members" 
                     console.log(data.id);
                     this.setState({
                       firstNameInput: "",

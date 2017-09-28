@@ -19,13 +19,15 @@ class SideDisplay extends Component {
             Views
             <br/>
             <Button
-              onClick= {() => {this.props.getView("monthly")}}
+              onClick= {() => {this.props.getView("monthly");
+              this.props.toggleMonthlyView()}}
             >
             Monthly
             </Button>
             <br/>
             <Button
-              onClick= {() => {this.props.getView("yearly")}}
+              onClick= {() => {this.props.getView("yearly");
+              this.props.toggleYearlyView()}}
             >
             Yearly
             </Button>

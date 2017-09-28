@@ -16,16 +16,24 @@ class HeatMaps extends Component {
     date: window.CONTEXT.day,
     selectedView: "monthly",
     monthlyMoodAverages: '',
+    dailyMoodData: [],
     data: [
-        {name: 'March', uv: 40},
-        {name: 'April', uv: 30},
-        {name: 'May', uv: 20},
-        {name: 'June', uv: 28},
-        {name: 'July', uv: 19},
-        {name: 'August', uv: 29},
-        {name: 'September', uv: 49},
-      ],
+      {name: 'March', uv: 40},
+      {name: 'April', uv: 30},
+      {name: 'May', uv: 20},
+      {name: 'June', uv: 28},
+      {name: 'July', uv: 19},
+      {name: 'August', uv: 29},
+      {name: 'September', uv: 49}]
   };
+
+toggleMonthlyView = () => {
+  this.setState({data: this.state.dailyMoodData});
+}
+
+toggleYearlyView = () => {
+  this.setState({data: this.state.monthlyMoodAverages})
+}
 
   //Callback to pass view up from Side Display
   viewCallback = (view) => {
@@ -36,7 +44,7 @@ class HeatMaps extends Component {
     let sum = 0;
       for(let i = 0; i < elmt.length; i++ ){
         sum += parseInt(elmt[i]);
-    }
+      }
     let avg = sum/elmt.length;
     return avg;
   }
@@ -46,7 +54,7 @@ class HeatMaps extends Component {
     for (let i=0; i < arrayResponse.length; i++) {
       pulledScores.unshift({name: arrayResponse[i].day, uv: 100*arrayResponse[i].joy_score});
     }
-    this.setState({data: pulledScores});
+    this.setState({dailyMoodData: pulledScores});
   }
 
   calculateMonthlyMoodAverage = (arrayResponse) => {
@@ -64,6 +72,7 @@ class HeatMaps extends Component {
       monthlyMoodAverages.push(monthlyAverage);
     }
     this.setState({monthlyMoodAverages: monthlyMoodAverages});
+    console.log(monthlyMoodAverages);
     return monthlyMoodAverages;
   }
 
@@ -215,6 +224,8 @@ class HeatMaps extends Component {
       <SideDisplay
         getView= {this.viewCallback}
         selectedView={this.state.selectedView}
+        toggleMonthlyView={this.toggleMonthlyView}
+        toggleYearlyView={this.toggleYearlyView}
       />
       <Footer
         className = "footer"

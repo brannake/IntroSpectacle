@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Footer from "./common/Footer";
 import SideDisplay from "./common/SideDisplay";
 import Navbar from "./common/Navbar";
-import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
+import {AreaChart, Area, linearGradient , XAxis, YAxis, Tooltip, CartesianGrid } from 'recharts';
 
 
 class HeatMaps extends Component {
@@ -28,11 +28,8 @@ class HeatMaps extends Component {
   };
 
 toggleMonthlyView = () => {
-  console.log(this.state.dailyMoodData);
-  console.log(this.state.month);
   for (let i=0; i < this.state.dailyMoodData.length; i++) {
     if (this.state.dailyMoodData[i].month === this.state.month) {
-      console.log("it changed the data");
       this.setState({data: this.state.dailyMoodData[i].scores});
     }
   }
@@ -58,7 +55,7 @@ toggleYearlyView = () => {
 
   //Big fat function to sort through the response object of all the user submissions
   //Packages days by month (monthlyMoodLogs) and loads them onto state as dailyMoodData for analytics rendering
-  //Also calculcates the average mood score for each month for the yearly view and loads onto state as monthlyMoodAverages
+  //Also averages the mood score for each month for the yearly view and loads onto state as monthlyMoodAverages
   //Should refactor when possible
   calculateMonthlyMoodAverage = (arrayResponse) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -70,7 +67,7 @@ toggleYearlyView = () => {
       for (let j=0; j < arrayResponse.length; j++) {
         if (months[i] === arrayResponse[j].month) {
           currentMonthRunningTotal.unshift(100*arrayResponse[j].joy_score);
-          let dayDataPointObject = {day: arrayResponse[j].day, uv: 100*arrayResponse[j].joy_score};
+          let dayDataPointObject = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].joy_score};
           dailyMoodLog.unshift(dayDataPointObject);
         }
       }
@@ -200,6 +197,7 @@ toggleYearlyView = () => {
   };
 
   render() {
+    console.log("rerendered");
     console.log(this.state.data);
     return (
       <div>
@@ -211,18 +209,24 @@ toggleYearlyView = () => {
         currentMonth={this.state.currentmonth}
       />
         <div id="chart-container">
-          <LineChart 
+          <AreaChart 
             id="lineChart"
             width={940} 
             height={500} 
             data={this.state.data} 
           >
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+          <defs>
+    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
+      <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+    </linearGradient>
+  </defs>
+  <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
           <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />>
-        </LineChart>
+        </AreaChart>
         <div id="X-axis-display">
             Date
           </div>

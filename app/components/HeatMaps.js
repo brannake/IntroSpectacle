@@ -28,7 +28,14 @@ class HeatMaps extends Component {
   };
 
 toggleMonthlyView = () => {
-  this.setState({data: this.state.dailyMoodData});
+  console.log(this.state.dailyMoodData);
+  console.log(this.state.month);
+  for (let i=0; i < this.state.dailyMoodData.length; i++) {
+    if (this.state.dailyMoodData[i].month === this.state.month) {
+      console.log("it changed the data");
+      this.setState({data: this.state.dailyMoodData[i].scores});
+    }
+  }
 }
 
 toggleYearlyView = () => {
@@ -49,31 +56,32 @@ toggleYearlyView = () => {
     return avg;
   }
 
-  pullOutEachDayJoyScore = (arrayResponse) => {
-    let pulledScores = [];
-    for (let i=0; i < arrayResponse.length; i++) {
-      pulledScores.unshift({name: arrayResponse[i].day, uv: 100*arrayResponse[i].joy_score});
-    }
-    this.setState({dailyMoodData: pulledScores});
-  }
-
+  //Big fat function to sort through the response object of all the user submissions
+  //Packages days by month (monthlyMoodLogs) and loads them onto state as dailyMoodData for analytics rendering
+  //Also calculcates the average mood score for each month for the yearly view and loads onto state as monthlyMoodAverages
+  //Should refactor when possible
   calculateMonthlyMoodAverage = (arrayResponse) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let monthlyMoodAverages = [];
+    let monthlyMoodLogs = [];
     for (let i=0; i < months.length; i++) {
       let currentMonthRunningTotal = [];
+      let dailyMoodLog = [];
       for (let j=0; j < arrayResponse.length; j++) {
         if (months[i] === arrayResponse[j].month) {
-          currentMonthRunningTotal.push(100*arrayResponse[j].joy_score);
+          currentMonthRunningTotal.unshift(100*arrayResponse[j].joy_score);
+          let dayDataPointObject = {day: arrayResponse[j].day, uv: 100*arrayResponse[j].joy_score};
+          dailyMoodLog.unshift(dayDataPointObject);
         }
       }
+      let dailyMoodScoresForThisMonth = {month: months[i], scores: dailyMoodLog};
+      monthlyMoodLogs.push(dailyMoodScoresForThisMonth);
       let average = this.findAverage(currentMonthRunningTotal);
-      let monthlyAverage = {name: months[i], average: average};
+      let monthlyAverage = {name: months[i], uv: average};
       monthlyMoodAverages.push(monthlyAverage);
     }
     this.setState({monthlyMoodAverages: monthlyMoodAverages});
-    console.log(monthlyMoodAverages);
-    return monthlyMoodAverages;
+    this.setState({dailyMoodData: monthlyMoodLogs});
   }
 
   componentWillMount= () => {
@@ -84,7 +92,6 @@ toggleYearlyView = () => {
         type: 'GET',
         data: this.state.user,
         success: (response) => {
-          this.pullOutEachDayJoyScore(response);
           this.calculateMonthlyMoodAverage(response);
         }
       });
@@ -189,9 +196,11 @@ toggleYearlyView = () => {
                       });     
       };
     });
+    console.log(this.state.month);
   };
 
   render() {
+    console.log(this.state.data);
     return (
       <div>
       <Navbar

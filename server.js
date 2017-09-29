@@ -8,6 +8,8 @@ const app = express();
 
 const passport = require("./config/passport")
 
+const flash = require("connect-flash")
+
 
 
 
@@ -29,6 +31,7 @@ app.use(fileUpload());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Routes
 // =============================================================

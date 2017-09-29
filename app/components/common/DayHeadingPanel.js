@@ -8,7 +8,7 @@ class DayHeadingPanel extends Component {
           className="main-panel col s1"
         >
             <div 
-              className="panel-body"
+              id="panel-body-heading"
               >
                 <div
                   id="panel-day-heading"

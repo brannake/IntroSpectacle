@@ -49,6 +49,14 @@ nav {
   position: relative;
   overflow: hidden;
   justify-content: center;
+  background: lightgrey;
+  border: 1px solid darkgrey;
+}
+
+#panel-body-heading {
+  background: grey;
+  height: 100%;
+  border: 1px solid grey;
 }
 
 #media-container {
@@ -56,7 +64,6 @@ nav {
 }
 
 .main-panel {
-  border: 1px solid black;
   height: 80px;
   padding: 0px;
 }
@@ -75,10 +82,10 @@ nav {
 }
 
 #react-FC {
-    margin: 10px;
-    position: relative;
-    left: 18%;
-    bottom: 20px;
+  margin: 10px;
+  position: relative;
+  left: 18%;
+  bottom: 20px;
 }
 
 .materialboxed {
@@ -137,10 +144,12 @@ nav {
 }
 
 #panel-day-heading {
-  color: white;
+  color: black;
+  background: darkgrey;
   font-size: 140%;
   text-align: center;
   line-height: 3.6em;
+  font-weight: bold;
 }
 
 #date-holder {
@@ -158,9 +167,10 @@ nav {
   position: absolute;
   top: 69px;
   right: 0px;
-  height: 50%;
+  height: 15%;
   width: 23.6%;
-  background: white;
+  background: #191919;
+  padding: 10px;
 }
 
 #X-axis-display {
@@ -169,6 +179,7 @@ nav {
   left: 30%;
   font-size: 20px;
   font-weight: bold;
+  color: white;
 }
 
 #Y-axis-display {
@@ -177,22 +188,24 @@ nav {
   left: -2%;
   font-size: 20px;
   font-weight: bold;
+  color: white;
 }
 
 #side-display-text-container {
-  color: grey;
+  color: color;
   font-size: 20px;
   font-weight: bold;
+  padding: 20px;
 }
 
 #side-display {
   position: absolute;
   left: 3%;
   top: 2%;
-  background: white;
+  background: #191919;
   border-radius: 20px;
   color: white;
-  height: 80%;
+  height: 100%;
   width: 94%;
 }
 
@@ -256,7 +269,13 @@ tr {
 #score-display {
   border: 1px solid grey;
   margin: 10px;
-  width: 40%;
+  font-weight: bold;
+  padding: 10px;
+  width: 50%;
+}
+
+#modal > div.modal-footer > button {
+  color: white;
 }
 
 .emoticon {
@@ -370,6 +389,10 @@ nav {
 }
 html,body,#page, header { 
   height:100%;
+}
+
+body {
+  background: #191919;
 }
 
 input[type=text]:focus:not([readonly]) {

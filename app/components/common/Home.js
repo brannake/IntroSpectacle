@@ -253,11 +253,58 @@ class Home extends Component {
           if (parseInt(date) === parseInt(data[i].day) && month === data[i].month) {
             return (
               <div>
-                <div id="caption-text-display-message">{data[i].text}</div>
-                <div id="overall-mood-score">Overall Mood Score: {parseFloat(data[i].joy_score * 100).toFixed(2)}</div>
-                <div id="anger-mood-score">Anger: {parseFloat(data[i].anger_score * 100).toFixed(2)}</div>
-                <div id="fear-mood-score">Fear: {parseFloat(data[i].fear_score * 100).toFixed(2)}</div>
-                <div id="disgust-mood-score">Disgust: {parseFloat(data[i].disgust_score * 100).toFixed(2)}</div>
+              <div id="caption-text-display-message">{data[i].text}</div>
+                <table className="bordered" id="score-display">
+                <thead>
+                  <tr>
+                    <th>Mood</th>
+                    <th>Score</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Overall
+                      <img
+                        className="emoticon"
+                        id="overall"
+                        src="https://cdn.pixabay.com/photo/2017/03/05/21/55/emoticon-2120024_960_720.png"
+                      />
+                    </td>
+                    <td>{parseFloat(data[i].joy_score * 100).toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td
+                    >Anger
+                    <img
+                        className="emoticon"
+                        id="angry"
+                        src="https://i.pinimg.com/736x/4f/49/65/4f4965192fc86eeb8057219075ebc2bd--angry-emoji-the-emoji.jpg"
+                      />
+                    </td>
+                    <td>{parseFloat(data[i].anger_score * 100).toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td>Fear
+                    <img
+                        className="emoticon"
+                        id="fear"
+                        src="http://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-10/256/face-screaming-in-fear.png"
+                      />
+                    </td>
+                    <td>{parseFloat(data[i].fear_score * 100).toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td>Disgust
+                    <img
+                        className="emoticon"
+                        id="disgusts"
+                        src="http://cdn.makeuseof.com/wp-content/uploads/2015/06/23_emoji.png?x85023"
+                      />
+                    </td>
+                    <td>{parseFloat(data[i].disgust_score * 100).toFixed(2)}</td>
+                  </tr>
+                </tbody>
+               </table>
               </div>
             )
           }

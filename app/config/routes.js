@@ -1,14 +1,15 @@
 import React from "react";
-import { Route, IndexRoute, Router, browserHistory } from "react-router";
+import { Route, IndexRoute, Router, hashHistory } from "react-router";
 
 import Main from "../components/Main";
-import Favorites from "../components/Favorites";
+import MainLogin from "../components/MainLogin";
+import HeatMaps from "../components/HeatMaps";
 
 const routes = (
-  <Router history={browserHistory}>
-    <Route path="/" component={Main}>
-    <Route path="/calendar" component={Main} />
-    </Route>
+  <Router history={hashHistory}>
+    <Route path="/" component={MainLogin}/>
+    <Route path="/calendar" component={Main}/>
+    <Route path="/heatmaps" component={HeatMaps} />
   </Router>
 );
 

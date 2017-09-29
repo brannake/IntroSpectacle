@@ -20,11 +20,11 @@ class Panel extends Component {
       for (let i=0; i < imageArray.length; i++) {    
         if (datePanelDay === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
           return (
-            <div>
-            <MediaBox
-              src={imageArray[i].image}
-              onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
-            />
+            <div id="media-container">
+              <MediaBox
+                src={imageArray[i].image}
+                onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
+              />
             </div>
           );
         } else {

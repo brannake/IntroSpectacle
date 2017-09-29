@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import SideNavMod from "./SideNavMod";
 import {Dropdown, Button, NavItem} from 'react-materialize'
 
 class Navbar extends Component {
@@ -19,6 +20,7 @@ class Navbar extends Component {
         currentMonth: selectedMonth
       });
       this.props.callbackfromParent(selectedMonth);
+      window.CONTEXT.month = selectedMonth;
     }
 
     //Function to render the individual Nav items for month
@@ -40,7 +42,9 @@ class Navbar extends Component {
   render() {
     return (
     <div>
-    <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
+    <nav className="navbar navbar-inverse">
+      <Link id="trends-button" to="/heatmaps">TRENDS</Link>
+      <Link id="calendar-button" to="/calendar">MY CALENDAR</Link>
       <div className="container-fluid">
       <div className="navbar-header">
       </div>
@@ -51,7 +55,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "lightblue", background: "white"}}
+                style={{color: "black", background: "white"}}
               >{this.props.currentMonth + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -59,7 +63,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "lightblue" }}
+                  style={{ background: "black", color: "white" }}
                 >{this.props.currentMonth + " " + this.props.day}</Button>
                 }>
                 {this.renderMonths()}
@@ -69,7 +73,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "lightblue", background: "white"}}
+                style={{color: "black", background: "white"}}
               >{this.props.month + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -77,13 +81,14 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "lightblue" }}
+                  style={{ background: "black", color: "white" }}
                 >{this.props.month + " " + this.props.day}</Button>
                 }>
                 {this.renderMonths()}
               </Dropdown>
             }
           </div>
+          <div id="logo">introspectiv</div>
         </div>
       </div>
     </nav>

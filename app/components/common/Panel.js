@@ -1,85 +1,92 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
-
+import ReactDOM from 'react-dom';
+import {MediaBox} from 'react-materialize';
 
 class Panel extends Component {
   state = {
-    images: [],
-    mounted: false
+    imageLoaded: false
   };
   //Passes the selected day up to the Home component
-  handleDayChange = (event) => {
+  handleDayChange = () => {
     event.preventDefault();
-    let selectedDay = ($(event.target).text());
-    console.log(this.props.images);
-    this.props.callbackfromParent(selectedDay);
+    let domNode = ReactDOM.findDOMNode(this);
+    let calendarDate = domNode.innerText.trim();
+    this.props.callbackfromParent(calendarDate);
   }
 
-  componentDidMount= () => {
-    if (this.state.mounted === false) {
-      console.log("IT REALLY WORKED");
-      this.setState({images: this.props.images, mounted: true});
-    } else {
-      console.log("already loaded!");
-    };
-  };
+  //Renders all the image matches on the page
+  renderImageIfMatch = (datePanelDay, datePanelMonth, imageArray) => {
+    if (this.props.imageData) {
+      for (let i=0; i < imageArray.length; i++) {    
+        if (datePanelDay === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
+          return (
+            <div id="media-container">
+              <MediaBox
+                src={imageArray[i].image}
+                onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
+              />
+            </div>
+          );
+        } else {
+          console.log("no match here");
+        }
+      }
+    }
+  }
 
   //This renders each panel as a plain white square, unless it is the current date or a selected date
+  //If state has been set, load the image into each panel by checking the image date
   render() {
-    if (this.state.images) {
-    return (
-      <div className="col s1">
-        {(this.props.date == this.props.dateselected) ?
-          <div className="panel-body"
-          id="dateselected"
-          onClick={this.handleDayChange}>
-            {this.props.date}
-            <img src={this.props.images[2].image}/>
-          </div>
-          :
-          <div>
-        {(this.props.date == this.props.currentdate) ?
-          <div className="panel-body"
-          id="currentdate"
-          onClick={this.handleDayChange}>
-            {this.props.date}
-              <img src={this.state.images}/>
-          </div>:
-          <div className="panel-body"
-          onClick={this.handleDayChange}>
-            {this.props.date}
-              <img src={this.state.images}/>
-          </div>}
-          </div>}
-      </div>
-    )} else{
       return (
-        <div className="col s1">
+        //Checks to see if the date being rendered is the date selected
+        <div 
+          className="main-panel col s1"
+          onClick={this.handleDayChange}
+        >
           {(this.props.date == this.props.dateselected) ?
-            <div className="panel-body"
-            id="dateselected"
-            onClick={this.handleDayChange}>
-              {this.props.date}
-              <img src="https://d3g919u5f14ld1.cloudfront.net/assets/images/users/default-avatar.svg"/>
+            <div 
+              className="panel-body"
+              id="dateselected"
+              >
+                <div
+                  id="date-holder"
+                >
+                  {this.props.date}
+                </div>
+                {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
             </div>
-            :
-            <div>
-          {(this.props.date == this.props.currentdate) ?
-            <div className="panel-body"
-            id="currentdate"
-            onClick={this.handleDayChange}>
-              {this.props.date}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg"/>
+          :
+          //Checks to see if the date being rendered is the current date
+          //Otherwise, render basic date panel
+          <div>
+            {(this.props.date == this.props.currentdate && this.props.month == this.props.currentmonth) ?
+            <div
+              className="panel-body"
+              id="currentdate"
+              onClick={this.handleDayChange}
+            >
+              <div
+                id="date-holder"
+              >
+                  {this.props.date}
+                </div>
+                  {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
             </div>:
-            <div className="panel-body"
-            onClick={this.handleDayChange}>
-              {this.props.date}
-              <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/1859-Martinique.web.jpg"/>
-            </div>}
-            </div>}
-        </div>
-      )}
-    }
+            <div 
+              className="panel-body"
+              id="normaldate"
+              onClick={this.handleDayChange}
+            >
+              <div
+                  id="date-holder"
+              >
+                {this.props.date}
+                </div>
+                  {this.renderImageIfMatch(this.props.date, this.props.month, this.props.imageData)}
+          </div>}
+        </div>}
+      </div>
+    )} 
   }
 
 export default Panel;

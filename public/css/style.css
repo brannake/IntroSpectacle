@@ -5,6 +5,7 @@ html {
 
 body {
   margin-bottom: 60px;
+  overflow-x:hidden;
 }
 
 img {
@@ -22,7 +23,7 @@ hr {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 60px;
@@ -82,6 +83,13 @@ hr {
   font-size: 30px;
   transition: 0.5s;
 }
+
+#calendar-button {
+  position: absolute;
+  top:2%;
+  left: 6.5%;
+}
+
 
 #currentdate {
   background: orange;
@@ -259,9 +267,6 @@ input[type=tel]:focus:not([readonly]){
 }
 
 
-
-=======
-<<<<<<< HEAD
 #side-display-caption-container {
   position: absolute;
   bottom: 0px;
@@ -276,7 +281,7 @@ input[type=tel]:focus:not([readonly]){
 
 #side-display-img {
   border-radius: 20px;
-=======
+
 #modal-submit {
   position: absolute;
   left: 43.8%;
@@ -350,6 +355,7 @@ input[type=tel]:focus:not([readonly]){
   margin: 10px;
   display: inline;
 }
+
 
 
 

@@ -59,9 +59,8 @@ module.exports = function(app) {
 
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {
-    console.log(req.body);
     let userName = req.body.user;
-    db.dateInfo.findAll({where: {user: 'default' }}).then(function(db) {
+    db.dateInfo.findAll({where: {user:'default'}, order: [['day', 'DESC']] }).then(function(db) {
       // We have access to the todos as an argument inside of the callback function
       res.send(db);
     });
@@ -93,50 +92,56 @@ module.exports = function(app) {
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
     let userName = "default";
     let newImage = req.files.file.data;
-    let selectedDate = req.body.date;
+    let selectedDate = parseInt(req.body.date);
     let selectedMonth = req.body.month;
+    let text = req.body.text;
 
     fs.writeFile((path.join("public/savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
 
-    console.log(path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg"));
-
     let filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
 
-      db.dateInfo.create({user: "default",
-                          month: selectedMonth,
-                          day: selectedDate,
-                          text: req.body.text, 
-                          date: Date.now(),
-                          image: filepath})
-      .then(function(dbdateInfo) { 
-        res.send(dbdateInfo);
-    });
-  });
+    let params = {
+      // Get the text from the JSON file.
+      text: req.body.text,
+      tones: 'emotion'
+    };
 
-  app.post("/api/text", function(req, res) {
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property (req.body)
-    console.log(req.body.text);
-      db.dateInfo.create({user: "Kevin",
-                          text: req.body.text, 
-                          date: Date.now(),
-                          image: "image"})
-      .then(function(dbdateInfo) { 
-        res.send(dbdateInfo);
-    });
-  });
-
-  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
-  // req.params.id
-  app.delete("/api/dates/:id", function(req, res) {
-    // We just have to specify which todo we want to destroy with "where"
-    db.dateInfo.destroy({
-      where: {
-        id: req.params.id
+    tone_analyzer.tone(params, function(error, response) {
+      if (error) {
+        console.log('error:', error);
       }
+      else {
+        db.dateInfo.create({
+          user: "default",
+          month: selectedMonth,
+          day: selectedDate,
+          text: text,
+          anger_score: response.document_tone.tone_categories[0].tones[0].score,
+          disgust_score: response.document_tone.tone_categories[0].tones[1].score,
+          fear_score: response.document_tone.tone_categories[0].tones[2].score,
+          joy_score: response.document_tone.tone_categories[0].tones[3].score,
+          sadness_score: response.document_tone.tone_categories[0].tones[4].score,        
+          date: Date.now(),
+          image: filepath})
+        .then(function(dbdateInfo) { 
+          res.send(dbdateInfo);
+          });
+        }
+      }
+    );
+  });
+
+
+  app.post("/api/graphs", function(req, res) {
+    console.log(req.body);
+    console.log("FAT ROOOMMATE IS FAT");
+    let userName = req.body.user;
+    let month = req.body.month;
+    db.dateInfo.findAll({
+      where: {user: userName, month: month},
     }).then(function(db) {
-      res.json(db);
+      console.log(db);
+      res.send(db);
     });
   });
 

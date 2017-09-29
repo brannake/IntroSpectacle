@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router";
+import SideNavMod from "./SideNavMod";
 import {Dropdown, Button, NavItem} from 'react-materialize'
 
 class Navbar extends Component {
@@ -7,7 +8,7 @@ class Navbar extends Component {
     super();
     this.state = {
       months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-      currentMonth: 'January'
+      currentMonth: ""
     };
   }
 
@@ -19,6 +20,7 @@ class Navbar extends Component {
         currentMonth: selectedMonth
       });
       this.props.callbackfromParent(selectedMonth);
+      window.CONTEXT.month = selectedMonth;
     }
 
     //Function to render the individual Nav items for month
@@ -28,36 +30,71 @@ class Navbar extends Component {
         key={month}
         id={month}
         onClick={this.handleChange} >
-      {month}
+        {month}
       </NavItem>
     ));
   }
 
+
+  //Nested conditional statements here again
+  //If the user has selected a day, display that
+  //Otherwise, display the current day/month
   render() {
-    return (<div>
-      <Dropdown trigger={
-        <Button>{this.state.currentMonth}</Button>
-        }>
-        {this.renderMonths()}
-    </Dropdown>
-    <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
+    return (
+    <div>
+    <nav className="navbar navbar-inverse">
+      <Link id="trends-button" to="/heatmaps">TRENDS</Link>
+      <Link id="calendar-button" to="/calendar">MY CALENDAR</Link>
       <div className="container-fluid">
       <div className="navbar-header">
       </div>
-      <ul className="nav navbar-nav">
-        <li className={location.pathname === "/" && "active"}>
-        </li>
-        <li className={location.pathname === "/favorites" && "active"}>
-          <Link id="date-display" to="/favorites">{this.props.month+" "+this.props.day}
-          </Link>
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <div className="nav navbar-nav">
+          <div id="date-display">
+            {(!this.props.month) ?
+              (this.props.day.replace(/\s/g, '').length === 0) ?
+              <Dropdown 
+                trigger={
+              <Button
+                style={{color: "black", background: "white"}}
+              >{this.props.currentMonth + " " + this.props.currentdate}</Button>
+              }>
+                {this.renderMonths()}
+              </Dropdown>:
+              <Dropdown 
+                trigger={
+                <Button
+                  style={{ background: "black", color: "white" }}
+                >{this.props.currentMonth + " " + this.props.day}</Button>
+                }>
+                {this.renderMonths()}
+              </Dropdown>
+            :
+              (this.props.day.replace(/\s/g, '').length === 0) ?
+              <Dropdown 
+                trigger={
+              <Button
+                style={{color: "black", background: "white"}}
+              >{this.props.month + " " + this.props.currentdate}</Button>
+              }>
+                {this.renderMonths()}
+              </Dropdown>:
+              <Dropdown 
+                trigger={
+                <Button
+                  style={{ background: "black", color: "white" }}
+                >{this.props.month + " " + this.props.day}</Button>
+                }>
+                {this.renderMonths()}
+              </Dropdown>
+            }
+          </div>
+          <div id="logo">introspectiv</div>
+        </div>
+      </div>
+    </nav>
   </div>
     );
   }
 }
 
 export default Navbar;
-

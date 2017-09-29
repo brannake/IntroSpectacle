@@ -18,6 +18,14 @@ nav {
   left: 10px;
 }
 
+.btn {
+  background: black;
+}
+
+.btn:hover {
+  background: grey;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -25,7 +33,7 @@ nav {
   height: 60px;
   padding-right: 20px;
   padding-left: 20px;
-  background: blue;
+  background: black;
   color: white;
 }
 
@@ -79,7 +87,7 @@ nav {
 }
 
 .navbar {
-  background: blue;
+  background: black;
   margin-bottom: 30px;
 }
 
@@ -182,7 +190,7 @@ nav {
 }
 
 .collection-item {
-  color: blue;
+  color: black;
 }
 
 .row .col {
@@ -202,7 +210,7 @@ nav {
 #modal-submit {
   position: absolute;
   left: 43.8%;
-  background: blue;
+  background: black;
 }
 
 #side-nav {
@@ -214,7 +222,7 @@ nav {
 }
 
 #day-headings {
-  background: blue;
+  background: black;
   text-shadow: 0px;
 }
 
@@ -236,7 +244,7 @@ nav {
 #overall-mood-score {
   border: 1px solid grey;
   border-radius: 20px;
-  background: blue;
+  background: black;
   color: white;
   padding: 10px;
   margin: 10px;
@@ -379,9 +387,16 @@ input[type=tel]:focus:not([readonly]){
 
 #SideNavMod > span > button {
   background: white;
-  color: blue;
+  color: black;
+}
+
+#logo {
+  position: absolute;
+  right: 0.5%;
+  font-size: 2.1rem;
+  font-family: "Roboto", sans-serif;
 }
 
 #modal > div.modal-content > div:nth-child(3) > form > button {
-  background: blue;
+  background: black;
 }

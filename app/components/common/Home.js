@@ -319,6 +319,7 @@ class Home extends Component {
             refreshImages={this.props.refreshImages}
           />
 	      </Modal>
+        <div id="side-display-container"></div>
       </div>
     </div>
     );

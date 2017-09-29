@@ -26,6 +26,12 @@ nav {
   background: grey;
 }
 
+#background {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

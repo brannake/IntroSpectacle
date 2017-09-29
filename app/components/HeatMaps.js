@@ -17,14 +17,7 @@ class HeatMaps extends Component {
     selectedView: "monthly",
     monthlyMoodAverages: '',
     dailyMoodData: [],
-    data: [
-      {name: 'March', uv: 40},
-      {name: 'April', uv: 30},
-      {name: 'May', uv: 20},
-      {name: 'June', uv: 28},
-      {name: 'July', uv: 19},
-      {name: 'August', uv: 29},
-      {name: 'September', uv: 49}]
+    data: window.CONTEXT.data
   };
 
 toggleMonthlyView = () => {
@@ -193,10 +186,10 @@ toggleYearlyView = () => {
                       });     
       };
     });
-    console.log(this.state.month);
   };
 
   render() {
+    console.log(window.CONTEXT.data);
     console.log("rerendered");
     console.log(this.state.data);
     return (

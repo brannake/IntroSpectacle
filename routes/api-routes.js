@@ -78,14 +78,11 @@ module.exports = function(app) {
 
 
   app.post("/api/graphs", function(req, res) {
-    console.log(req.body);
-    console.log("FAT ROOOMMATE IS FAT");
     let userName = req.body.user;
     let month = req.body.month;
     db.dateInfo.findAll({
       where: {user: userName, month: month},
     }).then(function(db) {
-      console.log(db);
       res.send(db);
     });
   });

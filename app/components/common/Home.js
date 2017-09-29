@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { render } from 'react-dom';
-import API from "../../utils/API";
 import Panel from "./Panel";
 import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";

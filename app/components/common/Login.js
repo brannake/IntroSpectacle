@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { render } from 'react-dom';
-import API from "../../utils/API";
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Footer, Row, Input, Icon, image} from 'react-materialize';
 import {Link} from "react-router";
 

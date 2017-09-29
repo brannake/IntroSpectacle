@@ -41,6 +41,7 @@ nav {
   padding-left: 20px;
   background: black;
   color: white;
+  z-index: 2;
 }
 
 .panel-body {

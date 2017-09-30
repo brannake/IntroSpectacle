@@ -189,6 +189,7 @@ toggleYearlyView = () => {
   };
 
   render() {
+    console.log(this.state.data);
     return (
       <div>
       <Navbar

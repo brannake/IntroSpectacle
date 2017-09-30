@@ -85,7 +85,7 @@ class Login extends Component {
                     waves='light'    
                     onClick={() => {
                 $('#signup').modal('open')
-                }}>Sign up  <Icon right> create </Icon>    
+                }}>Sign up   
                 </Button>
                 </div>
                 <Modal className= "page-footer example"

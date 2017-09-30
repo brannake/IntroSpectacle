@@ -7,7 +7,7 @@ const db = require("../models");
 passport.use(new LocalStrategy(
   {
     usernameField: "user",
-    passReqToCallback: true 
+    // passReqToCallback: true 
   },
   function(user, password, done) {
        db.Users.findOne({

@@ -11,8 +11,6 @@ const passport = require("./config/passport")
 const flash = require("connect-flash")
 
 
-
-
 // Sets up the Express App
 // =============================================================
 const PORT = process.env.PORT || 8080;

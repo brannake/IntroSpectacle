@@ -40,27 +40,27 @@ class LoginForm extends Component {
                 type: 'POST',
                 success: (data) => {
                     console.log(data); // "/members"
-                    this.setState({userInput: "",
+                    this.setState
+                    ({userInput: "",
                     loginPasswordInput:""});
                      }
                   })                  
                   .then(function(data){
-                      console.log("this worked")});
+                      window.location.replace(data)});
              //show who is currently signed in        
-             $.ajax({
-                 url: '/api/user_data',
-                 type: 'GET',
-                 success: (data) => {
-                     console.log(`welcome ${this.state.userInput}!`)
-                 }
-             })        
+            //  $.ajax({
+            //      url: '/api/user_data',
+            //      type: 'GET',
+            //      success: (data) => {
+            //          console.log(`welcome ${this.state.userInput}!`)
+            //      }
+            //  })        
            
                     
                     // .catch(function(err) {
                     //     console.log(err);
                     // })
-                      
-                      
+                
                 console.log("user: " + this.state.userInput);
                 console.log("password: " + this.state.loginPasswordInput)
 
@@ -89,9 +89,7 @@ class LoginForm extends Component {
                 </Input>          
                 <Button className="btn waves-effect waves-light modal-action" onClick={this.loginUser} > Submit </Button>
             </form>
-              
-                 
-       
+            
             )
         }
         

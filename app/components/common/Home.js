@@ -6,16 +6,9 @@ import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
-<<<<<<< HEAD
-import SubmitTextForm from "./SubmitTextForm";
-import SideDisplay from "./SideDisplay";
-import {Modal, Button, Slide, Slider} from 'react-materialize';
-
-=======
 import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
 import CalendarHeatmap from 'react-calendar-heatmap';
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
 
 class Home extends Component {
   state = {
@@ -25,10 +18,7 @@ class Home extends Component {
     currentMonth: '',
     day: '',
     currentDate: '',
-<<<<<<< HEAD
-=======
     selectedView: 'monthly',
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
     dateSelected: '',
     dateSelectedSrc: "",
     mounted: false,
@@ -47,44 +37,6 @@ class Home extends Component {
       let date = new Date();
       let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
       this.setState({day: dd, currentDate: dd});
-<<<<<<< HEAD
-      let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
-      if (MM == "01") {
-        this.setState({month: "January", currentMonth: "January"})
-      }
-      if (MM == "02") {
-        this.setState({month: "February", currentMonth: "February"})
-      }
-      if (MM == "03") {
-        this.setState({month: "March", currentMonth: "March"})
-      }
-      if (MM == "04") {
-        this.setState({month: "April", currentMonth: "April"})
-      }
-      if (MM == "05") {
-        this.setState({month: "May", currentMonth: "May"})
-      }
-      if (MM == "06") {
-        this.setState({month: "June", currentMonth: "June"})
-      }
-      if (MM == "07") {
-        this.setState({month: "July", currentMonth: "July"})
-      }
-      if (MM == "08") {
-        this.setState({month: "August", currentMonth: "August"})
-      }
-      if (MM == "09") {
-        this.setState({month: "September", currentMonth: "September"})
-      }
-      if (MM == "10") {
-        this.setState({month: "October", currentMonth: "October"})
-      }
-      if (MM == "11") {
-        this.setState({month: "November", currentMonth: "November"})
-      }
-      if (MM == "12") {
-        this.setState({month: "December", currentMonth: "December"})
-=======
       window.CONTEXT.currentdate = dd;
       let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
       if (MM == "01") {
@@ -134,7 +86,6 @@ class Home extends Component {
       if (MM == "12") {
         this.setState({month: "December", currentMonth: "December"})
         window.CONTEXT.month = "December";
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
       }
     }
     this.setState({mounted: true});
@@ -247,10 +198,7 @@ class Home extends Component {
    //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromPanel) => {
     this.setState({dateSelected: dataFromPanel});
-<<<<<<< HEAD
-=======
     window.CONTEXT.day = dataFromPanel; 
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
   }
 
   getImageCallback = (imageSrc) => {
@@ -266,11 +214,7 @@ class Home extends Component {
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
   renderFirstDates(datesArray) {
     return datesArray.map(date => (
-<<<<<<< HEAD
-      <Panel
-=======
       <DayHeadingPanel
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
         key={date}
         date={date}
       >
@@ -297,20 +241,6 @@ class Home extends Component {
     ));
   }
 
-<<<<<<< HEAD
-  //Generates the modal message, forces the user to pick a date
-  handleModalMessage = (date) => {
-    if (date.replace(/\s/g, '').length === 0) {
-      return (
-        <div id="warning-modal">Please select a date before submitting.</div>
-      )
-    } else {
-      return (
-        <div>Submit a photo and a brief description of your day.</div>
-      )
-    }
-  }
-=======
   //Adds the user-submitted caption to the examination modal
   //Forces the user to pick a date before they can examine
   handleModalMessage = (data, date, month) => {
@@ -381,25 +311,16 @@ class Home extends Component {
         }
       }
     }
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
 
   render() {
     return (
     <div>
       <Navbar
-<<<<<<< HEAD
-      callbackfromParent={this.myMonthCallback}
-      currentdate={this.state.day}
-      day={this.state.dateSelected}
-      month={this.state.month}
-      currentMonth={this.state.currentMonth}
-=======
         callbackfromParent={this.myMonthCallback}
         currentdate={this.state.day}
         day={this.state.dateSelected}
         month={this.state.month}
         currentMonth={this.state.currentMonth}
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
       />
       <div className="calendar">
         <div className="row" id="day-headings">
@@ -421,21 +342,10 @@ class Home extends Component {
           {this.renderSecondDates(this.state.sixthRowDates)}
         </div>
       </div>
-<<<<<<< HEAD
-      <SideDisplay
-        imageSrc={this.state.dateSelectedSrc}
-      />
-      <Footer/>
-      <div className="row">
-        <div className="col s3">
-        </div>
-	      <Button
-=======
       <Footer/>
       <div className="row">
 	      <Button 
           waves='light'
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
           id="modal-submit" 
           onClick={() => {
 		        $('#modal').modal('open')
@@ -444,27 +354,17 @@ class Home extends Component {
         </Button>
 	      <Modal
 		      id="modal"
-<<<<<<< HEAD
-		      header={this.state.month +" "+ this.state.dateSelected}>
-            {this.handleModalMessage(this.state.dateSelected)}
-=======
 		      header={this.state.month +" "+ this.state.dateSelected}
         >
             <div id="caption-text-display">
               {this.handleModalMessage(this.props.imageData, this.state.dateSelected, this.state.month)}
             </div>
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
           <SubmitForm
             data={this.props.imageData}
             selectedDate={this.state.dateSelected}
             selectedMonth={this.state.month}
             refreshImages={this.props.refreshImages}
-<<<<<<< HEAD
-            />
-          <SubmitTextForm/>
-=======
           />
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
 	      </Modal>
         <div id="side-display-container"></div>
       </div>

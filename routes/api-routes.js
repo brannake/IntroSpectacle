@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const passport = require("../config/passport")
 
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 
 
 // Routes
@@ -16,14 +18,19 @@ module.exports = function(app) {
 
   app.post("/api/login", passport.authenticate("local",
   { 
-    successRedirect: "/api/calendar",
+    successRedirect: "/?/calendar",
     failureRedirect: "/",
     failureFlash: true}
   ),
   function(req, res) {
-    res.redirect("/");
+    res.redirect("/calendar");
   });
 
+  app.get('/calendar', isAuthenticated, function (req, res) {
+    res.send('calendar', {
+        user: req.user
+    });
+});
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
@@ -68,19 +75,17 @@ module.exports = function(app) {
 
 
 //   Route for getting some data about our user to be used client side
-  app.get("/api/user_data", function(req, res) {
-    if (!req.user) {
-      // The user is not logged in, send back an empty object
-      res.json({});
-    }
-    else {
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        user: req.users.user,
-      });
-    }
-  });
+  // app.get("/api/user_data", function(req, res) {
+  //   if (!req.user) {
+     
+  //     res.json({});
+  //   }
+  //   else {     
+  //     res.json({
+  //       user: req.users.user,
+  //     });
+  //   }
+  // });
 
 
 

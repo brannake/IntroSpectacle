@@ -1,28 +1,10 @@
 import React, { Component } from "react";
-<<<<<<< HEAD
-import Navbar2 from "./common/Navbar2";
-import Footer from "./common/Footer";
-import Login from "./common/Login";
-
-=======
 import Home from "./common/Home";
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
 
 class Main extends Component {
   state = {
     user: 'default',
     imageData: [],
-<<<<<<< HEAD
-    loaded: false
-  };
-
-  render() {
-    return (
-      <div>
-        <Navbar2 />
-         <Login />
-         
-=======
   };
 
   calculateMonthlyMoodAverage = (arrayResponse) => {
@@ -84,7 +66,6 @@ componentWillMount= () => {
           imageData={this.state.imageData}
           refreshImages={this.componentWillMount}
         />
->>>>>>> 0448cae06fd4f4d58f455f83d02e23a6fec22517
       </div>
     );
   }

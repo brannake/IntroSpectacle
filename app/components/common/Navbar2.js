@@ -4,9 +4,13 @@ import { Link } from "react-router";
 import LoginForm from "./LoginForm";
 
 const Navbar2 = () => (
-        <Navbar brand='introspectiv' icon='photo_camera' left>               
-            <NavItem href=''>HOME</NavItem>
-            <NavItem href=''>ANALYTICS</NavItem>
+    <Navbar brand='introspectiv' left>
+            <NavItem>
+                <Link to="/heatmaps">TRENDS</Link>
+            </NavItem>
+            <NavItem>
+                <Link to="/calendar">MY CALENDAR</Link>
+            </NavItem>
             <div className="wrapper">
                     <Button 
                     id="login-btn"
@@ -15,14 +19,14 @@ const Navbar2 = () => (
                 $('#login').modal('open')
                 }}>Login      
                 </Button>
-                </div>
+            </div>
                 <Modal className= "page-footer example"
                     id='login'
                     header='Login'>
-                    <LoginForm />         
+                    <LoginForm />                                                  
                 </Modal>
         </Navbar>
-       
+  
    );
 
 export default Navbar2;

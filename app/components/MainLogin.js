@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Login from "./common/Login";
+import Navbar2 from "./common/Navbar2";
+
 
 class MainLogin extends Component {
   state = {
@@ -10,6 +12,7 @@ class MainLogin extends Component {
   render() {
     return (
       <div>
+        <Navbar2/>       
         <Login/>
       </div>
     );

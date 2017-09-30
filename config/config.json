@@ -16,9 +16,9 @@
   "production": {
     "username": "dy388znrr3l2meea",
     "password": "d6io3wu5dq7wkptn",
-    "database": "burgers_db",
+    "database": "IntroSpectiv_db",
     "host": "a07yd3a6okcidwap.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
-}
+

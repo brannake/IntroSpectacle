@@ -1,14 +1,62 @@
 import React, { Component } from "react";
-import { render } from 'react-dom';
+import ReactDOM, { render } from 'react-dom';
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Footer, Row, Input, Icon, image} from 'react-materialize';
 import {Link} from "react-router";
 
 class Login extends Component {
   state = {
-
+      username:'',
+      password:''
   };
 
+  handleUsernameInputChange = (event) => {
+    console.log(event.currentTarget.value);
+    this.setState({
+        username: event.currentTarget.value
+    });
+  }
+
+  handlePasswordInputChange = (event) => {
+    console.log(event.currentTarget.value);
+    this.setState({
+        password: event.currentTarget.value
+    });
+  }
+
+  loginUser = () => {
+
+    console.log(this.state);
+
+    $.ajax({
+        url: 'api/login',
+        type: 'POST',
+        data: this.state,
+        success: (data) => {
+          console.log(data);
+          this.setState({imageData:data});
+          this.calculateMonthlyMoodAverage(data);
+          this.setState({loaded: true});
+        }
+      });
+    }
+
+    signUpUser = () => {
+        
+            console.log(this.state);
+        
+            $.ajax({
+                url: 'api/signup',
+                type: 'POST',
+                data: this.state,
+                success: (data) => {
+                  console.log(data);
+                }
+              });
+            }
+
+
   render() {
+    console.log("wtf");
     return (
     <div>
         <Navbar brand='introspectiv' left>
@@ -35,13 +83,13 @@ class Login extends Component {
                         name="user"
                         s={6} label="User Name"
                         value={this.state.newUserInput}
-                        onChange={this.handleInputChange}              
+                        onChange={this.handleUsernameInputChange}              
                         validate><Icon>account_circle</Icon></Input>
                         <Input
                         name="Password"
                         s={6} 
                         label="Password"
-                        onChange={this.handleInputChange}
+                        onChange={this.handlePasswordInputChange}
                         value={this.state.passwordInput}                
                         validate type='tel'><Icon>lock</Icon></Input>
                     </form>
@@ -96,21 +144,21 @@ class Login extends Component {
                         name="user"
                         s={6} label="User Name"
                         value={this.state.newUserInput}
-                        onChange={this.handleInputChange}              
+                        onChange={this.handleUsernameInputChange}              
                         validate><Icon>account_circle</Icon></Input>
                         <Input
                         name="Password"
                         s={6} 
                         label="Password"
-                        onChange={this.handleInputChange}
-                        value={this.state.passwordInput}                
+                        onChange={this.handlePasswordInputChange}
+                        value={this.state.passwordInput}               
                         validate type='tel'><Icon>lock</Icon></Input>
                     </form>
                         <div className="modal-footer">
                         <Button
                             id="submit-button"
                             className="btn waves-effect waves-light modal-action"
-                            onClick={this.signupUser}> 
+                            onClick={this.signUpUser}> 
                         Submit
                         </Button>
                         </div>            

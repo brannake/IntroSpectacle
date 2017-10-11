@@ -3,12 +3,13 @@
 const express = require("express");
 const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
+const passport = require("passport");
 const app = express();
 
 
 // Sets up the Express App
 // =============================================================
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8086;
 
 // Requiring our models for syncing
 const db = require("./models");
@@ -19,6 +20,8 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(fileUpload());
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 // =============================================================

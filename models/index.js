@@ -18,6 +18,7 @@ var sequelize = new Sequelize("tm7hodyik26q7v83", "dy388znrr3l2meea", "d6io3wu5d
     idle: 10000
   },
 });
+
 fs
   .readdirSync(__dirname)
   .filter(function(file) {

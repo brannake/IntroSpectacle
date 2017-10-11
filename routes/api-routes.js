@@ -9,16 +9,42 @@
 const db = require("../models");
 const fs = require("fs");
 const path = require("path");
-var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-var tone_analyzer = new ToneAnalyzerV3({
+const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+const tone_analyzer = new ToneAnalyzerV3({
   username: "f2974f88-c1cc-49d8-a758-b2fd093e519a",
   password: "vIMDxNMDQMVD",
   version_date: '2016-05-19'
 });
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (!user.verifyPassword(password)) { return done(null, false); }
+      return done(null, user);
+    });
+  }
+));
+
 // Routes
 // =============================================================
 module.exports = function(app) {
+
+  app.post('/api/login', 
+    function() {
+      console.log(req);
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login' })
+      }
+  );
+
+  app.post('/api/signup', function (req,res) {
+    console.log("Add users");
+  }
+);
 
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {

@@ -7,6 +7,12 @@ class Main extends Component {
     imageData: [],
   };
 
+
+  //This is a big fat function that calculates the average mood of each month
+  //Also packages the daily mood scores for each month
+  //Attaches to the window for now (*hack*)
+  //Will need to refactor and use state manager for data flow
+
   calculateMonthlyMoodAverage = (arrayResponse) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let monthlyMoodAverages = [];

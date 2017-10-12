@@ -15,13 +15,13 @@ module.exports = function(passport) {
     // passport needs ability to serialize and unserialize users out of session
 
     // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
+    passport.serializeUser(function(username, done) {
         console.log("serialized");
-        done(null, user.id);
+        done(null, username);
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
+    passport.deserializeUser(function(username, done) {
         console.log("deserialized");
         db.user.findAll({where: {username: username}}, function(err, user) {
             done(err, user);
@@ -43,15 +43,21 @@ module.exports = function(passport) {
     function(req, username, password, done) {
         console.log(username);
         console.log(password);
-
         // asynchronous
         // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        db.user.findOrCreate({where: {username: username, password: password}})
-            .then(() => {
-                console.log("woohoo")
-    });
+        db.user.findOne({where: {username: username, password: password}})
+        .then((user) => {
+            console.log(username);
+            console.log(password);
+            if(user) {
+                return done(null, false);
+            } else {
+                db.user.create({username: username, password: password});
+                 return done(null, true);
+            }
+        });
 })}))};

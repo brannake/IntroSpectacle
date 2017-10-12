@@ -23,7 +23,6 @@ module.exports = function(app) {
 app.post('/api/login',
   passport.authenticate('local'),
   function(req, res) {
-    console.log(req);
     console.log("SUCCESS");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
@@ -33,7 +32,6 @@ app.post('/api/login',
 app.post('/api/signup',
   passport.authenticate('local-signup'),
   function(req, res) {
-    console.log(req);
     console.log("SIGNUP");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.

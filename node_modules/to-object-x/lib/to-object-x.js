@@ -2,7 +2,7 @@
 /**
  * @file ES6-compliant shim for ToObject.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-toobject|7.1.13 ToObject ( argument )}
- * @version 1.4.1
+ * @version 1.5.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -12,6 +12,7 @@
 'use strict';
 
 var requireObjectCoercible = _dereq_('require-object-coercible-x');
+var castObject = _dereq_('cached-constructors-x').Object;
 
 /**
  * The abstract operation ToObject converts argument to a value of
@@ -30,10 +31,38 @@ var requireObjectCoercible = _dereq_('require-object-coercible-x');
  * ToObject(Symbol('foo')); // Object(Symbol('foo'))
  */
 module.exports = function toObject(value) {
-  return Object(requireObjectCoercible(value));
+  return castObject(requireObjectCoercible(value));
 };
 
-},{"require-object-coercible-x":4}],2:[function(_dereq_,module,exports){
+},{"cached-constructors-x":2,"require-object-coercible-x":5}],2:[function(_dereq_,module,exports){
+/**
+ * @file Constructors cached from literals.
+ * @version 1.0.0
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module cached-constructors-x
+ */
+
+'use strict';
+
+/**
+ * Constructors cached from literals.
+ *
+ * @type Object
+ * @example
+ * var constructors = require('cached-constructors-x');
+ */
+module.exports = {
+  Array: [].constructor,
+  Boolean: true.constructor,
+  Number: (0).constructor,
+  Object: {}.constructor,
+  RegExp: (/(?:)/).constructor,
+  String: ''.constructor
+};
+
+},{}],3:[function(_dereq_,module,exports){
 /**
  * @file Checks if `value` is `null` or `undefined`.
  * @version 1.4.1
@@ -64,7 +93,7 @@ module.exports = function isNil(value) {
   return isNull(value) || isUndefined(value);
 };
 
-},{"lodash.isnull":3,"validate.io-undefined":5}],3:[function(_dereq_,module,exports){
+},{"lodash.isnull":4,"validate.io-undefined":6}],4:[function(_dereq_,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -96,7 +125,7 @@ function isNull(value) {
 
 module.exports = isNull;
 
-},{}],4:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 /**
  * @file ES6-compliant shim for RequireObjectCoercible.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-requireobjectcoercible|7.2.1 RequireObjectCoercible ( argument )}
@@ -135,7 +164,7 @@ module.exports = function RequireObjectCoercible(value) {
   return value;
 };
 
-},{"is-nil-x":2}],5:[function(_dereq_,module,exports){
+},{"is-nil-x":3}],6:[function(_dereq_,module,exports){
 /**
 *
 *	VALIDATE: undefined

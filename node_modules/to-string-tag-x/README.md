@@ -24,7 +24,7 @@
 Get an object's ES6 @@toStringTag.
 
 **See**: [19.1.3.6 Object.prototype.toString ( )](http://www.ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)  
-**Version**: 1.4.1  
+**Version**: 1.4.2  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  

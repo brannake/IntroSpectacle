@@ -7,7 +7,6 @@ import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
 import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
-import CalendarHeatmap from 'react-calendar-heatmap';
 
 class Home extends Component {
   state = {

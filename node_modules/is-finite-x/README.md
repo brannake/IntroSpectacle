@@ -24,7 +24,7 @@
 ES6-compliant shim for Number.isFinite.
 
 **See**: [20.1.2.2 Number.isFinite ( number )](http://www.ecma-international.org/ecma-262/6.0/#sec-number.isfinite)  
-**Version**: 3.0.1  
+**Version**: 3.0.2  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  

@@ -2,7 +2,7 @@
 /**
  * @file ES6-compliant shim for Number.isFinite.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-number.isfinite|20.1.2.2 Number.isFinite ( number )}
- * @version 3.0.1
+ * @version 3.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -12,8 +12,7 @@
 'use strict';
 
 var numberIsNaN = _dereq_('is-nan-x');
-var inf = 1 / 0;
-var negInf = 1 / -0;
+var INFINITY = _dereq_('infinity-x');
 
 /**
  * This method determines whether the passed value is a finite number.
@@ -35,10 +34,35 @@ var negInf = 1 / -0;
  * numIsFinite(null);      // false, would've been true with
  */
 module.exports = function isFinite(number) {
-  return typeof number === 'number' && numberIsNaN(number) === false && number !== inf && number !== negInf;
+  return typeof number === 'number' && numberIsNaN(number) === false && number !== INFINITY && number !== -INFINITY;
 };
 
-},{"is-nan-x":2}],2:[function(_dereq_,module,exports){
+},{"infinity-x":2,"is-nan-x":3}],2:[function(_dereq_,module,exports){
+/**
+ * @file The constant value Infinity.
+ * @version 1.0.0
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module infinity-x
+ */
+
+'use strict';
+
+/**
+ * The constant value Infinity derived mathematically by 1 / 0.
+ *
+ * @type number
+ * @example
+ * var INFINITY = require('infinity-x');
+ *
+ * INFINITY === Infinity; // true
+ * -INFINITY === -Infinity; // true
+ * INFINITY === -Infinity; // false
+ */
+module.exports = 1 / 0;
+
+},{}],3:[function(_dereq_,module,exports){
 /**
  * @file ES6-compliant shim for Number.isNaN - the global isNaN returns false positives.
  * @version 1.0.1

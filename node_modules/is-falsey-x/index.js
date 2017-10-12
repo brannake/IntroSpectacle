@@ -1,6 +1,6 @@
 /**
  * @file Test if a given value is falsey.
- * @version 1.0.0
+ * @version 1.0.1
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -8,6 +8,8 @@
  */
 
 'use strict';
+
+var toBoolean = require('to-boolean-x');
 
 /**
  * This method tests if a given value is falsey.
@@ -29,5 +31,5 @@
  * isFalsey(function () {}); // false
  */
 module.exports = function isFalsey(value) {
-  return Boolean(value) === false;
+  return toBoolean(value) === false;
 };

@@ -23,7 +23,7 @@
 ## to-property-key-x
 Converts argument to a value that can be used as a property key.
 
-**Version**: 2.0.1  
+**Version**: 2.0.2  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
@@ -34,6 +34,10 @@ This method Converts argument to a value that can be used as a property key.
 
 **Kind**: Exported function  
 **Returns**: <code>string</code> \| <code>symbol</code> - The converted argument.  
+**Throws**:
+
+- <code>TypeError</code> If argument is not a symbol and is not coercible to a string.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -46,6 +50,9 @@ var toPropertyKey = require('to-property-key-x');
 toPropertyKey(); // 'undefined'
 toPropertyKey(1); // '1'
 toPropertyKey(true); // 'true'
+
 var symbol = Symbol('a');
 toPropertyKey(symbol); // symbol
+
+toPropertyKey(Object.create(null)); // TypeError
 ```

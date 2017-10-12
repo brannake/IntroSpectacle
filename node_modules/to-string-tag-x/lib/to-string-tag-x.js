@@ -2,7 +2,7 @@
 /**
  * @file Get an object's ES6 @@toStringTag.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring|19.1.3.6 Object.prototype.toString ( )}
- * @version 1.4.1
+ * @version 1.4.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -13,7 +13,7 @@
 
 var isNull = _dereq_('lodash.isnull');
 var isUndefined = _dereq_('validate.io-undefined');
-var toStr = Object.prototype.toString;
+var toStr = {}.toString;
 
 /**
  * The `toStringTag` method returns "[object type]", where type is the

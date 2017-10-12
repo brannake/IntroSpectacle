@@ -1,7 +1,7 @@
 /**
  * @file ES6-compliant shim for Number.isFinite.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-number.isfinite|20.1.2.2 Number.isFinite ( number )}
- * @version 3.0.1
+ * @version 3.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -11,8 +11,7 @@
 'use strict';
 
 var numberIsNaN = require('is-nan-x');
-var inf = 1 / 0;
-var negInf = 1 / -0;
+var INFINITY = require('infinity-x');
 
 /**
  * This method determines whether the passed value is a finite number.
@@ -34,5 +33,5 @@ var negInf = 1 / -0;
  * numIsFinite(null);      // false, would've been true with
  */
 module.exports = function isFinite(number) {
-  return typeof number === 'number' && numberIsNaN(number) === false && number !== inf && number !== negInf;
+  return typeof number === 'number' && numberIsNaN(number) === false && number !== INFINITY && number !== -INFINITY;
 };

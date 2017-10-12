@@ -87,13 +87,13 @@ export interface GeometryCollection extends GeoJsonObject {
 }
 
 /***
-* http://geojson.org/geojson-spec.html#feature-objects
+* https://tools.ietf.org/html/rfc7946#section-3.2
 */
 export interface Feature<T extends GeometryObject> extends GeoJsonObject {
     type: 'Feature';
     geometry: T;
-    properties: {} | null;
-    id?: string;
+    properties: any;
+    id?: string | number;
 }
 
 /***

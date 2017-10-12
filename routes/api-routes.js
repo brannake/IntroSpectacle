@@ -40,10 +40,11 @@ module.exports = function(app) {
       }
   );
 
-  app.post('/api/signup', function () {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/signup' })
+  app.post('/api/signup', 
+    function () {
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/signup' })
   }
 );
 

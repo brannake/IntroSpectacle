@@ -1,7 +1,7 @@
 /**
  * @file ES6-compliant shim for ToObject.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-toobject|7.1.13 ToObject ( argument )}
- * @version 1.4.1
+ * @version 1.5.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -11,6 +11,7 @@
 'use strict';
 
 var requireObjectCoercible = require('require-object-coercible-x');
+var castObject = require('cached-constructors-x').Object;
 
 /**
  * The abstract operation ToObject converts argument to a value of
@@ -29,5 +30,5 @@ var requireObjectCoercible = require('require-object-coercible-x');
  * ToObject(Symbol('foo')); // Object(Symbol('foo'))
  */
 module.exports = function toObject(value) {
-  return Object(requireObjectCoercible(value));
+  return castObject(requireObjectCoercible(value));
 };

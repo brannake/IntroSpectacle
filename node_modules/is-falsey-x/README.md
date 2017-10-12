@@ -23,7 +23,7 @@
 ## is-falsey-x
 Test if a given value is falsey.
 
-**Version**: 1.0.0  
+**Version**: 1.0.1  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  

@@ -12,7 +12,7 @@ module.exports = function(passport) {
     // passport session setup ==================================================
     // =========================================================================
     // required for persistent login sessions
-    // passport needs ability to serialize and unserialize users out of session
+    // passport needs ability to serialize and deserialize users out of session
 
     // used to serialize the user for the session
     passport.serializeUser(function(username, done) {
@@ -24,7 +24,7 @@ module.exports = function(passport) {
     passport.deserializeUser(function(username, done) {
         console.log("deserialized");
         db.user.findAll({where: {username: username}}, function(err, user) {
-            done(err, user);
+            done(err, username);
         });
     });
 
@@ -41,23 +41,16 @@ module.exports = function(passport) {
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
     function(req, username, password, done) {
-        console.log(username);
-        console.log(password);
-        // asynchronous
-        // User.findOne wont fire unless data is sent back
         process.nextTick(function() {
-
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
         db.user.findOne({where: {username: username, password: password}})
         .then((user) => {
-            console.log(username);
-            console.log(password);
-            if(user) {
+            if (user) {
                 return done(null, false);
             } else {
                 db.user.create({username: username, password: password});
-                 return done(null, true);
+                 return done(null, username);
             }
         });
 })}))};

@@ -9,26 +9,13 @@
 var db = require("../models");
 var fs = require("fs");
 var path = require("path");
-var passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
+var passport = require("passport");
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
  tone_analyzer = new ToneAnalyzerV3({
   username: "f2974f88-c1cc-49d8-a758-b2fd093e519a",
   password: "vIMDxNMDQMVD",
   version_date: '2016-05-19'
 });
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    console.log("donk");
-    User.findOne({ username: username }, function (err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (!user.verifyPassword(password)) { return done(null, false); }
-      return done(null, user);
-    });
-  }
-));
-
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -43,13 +30,15 @@ app.post('/api/login',
     res.redirect('/users/' + req.user.username);
   });
 
-  app.post('/api/signup', 
-    function () {
-      passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/signup' })
-  }
-);
+app.post('/api/signup',
+  passport.authenticate('local-signup'),
+  function(req, res) {
+    console.log(req);
+    console.log("SIGNUP");
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/users/' + req.user.username);
+  });
 
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {

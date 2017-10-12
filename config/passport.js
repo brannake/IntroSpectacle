@@ -8,6 +8,7 @@ var User            = require('../models/user');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
+    console.log("WOO HOO");
 
     // =========================================================================
     // passport session setup ==================================================
@@ -24,7 +25,7 @@ module.exports = function(passport) {
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         console.log("deserialized");
-        User.findById(id, function(err, user) {
+        User.findAll(username, function(err, user) {
             done(err, user);
         });
     });
@@ -50,7 +51,7 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        User.findOne({ 'username' :  username }, function(err, user) {
+        User.findAll({ 'username' :  username }, function(err, user) {
             // if there are any errors, return the error
             if (err)
                 return done(err);

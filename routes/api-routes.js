@@ -34,15 +34,16 @@ module.exports = function(app) {
 
   app.post('/api/login', 
     function() {
-      console.log(req);
       passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login' })
       }
   );
 
-  app.post('/api/signup', function (req,res) {
-    console.log("Add users");
+  app.post('/api/signup', function () {
+    passport.authenticate('local', {
+      successRedirect: '/',
+      failureRedirect: '/signup' })
   }
 );
 

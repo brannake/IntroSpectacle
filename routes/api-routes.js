@@ -6,12 +6,12 @@
 // =============================================================
 
 // Requiring our models
-const db = require("../models");
-const fs = require("fs");
-const path = require("path");
-const passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
-const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-const tone_analyzer = new ToneAnalyzerV3({
+var db = require("../models");
+var fs = require("fs");
+var path = require("path");
+var passport = require("passport"), LocalStrategy = require('passport-local').Strategy;
+var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+ tone_analyzer = new ToneAnalyzerV3({
   username: "f2974f88-c1cc-49d8-a758-b2fd093e519a",
   password: "vIMDxNMDQMVD",
   version_date: '2016-05-19'
@@ -19,6 +19,7 @@ const tone_analyzer = new ToneAnalyzerV3({
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
+    console.log("donk");
     User.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
@@ -32,13 +33,15 @@ passport.use(new LocalStrategy(
 // =============================================================
 module.exports = function(app) {
 
-  app.post('/api/login', 
-    function() {
-      passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/login' })
-      }
-  );
+app.post('/api/login',
+  passport.authenticate('local'),
+  function(req, res) {
+    console.log(req);
+    console.log("SUCCESS");
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.redirect('/users/' + req.user.username);
+  });
 
   app.post('/api/signup', 
     function () {
@@ -50,7 +53,7 @@ module.exports = function(app) {
 
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {
-    let userName = req.body.user;
+    var userName = req.body.user;
     db.dateInfo.findAll({where: {user:'default'}, order: [['day', 'DESC']] }).then(function(db) {
       // We have access to the todos as an argument inside of the callback function
       res.send(db);
@@ -63,17 +66,17 @@ module.exports = function(app) {
       return res.status(400).send('No files were uploaded.');
    
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let userName = "default";
-    let newImage = req.files.file.data;
-    let selectedDate = parseInt(req.body.date);
-    let selectedMonth = req.body.month;
-    let text = req.body.text;
+    var userName = "default";
+    var newImage = req.files.file.data;
+    var selectedDate = parseInt(req.body.date);
+    var selectedMonth = req.body.month;
+    var text = req.body.text;
 
     fs.writeFile((path.join("public/savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg")), newImage);
 
-    let filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
+    var filepath = path.join("savedimages"+"/"+userName+"."+selectedDate+"."+selectedMonth+".jpeg");
 
-    let params = {
+    var params = {
       // Get the text from the JSON file.
       text: req.body.text,
       tones: 'emotion'
@@ -106,8 +109,8 @@ module.exports = function(app) {
 
 
   app.post("/api/graphs", function(req, res) {
-    let userName = req.body.user;
-    let month = req.body.month;
+    var userName = req.body.user;
+    var month = req.body.month;
     db.dateInfo.findAll({
       where: {user: userName, month: month},
     }).then(function(db) {

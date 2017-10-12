@@ -1,18 +1,23 @@
 // *** Dependencies
 // =============================================================
-const express = require("express");
-const fileUpload = require('express-fileupload');
-const bodyParser = require("body-parser");
-const passport = require("passport");
-const app = express();
+var express = require("express");
+var fileUpload = require('express-fileupload');
+var bodyParser = require("body-parser");
+var passport = require("passport");
+var session = require('express-session');
+var app = express();
+
+app.use(express.session({ secret: 'keyboard cat' }));
 
 
 // Sets up the Express App
 // =============================================================
-const PORT = process.env.PORT || 8094;
+var PORT = process.env.PORT || 8095;
 
 // Requiring our models for syncing
-const db = require("./models");
+var db = require("./models");
+
+require('./config/passport')(passport)
 
 // Sets up the Express app to handle data parsing
 // Static directory

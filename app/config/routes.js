@@ -9,7 +9,7 @@ const routes = (
   <Router history={hashHistory}>
     <Route path="/" component={MainLogin}/>
     <Route path="/calendar" component={Main}/>
-    <Route path="/heatmaps" component={HeatMaps} />
+    <Route path="/heatmaps" component={HeatMaps}/>
   </Router>
 );
 

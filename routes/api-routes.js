@@ -26,17 +26,16 @@ app.post('/api/login',
     console.log("SUCCESS");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
+    res.redirect('/users/' + req.user);
   });
 
 app.post('/api/signup',
   passport.authenticate('local-signup'),
   function(req, res) {
-    console.log("SIGNUP");
-    console.log(req.user);
+    console.log("User signed up");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
+    res.send("Authenticated");
   });
 
   // GET route for getting all of the images on load

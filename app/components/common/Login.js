@@ -6,7 +6,8 @@ import {Link} from "react-router";
 class Login extends Component {
   state = {
       username:'',
-      password:''
+      password:'',
+      authenticated: false
   };
 
   handleUsernameInputChange = (event) => {
@@ -50,6 +51,9 @@ class Login extends Component {
                 data: this.state,
                 success: (data) => {
                   console.log(data);
+                  if (data === "Authenticated") {
+                    this.setState({authenticated:true});
+                  }
                 }
               });
             }

@@ -1,16 +1,18 @@
 {
   "development": {
     "username": "root",
-    "password": "meatbal1l",
+    "password": "root",
     "database": "IntroSpectiv_db",
     "host": "127.0.0.1",
+    "port": "3311",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "meatbal1l",
+    "password": "root",
     "database": "IntroSpectiv_db",
     "host": "127.0.0.1",
+    "port": "3311",
     "dialect": "mysql"
   },
   "production": {

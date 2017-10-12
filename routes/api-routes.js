@@ -101,7 +101,7 @@ app.post('/api/signup',
     var userName = req.body.user;
     var month = req.body.month;
     db.dateInfo.findAll({
-      where: {user: userName, month: month},
+      where: {user: userName, month: month}
     }).then(function(db) {
       res.send(db);
     });

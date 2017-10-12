@@ -4,12 +4,10 @@
 var LocalStrategy   = require('passport-local').Strategy;
 
 // load up the user model
-var User            = require('../models/user');
+var db = require("../models");
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
-    console.log("WOO HOO");
-
     // =========================================================================
     // passport session setup ==================================================
     // =========================================================================
@@ -25,7 +23,7 @@ module.exports = function(passport) {
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
         console.log("deserialized");
-        User.findAll(username, function(err, user) {
+        db.user.findAll({where: {username: username}}, function(err, user) {
             done(err, user);
         });
     });
@@ -42,8 +40,9 @@ module.exports = function(passport) {
         password: 'password',
         passReqToCallback : true // allows us to pass back the entire request to the callback
     },
-    function(req, email, password, done) {
-        console.log("this thing");
+    function(req, username, password, done) {
+        console.log(username);
+        console.log(password);
 
         // asynchronous
         // User.findOne wont fire unless data is sent back
@@ -51,36 +50,8 @@ module.exports = function(passport) {
 
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        User.findAll({ 'username' :  username }, function(err, user) {
-            // if there are any errors, return the error
-            if (err)
-                return done(err);
-
-            // check to see if theres already a user with that email
-            if (user) {
-                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-            } else {
-
-                // if there is no user with that email
-                // create the user
-                var newUser            = new User();
-
-                // set the user's local credentials
-                newUser.username    = username;
-                newUser.password = password;
-
-                // save the user
-                newUser.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, newUser);
-                });
-            }
-
-        });    
-
-        });
-
-    }));
-
-};
+        db.user.findOrCreate({where: {username: username, password: password}})
+            .then(() => {
+                console.log("woohoo")
+    });
+})}))};

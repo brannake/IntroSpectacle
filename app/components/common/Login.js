@@ -11,22 +11,18 @@ class Login extends Component {
   };
 
   handleUsernameInputChange = (event) => {
-    console.log(event.currentTarget.value);
     this.setState({
         username: event.currentTarget.value
     });
   }
 
   handlePasswordInputChange = (event) => {
-    console.log(event.currentTarget.value);
     this.setState({
         password: event.currentTarget.value
     });
   }
 
   loginUser = () => {
-
-    console.log(this.state);
 
     $.ajax({
         url: 'api/login',
@@ -43,8 +39,6 @@ class Login extends Component {
 
     signUpUser = () => {
         
-            console.log(this.state);
-        
             $.ajax({
                 url: 'api/signup',
                 type: 'POST',
@@ -60,7 +54,6 @@ class Login extends Component {
 
 
   render() {
-    console.log("wtf");
     return (
     <div>
         <Navbar brand='introspectiv' left>

@@ -15,18 +15,18 @@ module.exports = function(passport) {
     // passport needs ability to serialize and deserialize users out of session
 
     // used to serialize the user for the session
-    passport.serializeUser(function(username, done) {
+    passport.serializeUser(function(user, done) {
         console.log("serialized");
-        done(null, username);
+        done(null, user.username);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(username, done) {
         console.log("deserialized");
-        db.user.findAll({where: {username: username}}, function(err, user) {
-            done(err, username);
+        db.user.findOne({where: {username: username}}).then((user)=> {
+            done(null, user);
+            });
         });
-    });
 
     // =========================================================================
     // LOCAL SIGNUP ============================================================
@@ -47,10 +47,33 @@ module.exports = function(passport) {
         db.user.findOne({where: {username: username, password: password}})
         .then((user) => {
             if (user) {
-                return done(null, false);
+                return done(null, false, {message:'Username/Password combination already exists.'});
             } else {
                 db.user.create({username: username, password: password});
-                 return done(null, username);
+                return done(null, user);
             }
         });
-})}))};
+})}))
+
+    passport.use('local-login', new LocalStrategy({
+        // by default, local strategy uses username and password, we will override with email
+        username: 'username',
+        password: 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, username, password, done) {
+        process.nextTick(function() {
+        // find a user whose email is the same as the forms email
+        // we are checking to see if the user trying to login already exists
+        db.user.findOne({where: {username: username, password: password}})
+        .then(user => {
+            if (user) {
+                return done(null, user);
+            } else {
+                return done(null, false, {message:'Username/Password combination not found.'});
+            }
+        });
+})}))
+
+
+};

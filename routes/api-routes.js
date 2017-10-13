@@ -20,15 +20,17 @@ var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 // =============================================================
 module.exports = function(app) {
 
+//Logs in the user, serializes/deserializes with passport
 app.post('/api/login',
-  passport.authenticate('local'),
+  passport.authenticate('local-login'),
   function(req, res) {
     console.log("SUCCESS");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user);
+    res.send("Authenticated");
   });
 
+//Signs the users up, serializes/deserializes with passport
 app.post('/api/signup',
   passport.authenticate('local-signup'),
   function(req, res) {
@@ -40,9 +42,9 @@ app.post('/api/signup',
 
   // GET route for getting all of the images on load
   app.get("/api/load", function(req, res) {
+    console.log("it ran");
     var userName = req.body.user;
     db.dateInfo.findAll({where: {user:'default'}, order: [['day', 'DESC']] }).then(function(db) {
-      // We have access to the todos as an argument inside of the callback function
       res.send(db);
     });
   });

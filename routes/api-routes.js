@@ -24,27 +24,28 @@ module.exports = function(app) {
 app.post('/api/login',
   passport.authenticate('local-login'),
   function(req, res) {
-    console.log("User logged in");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
     res.send(req.user);
   });
+
+
 
 //Signs the users up, serializes/deserializes with passport
 app.post('/api/signup',
   passport.authenticate('local-signup'),
   function(req, res) {
-    console.log("User signed up");
+    //User automatically gets sign-up day filled in with an example entry
+      res.send(req.user)
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.send(req.user);
   });
 
-  // GET route for getting all of the images on load
-  app.get("/api/load", function(req, res) {
-    console.log("it ran");
+  // POST route for getting all of the images on load for a specific user
+  app.post("/api/load", function(req, res) {
     var userName = req.body.user;
-    db.dateInfo.findAll({where: {user:'default'}, order: [['day', 'DESC']] }).then(function(db) {
+    console.log(req.body);
+    db.dateInfo.findAll({where: {user:userName}, order: [['day', 'DESC']] }).then(function(db) {
       res.send(db);
     });
   });
@@ -55,7 +56,7 @@ app.post('/api/signup',
       return res.status(400).send('No files were uploaded.');
    
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    var userName = "default";
+    var userName = req.body.user;
     var newImage = req.files.file.data;
     var selectedDate = parseInt(req.body.date);
     var selectedMonth = req.body.month;
@@ -77,7 +78,7 @@ app.post('/api/signup',
       }
       else {
         db.dateInfo.create({
-          user: "default",
+          user: userName,
           month: selectedMonth,
           day: selectedDate,
           text: text,

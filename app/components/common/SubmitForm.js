@@ -23,6 +23,7 @@ class SubmitForm extends Component {
         fd.append('date', this.props.selectedDate);
         fd.append('month', this.props.selectedMonth);
         fd.append('text', this.state.text);
+        fd.append('user', window.CONTEXT.user);
 
         $.ajax({
             url: '/api/images',
@@ -31,7 +32,6 @@ class SubmitForm extends Component {
             contentType: false,
             type: 'POST',
             success: (data) => {
-                console.log(data);
                 this.props.refreshImages();
             } 
         });

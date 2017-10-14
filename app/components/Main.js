@@ -45,17 +45,13 @@ class Main extends Component {
 
 componentWillMount= () => {
 
-  //Hackish way of moving month/day across React routes without a state manager
-  if (!this.state.loaded) {
-    window.CONTEXT = {month: "", day: "", currentdate: "", data: ""};
-  }
-
   //Initial API call to load user data
     $.ajax({
       url: '/api/load',
-      type: 'GET',
-      data: this.state.user,
+      type: 'POST',
+      data: window.CONTEXT,
       success: (data) => {
+        console.log(data);
         this.setState({imageData:data});
         this.calculateMonthlyMoodAverage(data);
         this.setState({loaded: true});

@@ -9,6 +9,8 @@ class MainLogin extends Component {
 
   retrieveUserInfoCallback = (user) => {
     this.setState({user: user.username, authenticated: true});
+    window.CONTEXT = {month: "", day: "", currentdate: "", data: "", user:""};
+    window.CONTEXT.user = user.username;
   }
 
   render() {

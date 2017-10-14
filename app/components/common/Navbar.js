@@ -88,7 +88,6 @@ class Navbar extends Component {
               </Dropdown>
             }
           </div>
-          <div id="logo">introspectiv</div>
         </div>
       </div>
     </nav>

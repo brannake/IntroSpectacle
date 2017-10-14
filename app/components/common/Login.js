@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM, { render } from 'react-dom';
 import {Modal, Button, Navbar, NavItem, Slider, Slide, Footer, Row, Input, Icon, image} from 'react-materialize';
 import {Link} from "react-router";
+import {Switch, Redirect, HashRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -57,6 +58,13 @@ class Login extends Component {
     }
 
   render() {
+      if (this.state.authenticated) {
+          return (
+              <HashRouter>   
+                <Redirect to="/calendar"/>
+            </HashRouter>
+                )
+      } else {
     return (
     <div>
         <Navbar brand='introspectiv' left>
@@ -83,7 +91,6 @@ class Login extends Component {
                         <Input 
                             name="user"
                             s={6} label="User Name"
-                            ref="username"
                             value={this.state.username}
                             onChange={this.handleUsernameInputChange}              
                             validate>
@@ -93,7 +100,6 @@ class Login extends Component {
                             name="Password"
                             s={6} 
                             label="Password"
-                            ref="password"
                             onChange={this.handlePasswordInputChange}
                             value={this.state.password}                
                             validate type='password'>
@@ -106,7 +112,7 @@ class Login extends Component {
                             className="btn waves-effect waves-light modal-action"
                             onClick={this.loginUser}
                         > 
-                        Submit
+                            Submit
                         </Button>
                         </div>            
                 </Modal>
@@ -149,33 +155,35 @@ class Login extends Component {
                     <div id="error-display"></div>
                     <form>
                         <Input 
-                        name="user"
-                        s={6} label="User Name"
-                        ref="username"
-                        value={this.state.username}
-                        onChange={this.handleUsernameInputChange}              
-                        validate><Icon>account_circle</Icon></Input>
+                            name="user"
+                            s={6} label="User Name"
+                            value={this.state.username}
+                            onChange={this.handleUsernameInputChange}              
+                            validate><Icon>account_circle</Icon>
+                        </Input>
                         <Input
-                        name="Password"
-                        s={6} 
-                        label="Password"
-                        ref="password"
-                        onChange={this.handlePasswordInputChange}
-                        value={this.state.password}               
-                        validate type='password'><Icon>lock</Icon></Input>
+                            name="Password"
+                            s={6} 
+                            label="Password"
+                            onChange={this.handlePasswordInputChange}
+                            value={this.state.password}               
+                            validate type='password'>
+                            <Icon>lock</Icon>
+                        </Input>
                     </form>
                         <div className="modal-footer">
-                        <Button
-                            id="submit-button"
-                            className="btn waves-effect waves-light modal-action"
-                            onClick={this.signUpUser}> 
-                        Submit
-                        </Button>
+                            <Button
+                                id="submit-button"
+                                className="btn waves-effect waves-light modal-action"
+                                onClick={this.signUpUser}
+                            > 
+                                Submit
+                            </Button>
                         </div>            
                 </Modal>
             </Footer>
     </div>
-    );
+    )};
   }
 }
 

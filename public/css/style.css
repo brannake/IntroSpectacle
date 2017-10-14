@@ -111,6 +111,7 @@ nav {
 
 #date-display {
   position: absolute;
+  color: black;
   top: 1%;
   left: 37.8%;
   font-size: 30px;

@@ -173,11 +173,11 @@ toggleYearlyView = () => {
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
                        fifthRowDates: [19, 20, 21, 22, 23, 24, 25],
-                       sixthRowDates: [26, 27, 28]
+                       sixthRowDates: [26, 27, 28, 29, 30]
                       });
       }
       if (this.state.month === "December") {
-        this.setState({secondRowDates: ["", " ", "  ", "    ", "     ", 1, 2],
+        this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
                        thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
                        fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
                        fifthRowDates: [17, 18, 19, 20, 21, 22, 23],

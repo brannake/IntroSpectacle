@@ -3,7 +3,7 @@ import Home from "./common/Home";
 
 class Main extends Component {
   state = {
-    user: 'default',
+    user: window.CONTEXT.user,
     imageData: [],
   };
   //This is a big fat function that calculates the average mood of each month

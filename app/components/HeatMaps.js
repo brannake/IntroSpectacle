@@ -9,8 +9,7 @@ import {AreaChart, Area, linearGradient , XAxis, YAxis, Tooltip, CartesianGrid }
 
 class HeatMaps extends Component {
   state = {
-    user: 'default',
-    data: [],
+    user: window.CONTEXT.user,
     currentdate: window.CONTEXT.currentdate,
     month: window.CONTEXT.month,
     date: window.CONTEXT.day,
@@ -79,8 +78,8 @@ toggleYearlyView = () => {
     //Initial API call to load user data
       $.ajax({
         url: '/api/load',
-        type: 'GET',
-        data: this.state.user,
+        type: 'POST',
+        data: window.CONTEXT,
         success: (response) => {
           this.calculateMonthlyMoodAverage(response);
         }
@@ -189,7 +188,7 @@ toggleYearlyView = () => {
   };
 
   render() {
-    console.log(this.state.data);
+    console.log(this.state);
     return (
       <div>
       <Navbar

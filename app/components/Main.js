@@ -6,8 +6,6 @@ class Main extends Component {
     user: 'default',
     imageData: [],
   };
-
-
   //This is a big fat function that calculates the average mood of each month
   //Also packages the daily mood scores for each month
   //Attaches to the window for now (*hack*)

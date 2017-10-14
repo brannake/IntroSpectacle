@@ -11,7 +11,7 @@ app.use(express.session({ secret: 'keyboard cat' }));
 
 // Sets up the Express App
 // =============================================================
-var PORT = process.env.PORT || 8099;
+var PORT = process.env.PORT || 8085;
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -33,7 +33,7 @@ require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

@@ -46,14 +46,16 @@ module.exports = function(passport) {
         // we are checking to see if the user trying to login already exists
         db.user.findOne({where: {username: username, password: password}})
         .then((user) => {
+            console.log("hurr");
             if (user) {
                 return done(null, false, {message:'Username/Password combination already exists.'});
             } else {
-                db.user.create({username: username, password: password});
-                return done(null, user);
+                db.user.create({username: username, password: password}).then((user) => {
+                    return done(null, user);
+                });
             }
         });
-})}))
+})}));
 
     passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email

@@ -30,26 +30,31 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            this.setState({authenticated:true});
             this.props.retrieveUserInfoCallback(data);
+            this.setState({authenticated: true});
         }
-      });
-    }
+    }).fail(function (jqXHR, textStatus, error) {
+        // Handle failed login here
+        $('#error-display').text("We couldn't find that user/password combination. Try again.");
+    });
+    }   
 
     //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
-    signUpUser = () => {
-        
-            $.ajax({
-                url: 'api/signup',
-                type: 'POST',
-                data: this.state,
-                success: (data) => {
-                    this.setState({authenticated:true});
-                    this.props.retrieveUserInfoCallback(data);
-                }
-              });
-            }
-
+  signUpUser = () => {
+    
+    $.ajax({
+        url: 'api/signup',
+        type: 'POST',
+        data: this.state,
+        success: (data) => {
+            this.props.retrieveUserInfoCallback(data);
+            this.setState({authenticated: true});
+        }
+    }).fail(function (jqXHR, textStatus, error) {
+        // Handle failed login here
+        $('#error-display').text("This user/password combination already exists");
+    });
+    }
 
   render() {
     return (
@@ -73,20 +78,27 @@ class Login extends Component {
                 <Modal className= "page-footer example"
                     id='login'
                     header='Login'>
+                    <div id="error-display"></div>
                     <form>
                         <Input 
-                        name="user"
-                        s={6} label="User Name"
-                        value={this.state.newUserInput}
-                        onChange={this.handleUsernameInputChange}              
-                        validate><Icon>account_circle</Icon></Input>
+                            name="user"
+                            s={6} label="User Name"
+                            ref="username"
+                            value={this.state.username}
+                            onChange={this.handleUsernameInputChange}              
+                            validate>
+                            <Icon>account_circle</Icon>
+                        </Input>
                         <Input
-                        name="Password"
-                        s={6} 
-                        label="Password"
-                        onChange={this.handlePasswordInputChange}
-                        value={this.state.passwordInput}                
-                        validate type='tel'><Icon>lock</Icon></Input>
+                            name="Password"
+                            s={6} 
+                            label="Password"
+                            ref="password"
+                            onChange={this.handlePasswordInputChange}
+                            value={this.state.password}                
+                            validate type='password'>
+                            <Icon>lock</Icon>
+                        </Input>
                     </form>
                         <div className="modal-footer">
                         <Button 
@@ -109,19 +121,19 @@ class Login extends Component {
                 src="https://static.pexels.com/photos/196655/pexels-photo-196655.jpeg"
                 title="Reflect on your life"
                 placement="left">
-                one snap shot at a time
+                one snapshot at a time
             </Slide>
             <Slide
                 src="https://static.pexels.com/photos/106344/pexels-photo-106344.jpeg"
-                title="Gain quantitative insight"
+                title="Gain insight"
                 placement="right">
-                on your mood over time
+                into your personal well-being with our analytics
             </Slide>
             </Slider>
             <Footer copyrights="Copyright &copy; 2017 introspectiv"
                 className='example'
             >
-                    <h5 className="white-text">Get started with your photo journal!</h5>
+                    <h5 className="white-text">Get started with your introSpectiv journal!</h5>
                 <div className="wrapper">
                     <Button 
                     id="signup-btn"
@@ -134,20 +146,23 @@ class Login extends Component {
                 <Modal className= "page-footer example"
                     id='signup'
                     header='Sign up'>
+                    <div id="error-display"></div>
                     <form>
                         <Input 
                         name="user"
                         s={6} label="User Name"
-                        value={this.state.newUserInput}
+                        ref="username"
+                        value={this.state.username}
                         onChange={this.handleUsernameInputChange}              
                         validate><Icon>account_circle</Icon></Input>
                         <Input
                         name="Password"
                         s={6} 
                         label="Password"
+                        ref="password"
                         onChange={this.handlePasswordInputChange}
-                        value={this.state.passwordInput}               
-                        validate type='tel'><Icon>lock</Icon></Input>
+                        value={this.state.password}               
+                        validate type='password'><Icon>lock</Icon></Input>
                     </form>
                         <div className="modal-footer">
                         <Button

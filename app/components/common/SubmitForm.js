@@ -37,7 +37,6 @@ class SubmitForm extends Component {
         });
         this.refs.captionText.value = '';
         this.refs.file.value = '';
-        console.log(window.CONTEXT);
     }
 
     render() {

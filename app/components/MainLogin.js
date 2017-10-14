@@ -4,13 +4,19 @@ import Login from "./common/Login";
 class MainLogin extends Component {
   state = {
     user: 'default',
-    imageData: [],
+    authenticated: false,
   };
+
+  retrieveUserInfoCallback = (user) => {
+    this.setState({user: user.username, authenticated: true});
+  }
 
   render() {
     return (
       <div>
-        <Login/>
+        <Login
+          retrieveUserInfoCallback={this.retrieveUserInfoCallback}
+        />
       </div>
     );
   }

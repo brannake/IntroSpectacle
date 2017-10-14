@@ -22,6 +22,7 @@ class Login extends Component {
     });
   }
 
+  //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
   loginUser = () => {
 
     $.ajax({
@@ -29,14 +30,13 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-          console.log(data);
-          this.setState({imageData:data});
-          this.calculateMonthlyMoodAverage(data);
-          this.setState({loaded: true});
+            this.setState({authenticated:true});
+            this.props.retrieveUserInfoCallback(data);
         }
       });
     }
 
+    //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
     signUpUser = () => {
         
             $.ajax({
@@ -44,10 +44,8 @@ class Login extends Component {
                 type: 'POST',
                 data: this.state,
                 success: (data) => {
-                  console.log(data);
-                  if (data === "Authenticated") {
                     this.setState({authenticated:true});
-                  }
+                    this.props.retrieveUserInfoCallback(data);
                 }
               });
             }

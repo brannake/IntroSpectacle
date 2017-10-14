@@ -24,10 +24,10 @@ module.exports = function(app) {
 app.post('/api/login',
   passport.authenticate('local-login'),
   function(req, res) {
-    console.log("SUCCESS");
+    console.log("User logged in");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.send("Authenticated");
+    res.send(req.user);
   });
 
 //Signs the users up, serializes/deserializes with passport
@@ -37,7 +37,7 @@ app.post('/api/signup',
     console.log("User signed up");
     // If this function gets called, authentication was successful.
     // `req.user` contains the authenticated user.
-    res.send("Authenticated");
+    res.send(req.user);
   });
 
   // GET route for getting all of the images on load

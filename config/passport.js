@@ -16,18 +16,16 @@ module.exports = function(passport) {
 
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
-        console.log("serialized");
         done(null, user.username);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(username, done) {
-        console.log("deserialized");
         db.user.findOne({where: {username: username}}).then((user)=> {
             done(null, user);
             });
         });
-
+        
     // =========================================================================
     // LOCAL SIGNUP ============================================================
     // =========================================================================
@@ -46,7 +44,6 @@ module.exports = function(passport) {
         // we are checking to see if the user trying to login already exists
         db.user.findOne({where: {username: username, password: password}})
         .then((user) => {
-            console.log("hurr");
             if (user) {
                 return done(null, false, {message:'Username/Password combination already exists.'});
             } else {
@@ -55,7 +52,7 @@ module.exports = function(passport) {
                 });
             }
         });
-})}));
+    })}));
 
     passport.use('local-login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
@@ -75,7 +72,5 @@ module.exports = function(passport) {
                 return done(null, false, {message:'Username/Password combination not found.'});
             }
         });
-})}))
-
-
+    })}));
 };

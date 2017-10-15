@@ -18,6 +18,7 @@ class MainLogin extends Component {
       <div>
         <Login
           retrieveUserInfoCallback={this.retrieveUserInfoCallback}
+          user
         />
       </div>
     );

@@ -43,9 +43,7 @@ class Main extends Component {
     return avg;
   }
 
-componentWillMount= () => {
-
-  //Initial API call to load user data
+  requestImagesFromServer = () => {
     $.ajax({
       url: '/api/load',
       type: 'POST',
@@ -59,12 +57,66 @@ componentWillMount= () => {
     });
   }
 
+  //Takes calendar to the current date
+  //Need to separate these out into other files to reduce clutter
+  getCurrentDate= () => {
+    let date = new Date();
+    let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
+    this.setState({currentDate: dd});
+    window.CONTEXT.currentdate = dd;
+    let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+    if (MM == "01") {
+      this.setState({currentMonth: "January"});
+    }
+    if (MM == "02") {
+      this.setState({currentMonth: "February"});
+    }
+    if (MM == "03") {
+      this.setState({currentMonth: "March"});
+    }
+    if (MM == "04") {
+      this.setState({currentMonth: "April"});
+    }
+    if (MM == "05") {
+      this.setState({currentMonth: "May"});
+    }
+    if (MM == "06") {
+      this.setState({currentMonth: "June"});
+    }
+    if (MM == "07") {
+      this.setState({currentMonth: "July"});
+    }
+    if (MM == "08") {
+      this.setState({currentMonth: "August"});
+    }
+    if (MM == "09") {
+      this.setState({currentMonth: "September"});
+    }
+    if (MM == "10") {
+      this.setState({currentMonth: "October"});
+    }
+    if (MM == "11") {
+      this.setState({currentMonth: "November"});
+    }
+    if (MM == "12") {
+      this.setState({currentMonth: "December"});
+    }
+  }
+
+componentWillMount= () => {
+    this.getCurrentDate();
+    this.requestImagesFromServer();
+  }
+
+  //Initial API call to load user data
   render() {
     return (
       <div>
         <Home
           imageData={this.state.imageData}
-          refreshImages={this.componentWillMount}
+          refreshImages={this.requestImagesFromServer}
+          currentDate={this.state.currentDate}
+          currentMonth={this.state.currentMonth}
         />
       </div>
     );

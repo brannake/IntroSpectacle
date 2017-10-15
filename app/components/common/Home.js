@@ -12,10 +12,10 @@ class Home extends Component {
   state = {
     user: 'default',
     imageData: [],
-    month: '',
-    currentMonth: '',
-    day: '',
-    currentDate: '',
+    month: this.props.currentMonth,
+    currentMonth: this.props.currentMonth,
+    day: this.props.currentDate,
+    currentDate: this.props.currentDate,
     selectedView: 'monthly',
     dateSelected: '',
     dateSelectedSrc: "",
@@ -28,73 +28,8 @@ class Home extends Component {
     sixthRowDates: [24, 25, 26, 27, 28, 29, 30]
   };
 
-  //Takes calendar to the current date
-  //Need to separate these out into other files to reduce clutter
-  componentWillMount() {
-    if (this.state.mounted === false ) {
-      let date = new Date();
-      let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
-      this.setState({day: dd, currentDate: dd});
-      window.CONTEXT.currentdate = dd;
-      let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
-      if (MM == "01") {
-        this.setState({month: "January", currentMonth: "January"})
-        window.CONTEXT.month = "January";
-      }
-      if (MM == "02") {
-        this.setState({month: "February", currentMonth: "February"})
-        window.CONTEXT.month = "February";
-      }
-      if (MM == "03") {
-        this.setState({month: "March", currentMonth: "March"})
-        window.CONTEXT.month = "March";
-      }
-      if (MM == "04") {
-        this.setState({month: "April", currentMonth: "April"})
-        window.CONTEXT.month = "April";
-      }
-      if (MM == "05") {
-        this.setState({month: "May", currentMonth: "May"})
-        window.CONTEXT.month = "May";
-      }
-      if (MM == "06") {
-        this.setState({month: "June", currentMonth: "June"})
-        window.CONTEXT.month = "June";
-      }
-      if (MM == "07") {
-        this.setState({month: "July", currentMonth: "July"})
-        window.CONTEXT.month = "July";
-      }
-      if (MM == "08") {
-        this.setState({month: "August", currentMonth: "August"})
-        window.CONTEXT.month = "August";
-      }
-      if (MM == "09") {
-        this.setState({month: "September", currentMonth: "September"})
-        window.CONTEXT.month = "September";
-      }
-      if (MM == "10") {
-        this.setState({month: "October", currentMonth: "October"})
-        window.CONTEXT.month = "October";
-      }
-      if (MM == "11") {
-        this.setState({month: "November", currentMonth: "November"})
-        window.CONTEXT.month = "November";
-      }
-      if (MM == "12") {
-        this.setState({month: "December", currentMonth: "December"})
-        window.CONTEXT.month = "December";
-      }
-    }
-    this.setState({mounted: true});
-  }
-
-  //Callback passed down to child components (Navbar) to get back user-selected month
-  //All the dates for the year are stored here
-  //NEED TO SEPARATE this out into another file to reduce clutter
-  myMonthCallback = (dataFromChild) => {
-    this.setState({month: dataFromChild, day: ''}, () => {
-      if (this.state.month === "January") {
+  buildCalendarDates = () => {
+      if (this.state.currentMonth === "January") {
         this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
                        thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
                        fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
@@ -102,7 +37,7 @@ class Home extends Component {
                        sixthRowDates: [29, 30, 31]
                       });
       }
-      if (this.state.month === "February") {
+      if (this.state.currentMonth === "February") {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
@@ -110,7 +45,7 @@ class Home extends Component {
                        sixthRowDates: [26, 27, 28]
                       });
       }
-      if (this.state.month === "March") {
+      if (this.state.currentMonth === "March") {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
@@ -118,7 +53,7 @@ class Home extends Component {
                        sixthRowDates: [26, 27, 28, 29, 30, 31]
                       });
       }
-      if (this.state.month === "April") {
+      if (this.state.currentMonth === "April") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
                        thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
                        fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
@@ -126,7 +61,7 @@ class Home extends Component {
                        sixthRowDates: [23, 24, 25, 26, 27, 28, 29]
                       });
       }
-      if (this.state.month === "May") {
+      if (this.state.currentMonth === "May") {
         this.setState({secondRowDates: ["", 1, 2, 3, 4, 5, 6],
                        thirdRowDates: [7, 8, 9, 10, 11, 12, 13],
                        fourthRowDates: [14, 15, 16, 17, 18, 19, 20],
@@ -134,7 +69,7 @@ class Home extends Component {
                        sixthRowDates: [28, 29, 30, 31]
                       });
       }               
-      if (this.state.month === "June") {
+      if (this.state.currentMonth === "June") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", 1, 2, 3],
                        thirdRowDates: [4, 5, 6, 7, 8, 9, 10],
                        fourthRowDates: [11, 12, 13, 14, 15, 16, 17],
@@ -142,7 +77,7 @@ class Home extends Component {
                        sixthRowDates: [25, 26, 27, 28, 29, 30]
                       });
       }       
-      if (this.state.month === "July") {
+      if (this.state.currentMonth === "July") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
                        thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
                        fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
@@ -150,7 +85,7 @@ class Home extends Component {
                        sixthRowDates: [29, 30, 31]
                       });
       }
-      if (this.state.month === "August") {
+      if (this.state.currentMonth === "August") {
         this.setState({secondRowDates: ["", " ", 1, 2, 3, 4, 5],
                        thirdRowDates: [6, 7, 8, 9, 10, 11, 12],
                        fourthRowDates: [13, 14, 15, 16, 17, 18, 19],
@@ -158,7 +93,7 @@ class Home extends Component {
                        sixthRowDates: [27, 28, 29, 30, 31]
                       });
       }
-      if (this.state.month === "September") {
+      if (this.state.currentMonth === "September") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
                        thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
                        fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
@@ -166,7 +101,7 @@ class Home extends Component {
                        sixthRowDates: [24, 25, 26, 27, 28, 29, 30]
                       });
       }
-      if (this.state.month === "October") {
+      if (this.state.currentMonth === "October") {
         this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
                        thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
                        fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
@@ -174,37 +109,42 @@ class Home extends Component {
                        sixthRowDates: [29, 30, 31]
                       });
       }
-      if (this.state.month === "November") {
+      if (this.state.currentMonth === "November") {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
                        fifthRowDates: [19, 20, 21, 22, 23, 24, 25],
-                       sixthRowDates: [26, 27, 28]
+                       sixthRowDates: [26, 27, 28, 29, 30]
                       });
       }
-      if (this.state.month === "December") {
-        this.setState({secondRowDates: ["", " ", "  ", "    ", "     ", 1, 2],
+      if (this.state.currentMonth === "December") {
+        this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
                        thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
                        fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
                        fifthRowDates: [17, 18, 19, 20, 21, 22, 23],
-                       sixthRowDates: [24, 25, 26, 27, 28, 29, 30, 31]
+                       sixthRowDates: [24, 25, 26, 27, 28, 29, 30],
+                       seventhRowDates: [31]
                       });     
       };
-    });
   };
 
-   //Callback passed down to child components (Panel) to get back user-selected day
+  //Callback passed down to child components (Navbar) to get back user-selected month
+  myMonthCallback = (dataFromChild) => {
+    this.setState({month: dataFromChild})
+  };
+
+  //Callback passed down to child components (Panel) to get back user-selected day
   myDayCallback = (dataFromPanel) => {
     this.setState({dateSelected: dataFromPanel});
-    window.CONTEXT.day = dataFromPanel; 
   }
 
+  //Callback passed down to child components (Panel) to get back image
   getImageCallback = (imageSrc) => {
     this.setState({dateSelectedSrc: imageSrc})
   }
 
   //Takes imageData from Main before passing it down to Panel
-  storeImageData() {
+  storeImageData = () => {
     this.setState({imageData: this.props.imageData});
   }
 
@@ -310,6 +250,10 @@ class Home extends Component {
       }
     }
 
+    componentWillMount= () => {
+      this.buildCalendarDates();
+    }
+
   render() {
     return (
     <div>
@@ -318,7 +262,7 @@ class Home extends Component {
         currentdate={this.state.day}
         day={this.state.dateSelected}
         month={this.state.month}
-        currentMonth={this.state.currentMonth}
+        currentMonth={this.props.currentMonth}
       />
       <div className="calendar">
         <div className="row" id="day-headings">

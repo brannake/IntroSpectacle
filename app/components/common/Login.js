@@ -31,11 +31,9 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            console.log(data);
             this.props.retrieveUserInfoCallback(data);
             this.setState({authenticated: true});
             $('#materialize-modal-overlay-1').text("Loading...");
-            setTimeout(function(){$('#materialize-modal-overlay-1').text("Getting your stuff...")}, 1000);
             setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
         }
     }).fail(function (jqXHR, textStatus, error) {
@@ -52,9 +50,10 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            console.log(data);
             this.props.retrieveUserInfoCallback(data);
             this.setState({authenticated: true});
+            $('#materialize-modal-overlay-1').text("Loading...");
+            setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
         }
     }).fail(function (jqXHR, textStatus, error) {
         // Handle failed login here
@@ -68,8 +67,7 @@ class Login extends Component {
               <HashRouter>   
                 <Redirect to="/calendar"/>
             </HashRouter>
-                )
-      } else {
+                )} else {
     return (
     <div>
         <Navbar brand='introspectiv' left>

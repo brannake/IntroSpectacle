@@ -7,8 +7,17 @@ import MainLogin from '../components/MainLogin';
           user: "whatever"
         }
       }
+
+      const mapDispatchToProps = (dispatch) => {
+        return {
+          onTodoClick: id => {
+            dispatch(action(id))
+          }
+        }
+      }
       
     const container = connect(
-        mapStateToProps)(MainLogin)
+        mapStateToProps,
+        mapDispatchToProps)(MainLogin)
 
 export default container

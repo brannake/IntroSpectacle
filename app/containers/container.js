@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
-import action from '../actions/action';
+import {addUser} from '../actions/action';
+import {authenticateUser} from '../actions/action';
 import MainLogin from '../components/MainLogin';
 
     const mapStateToProps = (state) => {
@@ -9,13 +10,16 @@ import MainLogin from '../components/MainLogin';
         }
       }
 
-      const mapDispatchToProps = (dispatch) => {
+    const mapDispatchToProps = (dispatch) => {
         return {
-          onLoginClick: user => {
-            dispatch(action(user))
-          }
+            onLoginClick: (user) => {
+                dispatch(addUser(user))
+            },
+            confirmAuthentication: () => {
+                dispatch(authenticateUser())
+            }
         }
-      }
+    }
       
     const container = connect(
         mapStateToProps,

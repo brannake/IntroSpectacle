@@ -9,6 +9,7 @@ class MainLogin extends Component {
       <div>
         <Login
           onLoginClick={this.props.onLoginClick}
+          confirmAuthentication={this.props.confirmAuthentication}
         />
       </div>
     );

@@ -6,8 +6,8 @@ import {Switch, Redirect, HashRouter } from 'react-router-dom';
 
 class Login extends Component {
     state = {
-        user: '',
-        imageData: [],
+        username: '',
+        password: ''
       };
 
   handleUsernameInputChange = (event) => {
@@ -22,6 +22,13 @@ class Login extends Component {
     });
   }
 
+  successfulLogin= (data) => {
+    this.props.onLoginClick(data.username);
+    this.props.confirmAuthentication();
+    $('#materialize-modal-overlay-1').text("Loading...");
+    setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
+  }
+
   //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
   loginUser = () => {
 
@@ -30,10 +37,7 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            console.log(data);
-            this.props.onLoginClick(data.username);
-            $('#materialize-modal-overlay-1').text("Loading...");
-            setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
+            this.successfulLogin(data);
         }
     }).fail(function (jqXHR, textStatus, error) {
         // Handle failed login here
@@ -49,8 +53,7 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            $('#materialize-modal-overlay-1').text("Loading...");
-            setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
+            this.successfulLogin(data);
         }
     }).fail(function (jqXHR, textStatus, error) {
         // Handle failed login here

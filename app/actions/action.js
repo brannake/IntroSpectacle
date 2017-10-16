@@ -1,4 +1,4 @@
-const action = (user) => {
+export const addUser = (user) => {
     console.log(user);
   return {
     type: 'ADD_USER',
@@ -6,4 +6,10 @@ const action = (user) => {
   }
 }
 
-export default action;
+export const authenticateUser = () => {
+  console.log("Wtf");
+    return {
+      type: 'AUTHENTICATE_USER',
+      authenticated: true
+  }
+}

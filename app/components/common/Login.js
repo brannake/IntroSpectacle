@@ -5,6 +5,10 @@ import {Link} from "react-router";
 import {Switch, Redirect, HashRouter } from 'react-router-dom';
 
 class Login extends Component {
+    state = {
+        user: '',
+        imageData: [],
+      };
 
   handleUsernameInputChange = (event) => {
     this.setState({
@@ -26,7 +30,8 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            this.setState({authenticated: true});
+            console.log(data);
+            this.props.onLoginClick(data.username);
             $('#materialize-modal-overlay-1').text("Loading...");
             setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
         }
@@ -44,7 +49,6 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            this.setState({authenticated: true});
             $('#materialize-modal-overlay-1').text("Loading...");
             setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
         }
@@ -60,12 +64,6 @@ class Login extends Component {
     }
 
   render() {
-      if (this.state.authenticated) {
-          return (
-              <HashRouter>   
-                <Redirect to="/calendar"/>
-            </HashRouter>
-                )} else {
     return (
     <div>
         <Navbar brand='introspectiv' left>
@@ -178,8 +176,7 @@ class Login extends Component {
                 </Modal>
             </Footer>
     </div>
-    )};
-  }
-}
+    )}
+};
 
 export default Login;

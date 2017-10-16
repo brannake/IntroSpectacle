@@ -1,5 +1,5 @@
 const action = (user) => {
-    console.log("THIS RAN");
+    console.log(user);
   return {
     type: 'ADD_USER',
     user: user

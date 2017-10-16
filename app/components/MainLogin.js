@@ -8,6 +8,7 @@ class MainLogin extends Component {
     return (
       <div>
         <Login
+          onLoginClick={this.props.onLoginClick}
         />
       </div>
     );

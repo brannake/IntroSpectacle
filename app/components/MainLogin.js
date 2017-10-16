@@ -4,10 +4,10 @@ import Login from "./common/Login";
 class MainLogin extends Component {
 
   render() {
+    console.log(this.props)
     return (
       <div>
         <Login
-          retrieveUserInfoCallback={this.props.onTodoClick}
         />
       </div>
     );

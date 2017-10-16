@@ -10,8 +10,8 @@ import MainLogin from '../components/MainLogin';
 
       const mapDispatchToProps = (dispatch) => {
         return {
-          onTodoClick: id => {
-            dispatch(action(id))
+          onLoginClick: user => {
+            dispatch(action(user))
           }
         }
       }

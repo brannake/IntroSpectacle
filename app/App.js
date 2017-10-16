@@ -6,6 +6,7 @@ import reducer from './reducers/reducer';
 import { Provider } from 'react-redux';
 import { Route, Router, hashHistory } from "react-router";
 import container from "./containers/container";
+import containerdeux from "./containers/containerdeux";
 
 const store = createStore(reducer);
 
@@ -14,6 +15,7 @@ const superRender = () => {
         <Provider store={store}>
             <Router history={hashHistory}>
                 <Route path="/" component={container}/>
+                <Route path="/calendar" component={containerdeux}/>
             </Router>
      </Provider>, document.getElementById("app"));
 };

@@ -5,11 +5,6 @@ import {Link} from "react-router";
 import {Switch, Redirect, HashRouter } from 'react-router-dom';
 
 class Login extends Component {
-  state = {
-      username:'',
-      password:'',
-      authenticated: false
-  };
 
   handleUsernameInputChange = (event) => {
     this.setState({
@@ -31,7 +26,6 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            this.props.retrieveUserInfoCallback(data);
             this.setState({authenticated: true});
             $('#materialize-modal-overlay-1').text("Loading...");
             setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
@@ -50,7 +44,6 @@ class Login extends Component {
         type: 'POST',
         data: this.state,
         success: (data) => {
-            this.props.retrieveUserInfoCallback(data);
             this.setState({authenticated: true});
             $('#materialize-modal-overlay-1').text("Loading...");
             setTimeout(function(){$('#materialize-modal-overlay-1').remove();}, 1000);
@@ -59,6 +52,11 @@ class Login extends Component {
         // Handle failed login here
         $('#error-display').text("This user/password combination already exists");
     });
+    }
+
+    componentWillMount = () => {
+        console.log(this.state);
+        console.log(this.props);
     }
 
   render() {

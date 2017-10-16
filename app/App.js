@@ -10,13 +10,18 @@ import containerdeux from "./containers/containerdeux";
 
 const store = createStore(reducer);
 
+const routes = {
+    path: '/',
+    component: container,
+    childRoutes: [
+        { path: '/calendar', component: containerdeux}
+    ]
+};
+
 const superRender = () => {
     ReactDOM.render(
         <Provider store={store}>
-            <Router history={hashHistory}>
-                <Route path="/" component={container}/>
-                <Route path="/calendar" component={containerdeux}/>
-            </Router>
+            <Router history={hashHistory} routes={routes}/>
      </Provider>, document.getElementById("app"));
 };
 

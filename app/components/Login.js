@@ -8,9 +8,7 @@ class Login extends Component {
     console.log(this.props)
     if (this.props.authenticated === true) {
       return (
-        <HashRouter>
             <Redirect to="/calendar"/>
-        </HashRouter>
             )} else {
     return (
       <div>

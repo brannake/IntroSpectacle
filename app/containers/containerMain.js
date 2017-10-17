@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import {storeImageData} from '../actions/action';
 import Main from '../components/Main';
 
-    const mapStateToProps = () => {
+    const mapStateToProps = (state) => {
       return {
         user: state.user,
         authenticated: state.authenticated,

@@ -4,7 +4,6 @@ import {addUser, authenticateUser} from '../actions/action';
 import Login from '../components/Login';
 
     const mapStateToProps = (state) => {
-        console.log(state);
         return {
           user: state.user,
           authenticated: state.authenticated

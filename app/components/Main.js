@@ -32,7 +32,6 @@ class Main extends Component {
       let monthlyAverage = {name: months[i], uv: average};
       monthlyMoodAverages.push(monthlyAverage);
     }
-    window.CONTEXT.data = monthlyMoodAverages;
   }
 
   findAverage = (elmt) => {
@@ -48,7 +47,7 @@ class Main extends Component {
     $.ajax({
       url: '/api/load',
       type: 'POST',
-      data: this.props,
+      data: this.state,
       success: (data) => {
         console.log(data);
         this.props.storeData(data);
@@ -63,7 +62,6 @@ class Main extends Component {
     let date = new Date();
     let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
     this.setState({currentDate: dd});
-    window.CONTEXT.currentdate = dd;
     let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
     if (MM == "01") {
       this.setState({currentMonth: "January"});
@@ -112,13 +110,14 @@ componentWillMount= () => {
   //Initial API call to load user data
   render() {
     console.log("why wont this load");
+    console.log(this.props);
     return (
       <div>
         <Home
-          imageData={this.state.imageData}
+          imageData={this.props.imageData}
           refreshImages={this.requestImagesFromServer}
-          currentDate={this.state.currentDate}
-          currentMonth={this.state.currentMonth}
+          currentDate={this.props.currentDate}
+          currentMonth={this.props.currentMonth}
         />
       </div>
     );

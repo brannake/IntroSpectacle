@@ -23,10 +23,15 @@ class SubLogin extends Component {
   successfulLogin= (data) => {
     this.props.onLoginClick(data.username);
     this.props.confirmAuthentication();
+    $('#materialize-modal-overlay-1').text("Loading...");
+    setTimeout(function(){$('#materialize-modal-overlay-1').remove()}, 1000);
+    setTimeout(function(){$('#sidenav-overlay-1').remove()}, 1000);
   }
 
   //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
   loginUser = () => {
+
+    console.log(this.props);
 
     $.ajax({
         url: 'api/login',
@@ -58,7 +63,6 @@ class SubLogin extends Component {
     }
 
     componentWillMount = () => {
-        console.log(this.state);
         console.log(this.props);
     }
 

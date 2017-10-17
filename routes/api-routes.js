@@ -41,6 +41,7 @@ app.post('/api/signup',
 
   // POST route for getting all of the images on load for a specific user
   app.post("/api/load", function(req, res) {
+    console.log("this fired");
     console.log(req.body);
     var userName = req.body.user;
     db.dateInfo.findAll({where: {user:userName}, order: [['day', 'DESC']] }).then(function(db) {

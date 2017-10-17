@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router";
 import SideNavMod from "./SideNavMod";
 import {Dropdown, Button, NavItem} from 'react-materialize'
 
@@ -20,7 +19,6 @@ class Navbar extends Component {
         currentMonth: selectedMonth
       });
       this.props.callbackfromParent(selectedMonth);
-      window.CONTEXT.month = selectedMonth;
     }
 
     //Function to render the individual Nav items for month
@@ -43,8 +41,6 @@ class Navbar extends Component {
     return (
     <div>
     <nav className="navbar navbar-inverse">
-      <Link id="trends-button" to="/heatmaps">TRENDS</Link>
-      <Link id="calendar-button" to="/calendar">MY CALENDAR</Link>
       <div className="container-fluid">
       <div className="navbar-header">
       </div>

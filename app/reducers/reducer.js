@@ -21,6 +21,11 @@ const reducer =  (state, action) => {
             return Object.assign({}, state, {
                 authenticated: true
             });
+        case "STORE_IMAGE_DATA":
+        console.log("DIS RENDER")
+            return Object.assign({}, state, {
+                imageData: action.imageData
+            });
         }
     }
 

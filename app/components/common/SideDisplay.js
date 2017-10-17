@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {Link} from "react-router";
-import HeatMaps from "../../components/HeatMaps";
+import Trends from "../../components/Trends";
 import ReactDOM from 'react-dom';
 import {Button} from 'react-materialize'
 

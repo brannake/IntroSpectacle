@@ -23,16 +23,50 @@
 ## trim-right-x
 This method removes whitespace from the right end of a string.
 
-**Version**: 2.0.1  
+**Version**: 3.0.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  
-<a name="exp_module_trim-right-x--module.exports"></a>
 
-### `module.exports(string)` ⇒ <code>string</code> ⏏
-This method removes whitespace from the right end of a string.
+* [trim-right-x](#module_trim-right-x)
+    * [`.trimRight`](#module_trim-right-x.trimRight)
+    * [`.trimRight2016`](#module_trim-right-x.trimRight2016) ⇒ <code>string</code>
+    * [`.trimRight2018`](#module_trim-right-x.trimRight2018) ⇒ <code>string</code>
 
-**Kind**: Exported function  
+<a name="module_trim-right-x.trimRight"></a>
+
+### `trim-right-x.trimRight`
+A reference to trimRight2018.
+
+**Kind**: static property of [<code>trim-right-x</code>](#module_trim-right-x)  
+<a name="module_trim-right-x.trimRight2016"></a>
+
+### `trim-right-x.trimRight2016` ⇒ <code>string</code>
+This method removes whitespace from the right end of a string. (ES2016)
+
+**Kind**: static property of [<code>trim-right-x</code>](#module_trim-right-x)  
+**Returns**: <code>string</code> - The right trimmed string.  
+**Throws**:
+
+- <code>TypeError</code> If string is null or undefined or not coercible.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| string | <code>string</code> | The string to trim the right end whitespace from. |
+
+**Example**  
+```js
+var trimRight = require('trim-right-x');
+
+trimRight(' \t\na \t\n') === ' \t\na'; // true
+```
+<a name="module_trim-right-x.trimRight2018"></a>
+
+### `trim-right-x.trimRight2018` ⇒ <code>string</code>
+This method removes whitespace from the right end of a string. (ES2018)
+
+**Kind**: static property of [<code>trim-right-x</code>](#module_trim-right-x)  
 **Returns**: <code>string</code> - The right trimmed string.  
 **Throws**:
 

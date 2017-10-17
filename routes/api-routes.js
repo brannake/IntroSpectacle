@@ -29,8 +29,6 @@ app.post('/api/login',
     res.send(req.user);
   });
 
-
-
 //Signs the users up, serializes/deserializes with passport
 app.post('/api/signup',
   passport.authenticate('local-signup'),
@@ -43,8 +41,8 @@ app.post('/api/signup',
 
   // POST route for getting all of the images on load for a specific user
   app.post("/api/load", function(req, res) {
-    var userName = req.body.user;
     console.log(req.body);
+    var userName = req.body.user;
     db.dateInfo.findAll({where: {user:userName}, order: [['day', 'DESC']] }).then(function(db) {
       res.send(db);
     });

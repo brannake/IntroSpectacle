@@ -3,8 +3,9 @@ import Home from "./common/Home";
 
 class Main extends Component {
   state = {
-    user: window.CONTEXT.user,
-    imageData: [],
+    user: this.props.user,
+    authenticated: this.props.authenticated,
+    imageData: this.props.imageData
   };
   //This is a big fat function that calculates the average mood of each month
   //Also packages the daily mood scores for each month
@@ -47,12 +48,11 @@ class Main extends Component {
     $.ajax({
       url: '/api/load',
       type: 'POST',
-      data: window.CONTEXT,
+      data: this.props,
       success: (data) => {
         console.log(data);
-        this.setState({imageData:data});
+        this.props.storeData(data);
         this.calculateMonthlyMoodAverage(data);
-        this.setState({loaded: true});
       }
     });
   }
@@ -104,12 +104,14 @@ class Main extends Component {
   }
 
 componentWillMount= () => {
+  console.log("freak");
     this.getCurrentDate();
     this.requestImagesFromServer();
   }
 
   //Initial API call to load user data
   render() {
+    console.log("why wont this load");
     return (
       <div>
         <Home

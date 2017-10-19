@@ -23,7 +23,7 @@
 ## is-object-like-x
 Determine if a value is object like.
 
-**Version**: 1.5.1  
+**Version**: 1.6.0  
 **Author**: Xotic750 <Xotic750@gmail.com>  
 **License**: [MIT](&lt;https://opensource.org/licenses/MIT&gt;)  
 **Copyright**: Xotic750  

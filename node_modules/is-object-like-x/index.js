@@ -1,6 +1,6 @@
 /**
  * @file Determine if a value is object like.
- * @version 1.5.1
+ * @version 1.6.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}

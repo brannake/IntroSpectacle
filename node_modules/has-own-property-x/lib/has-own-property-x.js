@@ -2,7 +2,7 @@
 /**
  * @file Used to determine whether an object has an own property with the specified property key.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-hasownproperty|7.3.11 HasOwnProperty (O, P)}
- * @version 3.1.1
+ * @version 3.2.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -13,7 +13,7 @@
 
 var toObject = _dereq_('to-object-x');
 var toPropertyKey = _dereq_('to-property-key-x');
-var hop = Object.prototype.hasOwnProperty;
+var hop = _dereq_('cached-constructors-x').Object.prototype.hasOwnProperty;
 
 /**
  * The `hasOwnProperty` method returns a boolean indicating whether
@@ -40,7 +40,120 @@ module.exports = function hasOwnProperty(object, property) {
   return hop.call(toObject(object), toPropertyKey(property));
 };
 
-},{"to-object-x":14,"to-property-key-x":16}],2:[function(_dereq_,module,exports){
+},{"cached-constructors-x":3,"to-object-x":18,"to-property-key-x":20}],2:[function(_dereq_,module,exports){
+/**
+ * @file Invokes function, returning an object of the results.
+ * @version 1.1.1
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module attempt-x
+ */
+
+'use strict';
+
+var getArgs = function _getArgs(args) {
+  var length = args.length >>> 0;
+  var array = [];
+  var argLength = length - 1;
+  if (argLength < 1) {
+    return array;
+  }
+
+  array.length = argLength;
+  for (var index = 1; index < length; index += 1) {
+    array[index - 1] = args[index];
+  }
+
+  return array;
+};
+
+/**
+ * This method attempts to invoke the function, returning either the result or
+ * the caught error object. Any additional arguments are provided to the
+ * function when it's invoked.
+ *
+ * @param {Function} fn - The function to attempt.
+ * @param {...*} [args] - The arguments to invoke the function with.
+ * @returns {Object} Returns an object of the result.
+ * @example
+ * var attempt = require('attempt-x');
+ *
+ * function thrower() {
+ *   throw new Error('Threw');
+ * }
+ *
+ * attempt(thrower, 1, 2);
+ * // {
+ * //   threw: true,
+ * //   value: // Error('Threw') object
+ * // }
+ *
+ * function sumArgs(a, b) {
+ *   return a + b;
+ * }
+ *
+ * attempt(sumArgs, 1, 2);
+ * // {
+ * //   threw: false,
+ * //   value: 3
+ * // }
+ *
+ * var thisArg = [];
+ * function pusher(a, b) {
+ *   return this.push(a, b);
+ * }
+ *
+ * attempt.call(thisArg, pusher, 1, 2);
+ * // {
+ * //   threw: false,
+ * //   value: 2
+ * // }
+ * // thisArg => [1, 2];
+ */
+module.exports = function attempt(fn) {
+  try {
+    return {
+      threw: false,
+      value: fn.apply(this, getArgs(arguments))
+    };
+  } catch (e) {
+    return {
+      threw: true,
+      value: e
+    };
+  }
+};
+
+},{}],3:[function(_dereq_,module,exports){
+/**
+ * @file Constructors cached from literals.
+ * @version 1.0.0
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module cached-constructors-x
+ */
+
+'use strict';
+
+/**
+ * Constructors cached from literals.
+ *
+ * @type Object
+ * @example
+ * var constructors = require('cached-constructors-x');
+ */
+module.exports = {
+  Array: [].constructor,
+  Boolean: true.constructor,
+  Number: (0).constructor,
+  Object: {}.constructor,
+  RegExp: (/(?:)/).constructor,
+  String: ''.constructor
+};
+
+},{}],4:[function(_dereq_,module,exports){
 /**
  * @file Tests if ES6 Symbol is supported.
  * @version 1.4.1
@@ -60,7 +173,7 @@ module.exports = function hasOwnProperty(object, property) {
  */
 module.exports = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
 
-},{}],3:[function(_dereq_,module,exports){
+},{}],5:[function(_dereq_,module,exports){
 /**
  * @file Tests if ES6 @@toStringTag is supported.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-@@tostringtag|26.3.1 @@toStringTag}
@@ -81,7 +194,7 @@ module.exports = typeof Symbol === 'function' && typeof Symbol('') === 'symbol';
  */
 module.exports = _dereq_('has-symbol-support-x') && typeof Symbol.toStringTag === 'symbol';
 
-},{"has-symbol-support-x":2}],4:[function(_dereq_,module,exports){
+},{"has-symbol-support-x":4}],6:[function(_dereq_,module,exports){
 'use strict';
 
 var getDay = Date.prototype.getDay;
@@ -103,10 +216,47 @@ module.exports = function isDateObject(value) {
 	return hasToStringTag ? tryDateObject(value) : toStr.call(value) === dateClass;
 };
 
-},{}],5:[function(_dereq_,module,exports){
+},{}],7:[function(_dereq_,module,exports){
+/**
+ * @file Test if a given value is falsey.
+ * @version 1.0.1
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module is-falsey-x
+ */
+
+'use strict';
+
+var toBoolean = _dereq_('to-boolean-x');
+
+/**
+ * This method tests if a given value is falsey.
+ *
+ * @param {*} value - The value to test.
+ * @returns {boolean} `true` if the value is falsey: otherwise `false`.
+ * @example
+ * var isFalsey = require('is-falsey-x');
+ *
+ * isFalsey(); // true
+ * isFalsey(0); // true
+ * isFalsey(''); // true
+ * isFalsey(false); // true
+ * isFalsey(null); // true
+ *
+ * isFalsey(true); // false
+ * isFalsey([]); // false
+ * isFalsey(1); // false
+ * isFalsey(function () {}); // false
+ */
+module.exports = function isFalsey(value) {
+  return toBoolean(value) === false;
+};
+
+},{"to-boolean-x":17}],8:[function(_dereq_,module,exports){
 /**
  * @file Determine whether a given value is a function object.
- * @version 3.1.1
+ * @version 3.3.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -115,32 +265,34 @@ module.exports = function isDateObject(value) {
 
 'use strict';
 
+var attempt = _dereq_('attempt-x');
 var fToString = Function.prototype.toString;
+var toBoolean = _dereq_('to-boolean-x');
+var isFalsey = _dereq_('is-falsey-x');
 var toStringTag = _dereq_('to-string-tag-x');
 var hasToStringTag = _dereq_('has-to-string-tag-x');
 var isPrimitive = _dereq_('is-primitive');
-var normalise = _dereq_('normalize-space-x');
+var normalise = _dereq_('normalize-space-x').normalizeSpace;
 var deComment = _dereq_('replace-comments-x');
 var funcTag = '[object Function]';
 var genTag = '[object GeneratorFunction]';
 var asyncTag = '[object AsyncFunction]';
-
-var hasNativeClass = true;
-try {
-  // eslint-disable-next-line no-new-func
-  Function('"use strict"; return class My {};')();
-} catch (ignore) {
-  hasNativeClass = false;
-}
-
 var ctrRx = /^class /;
-var isES6ClassFn = function isES6ClassFunc(value) {
-  try {
-    return ctrRx.test(normalise(deComment(fToString.call(value), ' ')));
-  } catch (ignore) {}
+var test = ctrRx.test;
 
-  // not a function
-  return false;
+var hasNativeClass = attempt(function () {
+  // eslint-disable-next-line no-new-func
+  return Function('"use strict"; return class My {};')();
+}).threw === false;
+
+var testClassstring = function _testClassstring(value) {
+  return test.call(ctrRx, normalise(deComment(fToString.call(value), ' ')));
+};
+
+var isES6ClassFn = function isES6ClassFunc(value) {
+  var result = attempt(testClassstring, value);
+
+  return result.threw === false && result.value;
 };
 
 /**
@@ -152,18 +304,12 @@ var isES6ClassFn = function isES6ClassFunc(value) {
  * @returns {boolean} Returns `true` if `value` is correctly classified,
  * else `false`.
  */
-
 var tryFuncToString = function funcToString(value, allowClass) {
-  try {
-    if (hasNativeClass && allowClass === false && isES6ClassFn(value)) {
-      return false;
-    }
+  if (hasNativeClass && allowClass === false && isES6ClassFn(value)) {
+    return false;
+  }
 
-    fToString.call(value);
-    return true;
-  } catch (ignore) {}
-
-  return false;
+  return attempt.call(value, fToString).threw === false;
 };
 
 /**
@@ -195,12 +341,11 @@ module.exports = function isFunction(value) {
     return false;
   }
 
-  var allowClass = arguments.length > 0 ? Boolean(arguments[1]) : false;
   if (hasToStringTag) {
-    return tryFuncToString(value, allowClass);
+    return tryFuncToString(value, toBoolean(arguments[1]));
   }
 
-  if (hasNativeClass && allowClass === false && isES6ClassFn(value)) {
+  if (hasNativeClass && isFalsey(arguments[1]) && isES6ClassFn(value)) {
     return false;
   }
 
@@ -208,7 +353,7 @@ module.exports = function isFunction(value) {
   return strTag === funcTag || strTag === genTag || strTag === asyncTag;
 };
 
-},{"has-to-string-tag-x":3,"is-primitive":7,"normalize-space-x":11,"replace-comments-x":12,"to-string-tag-x":17}],6:[function(_dereq_,module,exports){
+},{"attempt-x":2,"has-to-string-tag-x":5,"is-falsey-x":7,"is-primitive":10,"normalize-space-x":13,"replace-comments-x":14,"to-boolean-x":17,"to-string-tag-x":21}],9:[function(_dereq_,module,exports){
 /**
  * @file Checks if `value` is `null` or `undefined`.
  * @version 1.4.1
@@ -239,7 +384,7 @@ module.exports = function isNil(value) {
   return isNull(value) || isUndefined(value);
 };
 
-},{"lodash.isnull":10,"validate.io-undefined":22}],7:[function(_dereq_,module,exports){
+},{"lodash.isnull":12,"validate.io-undefined":26}],10:[function(_dereq_,module,exports){
 /*!
  * is-primitive <https://github.com/jonschlinkert/is-primitive>
  *
@@ -254,29 +399,7 @@ module.exports = function isPrimitive(value) {
   return value == null || (typeof value !== 'function' && typeof value !== 'object');
 };
 
-},{}],8:[function(_dereq_,module,exports){
-'use strict';
-
-var strValue = String.prototype.valueOf;
-var tryStringObject = function tryStringObject(value) {
-	try {
-		strValue.call(value);
-		return true;
-	} catch (e) {
-		return false;
-	}
-};
-var toStr = Object.prototype.toString;
-var strClass = '[object String]';
-var hasToStringTag = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
-
-module.exports = function isString(value) {
-	if (typeof value === 'string') { return true; }
-	if (typeof value !== 'object') { return false; }
-	return hasToStringTag ? tryStringObject(value) : toStr.call(value) === strClass;
-};
-
-},{}],9:[function(_dereq_,module,exports){
+},{}],11:[function(_dereq_,module,exports){
 'use strict';
 
 var toStr = Object.prototype.toString;
@@ -305,7 +428,7 @@ if (hasSymbols) {
 	};
 }
 
-},{}],10:[function(_dereq_,module,exports){
+},{}],12:[function(_dereq_,module,exports){
 /**
  * lodash 3.0.0 (Custom Build) <https://lodash.com/>
  * Build: `lodash modern modularize exports="npm" -o ./`
@@ -337,10 +460,10 @@ function isNull(value) {
 
 module.exports = isNull;
 
-},{}],11:[function(_dereq_,module,exports){
+},{}],13:[function(_dereq_,module,exports){
 /**
  * @file Trims and replaces sequences of whitespace characters by a single space.
- * @version 1.3.3
+ * @version 3.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -349,29 +472,64 @@ module.exports = isNull;
 
 'use strict';
 
-var trim = _dereq_('trim-x');
-var reNormalize = new RegExp('[' + _dereq_('white-space-x').string + ']+', 'g');
+var libTrim = _dereq_('trim-x');
+var trim2016 = libTrim.trim2016;
+var trim2018 = libTrim.trim2018;
+var Rx = _dereq_('cached-constructors-x').RegExp;
+var libWhiteSpace = _dereq_('white-space-x');
+var reNormalize2016 = new Rx('[' + libWhiteSpace.string2016 + ']+', 'g');
+var reNormalize2018 = new Rx('[' + libWhiteSpace.string2018 + ']+', 'g');
+var replace = ''.replace;
 
-/**
- * This method strips leading and trailing white-space from a string,
- * replaces sequences of whitespace characters by a single space,
- * and returns the resulting string.
- *
- * @param {string} string - The string to be normalized.
- * @returns {string} The normalized string.
- * @example
- * var normalizeSpace = require('normalize-space-x');
- *
- * normalizeSpace(' \t\na \t\nb \t\n') === 'a b'; // true
- */
-module.exports = function normalizeSpace(string) {
-  return trim(string).replace(reNormalize, ' ');
+var $normalizeSpace2016 = function normalizeSpace2016(string) {
+  return replace.call(trim2016(string), reNormalize2016, ' ');
 };
 
-},{"trim-x":21,"white-space-x":23}],12:[function(_dereq_,module,exports){
+var $normalizeSpace2018 = function normalizeSpace2018(string) {
+  return replace.call(trim2018(string), reNormalize2018, ' ');
+};
+
+module.exports = {
+  /**
+   * Reference to normalizeSpace2018.
+   */
+  normalizeSpace: $normalizeSpace2018,
+
+  /**
+   * This method strips leading and trailing white-space from a string,
+   * replaces sequences of whitespace characters by a single space,
+   * and returns the resulting string. (ES2016)
+   *
+   * @param {string} string - The string to be normalized.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The normalized string.
+   * @example
+   * var normalizeSpace = require('normalize-space-x');
+   *
+   * normalizeSpace(' \t\na \t\nb \t\n') === 'a b'; // true
+   */
+  normalizeSpace2016: $normalizeSpace2016,
+
+  /**
+   * This method strips leading and trailing white-space from a string,
+   * replaces sequences of whitespace characters by a single space,
+   * and returns the resulting string. (ES2018)
+   *
+   * @param {string} string - The string to be normalized.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The normalized string.
+   * @example
+   * var normalizeSpace = require('normalize-space-x');
+   *
+   * normalizeSpace(' \t\na \t\nb \t\n') === 'a b'; // true
+   */
+  normalizeSpace2018: $normalizeSpace2018
+};
+
+},{"cached-constructors-x":3,"trim-x":25,"white-space-x":27}],14:[function(_dereq_,module,exports){
 /**
  * @file Replace the comments in a string.
- * @version 1.0.3
+ * @version 2.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -380,14 +538,18 @@ module.exports = function normalizeSpace(string) {
 
 'use strict';
 
-var isString = _dereq_('is-string');
+var toStr = _dereq_('to-string-x');
+var requireCoercibleToString = _dereq_('require-coercible-to-string-x');
 var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
+var replace = ''.replace;
 
 /**
  * This method replaces comments in a string.
  *
  * @param {string} string - The string to be stripped.
  * @param {string} [replacement] - The string to be used as a replacement.
+ * @throws {TypeError} If string is null or undefined or not coercible.
+ * @throws {TypeError} If replacement is not coercible.
  * @returns {string} The new string with the comments replaced.
  * @example
  * var replaceComments = require('replace-comments-x');
@@ -396,11 +558,45 @@ var STRIP_COMMENTS = /((\/\/.*$)|(\/\*[\s\S]*?\*\/))/mg;
  * replaceComments(test; // test, ''), // 'test;'
  */
 module.exports = function replaceComments(string) {
-  var replacement = arguments.length > 1 && isString(arguments[1]) ? arguments[1] : '';
-  return isString(string) ? string.replace(STRIP_COMMENTS, replacement) : '';
+  return replace.call(requireCoercibleToString(string), STRIP_COMMENTS, arguments.length > 1 ? toStr(arguments[1]) : '');
 };
 
-},{"is-string":8}],13:[function(_dereq_,module,exports){
+},{"require-coercible-to-string-x":15,"to-string-x":22}],15:[function(_dereq_,module,exports){
+/**
+ * @file Requires an argument is corecible then converts using ToString.
+ * @version 1.0.0
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module require-coercible-to-string-x
+ */
+
+'use strict';
+
+var requireObjectCoercible = _dereq_('require-object-coercible-x');
+var toStr = _dereq_('to-string-x');
+
+/**
+ * This method requires an argument is corecible then converts using ToString.
+ *
+ * @param {*} value - The value to converted to a string.
+ * @throws {TypeError} If value is null or undefined.
+ * @returns {string} The value as a string.
+ * @example
+ * var requireCoercibleToString = require('require-coercible-to-string-x');
+ *
+ * requireCoercibleToString(); // TypeError
+ * requireCoercibleToString(null); // TypeError
+ * requireCoercibleToString(Symbol('')); // TypeError
+ * requireCoercibleToString(Object.create(null)); // TypeError
+ * requireCoercibleToString(1); // '1'
+ * requireCoercibleToString(true); // 'true'
+ */
+module.exports = function requireCoercibleToString(value) {
+  return toStr(requireObjectCoercible(value));
+};
+
+},{"require-object-coercible-x":16,"to-string-x":22}],16:[function(_dereq_,module,exports){
 /**
  * @file ES6-compliant shim for RequireObjectCoercible.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-requireobjectcoercible|7.2.1 RequireObjectCoercible ( argument )}
@@ -439,11 +635,40 @@ module.exports = function RequireObjectCoercible(value) {
   return value;
 };
 
-},{"is-nil-x":6}],14:[function(_dereq_,module,exports){
+},{"is-nil-x":9}],17:[function(_dereq_,module,exports){
+/**
+ * @file Converts argument to a value of type Boolean.
+ * @version 1.0.1
+ * @author Xotic750 <Xotic750@gmail.com>
+ * @copyright  Xotic750
+ * @license {@link <https://opensource.org/licenses/MIT> MIT}
+ * @module to-boolean-x
+ */
+
+'use strict';
+
+/**
+ * The abstract operation ToBoolean converts argument to a value of type Boolean.
+ *
+ * @param {*} value - The value to be converted.
+ * @returns {boolean} 'true' if value is truthy; otherwise 'false'.
+ * @example
+ * var toBoolean = require('to-boolean-x');
+ *
+ * toBoolean(null); // false
+ * toBoolean(''); // false
+ * toBoolean(1); // true
+ * toBoolean('0'); // true
+ */
+module.exports = function toBoolean(value) {
+  return !!value;
+};
+
+},{}],18:[function(_dereq_,module,exports){
 /**
  * @file ES6-compliant shim for ToObject.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-toobject|7.1.13 ToObject ( argument )}
- * @version 1.4.1
+ * @version 1.5.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -453,6 +678,7 @@ module.exports = function RequireObjectCoercible(value) {
 'use strict';
 
 var requireObjectCoercible = _dereq_('require-object-coercible-x');
+var castObject = _dereq_('cached-constructors-x').Object;
 
 /**
  * The abstract operation ToObject converts argument to a value of
@@ -471,13 +697,13 @@ var requireObjectCoercible = _dereq_('require-object-coercible-x');
  * ToObject(Symbol('foo')); // Object(Symbol('foo'))
  */
 module.exports = function toObject(value) {
-  return Object(requireObjectCoercible(value));
+  return castObject(requireObjectCoercible(value));
 };
 
-},{"require-object-coercible-x":13}],15:[function(_dereq_,module,exports){
+},{"cached-constructors-x":3,"require-object-coercible-x":16}],19:[function(_dereq_,module,exports){
 /**
  * @file Converts a JavaScript object to a primitive value.
- * @version 1.0.1
+ * @version 1.1.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -598,10 +824,10 @@ module.exports = function toPrimitive(input, preferredType) {
   return ordinaryToPrimitive(input, hint === 'default' ? 'number' : hint);
 };
 
-},{"has-symbol-support-x":2,"is-date-object":4,"is-function-x":5,"is-nil-x":6,"is-primitive":7,"is-symbol":9,"require-object-coercible-x":13,"validate.io-undefined":22}],16:[function(_dereq_,module,exports){
+},{"has-symbol-support-x":4,"is-date-object":6,"is-function-x":8,"is-nil-x":9,"is-primitive":10,"is-symbol":11,"require-object-coercible-x":16,"validate.io-undefined":26}],20:[function(_dereq_,module,exports){
 /**
  * @file Converts argument to a value that can be used as a property key.
- * @version 2.0.1
+ * @version 2.0.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -618,6 +844,7 @@ var toStr = _dereq_('to-string-x');
  * This method Converts argument to a value that can be used as a property key.
  *
  * @param {*} argument - The argument to onvert to a property key.
+ * @throws {TypeError} If argument is not a symbol and is not coercible to a string.
  * @returns {string|symbol} The converted argument.
  * @example
  * var toPropertyKey = require('to-property-key-x');
@@ -625,19 +852,22 @@ var toStr = _dereq_('to-string-x');
  * toPropertyKey(); // 'undefined'
  * toPropertyKey(1); // '1'
  * toPropertyKey(true); // 'true'
+ *
  * var symbol = Symbol('a');
  * toPropertyKey(symbol); // symbol
+ *
+ * toPropertyKey(Object.create(null)); // TypeError
  */
 module.exports = function toPropertyKey(argument) {
   var key = toPrimitive(argument, String);
   return hasSymbols && typeof key === 'symbol' ? key : toStr(key);
 };
 
-},{"has-symbol-support-x":2,"to-primitive-x":15,"to-string-x":18}],17:[function(_dereq_,module,exports){
+},{"has-symbol-support-x":4,"to-primitive-x":19,"to-string-x":22}],21:[function(_dereq_,module,exports){
 /**
  * @file Get an object's ES6 @@toStringTag.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring|19.1.3.6 Object.prototype.toString ( )}
- * @version 1.4.1
+ * @version 1.4.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -648,7 +878,7 @@ module.exports = function toPropertyKey(argument) {
 
 var isNull = _dereq_('lodash.isnull');
 var isUndefined = _dereq_('validate.io-undefined');
-var toStr = Object.prototype.toString;
+var toStr = {}.toString;
 
 /**
  * The `toStringTag` method returns "[object type]", where type is the
@@ -674,11 +904,11 @@ module.exports = function toStringTag(value) {
   return toStr.call(value);
 };
 
-},{"lodash.isnull":10,"validate.io-undefined":22}],18:[function(_dereq_,module,exports){
+},{"lodash.isnull":12,"validate.io-undefined":26}],22:[function(_dereq_,module,exports){
 /**
  * @file ES6-compliant shim for ToString.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-tostring|7.1.12 ToString ( argument )}
- * @version 1.4.1
+ * @version 1.4.2
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -687,6 +917,7 @@ module.exports = function toStringTag(value) {
 
 'use strict';
 
+var castString = ''.constructor;
 var isSymbol = _dereq_('is-symbol');
 
 /**
@@ -705,19 +936,20 @@ var isSymbol = _dereq_('is-symbol');
  * $toString(Symbol('foo')); // TypeError
  * $toString(Symbol.iterator); // TypeError
  * $toString(Object(Symbol.iterator)); // TypeError
+ * $toString(Object.create(null)); // TypeError
  */
 module.exports = function ToString(value) {
   if (isSymbol(value)) {
     throw new TypeError('Cannot convert a Symbol value to a string');
   }
 
-  return String(value);
+  return castString(value);
 };
 
-},{"is-symbol":9}],19:[function(_dereq_,module,exports){
+},{"is-symbol":11}],23:[function(_dereq_,module,exports){
 /**
  * @file This method removes whitespace from the left end of a string.
- * @version 1.3.5
+ * @version 3.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -726,27 +958,57 @@ module.exports = function ToString(value) {
 
 'use strict';
 
-var $toString = _dereq_('to-string-x');
-var reLeft = new RegExp('^[' + _dereq_('white-space-x').string + ']+');
+var requireCoercibleToString = _dereq_('require-coercible-to-string-x');
+var Rx = _dereq_('cached-constructors-x').RegExp;
+var reLeft2016 = new Rx('^[' + _dereq_('white-space-x').string2016 + ']+');
+var reLeft2018 = new Rx('^[' + _dereq_('white-space-x').string2018 + ']+');
+var replace = ''.replace;
 
-/**
- * This method removes whitespace from the left end of a string.
- *
- * @param {string} string - The string to trim the left end whitespace from.
- * @returns {undefined|string} The left trimmed string.
- * @example
- * var trimLeft = require('trim-left-x');
- *
- * trimLeft(' \t\na \t\n') === 'a \t\n'; // true
- */
-module.exports = function trimLeft(string) {
-  return $toString(string).replace(reLeft, '');
+var $trimLeft2016 = function trimLeft2016(string) {
+  return replace.call(requireCoercibleToString(string), reLeft2016, '');
 };
 
-},{"to-string-x":18,"white-space-x":23}],20:[function(_dereq_,module,exports){
+var $trimLeft2018 = function trimLeft2018(string) {
+  return replace.call(requireCoercibleToString(string), reLeft2018, '');
+};
+
+module.exports = {
+  /**
+   * A reference to leftTrim2018.
+   */
+  trimLeft: $trimLeft2018,
+
+  /**
+   * This method removes whitespace from the left end of a string. (ES2016)
+   *
+   * @param {string} string - The string to trim the left end whitespace from.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The left trimmed string.
+   * @example
+   * var trimLeft = require('trim-left-x').trimLeft2016;
+   *
+   * trimLeft(' \t\na \t\n') === 'a \t\n'; // true
+   */
+  trimLeft2016: $trimLeft2016,
+
+  /**
+   * This method removes whitespace from the left end of a string. (ES2018)
+   *
+   * @param {string} string - The string to trim the left end whitespace from.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The left trimmed string.
+   * @example
+   * var trimLeft = require('trim-left-x').trimLeft2018;
+   *
+   * trimLeft(' \t\na \t\n') === 'a \t\n'; // true
+   */
+  trimLeft2018: $trimLeft2018
+};
+
+},{"cached-constructors-x":3,"require-coercible-to-string-x":15,"white-space-x":27}],24:[function(_dereq_,module,exports){
 /**
  * @file This method removes whitespace from the right end of a string.
- * @version 1.3.3
+ * @version 3.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -755,27 +1017,57 @@ module.exports = function trimLeft(string) {
 
 'use strict';
 
-var $toString = _dereq_('to-string-x');
-var reRight = new RegExp('[' + _dereq_('white-space-x').string + ']+$');
+var requireCoercibleToString = _dereq_('require-coercible-to-string-x');
+var Rx = _dereq_('cached-constructors-x').RegExp;
+var reRight2016 = new Rx('[' + _dereq_('white-space-x').string2016 + ']+$');
+var reRight2018 = new Rx('[' + _dereq_('white-space-x').string2018 + ']+$');
+var replace = ''.replace;
 
-/**
- * This method removes whitespace from the right end of a string.
- *
- * @param {string} string - The string to trim the right end whitespace from.
- * @returns {undefined|string} The right trimmed string.
- * @example
- * var trimRight = require('trim-right-x');
- *
- * trimRight(' \t\na \t\n') === ' \t\na'; // true
- */
-module.exports = function trimRight(string) {
-  return $toString(string).replace(reRight, '');
+var $trimRight2016 = function trimRight2016(string) {
+  return replace.call(requireCoercibleToString(string), reRight2016, '');
 };
 
-},{"to-string-x":18,"white-space-x":23}],21:[function(_dereq_,module,exports){
+var $trimRight2018 = function trimRight2018(string) {
+  return replace.call(requireCoercibleToString(string), reRight2018, '');
+};
+
+module.exports = {
+  /**
+   * A reference to trimRight2018.
+   */
+  trimRight: $trimRight2018,
+
+  /**
+   * This method removes whitespace from the right end of a string. (ES2016)
+   *
+   * @param {string} string - The string to trim the right end whitespace from.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The right trimmed string.
+   * @example
+   * var trimRight = require('trim-right-x');
+   *
+   * trimRight(' \t\na \t\n') === ' \t\na'; // true
+   */
+  trimRight2016: $trimRight2016,
+
+  /**
+   * This method removes whitespace from the right end of a string. (ES2018)
+   *
+   * @param {string} string - The string to trim the right end whitespace from.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The right trimmed string.
+   * @example
+   * var trimRight = require('trim-right-x');
+   *
+   * trimRight(' \t\na \t\n') === ' \t\na'; // true
+   */
+  trimRight2018: $trimRight2018
+};
+
+},{"cached-constructors-x":3,"require-coercible-to-string-x":15,"white-space-x":27}],25:[function(_dereq_,module,exports){
 /**
  * @file This method removes whitespace from the left and right end of a string.
- * @version 1.0.3
+ * @version 3.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -784,24 +1076,56 @@ module.exports = function trimRight(string) {
 
 'use strict';
 
-var trimLeft = _dereq_('trim-left-x');
-var trimRight = _dereq_('trim-right-x');
+var libTrimLeft = _dereq_('trim-left-x');
+var trimLeft2016 = libTrimLeft.trimLeft2016;
+var trimLeft2018 = libTrimLeft.trimLeft2018;
+var libTrimRight = _dereq_('trim-right-x');
+var trimRight2016 = libTrimRight.trimRight2016;
+var trimRight2018 = libTrimRight.trimRight2016;
 
-/**
- * This method removes whitespace from the left and right end of a string.
- *
- * @param {string} string - The string to trim the whitespace from.
- * @returns {undefined|string} The trimmed string.
- * @example
- * var trim = require('trim-x');
- *
- * trim(' \t\na \t\n') === 'a'; // true
- */
-module.exports = function trim(string) {
-  return trimLeft(trimRight(string));
+var $trim2016 = function trim2016(string) {
+  return trimLeft2016(trimRight2016(string));
 };
 
-},{"trim-left-x":19,"trim-right-x":20}],22:[function(_dereq_,module,exports){
+var $trim2018 = function trim2018(string) {
+  return trimLeft2018(trimRight2018(string));
+};
+
+module.exports = {
+  /**
+   * A reference to trim2018.
+   */
+  trim: $trim2018,
+
+  /**
+   * This method removes whitespace from the left and right end of a string.
+   * (ES2016)
+   * @param {string} string - The string to trim the whitespace from.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The trimmed string.
+   * @example
+   * var trim = require('trim-x');
+   *
+   * trim(' \t\na \t\n') === 'a'; // true
+   */
+  trim2016: $trim2016,
+
+  /**
+   * This method removes whitespace from the left and right end of a string.
+   * (ES2018)
+   *
+   * @param {string} string - The string to trim the whitespace from.
+   * @throws {TypeError} If string is null or undefined or not coercible.
+   * @returns {string} The trimmed string.
+   * @example
+   * var trim = require('trim-x');
+   *
+   * trim(' \t\na \t\n') === 'a'; // true
+   */
+  trim2018: $trim2018
+};
+
+},{"trim-left-x":23,"trim-right-x":24}],26:[function(_dereq_,module,exports){
 /**
 *
 *	VALIDATE: undefined
@@ -848,10 +1172,10 @@ function isUndefined( value ) {
 
 module.exports = isUndefined;
 
-},{}],23:[function(_dereq_,module,exports){
+},{}],27:[function(_dereq_,module,exports){
 /**
- * @file List of ECMAScript5 white space characters.
- * @version 2.0.3
+ * @file List of ECMAScript white space characters.
+ * @version 3.0.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -861,211 +1185,445 @@ module.exports = isUndefined;
 'use strict';
 
 /**
- * An array of the ES5 whitespace char codes, string, and their descriptions.
+ * A record of a white space character.
  *
- * @name list
- * @type Array.<Object>
- * @example
- * var whiteSpace = require('white-space-x');
- * whiteSpaces.list.foreach(function (item) {
- *   console.log(lib.description, item.code, item.string);
- * });
+ * @typedef {Object} CharRecord
+ * @property {number} code - The character code.
+ * @property {string} description - A description of the character.
+ * @property {boolean} es5 - Whether the spec lists this as a white space.
+ * @property {boolean} es2015 - Whether the spec lists this as a white space.
+ * @property {boolean} es2016 - Whether the spec lists this as a white space.
+ * @property {boolean} es2017 - Whether the spec lists this as a white space.
+ * @property {boolean} es2018 - Whether the spec lists this as a white space.
+ * @property {string} string - The character string.
+ */
+
+/**
+ * An array of the whitespace char codes, string, descriptions and language
+ * presence in the specifications.
+ *
+ * @private
+ * @type Array.<CharRecord>
  */
 var list = [
   {
     code: 0x0009,
     description: 'Tab',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u0009'
   },
   {
     code: 0x000a,
     description: 'Line Feed',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u000a'
   },
   {
     code: 0x000b,
     description: 'Vertical Tab',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u000b'
   },
   {
     code: 0x000c,
     description: 'Form Feed',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u000c'
   },
   {
     code: 0x000d,
     description: 'Carriage Return',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u000d'
   },
   {
     code: 0x0020,
     description: 'Space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u0020'
   },
   /*
   {
     code: 0x0085,
-    description: 'Next line - Not ES5 whitespace',
+    description: 'Next line',
+    es5: false,
+    es2015: false,
+    es2016: false,
+    es2017: false,
+    es2018: false,
     string: '\u0085'
   }
   */
   {
     code: 0x00a0,
     description: 'No-break space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u00a0'
   },
   {
     code: 0x1680,
     description: 'Ogham space mark',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u1680'
   },
   {
     code: 0x180e,
     description: 'Mongolian vowel separator',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: false,
+    es2018: false,
     string: '\u180e'
   },
   {
     code: 0x2000,
     description: 'En quad',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2000'
   },
   {
     code: 0x2001,
     description: 'Em quad',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2001'
   },
   {
     code: 0x2002,
     description: 'En space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2002'
   },
   {
     code: 0x2003,
     description: 'Em space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2003'
   },
   {
     code: 0x2004,
     description: 'Three-per-em space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2004'
   },
   {
     code: 0x2005,
     description: 'Four-per-em space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2005'
   },
   {
     code: 0x2006,
     description: 'Six-per-em space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2006'
   },
   {
     code: 0x2007,
     description: 'Figure space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2007'
   },
   {
     code: 0x2008,
     description: 'Punctuation space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2008'
   },
   {
     code: 0x2009,
     description: 'Thin space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2009'
   },
   {
     code: 0x200a,
     description: 'Hair space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u200a'
   },
   /*
   {
     code: 0x200b,
-    description: 'Zero width space - Not ES5 whitespace',
+    description: 'Zero width space',
+    es5: false,
+    es2015: false,
+    es2016: false,
+    es2017: false,
+    es2018: false,
     string: '\u200b'
   },
   */
   {
     code: 0x2028,
     description: 'Line separator',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2028'
   },
   {
     code: 0x2029,
     description: 'Paragraph separator',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u2029'
   },
   {
     code: 0x202f,
     description: 'Narrow no-break space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u202f'
   },
   {
     code: 0x205f,
     description: 'Medium mathematical space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u205f'
   },
   {
     code: 0x3000,
     description: 'Ideographic space',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\u3000'
   },
   {
     code: 0xfeff,
     description: 'Byte Order Mark',
+    es5: true,
+    es2015: true,
+    es2016: true,
+    es2017: true,
+    es2018: true,
     string: '\ufeff'
   }
 ];
 
-var string = '';
+var stringES2016 = '';
+var stringES2018 = '';
 var length = list.length;
 for (var i = 0; i < length; i += 1) {
-  string += list[i].string;
+  if (list[i].es2016) {
+    stringES2016 += list[i].string;
+  }
+
+  if (list[i].es2018) {
+    stringES2018 += list[i].string;
+  }
 }
 
-/**
- * A string of the ES5 whitespace characters.
- *
- * @name string
- * @type string
- * @example
- * var whiteSpace = require('white-space-x');
- * var characters = [
- *   '\u0009',
- *   '\u000a',
- *   '\u000b',
- *   '\u000c',
- *   '\u000d',
- *   '\u0020',
- *   '\u00a0',
- *   '\u1680',
- *   '\u180e',
- *   '\u2000',
- *   '\u2001',
- *   '\u2002',
- *   '\u2003',
- *   '\u2004',
- *   '\u2005',
- *   '\u2006',
- *   '\u2007',
- *   '\u2008',
- *   '\u2009',
- *   '\u200a',
- *   '\u2028',
- *   '\u2029',
- *   '\u202f',
- *   '\u205f',
- *   '\u3000',
- *   '\ufeff'
- * ];
- * var ws = characters.join('');
- * var re1 = new RegExp('^[' + whiteSpace.string + ']+$)');
- * re1.test(ws); // true
- */
 module.exports = {
+  /**
+   * An array of the whitespace char codes, string, descriptions and language
+   * presence in the specifications.
+   *
+   * @type Array.<CharRecord>
+   * @example
+   * var whiteSpace = require('white-space-x');
+   * whiteSpaces.list.foreach(function (item) {
+   *   console.log(lib.description, item.code, item.string);
+   * });
+   */
   list: list,
-  string: string
+  /**
+   * A string of the ES2017 to ES2018 whitespace characters.
+   *
+   * @type string
+   */
+  string: stringES2018,
+
+  /**
+   * A string of the ES5 to ES2016 whitespace characters.
+   *
+   * @type string
+   */
+  string5: stringES2016,
+
+  /**
+   * A string of the ES5 to ES2016 whitespace characters.
+   *
+   * @type string
+   */
+  string2015: stringES2016,
+
+  /**
+   * A string of the ES5 to ES2016 whitespace characters.
+   *
+   * @type string
+   * @example
+   * var whiteSpace = require('white-space-x');
+   * var characters = [
+   *   '\u0009',
+   *   '\u000a',
+   *   '\u000b',
+   *   '\u000c',
+   *   '\u000d',
+   *   '\u0020',
+   *   '\u00a0',
+   *   '\u1680',
+   *   '\u180e',
+   *   '\u2000',
+   *   '\u2001',
+   *   '\u2002',
+   *   '\u2003',
+   *   '\u2004',
+   *   '\u2005',
+   *   '\u2006',
+   *   '\u2007',
+   *   '\u2008',
+   *   '\u2009',
+   *   '\u200a',
+   *   '\u2028',
+   *   '\u2029',
+   *   '\u202f',
+   *   '\u205f',
+   *   '\u3000',
+   *   '\ufeff'
+   * ];
+   * var ws = characters.join('');
+   * var re1 = new RegExp('^[' + whiteSpace.string2016 + ']+$)');
+   * re1.test(ws); // true
+   */
+  string2016: stringES2016,
+
+  /**
+   * A string of the ES2017 to ES2018 whitespace characters.
+   *
+   * @type string
+   */
+  string2017: stringES2018,
+
+  /**
+   * A string of the ES2017 to ES2018 whitespace characters.
+   *
+   * @type string
+   * @example
+   * var whiteSpace = require('white-space-x');
+   * var characters = [
+   *   '\u0009',
+   *   '\u000a',
+   *   '\u000b',
+   *   '\u000c',
+   *   '\u000d',
+   *   '\u0020',
+   *   '\u00a0',
+   *   '\u1680',
+   *   '\u2000',
+   *   '\u2001',
+   *   '\u2002',
+   *   '\u2003',
+   *   '\u2004',
+   *   '\u2005',
+   *   '\u2006',
+   *   '\u2007',
+   *   '\u2008',
+   *   '\u2009',
+   *   '\u200a',
+   *   '\u2028',
+   *   '\u2029',
+   *   '\u202f',
+   *   '\u205f',
+   *   '\u3000',
+   *   '\ufeff'
+   * ];
+   * var ws = characters.join('');
+   * var re1 = new RegExp('^[' + whiteSpace.string2018 + ']+$)');
+   * re1.test(ws); // true
+   */
+  string2018: stringES2018
 };
 
 },{}]},{},[1])(1)

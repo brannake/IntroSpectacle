@@ -7,10 +7,10 @@ class Main extends Component {
     authenticated: this.props.authenticated,
     imageData: this.props.imageData
   };
+
   //This is a big fat function that calculates the average mood of each month
   //Also packages the daily mood scores for each month
-  //Attaches to the window for now (*hack*)
-  //Will need to refactor and use state manager for data flow
+  //Will need to refactor and break into two for testing
 
   calculateMonthlyMoodAverage = (arrayResponse) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -50,7 +50,7 @@ class Main extends Component {
       data: this.state,
       success: (data) => {
         console.log(data);
-        this.props.storeData(data);
+        this.props.storeImageData(data);
         this.calculateMonthlyMoodAverage(data);
       }
     });
@@ -61,63 +61,66 @@ class Main extends Component {
   getCurrentDate= () => {
     let date = new Date();
     let dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
-    this.setState({currentDate: dd});
+    this.props.storeCurrentDate(dd);
     let MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
     if (MM == "01") {
-      this.setState({currentMonth: "January"});
+      this.props.storeCurrentMonth("January");
     }
     if (MM == "02") {
-      this.setState({currentMonth: "February"});
+      this.props.storeCurrentMonth("February");
     }
     if (MM == "03") {
-      this.setState({currentMonth: "March"});
+      this.props.storeCurrentMonth("March");
     }
     if (MM == "04") {
-      this.setState({currentMonth: "April"});
+      this.props.storeCurrentMonth("April");
     }
     if (MM == "05") {
-      this.setState({currentMonth: "May"});
+      this.props.storeCurrentMonth("May");
     }
     if (MM == "06") {
-      this.setState({currentMonth: "June"});
+      this.props.storeCurrentMonth("June");
     }
     if (MM == "07") {
-      this.setState({currentMonth: "July"});
+      this.props.storeCurrentMonth("July");
     }
     if (MM == "08") {
-      this.setState({currentMonth: "August"});
+      this.props.storeCurrentMonth("August");
     }
     if (MM == "09") {
-      this.setState({currentMonth: "September"});
+      this.props.storeCurrentMonth("September");
     }
     if (MM == "10") {
-      this.setState({currentMonth: "October"});
+      this.props.storeCurrentMonth("October");
     }
     if (MM == "11") {
-      this.setState({currentMonth: "November"});
+      this.props.storeCurrentMonth("November");
     }
     if (MM == "12") {
-      this.setState({currentMonth: "December"});
+      this.props.storeCurrentMonth("December");
     }
   }
 
 componentWillMount= () => {
-  console.log("freak");
     this.getCurrentDate();
     this.requestImagesFromServer();
   }
 
-  //Initial API call to load user data
   render() {
-    console.log("why wont this load");
     console.log(this.props);
     return (
       <div>
         <Home
+          user={this.props.user}
           imageData={this.props.imageData}
           refreshImages={this.requestImagesFromServer}
           currentDate={this.props.currentDate}
           currentMonth={this.props.currentMonth}
+          selectedDate={this.props.selectedDate}
+          selectedMonth={this.props.selectedMonth}
+          storeSelectedDay={this.props.storeSelectedDay}
+          storeSelectedMonth={this.props.storeSelectedMonth}
+          storeSelectedView={this.props.storeSelectedView}
         />
       </div>
     );

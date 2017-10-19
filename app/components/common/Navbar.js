@@ -47,7 +47,7 @@ class Navbar extends Component {
       <div className="nav navbar-nav">
           <div id="date-display">
             {(!this.props.month) ?
-              (this.props.day.replace(/\s/g, '').length === 0) ?
+              (this.props.selectedDate.replace(/\s/g, '').length === 0) ?
               <Dropdown 
                 trigger={
               <Button
@@ -60,12 +60,12 @@ class Navbar extends Component {
                 trigger={
                 <Button
                   style={{ background: "black", color: "white" }}
-                >{this.props.currentMonth + " " + this.props.day}</Button>
+                >{this.props.currentMonth + " " + this.props.selectedDate}</Button>
                 }>
                 {this.renderMonths()}
               </Dropdown>
             :
-              (this.props.day.replace(/\s/g, '').length === 0) ?
+              (this.props.selectedDate.replace(/\s/g, '').length === 0) ?
               <Dropdown 
                 trigger={
               <Button

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { render } from 'react-dom';
+import React, {Component} from "react";
+import {render} from 'react-dom';
 import Panel from "./Panel";
 import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
@@ -10,26 +10,17 @@ import {Modal, Button} from 'react-materialize';
 
 class Home extends Component {
   state = {
-    user: 'default',
-    imageData: [],
-    month: this.props.currentMonth,
-    currentMonth: this.props.currentMonth,
-    day: this.props.currentDate,
-    currentDate: this.props.currentDate,
-    selectedView: 'monthly',
-    dateSelected: '',
     dateSelectedSrc: "",
-    mounted: false,
     firstRowDates: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
-    thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
-    fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
-    fifthRowDates: [17, 18, 19, 20, 21, 22, 23],
-    sixthRowDates: [24, 25, 26, 27, 28, 29, 30]
+    secondRowDates: [1, 2, 3, 4, 5, 6, 7],
+    thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
+    fourthRowDates: [15, 16, 17, 18, 19, 20, 21,],
+    fifthRowDates: [22, 23, 24, 25, 26, 27, 28,],
+    sixthRowDates: [29, 30, 31]
   };
 
   buildCalendarDates = () => {
-      if (this.state.currentMonth === "January") {
+      if (this.props.currentMonth === "January") {
         this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
                        thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
                        fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
@@ -37,7 +28,7 @@ class Home extends Component {
                        sixthRowDates: [29, 30, 31]
                       });
       }
-      if (this.state.currentMonth === "February") {
+      if (this.props.currentMonth === "February") {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
@@ -45,7 +36,7 @@ class Home extends Component {
                        sixthRowDates: [26, 27, 28]
                       });
       }
-      if (this.state.currentMonth === "March") {
+      if (this.props.currentMonth === "March") {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
@@ -53,7 +44,7 @@ class Home extends Component {
                        sixthRowDates: [26, 27, 28, 29, 30, 31]
                       });
       }
-      if (this.state.currentMonth === "April") {
+      if (this.props.currentMonth === "April") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
                        thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
                        fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
@@ -61,7 +52,7 @@ class Home extends Component {
                        sixthRowDates: [23, 24, 25, 26, 27, 28, 29]
                       });
       }
-      if (this.state.currentMonth === "May") {
+      if (this.props.currentMonth === "May") {
         this.setState({secondRowDates: ["", 1, 2, 3, 4, 5, 6],
                        thirdRowDates: [7, 8, 9, 10, 11, 12, 13],
                        fourthRowDates: [14, 15, 16, 17, 18, 19, 20],
@@ -69,7 +60,7 @@ class Home extends Component {
                        sixthRowDates: [28, 29, 30, 31]
                       });
       }               
-      if (this.state.currentMonth === "June") {
+      if (this.props.currentMonth === "June") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", 1, 2, 3],
                        thirdRowDates: [4, 5, 6, 7, 8, 9, 10],
                        fourthRowDates: [11, 12, 13, 14, 15, 16, 17],
@@ -77,7 +68,7 @@ class Home extends Component {
                        sixthRowDates: [25, 26, 27, 28, 29, 30]
                       });
       }       
-      if (this.state.currentMonth === "July") {
+      if (this.props.currentMonth === "July") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", "     ", 1],
                        thirdRowDates: [2, 3, 4, 5, 6, 7, 8],
                        fourthRowDates: [9, 10, 11, 12, 13, 14, 15],
@@ -85,7 +76,7 @@ class Home extends Component {
                        sixthRowDates: [29, 30, 31]
                       });
       }
-      if (this.state.currentMonth === "August") {
+      if (this.props.currentMonth === "August") {
         this.setState({secondRowDates: ["", " ", 1, 2, 3, 4, 5],
                        thirdRowDates: [6, 7, 8, 9, 10, 11, 12],
                        fourthRowDates: [13, 14, 15, 16, 17, 18, 19],
@@ -93,7 +84,7 @@ class Home extends Component {
                        sixthRowDates: [27, 28, 29, 30, 31]
                       });
       }
-      if (this.state.currentMonth === "September") {
+      if (this.props.currentMonth === "September") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
                        thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
                        fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
@@ -101,7 +92,7 @@ class Home extends Component {
                        sixthRowDates: [24, 25, 26, 27, 28, 29, 30]
                       });
       }
-      if (this.state.currentMonth === "October") {
+      if (this.props.currentMonth === "October") {
         this.setState({secondRowDates: [1, 2, 3, 4, 5, 6, 7],
                        thirdRowDates: [8, 9, 10, 11, 12, 13, 14],
                        fourthRowDates: [15, 16, 17, 18, 19, 20, 21],
@@ -109,7 +100,7 @@ class Home extends Component {
                        sixthRowDates: [29, 30, 31]
                       });
       }
-      if (this.state.currentMonth === "November") {
+      if (this.props.currentMonth === "November") {
         this.setState({secondRowDates: ["", " ", "  ", 1, 2, 3, 4],
                        thirdRowDates: [5, 6, 7, 8, 9, 10, 11],
                        fourthRowDates: [12, 13, 14, 15, 16, 17, 18],
@@ -117,7 +108,7 @@ class Home extends Component {
                        sixthRowDates: [26, 27, 28, 29, 30]
                       });
       }
-      if (this.state.currentMonth === "December") {
+      if (this.props.currentMonth === "December") {
         this.setState({secondRowDates: ["", " ", "  ", "   ", "    ", 1, 2],
                        thirdRowDates: [3, 4, 5, 6, 7, 8, 9],
                        fourthRowDates: [10, 11, 12, 13, 14, 15, 16],
@@ -127,26 +118,6 @@ class Home extends Component {
                       });     
       };
   };
-
-  //Callback passed down to child components (Navbar) to get back user-selected month
-  myMonthCallback = (dataFromChild) => {
-    this.setState({month: dataFromChild})
-  };
-
-  //Callback passed down to child components (Panel) to get back user-selected day
-  myDayCallback = (dataFromPanel) => {
-    this.setState({dateSelected: dataFromPanel});
-  }
-
-  //Callback passed down to child components (Panel) to get back image
-  getImageCallback = (imageSrc) => {
-    this.setState({dateSelectedSrc: imageSrc})
-  }
-
-  //Takes imageData from Main before passing it down to Panel
-  storeImageData = () => {
-    this.setState({imageData: this.props.imageData});
-  }
 
 //Rendering 7 days per row
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
@@ -162,17 +133,16 @@ class Home extends Component {
 
   //Renders the actual numeric dates on the calendar
   renderSecondDates(datesArray) {
+    console.log(this.props);
     return datesArray.map(date => (
       <Panel
         key={date}
         date={date}
-        day={this.state.day}
-        currentdate={this.state.currentDate}
-        month={this.state.month}
-        currentmonth={this.state.currentMonth}
-        dateselected={this.state.dateSelected}
-        callbackfromParent={this.myDayCallback}
-        callbackforImage={this.getImageCallback}
+        currentdate={this.props.currentDate}
+        month={this.props.selectedMonth}
+        currentmonth={this.props.currentMonth}
+        dateselected={this.props.selectedDate}
+        callbackfromParent={this.props.storeSelectedDate}
         imageData={this.props.imageData}
       >
       </Panel>
@@ -181,7 +151,7 @@ class Home extends Component {
 
   //Adds the user-submitted caption to the examination modal
   //Forces the user to pick a date before they can examine
-  handleModalMessage = (data, date, month) => {
+  handleModalMessage = (data, date = '', month) => {
     if (date.replace(/\s/g, '').length === 0) {
       return (
         <div id="warning-modal">Please select a date to examine.</div>
@@ -255,13 +225,15 @@ class Home extends Component {
     }
 
   render() {
+    console.log(this.props);
+    console.log(this.state);
     return (
     <div>
       <Navbar
-        callbackfromParent={this.myMonthCallback}
-        currentdate={this.state.day}
-        day={this.state.dateSelected}
-        month={this.state.month}
+        callbackfromParent={this.props.storeSelectedMonth}
+        currentdate={this.props.currentDate}
+        selectedDate={this.props.selectedDate}
+        month={this.props.selectedMonth}
         currentMonth={this.props.currentMonth}
       />
       <div className="calendar">
@@ -296,15 +268,15 @@ class Home extends Component {
         </Button>
 	      <Modal
 		      id="modal"
-		      header={this.state.month +" "+ this.state.dateSelected}
+		      header={this.props.selectedMonth +" "+ this.props.selectedDate}
         >
             <div id="caption-text-display">
-              {this.handleModalMessage(this.props.imageData, this.state.dateSelected, this.state.month)}
+              {this.handleModalMessage(this.props.imageData, this.props.selectedDate, this.props.selectedMonth)}
             </div>
           <SubmitForm
             data={this.props.imageData}
-            selectedDate={this.state.dateSelected}
-            selectedMonth={this.state.month}
+            selectedDate={this.props.selectedDate}
+            selectedMonth={this.props.selectedMonth}
             refreshImages={this.props.refreshImages}
           />
 	      </Modal>

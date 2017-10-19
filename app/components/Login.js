@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SubLogin from "./common/SubLogin";
-import {Redirect, HashRouter } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 class Login extends Component {
 

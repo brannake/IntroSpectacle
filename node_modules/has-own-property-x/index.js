@@ -1,7 +1,7 @@
 /**
  * @file Used to determine whether an object has an own property with the specified property key.
  * @see {@link http://www.ecma-international.org/ecma-262/6.0/#sec-hasownproperty|7.3.11 HasOwnProperty (O, P)}
- * @version 3.1.1
+ * @version 3.2.0
  * @author Xotic750 <Xotic750@gmail.com>
  * @copyright  Xotic750
  * @license {@link <https://opensource.org/licenses/MIT> MIT}
@@ -12,7 +12,7 @@
 
 var toObject = require('to-object-x');
 var toPropertyKey = require('to-property-key-x');
-var hop = Object.prototype.hasOwnProperty;
+var hop = require('cached-constructors-x').Object.prototype.hasOwnProperty;
 
 /**
  * The `hasOwnProperty` method returns a boolean indicating whether

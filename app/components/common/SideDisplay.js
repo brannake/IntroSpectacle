@@ -1,15 +1,7 @@
 import React, { Component } from "react";
-import {Link} from "react-router";
-import Trends from "../../components/Trends";
-import ReactDOM from 'react-dom';
 import {Button} from 'react-materialize'
 
 class SideDisplay extends Component {
-  constructor() {
-    super();
-    this.state = {
-    };
-  };
 
   render() {
     return (
@@ -19,14 +11,14 @@ class SideDisplay extends Component {
             Views
             <br/>
             <Button
-              onClick= {() => {this.props.getView("monthly");
+              onClick= {() => {this.props.storeSelectedView("monthly");
               this.props.toggleMonthlyView()}}
             >
             Monthly
             </Button>
             <br/>
             <Button
-              onClick= {() => {this.props.getView("yearly");
+              onClick= {() => {this.props.storeSelectedView("yearly");
               this.props.toggleYearlyView()}}
             >
             Yearly

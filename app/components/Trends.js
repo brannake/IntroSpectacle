@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from 'react-dom';
 // Load the charts module
 import Footer from "./common/Footer";
 import SideDisplay from "./common/SideDisplay";
@@ -8,23 +7,21 @@ import {AreaChart, Area, linearGradient , XAxis, YAxis, Tooltip, CartesianGrid }
 
 
 class Trends extends Component {
+  state = {
+    data: this.props.yearlyViewData
+  };
 
 toggleMonthlyView = () => {
-  for (let i=0; i < this.state.dailyMoodData.length; i++) {
-    if (this.state.dailyMoodData[i].month === this.state.month) {
-      this.setState({data: this.state.dailyMoodData[i].scores});
+  for (let i=0; i < this.props.monthlyViewData.length; i++) {
+    if (this.props.monthlyViewData[i].month === this.props.selectedMonth) {
+      this.setState({data: this.props.monthlyViewData[i].scores});
     }
   }
 }
 
 toggleYearlyView = () => {
-  this.setState({data: this.state.monthlyMoodAverages})
+  this.setState({data: this.props.yearlyViewData})
 }
-
-  //Callback to pass view up from Side Display
-  viewCallback = (view) => {
-    this.setState({selectedView: view});
-  }
 
   findAverage = (elmt) => {
     let sum = 0;
@@ -72,8 +69,8 @@ toggleYearlyView = () => {
             </div>
           </div>
         <SideDisplay
-          getView= {this.viewCallback}
-          selectedView={this.state.selectedView}
+          storeSelectedView= {this.props.storeSelectedView}
+          selectedView={this.props.selectedView}
           toggleMonthlyView={this.toggleMonthlyView}
           toggleYearlyView={this.toggleYearlyView}
         />

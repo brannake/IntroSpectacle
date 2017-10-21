@@ -8,7 +8,7 @@ class Main extends Component {
     imageData: this.props.imageData
   };
 
-  //This is a big fat function that calculates the average mood of each month for trends page
+  //Calculates the average mood of each month for trends page
   calculateYearlyViewData = (arrayResponse) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];    
     let monthlyMoodAverages = [];
@@ -26,7 +26,7 @@ class Main extends Component {
     this.props.storeYearlyViewData(monthlyMoodAverages);
   }
 
-  //This is a big fat function that packages every submission date by month for trends page
+  //Packages every submission date by month for trends page
   calculateMonthlyViewData = (arrayResponse) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];        
     let monthlyMoodLogs = [];
@@ -59,7 +59,6 @@ class Main extends Component {
       type: 'POST',
       data: this.state,
       success: (data) => {
-        console.log(data);
         this.props.storeImageData(data);
         this.calculateYearlyViewData(data);
         this.calculateMonthlyViewData(data);
@@ -118,7 +117,6 @@ componentWillMount= () => {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <Home

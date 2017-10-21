@@ -15,8 +15,16 @@ class Panel extends Component {
 
   //Renders all the image matches on the page
   renderImageIfMatch = (datePanelDay, datePanelMonth, imageArray) => {
+    console.log(this.props);
+
+
+
     if (this.props.imageData) {
       for (let i=0; i < imageArray.length; i++) {
+        console.log(datePanelDay);
+        console.log(imageArray[i].day);
+        console.log(datePanelMonth);
+        console.log(imageArray[i].month);
         if (parseInt(datePanelDay) === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
           return (
             <div id="media-container">

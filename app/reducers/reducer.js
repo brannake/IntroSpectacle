@@ -27,9 +27,16 @@ const reducer =  (state, action) => {
                 currentDate: action.currentDate
             });
         case "STORE_CURRENT_MONTH":
-            return Object.assign({}, state, {
-                currentMonth: action.currentMonth
-            });
+            if (!state.selectedMonth) {
+                return Object.assign({}, state, {
+                    currentMonth: action.currentMonth,
+                    selectedMonth: action.currentMonth
+                })
+            } else {
+                return Object.assign({}, state, {
+                    currentMonth: action.currentMonth
+                })
+            };
         case "STORE_SELECTED_DATE":
             return Object.assign({}, state, {
                 selectedDate: action.selectedDate

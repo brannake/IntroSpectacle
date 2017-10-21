@@ -23,7 +23,7 @@ class SubmitForm extends Component {
         fd.append('date', this.props.selectedDate);
         fd.append('month', this.props.selectedMonth);
         fd.append('text', this.state.text);
-        fd.append('user', "default");
+        fd.append('user', this.props.user);
 
         $.ajax({
             url: '/api/images',

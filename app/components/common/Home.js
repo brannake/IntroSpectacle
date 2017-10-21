@@ -297,6 +297,7 @@ class Home extends Component {
             selectedDate={this.props.selectedDate}
             selectedMonth={this.props.selectedMonth}
             refreshImages={this.props.refreshImages}
+            user={this.props.user}
           />
 	      </Modal>
         <div id="side-display-container"></div>

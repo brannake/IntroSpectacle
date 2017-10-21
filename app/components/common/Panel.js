@@ -9,28 +9,18 @@ class Panel extends Component {
     event.preventDefault();
     let domNode = ReactDOM.findDOMNode(this);
     let calendarDate = domNode.innerText.trim();
-    console.log(calendarDate);
     this.props.storeSelectedDate(calendarDate);
   }
 
   //Renders all the image matches on the page
   renderImageIfMatch = (datePanelDay, datePanelMonth, imageArray) => {
-    console.log(this.props);
-
-
-
     if (this.props.imageData) {
       for (let i=0; i < imageArray.length; i++) {
-        console.log(datePanelDay);
-        console.log(imageArray[i].day);
-        console.log(datePanelMonth);
-        console.log(imageArray[i].month);
         if (parseInt(datePanelDay) === parseInt(imageArray[i].day) && datePanelMonth === imageArray[i].month) {
           return (
             <div id="media-container">
               <MediaBox
                 src={imageArray[i].image}
-                onClick= {() => {this.props.callbackforImage(imageArray[i].image)}}
               />
             </div>
           );
@@ -44,7 +34,6 @@ class Panel extends Component {
   //This renders each panel as a plain white square, unless it is the current date or a selected date
   //If state has been set, load the image into each panel by checking the image date
   render() {
-    console.log(this.props);
       return (
         //Checks to see if the date being rendered is the date selected
         <div 

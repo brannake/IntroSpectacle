@@ -60,3 +60,17 @@ export const storeSelectedView = (view) => {
     selectedView: view
   }
 }
+
+export const storeYearlyViewData = (yearlyViewData) => {
+  return {
+    type: 'STORE_YEARLY_VIEW_DATA',
+    yearlyViewData: yearlyViewData
+  }
+}
+
+export const storeMonthlyViewData = (monthlyViewData) => {
+  return {
+    type: 'STORE_MONTHLY_VIEW_DATA',
+    monthlyViewData: monthlyViewData
+  }
+}

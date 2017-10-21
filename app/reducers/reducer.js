@@ -49,6 +49,14 @@ const reducer =  (state, action) => {
             return Object.assign({}, state, {
                 selectedView: action.selectedView
             });
+        case "STORE_YEARLY_VIEW_DATA":
+            return Object.assign({}, state, {
+                yearlyViewData: action.yearlyViewData
+            });
+        case "STORE_MONTHLY_VIEW_DATA":
+            return Object.assign({}, state, {
+                monthlyViewData: action.monthlyViewData
+            });
         }
     }
 

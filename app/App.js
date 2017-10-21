@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
 import containerLogin from "./containers/containerLogin";
 import containerMain from "./containers/containerMain";
+import containerTrends from "./containers/containerTrends";
 
 const store = createStore(reducer);
 
@@ -17,6 +18,7 @@ const superRender = () => {
                 <div id="route-packager">
                     <Route path="/" component={containerLogin} />
                     <Route path="/calendar" component={containerMain} />
+                    <Route path="/trends" component={containerTrends} />
                 </div>
             </BrowserRouter>
      </Provider>, document.getElementById("app"));

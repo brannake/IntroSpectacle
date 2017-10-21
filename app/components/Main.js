@@ -8,30 +8,40 @@ class Main extends Component {
     imageData: this.props.imageData
   };
 
-  //This is a big fat function that calculates the average mood of each month
-  //Also packages the daily mood scores for each month
-  //Will need to refactor and break into two for testing
-
-  calculateMonthlyMoodAverage = (arrayResponse) => {
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  //This is a big fat function that calculates the average mood of each month for trends page
+  calculateYearlyViewData = (arrayResponse) => {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];    
     let monthlyMoodAverages = [];
+      for (let i=0; i < months.length; i++) {
+        let currentMonthRunningTotal = [];
+        for (let j=0; j < arrayResponse.length; j++) {
+          if (months[i] === arrayResponse[j].month) {
+            currentMonthRunningTotal.unshift(100*arrayResponse[j].joy_score);
+          }
+        }
+        let average = this.findAverage(currentMonthRunningTotal);
+        let monthlyAverage = {name: months[i], uv: average};
+        monthlyMoodAverages.push(monthlyAverage);
+      }
+    this.props.storeYearlyViewData(monthlyMoodAverages);
+  }
+
+  //This is a big fat function that packages every submission date by month for trends page
+  calculateMonthlyViewData = (arrayResponse) => {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];        
     let monthlyMoodLogs = [];
     for (let i=0; i < months.length; i++) {
-      let currentMonthRunningTotal = [];
       let dailyMoodLog = [];
       for (let j=0; j < arrayResponse.length; j++) {
         if (months[i] === arrayResponse[j].month) {
-          currentMonthRunningTotal.unshift(100*arrayResponse[j].joy_score);
           let dayDataPointObject = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].joy_score};
           dailyMoodLog.unshift(dayDataPointObject);
         }
       }
       let dailyMoodScoresForThisMonth = {month: months[i], scores: dailyMoodLog};
       monthlyMoodLogs.push(dailyMoodScoresForThisMonth);
-      let average = this.findAverage(currentMonthRunningTotal);
-      let monthlyAverage = {name: months[i], uv: average};
-      monthlyMoodAverages.push(monthlyAverage);
     }
+    this.props.storeMonthlyViewData(monthlyMoodLogs);
   }
 
   findAverage = (elmt) => {
@@ -51,7 +61,8 @@ class Main extends Component {
       success: (data) => {
         console.log(data);
         this.props.storeImageData(data);
-        this.calculateMonthlyMoodAverage(data);
+        this.calculateYearlyViewData(data);
+        this.calculateMonthlyViewData(data);
       }
     });
   }
@@ -107,6 +118,7 @@ componentWillMount= () => {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Home

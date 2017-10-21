@@ -9,7 +9,6 @@ class Navbar extends Component {
   handleChange = (event) => {
       event.preventDefault();
       let selectedMonth = ($(event.target).text());
-      console.log(selectedMonth);
       this.props.storeSelectedMonth(selectedMonth);
     }
 
@@ -20,7 +19,8 @@ class Navbar extends Component {
       <NavItem
         key={month}
         id={month}
-        onClick={this.handleChange} >
+        onClick={this.handleChange}
+      >
         {month}
       </NavItem>
     ));

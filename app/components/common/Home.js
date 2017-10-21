@@ -289,9 +289,9 @@ class Home extends Component {
 		      id="modal"
 		      header={this.props.selectedMonth +" "+ this.props.selectedDate}
         >
-            <div id="caption-text-display">
-              {this.handleModalMessage(this.props.imageData, this.props.selectedDate, this.props.selectedMonth)}
-            </div>
+          <div id="caption-text-display">
+            {this.handleModalMessage(this.props.imageData, this.props.selectedDate, this.props.selectedMonth)}
+          </div>
           <SubmitForm
             data={this.props.imageData}
             selectedDate={this.props.selectedDate}

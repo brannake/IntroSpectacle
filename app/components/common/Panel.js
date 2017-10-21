@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import {MediaBox} from 'react-materialize';
 
 class Panel extends Component {
-  state = {
-    imageLoaded: false
-  };
+
   //Passes the selected day up to the Home component
   handleDayChange = () => {
     event.preventDefault();
     let domNode = ReactDOM.findDOMNode(this);
     let calendarDate = domNode.innerText.trim();
-    this.props.callbackfromParent(calendarDate);
+    console.log(calendarDate);
+    this.props.storeSelectedDate(calendarDate);
   }
 
   //Renders all the image matches on the page
@@ -37,6 +36,7 @@ class Panel extends Component {
   //This renders each panel as a plain white square, unless it is the current date or a selected date
   //If state has been set, load the image into each panel by checking the image date
   render() {
+    console.log(this.props);
       return (
         //Checks to see if the date being rendered is the date selected
         <div 

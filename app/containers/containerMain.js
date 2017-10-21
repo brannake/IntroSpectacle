@@ -11,7 +11,7 @@ import Main from '../components/Main';
         currentDate: state.currentDate,
         currentMonth: state.currentMonth,
         selectedDate: state.selectedDate,
-        selectedMonth: state.storeSelectedMonth,
+        selectedMonth: state.selectedMonth,
         selectedView: state.selectedView
       }
     }

@@ -31,8 +31,6 @@ class SubLogin extends Component {
   //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
   loginUser = () => {
 
-    console.log(this.props);
-
     $.ajax({
         url: 'api/login',
         type: 'POST',

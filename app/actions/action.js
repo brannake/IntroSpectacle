@@ -36,7 +36,7 @@ export const storeCurrentDate = (date) => {
 export const storeSelectedDate = (date) => {
   return {
     type: 'STORE_SELECTED_DATE',
-    selectedDay: date
+    selectedDate: date
   }
 }
 

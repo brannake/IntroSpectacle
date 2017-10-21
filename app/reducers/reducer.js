@@ -12,7 +12,7 @@ const reducer =  (state, action) => {
         case "ADD_USER":
             return Object.assign({}, state, {
                 user: action.user,
-                selectedDate: ''
+                selectedDate: ' '
             });
         case "AUTHENTICATE_USER":
             return Object.assign({}, state, {

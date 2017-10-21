@@ -118,7 +118,7 @@ componentWillMount= () => {
           currentMonth={this.props.currentMonth}
           selectedDate={this.props.selectedDate}
           selectedMonth={this.props.selectedMonth}
-          storeSelectedDay={this.props.storeSelectedDay}
+          storeSelectedDate={this.props.storeSelectedDate}
           storeSelectedMonth={this.props.storeSelectedMonth}
           storeSelectedView={this.props.storeSelectedView}
         />

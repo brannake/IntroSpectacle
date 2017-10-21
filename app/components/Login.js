@@ -5,11 +5,10 @@ import {Redirect} from 'react-router-dom';
 class Login extends Component {
 
   render() {
-    console.log(this.props)
     if (this.props.authenticated === true) {
       return (
-            <Redirect to="/calendar"/>
-            )} else {
+          <Redirect to="/calendar"/>
+      )} else {
     return (
       <div>
         <SubLogin

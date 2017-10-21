@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SideNavMod from "./SideNavMod";
 import {Dropdown, Button, NavItem} from 'react-materialize'
+import {Link} from "react-router-dom";
 
 class Navbar extends Component {
 
@@ -29,10 +30,23 @@ class Navbar extends Component {
   //If the user has selected a day, display that
   //Otherwise, display the current day/month
   render() {
-    console.log(this.props.selectedDate);
     return (
     <div>
-    <nav className="navbar navbar-inverse">
+      <nav className="navbar navbar-inverse">
+        <Button 
+          id="login-btn"   
+        >
+          <Link to="/calendar">
+            My Calendar
+          </Link>
+        </Button>
+        <Button 
+          id="trends-btn"  
+        >
+          <Link to="/trends">
+            Trends
+          </Link>
+      </Button> 
       <div className="container-fluid">
       <div className="navbar-header">
       </div>

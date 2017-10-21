@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router";
 import SideNavMod from "./SideNavMod";
 import {Dropdown, Modal, Button, Navbar, NavItem, Slider, Slide, Footer, Row, Input, Icon, image} from 'react-materialize';
 
-class NavbarCustom extends Component {S
+class NavbarCustom extends Component {
   //Nested conditional statements here again
   //If the user has selected a day, display that
   //Otherwise, display the current day/month
@@ -11,49 +10,45 @@ class NavbarCustom extends Component {S
     return (
     <div>
       <Navbar brand='introspectiv' left>
-        <NavItem >
-        <Link to="/heatmaps">TRENDS</Link>
-        </NavItem>
-          <NavItem>
-          <Link to="/calendar">MY CALENDAR</Link>
-          </NavItem>
           <div className="wrapper">
-                    <Button 
-                    id="login-btn"
-                    waves='light'    
-                    onClick={() => {
+            <Button 
+              id="login-btn"
+              waves='light'    
+              onClick={() => {
                 $('#login').modal('open')
-                }}>Login      
-                </Button>
-                </div>
-                <Modal className= "page-footer example"
-                    id='login'
-                    header='Login'>
-                    <form>
-                        <Input 
-                        name="user"
-                        s={6} label="User Name"
-                        value={this.state.newUserInput}
-                        onChange={this.handleInputChange}              
-                        validate><Icon>account_circle</Icon></Input>
-                        <Input
-                        name="Password"
-                        s={6} 
-                        label="Password"
-                        onChange={this.handleInputChange}
-                        value={this.state.passwordInput}                
-                        validate type='tel'><Icon>lock</Icon></Input>
-                    </form>
-                        <div className="modal-footer">
-                        <Button 
-                            id="submit-button"
-                            className="btn waves-effect waves-light modal-action"
-                            onClick={this.loginUser}
-                        > 
-                        Submit
-                        </Button>
-                        </div>            
-                </Modal>
+                }}>Login   
+            </Button>
+              </div>
+              <Modal className= "page-footer example"
+                id='login'
+                header='Login'>
+                <form>
+                  <Input 
+                    name="user"
+                    s={6} 
+                    label="User Name"
+                    value={this.state.newUserInput}
+                    onChange={this.handleInputChange}              
+                    validate><Icon>account_circle</Icon>
+                  </Input>
+                  <Input
+                    name="Password"
+                    s={6} 
+                    label="Password"
+                    onChange={this.handleInputChange}
+                    value={this.state.passwordInput}                
+                    validate type='tel'><Icon>lock</Icon></Input>
+                  </form>
+                <div className="modal-footer">
+                  <Button 
+                    id="submit-button"
+                    className="btn waves-effect waves-light modal-action"
+                    onClick={this.loginUser}
+                  > 
+                    Submit
+                  </Button>
+                </div>            
+              </Modal>
         </Navbar>
     <nav style={{ marginBottom: 40 }} className="navbar navbar-inverse">
       <div className="container-fluid">

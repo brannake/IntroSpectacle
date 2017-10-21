@@ -69,14 +69,14 @@ class SubLogin extends Component {
     <div>
         <Navbar brand='introspectiv' left>
             <div className="wrapper">
-                    <Button 
+                <Button 
                     id="login-btn"
                     waves='light'    
-                    onClick={() => {
-                $('#login').modal('open')
-                }}>Login      
+                    onClick={() => {$('#login').modal('open')}}
+                >
+                    Login
                 </Button>
-                </div>
+            </div>
                 <Modal className= "page-footer example"
                     id='login'
                     header='Login'>

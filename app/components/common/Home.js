@@ -21,8 +21,9 @@ class Home extends Component {
     ]
   };
 
-  buildCalendarDates = () => {
-      if (this.props.currentMonth === "January") {
+  buildCalendarDates = (selectedMonth) => {
+    console.log(this.props);
+      if (this.props.selectedMonth === "January") {
         this.setState({dates: [
           [1, 2, 3, 4, 5, 6, 7], 
           [8, 9, 10, 11, 12, 13, 14],
@@ -32,7 +33,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "February") {
+      if (this.props.selectedMonth === "February") {
         this.setState({dates: [
           ["", " ", "  ", 1, 2, 3, 4],
           [5, 6, 7, 8, 9, 10, 11],
@@ -42,7 +43,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "March") {
+      if (this.props.selectedMonth === "March") {
         this.setState({dates: [
           ["", " ", "  ", 1, 2, 3, 4],
           [5, 6, 7, 8, 9, 10, 11],
@@ -52,7 +53,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "April") {
+      if (this.props.selectedMonth === "April") {
         this.setState({dates: [
           ["", " ", "  ", "   ", "    ", "     ", 1],
           [2, 3, 4, 5, 6, 7, 8],
@@ -62,7 +63,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "May") {
+      if (this.props.selectedMonth === "May") {
         this.setState({dates: [
           ["", 1, 2, 3, 4, 5, 6],
           [7, 8, 9, 10, 11, 12, 13],
@@ -72,7 +73,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "June") {
+      if (this.props.selectedMonth === "June") {
         this.setState({dates: [
           ["", " ", "  ", "   ", 1, 2, 3],
           [4, 5, 6, 7, 8, 9, 10],
@@ -82,7 +83,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "July") {
+      if (this.props.selectedMonth === "July") {
         this.setState({dates: [
           ["", " ", "  ", "   ", "    ", "     ", 1],
           [2, 3, 4, 5, 6, 7, 8],
@@ -92,7 +93,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "August") {
+      if (this.props.selectedMonth === "August") {
         this.setState({dates: [
           ["", " ", 1, 2, 3, 4, 5],
           [6, 7, 8, 9, 10, 11, 12],
@@ -102,7 +103,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "September") {
+      if (this.props.selectedMonth === "September") {
         this.setState({dates: [
           ["", " ", "  ", "   ", "    ", 1, 2],
           [3, 4, 5, 6, 7, 8, 9],
@@ -112,7 +113,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "October") {
+      if (this.props.selectedMonth === "October") {
         this.setState({dates: [
           [1, 2, 3, 4, 5, 6, 7],
           [8, 9, 10, 11, 12, 13, 14],
@@ -122,7 +123,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "November") {
+      if (this.props.selectedMonth === "November") {
         this.setState({dates: [
           ["", " ", "  ", 1, 2, 3, 4],
           [5, 6, 7, 8, 9, 10, 11],
@@ -132,7 +133,7 @@ class Home extends Component {
         ]});
       }
 
-      if (this.props.currentMonth === "December") {
+      if (this.props.selectedMonth === "December") {
         this.setState({dates: [
           ["", " ", "  ", "   ", "    ", 1, 2],
           [3, 4, 5, 6, 7, 8, 9],
@@ -259,7 +260,7 @@ class Home extends Component {
       }
     }
 
-    componentWillMount= () => {
+    componentWillMount = () => {
       this.buildCalendarDates();
     }
 
@@ -273,6 +274,7 @@ class Home extends Component {
         selectedDate={this.props.selectedDate}
         month={this.props.selectedMonth}
         currentMonth={this.props.currentMonth}
+        rebuildCalendar={this.buildCalendarDates}
       />
       {this.renderCalendar(this.state.firstRowHeadings, this.state.dates)}
       <Footer/>

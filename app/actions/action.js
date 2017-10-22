@@ -41,16 +41,349 @@ export const storeSelectedDate = (date) => {
 }
 
 export const storeCurrentMonth = (month) => {
-  return {
-    type: 'STORE_CURRENT_MONTH',
-    currentMonth: month
+  if (month === "January") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        [1, 2, 3, 4, 5, 6, 7], 
+        [8, 9, 10, 11, 12, 13, 14],
+        [15, 16, 17, 18, 19, 20, 21],
+        [22, 23, 24, 25, 26, 27, 28],
+        [29, 30, 31]
+      ]};
+    }
+
+  if (month === "February") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28]
+      ]};
+    }
+
+  if (month === "March") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "April") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", "    ", "     ", 1],
+        [2, 3, 4, 5, 6, 7, 8],
+        [9, 10, 11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20, 21, 22],
+        [23, 24, 25, 26, 27, 28, 29]
+      ]};
+    }
+
+  if (month === "May") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", 1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12, 13],
+        [14, 15, 16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25, 26, 27],
+        [23, 24, 25, 26, 27, 28, 29],
+        [28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "May") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", 1, 2, 3],
+        [4, 5, 6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15, 16, 17],
+        [18, 19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30]
+        [28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "June") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", 1, 2, 3],
+        [4, 5, 6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15, 16, 17],
+        [18, 19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30]
+      ]};
+    }
+
+  if (month === "July") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", "    ", "     ", 1],
+        [2, 3, 4, 5, 6, 7, 8],
+        [9, 10, 11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20, 21, 22],
+        [29, 30, 31]
+      ]};
+    }
+
+  if (month === "August") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", 1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10, 11, 12],
+        [13, 14, 15, 16, 17, 18, 19],
+        [20, 21, 22, 23, 24, 25, 26],
+        [27, 28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "September") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", "    ", 1, 2],
+        [3, 4, 5, 6, 7, 8, 9],
+        [10, 11, 12, 13, 14, 15, 16],
+        [17, 18, 19, 20, 21, 22, 23],
+        [24, 25, 26, 27, 28, 29, 30]
+      ]};
+    }
+
+  if (month === "October") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        [1, 2, 3, 4, 5, 6, 7],
+        [8, 9, 10, 11, 12, 13, 14],
+        [15, 16, 17, 18, 19, 20, 21],
+        [22, 23, 24, 25, 26, 27, 28,],
+        [29, 30, 31]
+      ]};
+    }
+
+  if (month === "November") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28, 29, 30]
+      ]};
+    }
+
+  if (month === "December") {
+    return {
+      type: 'STORE_CURRENT_MONTH',
+      currentMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28, 29, 30]
+      ]};
   }
 }
 
 export const storeSelectedMonth = (month) => {
-  return {
-    type: 'STORE_SELECTED_MONTH',
-    selectedMonth: month
+
+  if (month === "January") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        [1, 2, 3, 4, 5, 6, 7], 
+        [8, 9, 10, 11, 12, 13, 14],
+        [15, 16, 17, 18, 19, 20, 21],
+        [22, 23, 24, 25, 26, 27, 28],
+        [29, 30, 31]
+      ]};
+    }
+
+  if (month === "February") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28]
+      ]};
+    }
+
+  if (month === "March") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "April") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", "    ", "     ", 1],
+        [2, 3, 4, 5, 6, 7, 8],
+        [9, 10, 11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20, 21, 22],
+        [23, 24, 25, 26, 27, 28, 29]
+      ]};
+    }
+
+  if (month === "May") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", 1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12, 13],
+        [14, 15, 16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25, 26, 27],
+        [23, 24, 25, 26, 27, 28, 29],
+        [28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "May") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", 1, 2, 3],
+        [4, 5, 6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15, 16, 17],
+        [18, 19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30]
+        [28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "June") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", 1, 2, 3],
+        [4, 5, 6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15, 16, 17],
+        [18, 19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30]
+      ]};
+    }
+
+  if (month === "July") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", "    ", "     ", 1],
+        [2, 3, 4, 5, 6, 7, 8],
+        [9, 10, 11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20, 21, 22],
+        [29, 30, 31]
+      ]};
+    }
+
+  if (month === "August") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", 1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10, 11, 12],
+        [13, 14, 15, 16, 17, 18, 19],
+        [20, 21, 22, 23, 24, 25, 26],
+        [27, 28, 29, 30, 31]
+      ]};
+    }
+
+  if (month === "September") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", "   ", "    ", 1, 2],
+        [3, 4, 5, 6, 7, 8, 9],
+        [10, 11, 12, 13, 14, 15, 16],
+        [17, 18, 19, 20, 21, 22, 23],
+        [24, 25, 26, 27, 28, 29, 30]
+      ]};
+    }
+
+  if (month === "October") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        [1, 2, 3, 4, 5, 6, 7],
+        [8, 9, 10, 11, 12, 13, 14],
+        [15, 16, 17, 18, 19, 20, 21],
+        [22, 23, 24, 25, 26, 27, 28,],
+        [29, 30, 31]
+      ]};
+    }
+
+  if (month === "November") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28, 29, 30]
+      ]};
+    }
+
+  if (month === "December") {
+    return {
+      type: 'STORE_SELECTED_MONTH',
+      selectedMonth: month,
+      dates: [
+        ["", " ", "  ", 1, 2, 3, 4],
+        [5, 6, 7, 8, 9, 10, 11],
+        [12, 13, 14, 15, 16, 17, 18],
+        [19, 20, 21, 22, 23, 24, 25],
+        [26, 27, 28, 29, 30]
+      ]};
   }
 }
 

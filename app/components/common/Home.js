@@ -9,141 +9,6 @@ import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
 
 class Home extends Component {
-  state = {
-    dateSelectedSrc: "",
-    firstRowHeadings: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    dates: [
-      [1, 2, 3, 4, 5, 6, 7],
-      [8, 9, 10, 11, 12, 13, 14],
-      [15, 16, 17, 18, 19, 20, 21],
-      [22, 23, 24, 25, 26, 27, 28],
-      [29, 30, 31]
-    ]
-  };
-
-  buildCalendarDates = (selectedMonth) => {
-    console.log(this.props);
-      if (this.props.selectedMonth === "January") {
-        this.setState({dates: [
-          [1, 2, 3, 4, 5, 6, 7], 
-          [8, 9, 10, 11, 12, 13, 14],
-          [15, 16, 17, 18, 19, 20, 21],
-          [22, 23, 24, 25, 26, 27, 28],
-          [29, 30, 31]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "February") {
-        this.setState({dates: [
-          ["", " ", "  ", 1, 2, 3, 4],
-          [5, 6, 7, 8, 9, 10, 11],
-          [12, 13, 14, 15, 16, 17, 18],
-          [19, 20, 21, 22, 23, 24, 25],
-          [26, 27, 28]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "March") {
-        this.setState({dates: [
-          ["", " ", "  ", 1, 2, 3, 4],
-          [5, 6, 7, 8, 9, 10, 11],
-          [12, 13, 14, 15, 16, 17, 18],
-          [19, 20, 21, 22, 23, 24, 25],
-          [26, 27, 28, 29, 30, 31]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "April") {
-        this.setState({dates: [
-          ["", " ", "  ", "   ", "    ", "     ", 1],
-          [2, 3, 4, 5, 6, 7, 8],
-          [9, 10, 11, 12, 13, 14, 15],
-          [16, 17, 18, 19, 20, 21, 22],
-          [23, 24, 25, 26, 27, 28, 29]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "May") {
-        this.setState({dates: [
-          ["", 1, 2, 3, 4, 5, 6],
-          [7, 8, 9, 10, 11, 12, 13],
-          [14, 15, 16, 17, 18, 19, 20],
-          [21, 22, 23, 24, 25, 26, 27],
-          [28, 29, 30, 31]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "June") {
-        this.setState({dates: [
-          ["", " ", "  ", "   ", 1, 2, 3],
-          [4, 5, 6, 7, 8, 9, 10],
-          [11, 12, 13, 14, 15, 16, 17],
-          [18, 19, 20, 21, 22, 23, 24],
-          [25, 26, 27, 28, 29, 30]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "July") {
-        this.setState({dates: [
-          ["", " ", "  ", "   ", "    ", "     ", 1],
-          [2, 3, 4, 5, 6, 7, 8],
-          [9, 10, 11, 12, 13, 14, 15],
-          [16, 17, 18, 19, 20, 21, 22],
-          [29, 30, 31]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "August") {
-        this.setState({dates: [
-          ["", " ", 1, 2, 3, 4, 5],
-          [6, 7, 8, 9, 10, 11, 12],
-          [13, 14, 15, 16, 17, 18, 19],
-          [20, 21, 22, 23, 24, 25, 26],
-          [27, 28, 29, 30, 31]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "September") {
-        this.setState({dates: [
-          ["", " ", "  ", "   ", "    ", 1, 2],
-          [3, 4, 5, 6, 7, 8, 9],
-          [10, 11, 12, 13, 14, 15, 16],
-          [17, 18, 19, 20, 21, 22, 23],
-          [24, 25, 26, 27, 28, 29, 30]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "October") {
-        this.setState({dates: [
-          [1, 2, 3, 4, 5, 6, 7],
-          [8, 9, 10, 11, 12, 13, 14],
-          [15, 16, 17, 18, 19, 20, 21],
-          [22, 23, 24, 25, 26, 27, 28,],
-          [29, 30, 31]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "November") {
-        this.setState({dates: [
-          ["", " ", "  ", 1, 2, 3, 4],
-          [5, 6, 7, 8, 9, 10, 11],
-          [12, 13, 14, 15, 16, 17, 18],
-          [19, 20, 21, 22, 23, 24, 25],
-          [26, 27, 28, 29, 30]
-        ]});
-      }
-
-      if (this.props.selectedMonth === "December") {
-        this.setState({dates: [
-          ["", " ", "  ", "   ", "    ", 1, 2],
-          [3, 4, 5, 6, 7, 8, 9],
-          [10, 11, 12, 13, 14, 15, 16],
-          [17, 18, 19, 20, 21, 22, 23],
-          [24, 25, 26, 27, 28, 29, 30],
-          [31]
-        ]});     
-      };
-  };
 
 //Rendering 7 days per row
 //First 7 panels are for the day headings (Monday, Tuesday, etc...)
@@ -159,6 +24,9 @@ class Home extends Component {
 
   //Renders the actual numeric dates on the calendar
   renderSecondDates(datesArray) {
+    if (!datesArray) {
+      console.log("prerender");
+    } else {
     return datesArray.map(week => (
       <div className="row" key={week}>
         {week.map(date => (
@@ -175,10 +43,11 @@ class Home extends Component {
           </Panel>))
         }
       </div>
-    ))
+    ))}
   }
 
-  renderCalendar = (dayHeadings, dates) => {
+  renderCalendar = (dates) => {
+    let dayHeadings =  ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     return(
     <div className="calendar">
       <div className="row" id="day-headings">
@@ -260,12 +129,8 @@ class Home extends Component {
       }
     }
 
-    componentWillMount = () => {
-      this.buildCalendarDates();
-    }
-
   render() {
-    console.log(this.props);
+    console.log(this.props.dates);
     return (
     <div>
       <Navbar
@@ -276,7 +141,7 @@ class Home extends Component {
         currentMonth={this.props.currentMonth}
         rebuildCalendar={this.buildCalendarDates}
       />
-      {this.renderCalendar(this.state.firstRowHeadings, this.state.dates)}
+      {this.renderCalendar(this.props.dates)}
       <Footer/>
       <div className="row">
 	      <Button 

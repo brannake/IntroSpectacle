@@ -24,17 +24,21 @@ const reducer =  (state, action) => {
             });
         case "STORE_CURRENT_DATE":
             return Object.assign({}, state, {
-                currentDate: action.currentDate
+                currentDate: action.currentDate,
             });
         case "STORE_CURRENT_MONTH":
+        console.log(state);
+        console.log(action);
             if (!state.selectedMonth) {
                 return Object.assign({}, state, {
                     currentMonth: action.currentMonth,
-                    selectedMonth: action.currentMonth
+                    selectedMonth: action.currentMonth,
+                    dates: action.dates
                 })
             } else {
                 return Object.assign({}, state, {
-                    currentMonth: action.currentMonth
+                    currentMonth: action.currentMonth,
+                    dates: action.dates
                 })
             };
         case "STORE_SELECTED_DATE":
@@ -43,7 +47,8 @@ const reducer =  (state, action) => {
             });
         case "STORE_SELECTED_MONTH":
             return Object.assign({}, state, {
-                selectedMonth: action.selectedMonth
+                selectedMonth: action.selectedMonth,
+                dates: action.dates
             });
         case "STORE_SELECTED_VIEW":
             return Object.assign({}, state, {

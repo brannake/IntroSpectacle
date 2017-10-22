@@ -117,6 +117,7 @@ componentWillMount= () => {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Home
@@ -130,6 +131,7 @@ componentWillMount= () => {
           storeSelectedDate={this.props.storeSelectedDate}
           storeSelectedMonth={this.props.storeSelectedMonth}
           storeSelectedView={this.props.storeSelectedView}
+          dates={this.props.dates}
         />
       </div>
     );

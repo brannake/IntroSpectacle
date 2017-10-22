@@ -14,7 +14,8 @@ import Main from '../components/Main';
         selectedMonth: state.selectedMonth,
         selectedView: state.selectedView,
         yearlyViewData: state.yearlyViewData,
-        monthlyViewData: state.monthlyViewData
+        monthlyViewData: state.monthlyViewData,
+        dates: state.dates
       }
     }
 
@@ -43,7 +44,7 @@ import Main from '../components/Main';
           },
           storeMonthlyViewData: data => {
             dispatch(storeMonthlyViewData(data))
-          },
+          }
         }
       }
 

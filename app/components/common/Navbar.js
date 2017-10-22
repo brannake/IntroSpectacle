@@ -10,7 +10,6 @@ class Navbar extends Component {
       event.preventDefault();
       let selectedMonth = ($(event.target).text());
       this.props.storeSelectedMonth(selectedMonth);
-      this.props.rebuildCalendar(selectedMonth);
     }
 
   //Function to render the individual Nav items for month

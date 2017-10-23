@@ -3,12 +3,9 @@ import ReactDOM from 'react-dom';
 import {Button} from 'react-materialize';
 
 class SubmitForm extends Component {
-    constructor() {
-        super()
-        this.state = {
-            text: ''
-        };
-    };
+    state = {
+        text: ''
+    }
 
     handleChange = (event) => {
         this.setState({

@@ -7,7 +7,7 @@ var passport = require("passport");
 var session = require('express-session');
 var app = express();
 
-app.use(express.session({ secret: 'keyboard cat' }));
+app.use(session({secret: 'keyboard cat'}))
 
 // Sets up the Express App
 // =============================================================

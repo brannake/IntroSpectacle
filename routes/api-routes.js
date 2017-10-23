@@ -41,8 +41,6 @@ app.post('/api/signup',
 
   // POST route for getting all of the images on load for a specific user
   app.post("/api/load", function(req, res) {
-    console.log("this fired");
-    console.log(req.body);
     var userName = req.body.user;
     db.dateInfo.findAll({where: {user:userName}, order: [['day', 'DESC']] }).then(function(db) {
       res.send(db);
@@ -96,7 +94,6 @@ app.post('/api/signup',
     );
   });
 
-
   app.post("/api/graphs", function(req, res) {
     var userName = req.body.user;
     var month = req.body.month;
@@ -128,4 +125,8 @@ app.post('/api/signup',
       res.json(err);
     });
   });
+
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+    });
   };

@@ -130,7 +130,6 @@ nav {
   left: 6.5%;
 }
 
-
 #currentdate {
   background: orange;
   border-bottom: 2px solid black;
@@ -438,4 +437,8 @@ input[type=tel]:focus:not([readonly]){
   color: white;
   font-size: 5rem;
   text-align: center;
+}
+
+.modal-close {
+  color: white;
 }

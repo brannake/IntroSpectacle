@@ -23,8 +23,9 @@ class SubLogin extends Component {
   successfulLogin= (data) => {
     this.props.onLoginClick(data.username);
     this.props.confirmAuthentication();
-    $('#materialize-modal-overlay-1').text("Loading...");
-    setTimeout(function(){$('#materialize-modal-overlay-1').remove()}, 1000);
+    $('.modal-overlay').text("Loading...");
+    setTimeout(function(){$('.modal-overlay').remove()}, 1000);
+    setTimeout(function(){$('#sidenav-overlay').remove()}, 1000);
     setTimeout(function(){$('#sidenav-overlay-1').remove()}, 1000);
   }
 
@@ -55,15 +56,18 @@ class SubLogin extends Component {
             this.successfulLogin(data);
         }
     }).fail(function (jqXHR, textStatus, error) {
+        console.log("why wont this run");
         // Handle failed login here
-        $('#error-display').text("This user/password combination already exists");
+        $('#error-display-1').text("This user/password combination already exists");
     });
     }
 
     componentDidMount = () => {
         $(".modal-close").click(() =>{
             this.setState({username: '', password: ''});
-        })
+        });
+        $('#login').modal({dismissible: false});
+        $('#signup').modal({dismissible: false});
     }
 
   render() {
@@ -148,7 +152,7 @@ class SubLogin extends Component {
                 <Modal className= "page-footer example"
                     id='signup'
                     header='Sign up'>
-                    <div id="error-display"></div>
+                    <div id="error-display-1"></div>
                     <form>
                         <Input 
                             name="user"

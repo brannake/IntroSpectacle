@@ -24,6 +24,7 @@ class SubLogin extends Component {
     this.props.onLoginClick(data.username);
     this.props.confirmAuthentication();
     $('.modal-overlay').text("Loading...");
+    $('#materialize-modal-overlay-2').text("Loading...");
     setTimeout(function(){$('.modal-overlay').remove()}, 1000);
     setTimeout(function(){$('#sidenav-overlay').remove()}, 1000);
     setTimeout(function(){$('#sidenav-overlay-1').remove()}, 1000);

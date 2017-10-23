@@ -60,8 +60,13 @@ class SubLogin extends Component {
     });
     }
 
-    componentWillMount = () => {
-        console.log(this.props);
+    componentDidMount = () => {
+        $(".modal-close").click(function(){
+            $("#input_0").val('');
+            $("#input_1").val('');
+            $("#input_4").val('');
+            $("#input_5").val('');
+        })
     }
 
   render() {

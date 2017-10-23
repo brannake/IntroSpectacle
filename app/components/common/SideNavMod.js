@@ -3,9 +3,6 @@ import {SideNav, SideNavItem, Button} from 'react-materialize';
 
 
 class SideNavMod extends Component {
-    state = {
-        imageLoaded: false
-      };
 
     render() {
         return (

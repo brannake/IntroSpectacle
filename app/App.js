@@ -17,8 +17,7 @@ const superRender = () => {
         <Provider store={store}>
             <BrowserRouter>
                 <div id="route-packager">
-                    <Route path="/" component={client} />
-                    <Route path="/login" component={containerLogin} />
+                    <Route path="/" component={containerLogin} />
                     <Route path="/calendar" component={containerMain} />
                     <Route path="/trends" component={containerTrends} />
                 </div>

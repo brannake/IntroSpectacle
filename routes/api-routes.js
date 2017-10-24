@@ -11,7 +11,7 @@ var fs = require("fs");
 var path = require("path");
 var passport = require("passport");
 var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
- tone_analyzer = new ToneAnalyzerV3({
+var tone_analyzer = new ToneAnalyzerV3({
   username: "f2974f88-c1cc-49d8-a758-b2fd093e519a",
   password: "vIMDxNMDQMVD",
   version_date: '2016-05-19'

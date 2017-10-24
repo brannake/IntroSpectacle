@@ -5,18 +5,22 @@ import { Provider } from 'react-redux'
 import App from '../App'
 import reducer from '../reducers/reducer'
 
-// Grab the state from a global variable injected into the server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__
+function client() {
+  // Grab the state from a global variable injected into the server-generated HTML
+  const preloadedState = window.__PRELOADED_STATE__
 
 // Allow the passed state to be garbage-collected
 delete window.__PRELOADED_STATE__
 
 // Create Redux store with initial state
-const store = createStore(counterApp, preloadedState)
+const store = createStore(reducer, preloadedState)
 
 render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
-)
+  document.getElementById("app")
+  )
+};
+
+export default client;

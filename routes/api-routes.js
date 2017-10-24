@@ -16,6 +16,7 @@ var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
   password: "vIMDxNMDQMVD",
   version_date: '2016-05-19'
 });
+
 // Routes
 // =============================================================
 module.exports = function(app) {

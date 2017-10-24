@@ -23,30 +23,11 @@ module.exports = {
         loader: "babel-loader",
         query: {
           // These are the specific transformations we'll be using.
-          presets: ["react", "es2015", "stage-2"]
+          presets: ["react", "env", "stage-2"]
         }
       }
     ]
   },
-  devServer: {
-  	historyApiFallback: true,
-  	hot: true,
-  	inline: true,
-
-  	host: 'localhost', // Defaults to `localhost`
-  	port: 3000, // Defaults to 8080
-  	proxy: {
-    	'^/api/*': {
-      	target: 'http://localhost:8086',
-      	secure: false
-    	}
-  	}
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin({
-      multiStep: true
-    })
-  ],
   // This lets us debug our react code in chrome dev tools. Errors will have lines and file names
   // Without this the console says all errors are just coming from bundle.js
   devtool: "eval-source-map"

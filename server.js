@@ -13,30 +13,6 @@ import {Provider} from 'react-redux';
 import reducer from './app/reducers/reducer';
 import {renderToString} from 'react-dom/server';
 import containerMain from './app/containers/containerMain';
-
-function handleRender(req, res) {
-  
-    const params = qs.parse(req.query)
-    const counter = parseInt(params.counter, 10) || 0
-  
-    // Compile an initial state
-    let preloadedState = {counter}
-    // Create a new Redux store instance
-    const store = createStore(reducer, preloadedState)
-    
-      // Render the component to a string
-      const html = renderToString(
-        <Provider store={store}>
-          <containerMain />
-        </Provider>
-      )
-    
-      // Grab the initial state from our Redux store
-      const finalState = store.getState()
-    
-      // Send the rendered page back to the client
-      res.send(renderFullPage(html, preloadedState))
-  }
   
   function renderFullPage(html, preloadedState) {
     return `
@@ -44,15 +20,25 @@ function handleRender(req, res) {
     <html>
       <head>
         <title>Redux Universal Example</title>
+        <meta charset="UTF-8">
+        <title>Introspectacle!</title>
+        <!-- Here we include bootstrap and font-awesome. These will be made available to all of the generated HTML/JS that React generates-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/styles.css">
       </head>
       <body>
-        <div id="root">${html}</div>
+      <div>
+        <div id="app">${html}</div>
+        </div>
         <script>
-          // WARNING: See the following for security issues around embedding JSON in HTML:
-          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script src="bundle.js"></script>
       </body>
     </html>
     `
@@ -80,13 +66,37 @@ app.use(fileUpload());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// React Server-Side Rendering
-// =============================================================
-//app.use(handleRender);
-
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app);
+
+// React Server-Side Rendering
+// =============================================================
+app.get('*', function handleRender(req, res) {
+  
+  console.log(req.body);
+
+    const params = qs.parse(req.query)
+    const user = parseInt(params.counter, 10) || 0
+  
+    // Compile an initial state
+    let preloadedState = {user}
+    // Create a new Redux store instance
+    const store = createStore(reducer, preloadedState)
+    
+      // Render the component to a string
+      const html = renderToString(
+        <Provider store={store}>
+          <containerMain />
+        </Provider>
+      )
+    
+      // Grab the initial state from our Redux store
+      const finalState = store.getState()
+    
+      // Send the rendered page back to the client
+      res.send(renderFullPage(html, preloadedState))
+  });
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

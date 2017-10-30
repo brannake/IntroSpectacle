@@ -12,7 +12,7 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import reducer from './app/reducers/reducer';
 import {renderToString} from 'react-dom/server';
-import containerMain from './app/containers/containerMain';
+import containerLogin from './app/containers/containerLogin';
   
   function renderFullPage(html, preloadedState) {
     return `
@@ -72,7 +72,7 @@ require("./routes/api-routes.js")(app);
 
 // React Server-Side Rendering
 // =============================================================
-app.get('*', function handleRender(req, res) {
+app.get('/serverrender', function handleRender(req, res) {
   
   console.log(req.body);
 
@@ -85,9 +85,9 @@ app.get('*', function handleRender(req, res) {
     const store = createStore(reducer, preloadedState)
     
       // Render the component to a string
-      const html = renderToString(
+      const html = renderToString (
         <Provider store={store}>
-          <containerMain />
+          <containerLogin />
         </Provider>
       )
     

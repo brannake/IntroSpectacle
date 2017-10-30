@@ -442,3 +442,7 @@ input[type=tel]:focus:not([readonly]){
 .modal-close {
   color: white;
 }
+
+#route-packager > div:nth-child(2) {
+  display: none;
+}

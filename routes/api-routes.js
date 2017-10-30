@@ -95,35 +95,9 @@ app.post('/api/signup',
     );
   });
 
-  app.post("/api/graphs", function(req, res) {
-    var userName = req.body.user;
-    var month = req.body.month;
-    db.dateInfo.findAll({
-      where: {user: userName, month: month}
-    }).then(function(db) {
-      res.send(db);
+  //Just a catch-all route to deal with refreshes before server-side
+  //rendering has been completed
+  app.get("*", function(req, res) {
+    res.redirect('/');
     });
-  });
-
-  // PUT route for updating todos. We can get the updated todo data from req.body
-  app.put("/api/dates", function(req, res) {
-
-    // Update takes in an object describing the properties we want to update, and
-    // we use where to describe which objects we want to update
-    db.dateInfo.update({
-      text: req.body.text,
-      complete: req.body.complete
-    }, {
-      where: {
-        id: req.body.id
-      }
-    }).then(function(db) {
-      res.json(db);
-    })
-    .catch(function(err) {
-      // Whenever a validation or flag fails, an error is thrown
-      // We can "catch" the error to prevent it from being "thrown", which could crash our node app
-      res.json(err);
-    });
-  });
   };

@@ -308,11 +308,6 @@ tr {
   left: 20px;
 }
 
-.react-calendar-heatmap {
-  height: 100px;
-  width: 100px;
-}
-
 ul.slides {
   height:550px!important;
 }
@@ -345,21 +340,9 @@ div.nav-wrapper {
   filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
-.brand-logo {
-  background-image: url("../public/savedimages/introspectiv-logo.png")
-}
-
 footer.page-footer {
   background-color: black;
 }
-
-/*div.container {
-  text-align: center;
-}
-div.row {
-  text-align: center;
-  font-size: 25px;
-}*/
 
 footer.page-footer.example {
   margin-top: 50px;
@@ -452,10 +435,6 @@ input[type=tel]:focus:not([readonly]){
   color: white;
   font-size: 5rem;
   text-align: center;
-}
-
-.modal {
-  width: 30%
 }
 
 .modal-close {

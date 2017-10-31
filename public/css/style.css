@@ -15,7 +15,6 @@ img {
 
 nav {
   position: relative;
-  left: 10px;
 }
 
 .btn {
@@ -26,10 +25,18 @@ nav {
   background: grey;
 }
 
+.btn:focus {
+  background: grey;
+}
+
 #background {
   position: fixed;
   top: 0px;
   left: 0px;
+}
+
+#route-packager {
+  overflow: hidden;
 }
 
 .footer {
@@ -321,6 +328,14 @@ div.nav-wrapper {
   background-color: black;
 }
 
+#login-btn:hover {
+  background-color: grey;
+}
+
+#login-btn:focus {
+  background-color: grey;
+}
+
 .slider .indicators .indicator-item.active {
   background-color: purple;
 } 
@@ -437,6 +452,10 @@ input[type=tel]:focus:not([readonly]){
   color: white;
   font-size: 5rem;
   text-align: center;
+}
+
+.modal {
+  width: 30%
 }
 
 .modal-close {

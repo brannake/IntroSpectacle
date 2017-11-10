@@ -108,6 +108,8 @@ nav {
 }
 
 .navbar {
+  position: relative;
+  width: 100%;
   background: black;
   margin-bottom: 30px;
 }
@@ -439,9 +441,6 @@ input[type=tel]:focus:not([readonly]){
 
 .modal-close {
   color: white;
-}
-
-.modal-content {
 }
 
 #signup {

@@ -5,7 +5,6 @@ import DayHeadingPanel from "./DayHeadingPanel";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SubmitForm from "./SubmitForm";
-import SideDisplay from "./SideDisplay";
 import {Modal, Button} from 'react-materialize';
 
 class Home extends Component {
@@ -166,7 +165,6 @@ class Home extends Component {
             user={this.props.user}
           />
 	      </Modal>
-        <div id="side-display-container"></div>
       </div>
     </div>
     );

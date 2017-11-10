@@ -5,10 +5,10 @@ import reducer from './reducers/reducer';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
-import client from "./containers/client";
 import containerLogin from "./containers/containerLogin";
 import containerMain from "./containers/containerMain";
 import containerTrends from "./containers/containerTrends";
+import containerAbout from "./containers/containerAbout";
 
 const store = createStore(reducer);
 
@@ -20,6 +20,7 @@ const superRender = () => {
                     <Route path="/" component={containerLogin} />
                     <Route path="/calendar" component={containerMain} />
                     <Route path="/trends" component={containerTrends} />
+                    <Route path="/about" component={containerAbout} />
                 </div>
             </BrowserRouter>
      </Provider>, document.getElementById("app"));

@@ -117,7 +117,6 @@ componentWillMount= () => {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <Home

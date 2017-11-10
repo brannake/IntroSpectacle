@@ -47,6 +47,13 @@ class Navbar extends Component {
           <Link to="/trends">
             Trends
           </Link>
+      </Button>
+      <Button 
+          id="about-btn"  
+        >
+          <Link to="/about">
+            About
+          </Link>
       </Button> 
       <div className="container-fluid">
       <div className="navbar-header">

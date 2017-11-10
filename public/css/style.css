@@ -441,6 +441,17 @@ input[type=tel]:focus:not([readonly]){
   color: white;
 }
 
+.modal-content {
+}
+
+#signup {
+  width: 30%;
+}
+
+#login {
+  width: 30%;
+}
+
 #route-packager > div:nth-child(2) {
   display: none;
 }

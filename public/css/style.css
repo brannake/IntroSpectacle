@@ -51,6 +51,10 @@ nav {
   z-index: 2;
 }
 
+footer {
+  border-top: 2px solid white;
+}
+
 .panel-body {
   height: 80px;
   position: relative;
@@ -321,7 +325,7 @@ div.nav-wrapper {
 }
 
 #login-btn:hover {
-  background-color: purple;
+  background-color: #FEB405;
   color: white
 }
 
@@ -330,7 +334,7 @@ div.nav-wrapper {
 }
 
 .slider .indicators .indicator-item.active {
-  background-color: purple;
+  background-color: #FEB405;
 } 
 
 .slider .slides li img {
@@ -361,7 +365,7 @@ copyrights {
 }
 
 #signup-btn:hover {
-  background-color: purple;
+  background-color: #FEB405;
   color: white;
 }
 
@@ -380,15 +384,16 @@ data-target {
 }
 
 .input-field .prefix.active {
-  color: purple!important;
+  color: #FEB405!important;
 }
 
 label.active {
-  color: purple!important;
+  color: #FEB405!important;
 }
 
 nav {
   left: 0px!important;
+  border-bottom: 2px solid white;
 }
 html,body,#page, header { 
   height:100%;
@@ -400,13 +405,13 @@ body {
 }
 
 input[type=text]:focus:not([readonly]) {
-  border-bottom: 1px solid purple;
-  box-shadow: 0 1px 0 0 purple;
+  border-bottom: 1px solid #FEB405
+  box-shadow: 0 1px 0 0 #FEB405;
 }
 
 input[type=tel]:focus:not([readonly]){
-  border-bottom: 1px solid purple;
-  box-shadow: 0 1px 0 0 purple;
+  border-bottom: 1px solid #FEB405;
+  box-shadow: 0 1px 0 0 #FEB405;
 }
 
 #submit-button {

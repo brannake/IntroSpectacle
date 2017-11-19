@@ -18,7 +18,7 @@ class Home extends Component {
         date={date}
       >
       </DayHeadingPanel>
-    ));
+    ))
   }
 
   //Renders the actual numeric dates on the calendar
@@ -50,9 +50,9 @@ class Home extends Component {
     return(
     <div className="calendar">
       <div className="row" id="day-headings">
-        {this.renderFirstRowHeadings(dayHeadings)};
+        {this.renderFirstRowHeadings(dayHeadings)}
       </div>
-        {this.renderSecondDates(dates)};
+        {this.renderSecondDates(dates)}
     </div>
     )
   }
@@ -142,14 +142,16 @@ class Home extends Component {
       {this.renderCalendar(this.props.dates)}
       <Footer/>
       <div className="row">
-	      <Button 
-          waves='light'
-          id="modal-submit" 
-          onClick={() => {
-		        $('#modal').modal('open')
-	          }}>
-          Examine
-        </Button>
+        <div className="col s1 offset-s6">
+	        <Button 
+            waves='light'
+            id="modal-submit" 
+            onClick={() => {
+		          $('#modal').modal('open')
+	            }}>
+            Examine
+          </Button>
+        </div>  
 	      <Modal
 		      id="modal"
 		      header={this.props.selectedMonth +" "+ this.props.selectedDate}

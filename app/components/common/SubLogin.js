@@ -120,21 +120,18 @@ class SubLogin extends Component {
         </Navbar>
         <Slider>
             <Slide
-                src="https://static.pexels.com/photos/7764/pexels-photo.jpg"
-                title="Create a digital memory">
-                by capturing the highlight of your day
+                src="savedimages/main2.jpg"
+                title="Discover Yourself">
             </Slide>
             <Slide
-                src="https://static.pexels.com/photos/196655/pexels-photo-196655.jpeg"
-                title="Reflect on your life"
+                src="savedimages/second.jpeg"
+                title="Create Digital Memories"
                 placement="left">
-                one snapshot at a time
             </Slide>
             <Slide
-                src="https://static.pexels.com/photos/106344/pexels-photo-106344.jpeg"
-                title="Gain insight"
+                src="savedimages/third.jpeg"
+                title="And Gain Insight into Your Well-Being"
                 placement="right">
-                into your personal well-being with our analytics
             </Slide>
             </Slider>
             <Footer copyrights="Copyright &copy; 2017 introspectiv"

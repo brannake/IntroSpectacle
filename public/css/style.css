@@ -18,7 +18,7 @@ nav {
 }
 
 .btn {
-  background: black;
+  background: #1BB1CC;
 }
 
 .btn:hover {
@@ -46,7 +46,7 @@ nav {
   height: 60px;
   padding-right: 20px;
   padding-left: 20px;
-  background: black;
+  background: #1BB1CC;
   color: white;
   z-index: 2;
 }
@@ -110,7 +110,7 @@ nav {
 .navbar {
   position: relative;
   width: 100%;
-  background: black;
+  background: #1BB1CC;
   margin-bottom: 30px;
 }
 
@@ -237,8 +237,6 @@ nav {
 }
 
 #modal-submit {
-  position: absolute;
-  left: 43.8%;
   background: black;
 }
 
@@ -257,11 +255,6 @@ tr {
   left: 0px;
   height: 50%;
   width: 10%;
-}
-
-#day-headings {
-  background: #191919;
-  text-shadow: 0px;
 }
 
 #caption-text-display {
@@ -318,15 +311,18 @@ div.slider {
   height: 500px!important;
 }
 div.nav-wrapper {
-  background-color:black;
+  background-color: #1BB1CC;
 }
 
 #login-btn {
-  background-color: black;
+  background-color: white;
+  color: black;
+  margin-left: 10px;
 }
 
 #login-btn:hover {
-  background-color: grey;
+  background-color: purple;
+  color: white
 }
 
 #login-btn:focus {
@@ -343,7 +339,7 @@ div.nav-wrapper {
 }
 
 footer.page-footer {
-  background-color: black;
+  background-color: #1BB1CC;
 }
 
 footer.page-footer.example {
@@ -360,8 +356,15 @@ copyrights {
 
 #signup-btn {
   border: 20px;
-  background-color: purple!important;
+  background-color: white;
+  color: black;
 }
+
+#signup-btn:hover {
+  background-color: purple;
+  color: white;
+}
+
 
 div.container {
   padding: 25px;
@@ -392,7 +395,8 @@ html,body,#page, header {
 }
 
 body {
-  background: #191919;
+  margin: 0px;
+  overflow: hidden;
 }
 
 input[type=text]:focus:not([readonly]) {
@@ -406,7 +410,12 @@ input[type=tel]:focus:not([readonly]){
 }
 
 #submit-button {
-  background-color: purple!important;
+  background-color: #1BB1CC;
+}
+
+#submit-button:hover {
+  background-color: grey;
+  color: white;
 }
 
 #SideNavMod {

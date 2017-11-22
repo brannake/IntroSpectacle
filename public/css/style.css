@@ -6,6 +6,7 @@ html {
 body {
   margin-bottom: 60px;
   overflow-x:hidden;
+  background-image: url("savedimages/background.jpg");
 }
 
 img {
@@ -60,13 +61,11 @@ footer {
   position: relative;
   overflow: hidden;
   justify-content: center;
-  background: lightgrey;
-  border: 1px solid darkgrey;
+  background: white;
+  border: 1px solid grey;
 }
 
 #panel-body-heading {
-  background: grey;
-  height: 100%;
   border: 1px solid grey;
 }
 
@@ -75,7 +74,6 @@ footer {
 }
 
 .main-panel {
-  height: 80px;
   padding: 0px;
 }
 
@@ -145,11 +143,11 @@ footer {
 
 #currentdate {
   background: orange;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #1BB1CC;
 }
 
 #dateselected {
-  border: 1px solid white;
+  border: 2px solid #1BB1CC;
 }
 
 #upfile {
@@ -157,11 +155,11 @@ footer {
 }
 
 #panel-day-heading {
-  color: black;
-  background: darkgrey;
-  font-size: 140%;
+  color: white;
+  background: #1BB1CC;
+  font-size: 100%;
   text-align: center;
-  line-height: 3.6em;
+  line-height: 1.6em;
   font-weight: bold;
 }
 
@@ -241,7 +239,10 @@ footer {
 }
 
 #modal-submit {
-  background: black;
+  position: relative;
+  bottom: 10px;
+  background: orange;
+  color: white;
 }
 
 th {

@@ -142,7 +142,7 @@ class Home extends Component {
       {this.renderCalendar(this.props.dates)}
       <Footer/>
       <div className="row">
-        <div className="col s1 offset-s6">
+        <div className="col s1 offset-s5">
 	        <Button 
             waves='light'
             id="modal-submit" 

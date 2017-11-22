@@ -125,12 +125,12 @@ class SubLogin extends Component {
             </Slide>
             <Slide
                 src="savedimages/second.jpeg"
-                title="Create Digital Memories"
+                title="Capture the Important Moments"
                 placement="left">
             </Slide>
             <Slide
                 src="savedimages/third.jpeg"
-                title="And Gain Insight into Your Well-Being"
+                title="And Learn From Each Day"
                 placement="right">
             </Slide>
             </Slider>

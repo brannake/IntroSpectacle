@@ -134,21 +134,21 @@ footer {
   position: relative;
   top: 2px;
   left: 2%;
-  background: #32E59B;
+  background: #44DBA7;
 }
 
 #trends-btn {
   position: relative;
   top: 2px;
   left: 4%;
-  background: #32E59B;
+  background: #44DBA7;
 }
 
 #about-btn {
   position: relative;
   top: 2px;
   left: 70%;
-  background: #32E59B;
+  background: #44DBA7;
 }
 
 #currentdate {
@@ -252,7 +252,7 @@ footer {
   position: relative;
   bottom: 10px;
   left: 30px;
-  background: #06D872;
+  background: #44DBA7;
   color: white;
 }
 
@@ -463,6 +463,7 @@ input[type=tel]:focus:not([readonly]){
 
 .modal-close {
   color: white;
+  background: #1BB1CC;
 }
 
 #signup {

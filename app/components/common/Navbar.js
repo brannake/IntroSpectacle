@@ -35,7 +35,7 @@ class Navbar extends Component {
     <div>
       <nav className="navbar navbar-inverse">
         <Button 
-          id="login-btn"   
+          id="calendar-btn"   
         >
           <Link to="/calendar">
             My Calendar
@@ -65,7 +65,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "orange", background: "white"}}
+                style={{color: "#32E59B", background: "white"}}
               >{this.props.currentMonth + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -73,7 +73,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "orange", color: "white" }}
+                  style={{ background: "#32E59B", color: "white" }}
                 >{this.props.currentMonth + " " + this.props.selectedDate}</Button>
                 }>
                 {this.renderMonths()}
@@ -83,7 +83,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
               <Button
-                style={{color: "orange", background: "white"}}
+                style={{color: "#32E59B", background: "white"}}
               >{this.props.month + " " + this.props.currentdate}</Button>
               }>
                 {this.renderMonths()}
@@ -91,7 +91,7 @@ class Navbar extends Component {
               <Dropdown 
                 trigger={
                 <Button
-                  style={{ background: "orange", color: "white" }}
+                  style={{ background: "#32E59B", color: "white" }}
                 >{this.props.month + " " + this.props.selectedDate}</Button>
                 }>
                 {this.renderMonths()}

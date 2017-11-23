@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import NavbarCustom from "./common/NavbarCustom";
-import {Redirect} from 'react-router-dom';
+import Navbar from "./common/Navbar";
+import Footer from "./common/Footer";
 
 class About extends Component {
-  state = {
-  }
 
   render() {
     return (
       <div>
-          <NavbarCustom/>
-        Hello!!
+        <Navbar/>
+        <Footer/>
       </div>
     )};
 };

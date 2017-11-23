@@ -18,10 +18,6 @@ nav {
   position: relative;
 }
 
-.btn {
-  background: #1BB1CC;
-}
-
 .btn:hover {
   background: grey;
 }
@@ -77,11 +73,16 @@ footer {
   padding: 0px;
 }
 
-.calendar{
+.calendar {
   margin: 10px;
   position: relative;
   left: 18%;
   bottom: 20px;
+}
+
+#calendar-btn {
+  background: white;
+  color: black;
 }
 
 #chart-container {
@@ -129,25 +130,34 @@ footer {
   transition: 0.5s;
 }
 
-#trends-button {
-  position: absolute;
-  top:2%;
-  left: 1%;
+#calendar-btn {
+  position: relative;
+  top: 2px;
+  left: 2%;
+  background: #32E59B;
 }
 
-#calendar-button {
-  position: absolute;
-  top:2%;
-  left: 6.5%;
+#trends-btn {
+  position: relative;
+  top: 2px;
+  left: 4%;
+  background: #32E59B;
+}
+
+#about-btn {
+  position: relative;
+  top: 2px;
+  left: 70%;
+  background: #32E59B;
 }
 
 #currentdate {
-  background: orange;
-  border-bottom: 2px solid #1BB1CC;
+  background: #F9BF43;
+  border-bottom: 2px solid white;
 }
 
 #dateselected {
-  border: 2px solid #1BB1CC;
+  border: 2px solid #F9BF43;
 }
 
 #upfile {
@@ -241,7 +251,8 @@ footer {
 #modal-submit {
   position: relative;
   bottom: 10px;
-  background: orange;
+  left: 30px;
+  background: #06D872;
   color: white;
 }
 
@@ -279,10 +290,6 @@ tr {
   font-weight: bold;
   padding: 10px;
   width: 50%;
-}
-
-#modal > div.modal-footer > button {
-  color: white;
 }
 
 .emoticon {
@@ -406,7 +413,7 @@ body {
 }
 
 input[type=text]:focus:not([readonly]) {
-  border-bottom: 1px solid #FEB405
+  border-bottom: 1px solid #FEB405;
   box-shadow: 0 1px 0 0 #FEB405;
 }
 
@@ -468,4 +475,9 @@ input[type=tel]:focus:not([readonly]){
 
 #route-packager > div:nth-child(2) {
   display: none;
+}
+
+#login > div.modal-footer > button {
+  background:#1BB1CC;
+  color: white;
 }

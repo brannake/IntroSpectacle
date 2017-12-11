@@ -60,6 +60,7 @@ class Home extends Component {
   //Adds the user-submitted caption to the examination modal
   //Forces the user to pick a date before they can examine
   handleModalMessage = (data, date = '', month) => {
+    //If no date selected
     if (date.replace(/\s/g, '').length === 0) {
       return (
         <div id="warning-modal">Please select a date to examine.</div>
@@ -140,6 +141,8 @@ class Home extends Component {
         rebuildCalendar={this.buildCalendarDates}
       />
       {this.renderCalendar(this.props.dates)}
+      <div id="left-column"/>
+      <div id="right-column"/>
       <Footer/>
       <div className="row">
         <div className="col s1 offset-s5">

@@ -530,3 +530,23 @@ input[type=tel]:focus:not([readonly]){
 #trends-insert-text {
   margin: 5px;
 }
+
+#left-column {
+  position: fixed;
+  left:0;
+  top: 0;
+  background-image: url("http://www.zingerbug.com/Backgrounds/background_images/baby_blue_and_white_vertical_stripes_background_seamless.jpg");
+  height: 100%;
+  width: 8%;
+  z-index: -1;
+}
+
+#right-column {
+  position: fixed;
+  right:0;
+  top: 0;
+  background-image: url("http://www.zingerbug.com/Backgrounds/background_images/baby_blue_and_white_vertical_stripes_background_seamless.jpg");
+  height: 100%;
+  width: 8%;
+  z-index: -1;
+}

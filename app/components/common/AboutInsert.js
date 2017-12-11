@@ -54,6 +54,8 @@ const AboutInsert = () => (
                 </p>
                 </div>
             </div>
+            <div id="left-column"/>
+            <div id="right-column"/>
         </div>
 );
 

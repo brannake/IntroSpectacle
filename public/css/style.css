@@ -152,8 +152,9 @@ footer {
 }
 
 #about-header {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: bold;
+  font-size: 1.2em;
   background: #44DBA7;
   color: white;
   border-radius: 10px;
@@ -199,7 +200,6 @@ footer {
   right: 0px;
   height: 15%;
   width: 23.8%;
-  background: #191919;
   padding: 10px;
 }
 
@@ -222,7 +222,7 @@ footer {
 }
 
 #side-display-text-container {
-  color: color;
+  color: white;
   font-size: 20px;
   font-weight: bold;
   padding: 20px;
@@ -232,7 +232,6 @@ footer {
   position: absolute;
   left: 3%;
   top: 2%;
-  background: #191919;
   border-radius: 20px;
   color: white;
   height: 100%;
@@ -496,12 +495,14 @@ input[type=tel]:focus:not([readonly]){
   border: solid 1px black;
   border-radius: 10px;
   box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+  font-family: 'Roboto', sans-serif;
 }
 
 #trends-insert {
   border: solid 1px black;
   border-radius: 10px;
   box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
+  font-family: 'Roboto', sans-serif;
 }
 
 #myCalendar-insert-header {
@@ -535,9 +536,9 @@ input[type=tel]:focus:not([readonly]){
   position: fixed;
   left:0;
   top: 0;
-  background-image: url("http://www.zingerbug.com/Backgrounds/background_images/baby_blue_and_white_vertical_stripes_background_seamless.jpg");
+  background: #4B545E;
   height: 100%;
-  width: 8%;
+  width: 5%;
   z-index: -1;
 }
 
@@ -545,8 +546,17 @@ input[type=tel]:focus:not([readonly]){
   position: fixed;
   right:0;
   top: 0;
-  background-image: url("http://www.zingerbug.com/Backgrounds/background_images/baby_blue_and_white_vertical_stripes_background_seamless.jpg");
+  background: #4B545E;
   height: 100%;
-  width: 8%;
+  width: 5%;
   z-index: -1;
+}
+
+.collapsible {
+  width: 200px;
+  color: white;
+}
+
+.collapsible-header {
+  background:#1BB1CC;
 }

@@ -74,6 +74,8 @@ toggleYearlyView = () => {
           toggleMonthlyView={this.toggleMonthlyView}
           toggleYearlyView={this.toggleYearlyView}
         />
+        <div id="left-column"/>
+        <div id="right-column"/>
         <Footer
           className = "footer"
           />

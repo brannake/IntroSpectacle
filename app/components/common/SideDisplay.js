@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button} from 'react-materialize'
+import {Button, Collapsible, CollapsibleItem} from 'react-materialize'
 
 class SideDisplay extends Component {
 
@@ -10,7 +10,9 @@ class SideDisplay extends Component {
           <div id="side-display-text-container">
             Views
             <br/>
-            <Button
+            <Collapsible>
+	            <CollapsibleItem header='Time Frame'>
+              <Button
               onClick= {() => {this.props.storeSelectedView("monthly");
               this.props.toggleMonthlyView()}}
             >
@@ -23,6 +25,14 @@ class SideDisplay extends Component {
             >
             Yearly
             </Button>
+	            </CollapsibleItem>
+	            <CollapsibleItem header='Emotion'>
+	            	Lorem ipsum dolor sit amet.
+	            </CollapsibleItem>
+	            <CollapsibleItem header='Third'>
+		            Lorem ipsum dolor sit amet.
+	            </CollapsibleItem>
+            </Collapsible>
           </div>
         </div>
       </div>

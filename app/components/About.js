@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Navbar from "./common/Navbar";
 import Footer from "./common/Footer";
+import AboutInsert from "./common/AboutInsert";
 
 class About extends Component {
 
   render() {
-    console.log("how can this run without the console log firing???");
     return (
       <div>
         <Navbar
@@ -15,12 +15,7 @@ class About extends Component {
           currentMonth={this.props.currentMonth}
         >
         </Navbar>
-        WHY THE FUCKf
-
-        gfh
-        fgh
-        fgh
-        fghs
+        <AboutInsert/>
         <Footer/>
       </div>
     )};

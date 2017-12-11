@@ -34,27 +34,27 @@ class Navbar extends Component {
     return (
     <div>
       <nav className="navbar navbar-inverse">
-        <Button 
-          id="calendar-btn"   
-        >
-          <Link to="/calendar">
+        <Link to="/calendar">
+          <Button 
+            id="calendar-btn"   
+          >
             My Calendar
-          </Link>
-        </Button>
-        <Button 
+          </Button>
+        </Link>
+        <Link to="/trends">
+          <Button 
           id="trends-btn"  
         >
-          <Link to="/trends">
-            Trends
-          </Link>
+          Trends
       </Button>
-      <Button 
+      </Link>
+      <Link to="/about">
+        <Button 
           id="about-btn"  
         >
-          <Link to="/about">
-            About
-          </Link>
-      </Button> 
+          Help
+        </Button>
+      </Link>
       <div className="container-fluid">
       <div className="navbar-header">
       </div>

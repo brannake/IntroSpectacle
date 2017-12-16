@@ -2,16 +2,8 @@ import React from "react";
 
 const AboutInsert = () => (
   <div className="container" id="about-container">
-    <p id="about-header">
-       &nbsp;
-       <br/>
-       Welcome to Introspectiv, the photojournal powered by IBM Watson that helps you learn about yourself!
-       <br/>
-       &nbsp;
-       <br/>
-    </p>
     <div className="row">
-        <div className="col s5" id="myCalendar-insert">
+        <div className="col s10" id="myCalendar-insert">
             <div id="myCalendar-insert-header">My Calendar</div> 
                 <p id="myCalendar-insert-text">
                     On the Calendar view, click on a date to highlight it. 
@@ -31,11 +23,11 @@ const AboutInsert = () => (
                     Once you have submitted a few dates, you can use the Trends page.
                 </p>
             </div>
-        <div className="col s6 offset-s1" id="trends-insert">
+            <div className="col s6 offset-s1" id="trends-insert">
             <div id="trends-insert-header">Trends</div> 
                 <p id="myCalendar-insert-text">
                     The Trends page lets you see what our software says about your
-                    mood over time, as well as see what effects it day-to-day and month-to-month.
+                    mood over time, as well as see what asffects it day-to-day and month-to-month.
                 </p>
                 <p className="list-row">
                     Toggle between Monthly and Yearly plots of your mood using

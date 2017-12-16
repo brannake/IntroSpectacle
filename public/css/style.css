@@ -496,6 +496,8 @@ input[type=tel]:focus:not([readonly]){
   border-radius: 10px;
   box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.75);
   font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 #trends-insert {
@@ -530,26 +532,6 @@ input[type=tel]:focus:not([readonly]){
 
 #trends-insert-text {
   margin: 5px;
-}
-
-#left-column {
-  position: fixed;
-  left:0;
-  top: 0;
-  background: #4B545E;
-  height: 100%;
-  width: 5%;
-  z-index: -1;
-}
-
-#right-column {
-  position: fixed;
-  right:0;
-  top: 0;
-  background: #4B545E;
-  height: 100%;
-  width: 5%;
-  z-index: -1;
 }
 
 .collapsible {

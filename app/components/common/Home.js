@@ -141,8 +141,6 @@ class Home extends Component {
         rebuildCalendar={this.buildCalendarDates}
       />
       {this.renderCalendar(this.props.dates)}
-      <div id="left-column"/>
-      <div id="right-column"/>
       <Footer/>
       <div className="row">
         <div className="col s1 offset-s5">

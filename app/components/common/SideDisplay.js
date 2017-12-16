@@ -12,25 +12,74 @@ class SideDisplay extends Component {
             <br/>
             <Collapsible>
 	            <CollapsibleItem header='Time Frame'>
-              <Button
-              onClick= {() => {this.props.storeSelectedView("monthly");
-              this.props.toggleMonthlyView()}}
-            >
-            Monthly
-            </Button>
-            <br/>
-            <Button
-              onClick= {() => {this.props.storeSelectedView("yearly");
-              this.props.toggleYearlyView()}}
-            >
-            Yearly
-            </Button>
+                <div 
+                  id="monthly-time-frame"
+                  className="trends-buttons"
+                  onClick= {() => {
+                    this.props.storeSelectedView("monthly");
+                    this.props.toggleMonthlyView()}
+
+                  }
+                >
+                  Monthly
+                </div>
+                <div 
+                  id="yearly-time-frame"
+                  className="trends-buttons"
+                  onClick= {() => {
+                    this.props.storeSelectedView("yearly");
+                    this.props.toggleYearlyView()}}
+                  >
+                  Yearly
+                </div>
 	            </CollapsibleItem>
 	            <CollapsibleItem header='Emotion'>
-	            	Lorem ipsum dolor sit amet.
+              <div id="emotion-container-div">
+                <div 
+                  id="overall-emotion"
+                  className="trends-buttons"
+                  onClick= {() => {
+                    this.props.storeSelectedView("monthly");
+                    this.props.toggleMonthlyView()}
+
+                  }
+                >
+                  Overall
+                </div>
+                <div 
+                  id="anger-emotion"
+                  className="trends-buttons"
+                  onClick= {() => {
+                    this.props.storeSelectedView("yearly");
+                    this.props.toggleYearlyView()}}
+                >
+                  Anger
+                </div>
+                <div 
+                  id="disgust-emotion"
+                  className="trends-buttons"
+                  onClick= {() => {
+                    this.props.storeSelectedView("monthly");
+                    this.props.toggleMonthlyView()}
+
+                  }
+                >
+                  Disgust
+                </div>
+                <div 
+                  id="fear-emotion"
+                  className="trends-buttons"
+                  onClick= {() => {
+                    this.props.storeSelectedView("yearly");
+                    this.props.toggleYearlyView()}}
+                >
+                  Fear
+                </div>
+                </div>
 	            </CollapsibleItem>
-	            <CollapsibleItem header='Third'>
-		            Lorem ipsum dolor sit amet.
+                    Coming Soon.
+	            <CollapsibleItem header=''>
+		            Some new feature.
 	            </CollapsibleItem>
             </Collapsible>
           </div>

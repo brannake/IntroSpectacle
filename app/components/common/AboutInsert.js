@@ -3,7 +3,7 @@ import React from "react";
 const AboutInsert = () => (
   <div className="container" id="about-container">
     <div className="row">
-        <div className="col s10" id="myCalendar-insert">
+        <div className="col s12" id="myCalendar-insert">
             <div id="myCalendar-insert-header">My Calendar</div> 
                 <p id="myCalendar-insert-text">
                     On the Calendar view, click on a date to highlight it. 
@@ -23,11 +23,13 @@ const AboutInsert = () => (
                     Once you have submitted a few dates, you can use the Trends page.
                 </p>
             </div>
-            <div className="col s6 offset-s1" id="trends-insert">
-            <div id="trends-insert-header">Trends</div> 
+        </div>
+        <div className="row">
+            <div className="col s12" id="trends-insert">
+                <div id="trends-insert-header">Trends</div> 
                 <p id="myCalendar-insert-text">
                     The Trends page lets you see what our software says about your
-                    mood over time, as well as see what asffects it day-to-day and month-to-month.
+                     mood over time, as well as see what affects it day-to-day and month-to-month.
                 </p>
                 <p className="list-row">
                     Toggle between Monthly and Yearly plots of your mood using
@@ -35,7 +37,8 @@ const AboutInsert = () => (
                 </p>
                 <p id="myCalendar-insert-text">
                     Click the Associations button to find the things that effect your mood
-                    the most.
+                    the most. For example, you may find that on days you go to the gym, you are 20% happier
+                    on average vs. days that you don't.
                 </p>
                 <p className="list-row">
                     The more you use Introspectiv, the better and more accurate your Associations.
@@ -44,11 +47,9 @@ const AboutInsert = () => (
                     More features are being added to Trends all the time, so be sure to check
                     this section frequently!
                 </p>
-                </div>
             </div>
-            <div id="left-column"/>
-            <div id="right-column"/>
         </div>
+    </div>
 );
 
 export default AboutInsert;

@@ -1,6 +1,6 @@
 html {
   z-index: -2;
-  background-image: url("https://previews.123rf.com/images/almagami/almagami1209/almagami120900007/15468943-seamless-neutral-pixel-backgound-for-web-design-Stock-Photo.jpg");
+  background-image: url("../savedimages/background.jpg");
 }
 
 img {
@@ -112,6 +112,14 @@ footer {
   top: 2px;
   left: 2%;
   background: #44DBA7;
+}
+
+#myCalendar-insert {
+  background: white;
+}
+
+#trends-insert {
+  background: white;
 }
 
 #trends-btn {

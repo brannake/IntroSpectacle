@@ -77,8 +77,7 @@ class SideDisplay extends Component {
                 </div>
                 </div>
 	            </CollapsibleItem>
-                    Coming Soon.
-	            <CollapsibleItem header=''>
+	            <CollapsibleItem header='Coming Soon'>
 		            Some new feature.
 	            </CollapsibleItem>
             </Collapsible>

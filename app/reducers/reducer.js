@@ -54,9 +54,21 @@ const reducer =  (state, action) => {
             return Object.assign({}, state, {
                 selectedView: action.selectedView
             });
-        case "STORE_YEARLY_VIEW_DATA":
+        case "STORE_YEARLY_VIEW_DATA_JOY":
             return Object.assign({}, state, {
-                yearlyViewData: action.yearlyViewData
+                yearlyViewDataJoy: action.yearlyViewDataJoy
+            });
+        case "STORE_YEARLY_VIEW_DATA_FEAR":
+            return Object.assign({}, state, {
+                yearlyViewDataFear: action.yearlyViewDataFear
+            });
+        case "STORE_YEARLY_VIEW_DATA_ANGER":
+            return Object.assign({}, state, {
+                yearlyViewDataAnger: action.yearlyViewDataAnger
+            });
+        case "STORE_YEARLY_VIEW_DATA_DISGUST":
+            return Object.assign({}, state, {
+                yearlyViewDataDisgust: action.yearlyViewDataDisgust
             });
         case "STORE_MONTHLY_VIEW_DATA":
             return Object.assign({}, state, {

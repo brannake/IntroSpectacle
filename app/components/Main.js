@@ -8,42 +8,85 @@ class Main extends Component {
     imageData: this.props.imageData
   };
 
-  //Calculates the average mood of each month for trends page
-  calculateYearlyViewData = (arrayResponse) => {
+  //Calculates the average mood of each month for trends page.
+  calculateYearlyViewData = (arrayResponse, emotion) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];    
     let monthlyMoodAverages = [];
       for (let i=0; i < months.length; i++) {
         let currentMonthRunningTotal = [];
         for (let j=0; j < arrayResponse.length; j++) {
           if (months[i] === arrayResponse[j].month) {
-            currentMonthRunningTotal.unshift(100*arrayResponse[j].joy_score);
+            switch (emotion) {
+              case "joy":
+                currentMonthRunningTotal.unshift(100*arrayResponse[j].joy_score);
+                break;
+              case "fear":
+                currentMonthRunningTotal.unshift(100*arrayResponse[j].fear_score);
+                break;
+              case "anger":
+                currentMonthRunningTotal.unshift(100*arrayResponse[j].anger_score);
+                break;
+              case "disgust":
+                currentMonthRunningTotal.unshift(100*arrayResponse[j].disgust_score);
+                break;
+            }
           }
         }
         let average = this.findAverage(currentMonthRunningTotal);
         let monthlyAverage = {name: months[i], uv: average};
         monthlyMoodAverages.push(monthlyAverage);
       }
-    this.props.storeYearlyViewData(monthlyMoodAverages);
+    //After calculating the averages, put them in the store
+    //Kind of a big function, may want to break up in future
+    switch (emotion) {
+      case "joy": this.props.storeYearlyViewDataJoy(monthlyMoodAverages);
+      case "fear": this.props.storeYearlyViewDataFear(monthlyMoodAverages);
+      case "anger": this.props.storeYearlyViewDataAnger(monthlyMoodAverages);
+      case "disgust": this.props.storeYearlyViewDataDisgust(monthlyMoodAverages);
+    }
   }
 
   //Packages every submission date by month for trends page
-  calculateMonthlyViewData = (arrayResponse) => {
+  calculateMonthlyViewData = (arrayResponse, emotion) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];        
     let monthlyMoodLogs = [];
     for (let i=0; i < months.length; i++) {
       let dailyMoodLog = [];
       for (let j=0; j < arrayResponse.length; j++) {
         if (months[i] === arrayResponse[j].month) {
-          let dayDataPointObject = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].joy_score};
-          dailyMoodLog.unshift(dayDataPointObject);
+          switch (emotion) {
+            case "joy": 
+              let dayDataPointObject1 = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].joy_score};
+              dailyMoodLog.unshift(dayDataPointObject1);
+              break;
+            case "fear": 
+              let dayDataPointObject2 = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].fear_score};
+              dailyMoodLog.unshift(dayDataPointObject2);
+              break;
+            case "anger": 
+              let dayDataPointObject3 = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].anger_score};
+              dailyMoodLog.unshift(dayDataPointObject3);
+              break;
+            case "disgust": 
+              let dayDataPointObject4 = {name: arrayResponse[j].day, uv: 100*arrayResponse[j].disgust_score};
+              dailyMoodLog.unshift(dayDataPointObject4);
+              break;
+          }
         }
       }
       let dailyMoodScoresForThisMonth = {month: months[i], scores: dailyMoodLog};
       monthlyMoodLogs.push(dailyMoodScoresForThisMonth);
     }
-    this.props.storeMonthlyViewData(monthlyMoodLogs);
+
+    switch (emotion) {
+      case "joy": this.props.storeMonthlyViewData(monthlyMoodLogs);
+      case "fear": this.props.storeYearlyViewDataFear(monthlyMoodAverages);
+      case "anger": this.props.storeYearlyViewDataAnger(monthlyMoodAverages);
+      case "disgust": this.props.storeYearlyViewDataDisgust(monthlyMoodAverages);
+    }
   }
 
+  //Calculates the average :)
   findAverage = (elmt) => {
     let sum = 0;
       for(let i = 0; i < elmt.length; i++ ){
@@ -53,15 +96,22 @@ class Main extends Component {
     return avg;
   }
 
+  //This requests the images and the data for each date
+  //It also invokes other functions which process the data
+  //And store it in the Redux store for global access
   requestImagesFromServer = () => {
+
     $.ajax({
       url: '/api/load',
       type: 'POST',
       data: this.state,
       success: (data) => {
         this.props.storeImageData(data);
-        this.calculateYearlyViewData(data);
-        this.calculateMonthlyViewData(data);
+        this.calculateYearlyViewData(data, "joy");
+        this.calculateYearlyViewData(data, "fear");
+        this.calculateYearlyViewData(data, "anger");
+        this.calculateYearlyViewData(data, "disgust");
+        this.calculateMonthlyViewData(data, "joy");
       }
     });
   }
@@ -117,6 +167,7 @@ componentWillMount= () => {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <Home

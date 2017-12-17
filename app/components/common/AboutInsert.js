@@ -17,7 +17,7 @@ const AboutInsert = () => (
                 </p>
                 <p className="list-row">
                     Our software will then analyze your contribution for each date
-                    and draw conclusions about your moods and what affects them.
+                    and draw conclusions about your moods (sounds crazy, but try it out).
                 </p>
                 <p id="myCalendar-insert-text">
                     Once you have submitted a few dates, you can use the Trends page.

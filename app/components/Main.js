@@ -77,7 +77,6 @@ class Main extends Component {
       let dailyMoodScoresForThisMonth = {month: months[i], scores: dailyMoodLog};
       monthlyMoodLogs.push(dailyMoodScoresForThisMonth);
     }
-
     switch (emotion) {
       case "joy": this.props.storeMonthlyViewData(monthlyMoodLogs);
       case "fear": this.props.storeYearlyViewDataFear(monthlyMoodAverages);
@@ -112,6 +111,9 @@ class Main extends Component {
         this.calculateYearlyViewData(data, "anger");
         this.calculateYearlyViewData(data, "disgust");
         this.calculateMonthlyViewData(data, "joy");
+        this.calculateMonthlyViewData(data, "fear");
+        this.calculateMonthlyViewData(data, "anger");
+        this.calculateMonthlyViewData(data, "disgust");
       }
     });
   }
@@ -170,6 +172,7 @@ componentWillMount= () => {
     console.log(this.props);
     return (
       <div>
+        <div id="background-overlay"></div>
         <Home
           user={this.props.user}
           imageData={this.props.imageData}

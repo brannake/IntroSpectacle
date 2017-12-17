@@ -422,9 +422,30 @@ export const storeYearlyViewDataDisgust = (yearlyViewDataDisgust) => {
   }
 }
 
-export const storeMonthlyViewData = (monthlyViewData) => {
+export const storeMonthlyViewDataJoy = (monthlyViewDataJoy) => {
   return {
     type: 'STORE_MONTHLY_VIEW_DATA',
-    monthlyViewData: monthlyViewData
+    monthlyViewDataJoy: monthlyViewDataJoy
+  }
+}
+
+export const storeMonthlyViewDataFear = (monthlyViewDataFear) => {
+  return {
+    type: 'STORE_MONTHLY_VIEW_DATA',
+    monthlyViewDataFear: monthlyViewDataFear
+  }
+}
+
+export const storeMonthlyViewDataAnger = (monthlyViewDataAnger) => {
+  return {
+    type: 'STORE_MONTHLY_VIEW_DATA',
+    monthlyViewDataAnger: monthlyViewDataAnger
+  }
+}
+
+export const storeMonthlyViewDataDisgust = (monthlyViewDataDisgust) => {
+  return {
+    type: 'STORE_MONTHLY_VIEW_DATA',
+    monthlyViewDataDisgust: monthlyViewDataDisgust
   }
 }

@@ -116,10 +116,12 @@ footer {
 
 #myCalendar-insert {
   background: white;
+  font-weight: bold;
 }
 
 #trends-insert {
   background: white;
+  font-weight: bold;
 }
 
 #trends-btn {
@@ -497,11 +499,12 @@ input[type=tel]:focus:not([readonly]){
 
 #myCalendar-insert-text {
   margin: 5px;
+  padding-top: 5px;
 }
 
 .list-row {
   background: lightgrey;
-  padding: 5px;
+  margin: 2px;
 }
 
 #trends-insert-text {

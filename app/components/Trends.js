@@ -36,6 +36,7 @@ toggleYearlyView = () => {
     console.log(this.props);
     return (
       <div>
+        <div id="background-overlay"></div>
         <Navbar
           storeSelectedMonth={this.props.storeSelectedMonth}
           currentdate={this.props.currentDate}
@@ -77,7 +78,7 @@ toggleYearlyView = () => {
         />
         <Footer
           className = "footer"
-          />
+        />
       </div>
     )
   }

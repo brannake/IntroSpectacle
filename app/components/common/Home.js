@@ -84,7 +84,7 @@ class Home extends Component {
                       <img
                         className="emoticon"
                         id="overall"
-                        src="https://cdn.pixabay.com/photo/2017/03/05/21/55/emoticon-2120024_960_720.png"
+                        src="savedimages/overall-smiley.png"
                       />
                     </td>
                     <td>{parseFloat(data[i].joy_score * 100).toFixed(2)}</td>

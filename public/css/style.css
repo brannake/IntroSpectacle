@@ -1,6 +1,6 @@
 html {
   z-index: -2;
-  background-image: url("../savedimages/background.jpg");
+  background-image: url("../savedimages/background-3.jpg");
 }
 
 img {
@@ -583,7 +583,7 @@ input[type=tel]:focus:not([readonly]){
 #background-overlay {
   position: fixed;
   background: white;
-  opacity: 0.4;
+  opacity: 0.0;
   z-index: 0;
   height: 100%;
   width: 100%;
@@ -614,4 +614,9 @@ input[type=tel]:focus:not([readonly]){
   font-weight: bold;
   font-size: 2em;
   z-index: 2;
+}
+
+p.list-row {
+  padding: 4px;
+  margin: 0px;
 }

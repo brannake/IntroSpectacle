@@ -4,7 +4,7 @@ const Footer = () => (
   <footer className="footer">
     <hr />
     <p className="pull-right">
-       Find your inner peace
+      Find your inner peace.
     </p>
   </footer>
 );

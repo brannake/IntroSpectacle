@@ -95,9 +95,8 @@ class Main extends Component {
     return avg;
   }
 
-  //This requests the images and the data for each date
-  //It also invokes other functions which process the data
-  //And store it in the Redux store for global access
+  //Requests the images and the data for each date
+  //Lists function invocations to handle all emotions for all view ranges
   requestImagesFromServer = () => {
 
     $.ajax({

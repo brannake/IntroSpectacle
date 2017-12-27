@@ -168,7 +168,6 @@ componentWillMount= () => {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div id="background-overlay"></div>

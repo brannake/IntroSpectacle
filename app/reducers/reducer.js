@@ -33,6 +33,7 @@ const reducer =  (state, action) => {
                 return Object.assign({}, state, {
                     currentMonth: action.currentMonth,
                     selectedMonth: action.currentMonth,
+                    selectedMonthKey: action.selectedMonthKey,
                     dates: action.dates
                 })
             } else {
@@ -48,6 +49,7 @@ const reducer =  (state, action) => {
         case "STORE_SELECTED_MONTH":
             return Object.assign({}, state, {
                 selectedMonth: action.selectedMonth,
+                selectedMonthKey: action.selectedMonthKey,
                 dates: action.dates
             });
         case "STORE_SELECTED_VIEW":
@@ -98,19 +100,19 @@ const reducer =  (state, action) => {
                 switch (state.selectedEmotion) {
                     case "joy":
                         return Object.assign({}, state, {
-                            graphData: state.monthlyViewDataJoy[11].scores
+                            graphData: state.monthlyViewDataJoy[state.selectedMonthKey].scores
                     });
                     case "fear":
                         return Object.assign({}, state, {
-                            graphData: state.monthlyViewDataFear[11].scores
+                            graphData: state.monthlyViewDataFear[state.selectedMonthKey].scores
                     });
                     case "anger":
                         return Object.assign({}, state, {
-                            graphData: state.monthlyViewDataAnger[11].scores
+                            graphData: state.monthlyViewDataAnger[state.selectedMonthKey].scores
                     });
                     case "disgust":
                         return Object.assign({}, state, {
-                            graphData: state.monthlyViewDataDisgust[11].scores
+                            graphData: state.monthlyViewDataDisgust[state.selectedMonthKey].scores
                     });
                 }
             } else if (state.selectedView === "yearly") {

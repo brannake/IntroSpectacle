@@ -45,6 +45,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 0,
       dates: [
         [1, 2, 3, 4, 5, 6, 7], 
         [8, 9, 10, 11, 12, 13, 14],
@@ -58,6 +59,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 1,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -71,6 +73,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 2,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -84,6 +87,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 3,
       dates: [
         ["", " ", "  ", "   ", "    ", "     ", 1],
         [2, 3, 4, 5, 6, 7, 8],
@@ -97,6 +101,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 4,
       dates: [
         ["", 1, 2, 3, 4, 5, 6],
         [7, 8, 9, 10, 11, 12, 13],
@@ -107,24 +112,11 @@ export const storeCurrentMonth = (month) => {
       ]};
     }
 
-  if (month === "May") {
-    return {
-      type: 'STORE_CURRENT_MONTH',
-      currentMonth: month,
-      dates: [
-        ["", " ", "  ", "   ", 1, 2, 3],
-        [4, 5, 6, 7, 8, 9, 10],
-        [11, 12, 13, 14, 15, 16, 17],
-        [18, 19, 20, 21, 22, 23, 24],
-        [25, 26, 27, 28, 29, 30]
-        [28, 29, 30, 31]
-      ]};
-    }
-
   if (month === "June") {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 5,
       dates: [
         ["", " ", "  ", "   ", 1, 2, 3],
         [4, 5, 6, 7, 8, 9, 10],
@@ -138,6 +130,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 6,
       dates: [
         ["", " ", "  ", "   ", "    ", "     ", 1],
         [2, 3, 4, 5, 6, 7, 8],
@@ -151,6 +144,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 7,
       dates: [
         ["", " ", 1, 2, 3, 4, 5],
         [6, 7, 8, 9, 10, 11, 12],
@@ -164,6 +158,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 8,
       dates: [
         ["", " ", "  ", "   ", "    ", 1, 2],
         [3, 4, 5, 6, 7, 8, 9],
@@ -177,6 +172,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 9,
       dates: [
         [1, 2, 3, 4, 5, 6, 7],
         [8, 9, 10, 11, 12, 13, 14],
@@ -190,6 +186,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 10,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -203,6 +200,7 @@ export const storeCurrentMonth = (month) => {
     return {
       type: 'STORE_CURRENT_MONTH',
       currentMonth: month,
+      selectedMonthKey: 11,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -219,6 +217,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 0,
       dates: [
         [1, 2, 3, 4, 5, 6, 7], 
         [8, 9, 10, 11, 12, 13, 14],
@@ -232,6 +231,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 1,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -245,6 +245,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 2,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -258,6 +259,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 3,
       dates: [
         ["", " ", "  ", "   ", "    ", "     ", 1],
         [2, 3, 4, 5, 6, 7, 8],
@@ -271,6 +273,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 4,
       dates: [
         ["", 1, 2, 3, 4, 5, 6],
         [7, 8, 9, 10, 11, 12, 13],
@@ -281,24 +284,11 @@ export const storeSelectedMonth = (month) => {
       ]};
     }
 
-  if (month === "May") {
-    return {
-      type: 'STORE_SELECTED_MONTH',
-      selectedMonth: month,
-      dates: [
-        ["", " ", "  ", "   ", 1, 2, 3],
-        [4, 5, 6, 7, 8, 9, 10],
-        [11, 12, 13, 14, 15, 16, 17],
-        [18, 19, 20, 21, 22, 23, 24],
-        [25, 26, 27, 28, 29, 30]
-        [28, 29, 30, 31]
-      ]};
-    }
-
   if (month === "June") {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 5,
       dates: [
         ["", " ", "  ", "   ", 1, 2, 3],
         [4, 5, 6, 7, 8, 9, 10],
@@ -312,6 +302,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 6,
       dates: [
         ["", " ", "  ", "   ", "    ", "     ", 1],
         [2, 3, 4, 5, 6, 7, 8],
@@ -325,6 +316,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 7,
       dates: [
         ["", " ", 1, 2, 3, 4, 5],
         [6, 7, 8, 9, 10, 11, 12],
@@ -338,6 +330,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 8,
       dates: [
         ["", " ", "  ", "   ", "    ", 1, 2],
         [3, 4, 5, 6, 7, 8, 9],
@@ -351,6 +344,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 9,
       dates: [
         [1, 2, 3, 4, 5, 6, 7],
         [8, 9, 10, 11, 12, 13, 14],
@@ -364,6 +358,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 10,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],
@@ -377,6 +372,7 @@ export const storeSelectedMonth = (month) => {
     return {
       type: 'STORE_SELECTED_MONTH',
       selectedMonth: month,
+      selectedMonthKey: 11,
       dates: [
         ["", " ", "  ", 1, 2, 3, 4],
         [5, 6, 7, 8, 9, 10, 11],

@@ -18,7 +18,6 @@ class Trends extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div id="background-overlay"></div>

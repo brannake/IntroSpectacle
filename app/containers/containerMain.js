@@ -13,8 +13,6 @@ import Main from '../components/Main';
         selectedDate: state.selectedDate,
         selectedMonth: state.selectedMonth,
         selectedView: state.selectedView,
-        yearlyViewData: state.yearlyViewData,
-        monthlyViewData: state.monthlyViewData,
         dates: state.dates
       }
     }

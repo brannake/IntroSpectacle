@@ -19,7 +19,8 @@ import Trends from '../components/Trends';
         yearlyViewDataFear: state.yearlyViewDataFear,
         yearlyViewDataAnger: state.yearlyViewDataAnger,
         yearlyViewDataDisgust: state.yearlyViewDataDisgust,
-        graphData: state.graphData
+        graphData: state.graphData,
+        selectedMonthKey: state.selectedMonthKey
       }
     }
 

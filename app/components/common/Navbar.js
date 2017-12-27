@@ -10,6 +10,7 @@ class Navbar extends Component {
       event.preventDefault();
       let selectedMonth = ($(event.target).text());
       this.props.storeSelectedMonth(selectedMonth);
+      this.props.displayGraph();
     }
 
   //Function to render the individual Nav items for month
@@ -30,7 +31,6 @@ class Navbar extends Component {
   //If the user has selected a day, display that
   //Otherwise, display the current day/month
   render() {
-    console.log(this.props);
     return (
     <div>
       <nav className="navbar navbar-inverse">

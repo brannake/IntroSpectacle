@@ -185,20 +185,20 @@ footer {
   left: 30%;
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: grey;
 }
 
 #Y-axis-display {
   position: absolute;
   top: 42%;
-  left: -2%;
+  left: -8%;
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: grey;
 }
 
 #side-display-text-container {
-  color: white;
+  color: grey;
   font-size: 20px;
   font-weight: bold;
   padding: 20px;
@@ -619,4 +619,8 @@ input[type=tel]:focus:not([readonly]){
 p.list-row {
   padding: 4px;
   margin: 0px;
+}
+
+#outer-container {
+  min-height: 700px;
 }

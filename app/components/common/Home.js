@@ -131,7 +131,7 @@ class Home extends Component {
 
   render() {
     return (
-    <div>
+    <div id="outer-container">
       <Navbar
         storeSelectedMonth={this.props.storeSelectedMonth}
         currentdate={this.props.currentDate}

@@ -7,21 +7,6 @@ import {AreaChart, Area, linearGradient , XAxis, YAxis, Tooltip, CartesianGrid }
 
 
 class Trends extends Component {
-  state = {
-    data: this.props.yearlyViewData
-  };
-
-toggleMonthlyView = () => {
-  for (let i=0; i < this.props.monthlyViewData.length; i++) {
-    if (this.props.monthlyViewData[i].month === this.props.selectedMonth) {
-      this.setState({data: this.props.monthlyViewData[i].scores});
-    }
-  }
-}
-
-toggleYearlyView = () => {
-  this.setState({data: this.props.yearlyViewData})
-}
 
   findAverage = (elmt) => {
     let sum = 0;
@@ -47,17 +32,17 @@ toggleYearlyView = () => {
           <div id="chart-container">
             <AreaChart 
               id="lineChart"
-              width={940} 
+              width={1000} 
               height={500} 
-              data={this.state.data} 
+              data={this.props.graphData} 
             >
               <defs>
                 <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#FFF" stopOpacity={0.8}/>
-                <stop offset="95%" stopColor="#FFF" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#1BB1CC" stopOpacity={0.8}/>
+                <stop offset="95%" stopColor="#1BB1CC" stopOpacity={0}/>
                 </linearGradient>
               </defs>
-              <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
+              <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="#1BB1CC"/>
               <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
               <XAxis dataKey="name"/>
               <YAxis/>
@@ -72,12 +57,11 @@ toggleYearlyView = () => {
           </div>
         <SideDisplay
           storeSelectedView= {this.props.storeSelectedView}
-          selectedView={this.props.selectedView}
-          toggleMonthlyView={this.toggleMonthlyView}
-          toggleYearlyView={this.toggleYearlyView}
+          storeSelectedEmotion={this.props.storeSelectedEmotion}
+          displayGraph={this.props.displayGraph}
         />
         <Footer
-          className = "footer"
+          className="footer"
         />
       </div>
     )

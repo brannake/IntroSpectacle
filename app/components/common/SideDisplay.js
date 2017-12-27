@@ -17,9 +17,8 @@ class SideDisplay extends Component {
                   className="trends-buttons"
                   onClick= {() => {
                     this.props.storeSelectedView("monthly");
-                    this.props.toggleMonthlyView()}
-
-                  }
+                    this.props.displayGraph();
+                  }}
                 >
                   Monthly
                 </div>
@@ -28,7 +27,8 @@ class SideDisplay extends Component {
                   className="trends-buttons"
                   onClick= {() => {
                     this.props.storeSelectedView("yearly");
-                    this.props.toggleYearlyView()}}
+                    this.props.displayGraph();
+                  }}
                   >
                   Yearly
                 </div>
@@ -39,10 +39,9 @@ class SideDisplay extends Component {
                   id="overall-emotion"
                   className="trends-buttons"
                   onClick= {() => {
-                    this.props.storeSelectedView("monthly");
-                    this.props.toggleMonthlyView()}
-
-                  }
+                    this.props.storeSelectedEmotion("joy");
+                    this.props.displayGraph();
+                  }}
                 >
                   Overall
                 </div>
@@ -50,8 +49,9 @@ class SideDisplay extends Component {
                   id="anger-emotion"
                   className="trends-buttons"
                   onClick= {() => {
-                    this.props.storeSelectedView("yearly");
-                    this.props.toggleYearlyView()}}
+                    this.props.storeSelectedEmotion("anger");
+                    this.props.displayGraph();
+                  }}
                 >
                   Anger
                 </div>
@@ -59,10 +59,9 @@ class SideDisplay extends Component {
                   id="disgust-emotion"
                   className="trends-buttons"
                   onClick= {() => {
-                    this.props.storeSelectedView("monthly");
-                    this.props.toggleMonthlyView()}
-
-                  }
+                    this.props.storeSelectedEmotion("disgust");
+                    this.props.displayGraph();
+                  }}
                 >
                   Disgust
                 </div>
@@ -70,12 +69,13 @@ class SideDisplay extends Component {
                   id="fear-emotion"
                   className="trends-buttons"
                   onClick= {() => {
-                    this.props.storeSelectedView("yearly");
-                    this.props.toggleYearlyView()}}
+                    this.props.storeSelectedEmotion("fear");
+                    this.props.displayGraph();
+                  }}
                 >
                   Fear
                 </div>
-                </div>
+              </div>
 	            </CollapsibleItem>
 	            <CollapsibleItem header='Coming Soon'>
 		            Some new feature.

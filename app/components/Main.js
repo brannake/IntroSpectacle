@@ -78,10 +78,10 @@ class Main extends Component {
       monthlyMoodLogs.push(dailyMoodScoresForThisMonth);
     }
     switch (emotion) {
-      case "joy": this.props.storeMonthlyViewData(monthlyMoodLogs);
-      case "fear": this.props.storeYearlyViewDataFear(monthlyMoodAverages);
-      case "anger": this.props.storeYearlyViewDataAnger(monthlyMoodAverages);
-      case "disgust": this.props.storeYearlyViewDataDisgust(monthlyMoodAverages);
+      case "joy": this.props.storeMonthlyViewDataJoy(monthlyMoodLogs);
+      case "fear": this.props.storeMonthlyViewDataFear(monthlyMoodLogs);
+      case "anger": this.props.storeMonthlyViewDataAnger(monthlyMoodLogs);
+      case "disgust": this.props.storeMonthlyViewDataDisgust(monthlyMoodLogs);
     }
   }
 

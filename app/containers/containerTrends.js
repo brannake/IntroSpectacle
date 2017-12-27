@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom'
-import {storeSelectedMonth, storeSelectedView} from '../actions/action';
+import {storeSelectedMonth, storeSelectedView, storeSelectedEmotion, displayGraph} from '../actions/action';
 import Trends from '../components/Trends';
 
     const mapStateToProps = (state) => {
@@ -10,8 +10,16 @@ import Trends from '../components/Trends';
         selectedDate: state.selectedDate,
         selectedMonth: state.selectedMonth,
         selectedView: state.selectedView,
-        monthlyViewData: state.monthlyViewData,
-        yearlyViewData: state.yearlyViewData
+        selectedEmotion: state.selectedEmotion,
+        monthlyViewDataJoy: state.monthlyViewDataJoy,
+        monthlyViewDataFear: state.monthlyViewDataFear,
+        monthlyViewDataAnger: state.monthlyViewDataAnger,
+        monthlyViewDataDisgust: state.monthlyViewDataDisgust,
+        yearlyViewDataJoy: state.yearlyViewDataJoy,
+        yearlyViewDataFear: state.yearlyViewDataFear,
+        yearlyViewDataAnger: state.yearlyViewDataAnger,
+        yearlyViewDataDisgust: state.yearlyViewDataDisgust,
+        graphData: state.graphData
       }
     }
 
@@ -22,6 +30,12 @@ import Trends from '../components/Trends';
           },
           storeSelectedView: view => {
             dispatch(storeSelectedView(view))
+          },
+          storeSelectedEmotion: emotion => {
+            dispatch(storeSelectedEmotion(emotion))
+          },
+          displayGraph: arg => {
+            dispatch(displayGraph(arg))
           }
         }
       }

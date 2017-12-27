@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router-dom'
-import {storeImageData, storeYearlyViewData, storeMonthlyViewData, storeCurrentMonth, storeSelectedMonth, storeCurrentDate, storeSelectedDate, storeSelectedView, storeYearlyViewDataJoy, storeYearlyViewDataFear, storeYearlyViewDataAnger, storeYearlyViewDataDisgust} from '../actions/action';
+import {storeImageData, storeMonthlyViewDataJoy, storeMonthlyViewDataFear, storeMonthlyViewDataAnger, storeMonthlyViewDataDisgust, storeCurrentMonth, storeSelectedMonth, storeCurrentDate, storeSelectedDate, storeSelectedView, storeYearlyViewDataJoy, storeYearlyViewDataFear, storeYearlyViewDataAnger, storeYearlyViewDataDisgust} from '../actions/action';
 import Main from '../components/Main';
 
     const mapStateToProps = (state) => {
@@ -51,9 +51,18 @@ import Main from '../components/Main';
           storeYearlyViewDataDisgust: data => {
             dispatch(storeYearlyViewDataDisgust(data))
           },
-          storeMonthlyViewData: data => {
-            dispatch(storeMonthlyViewData(data))
-          }
+          storeMonthlyViewDataJoy: data => {
+            dispatch(storeMonthlyViewDataJoy(data))
+          },
+          storeMonthlyViewDataFear: data => {
+            dispatch(storeMonthlyViewDataFear(data))
+          },
+          storeMonthlyViewDataAnger: data => {
+            dispatch(storeMonthlyViewDataAnger(data))
+          },
+          storeMonthlyViewDataDisgust: data => {
+            dispatch(storeMonthlyViewDataDisgust(data))
+          },
         }
       }
 

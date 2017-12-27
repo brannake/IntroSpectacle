@@ -394,6 +394,13 @@ export const storeSelectedView = (view) => {
   }
 }
 
+export const storeSelectedEmotion = (emotion) => {
+  return {
+    type: 'STORE_SELECTED_EMOTION',
+    selectedEmotion: emotion
+  }
+}
+
 export const storeYearlyViewDataJoy = (yearlyViewDataJoy) => {
   return {
     type: 'STORE_YEARLY_VIEW_DATA_JOY',
@@ -424,28 +431,34 @@ export const storeYearlyViewDataDisgust = (yearlyViewDataDisgust) => {
 
 export const storeMonthlyViewDataJoy = (monthlyViewDataJoy) => {
   return {
-    type: 'STORE_MONTHLY_VIEW_DATA',
+    type: 'STORE_MONTHLY_VIEW_DATA_JOY',
     monthlyViewDataJoy: monthlyViewDataJoy
   }
 }
 
 export const storeMonthlyViewDataFear = (monthlyViewDataFear) => {
   return {
-    type: 'STORE_MONTHLY_VIEW_DATA',
+    type: 'STORE_MONTHLY_VIEW_DATA_FEAR',
     monthlyViewDataFear: monthlyViewDataFear
   }
 }
 
 export const storeMonthlyViewDataAnger = (monthlyViewDataAnger) => {
   return {
-    type: 'STORE_MONTHLY_VIEW_DATA',
+    type: 'STORE_MONTHLY_VIEW_DATA_ANGER',
     monthlyViewDataAnger: monthlyViewDataAnger
   }
 }
 
 export const storeMonthlyViewDataDisgust = (monthlyViewDataDisgust) => {
   return {
-    type: 'STORE_MONTHLY_VIEW_DATA',
+    type: 'STORE_MONTHLY_VIEW_DATA_DISGUST',
     monthlyViewDataDisgust: monthlyViewDataDisgust
+  }
+}
+
+export const displayGraph = () => {
+  return {
+    type: 'DISPLAY_GRAPH',
   }
 }

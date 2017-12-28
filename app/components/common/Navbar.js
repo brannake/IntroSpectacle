@@ -5,7 +5,8 @@ import {Link} from "react-router-dom";
 
 class Navbar extends Component {
 
-  //Sets the selected month to state, passes it up to the Home parent component
+  //Sets the selected month to state, passes it up to the store
+  //Triggers a graph rerender
   handleChange = (event) => {
       event.preventDefault();
       let selectedMonth = ($(event.target).text());

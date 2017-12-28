@@ -4,8 +4,6 @@ const initialState = {
 
 const reducer =  (state, action) => {
 
-    console.log(state);
-
     if (typeof state === 'undefined') {
         return initialState
     }

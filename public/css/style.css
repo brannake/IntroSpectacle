@@ -533,15 +533,38 @@ input[type=tel]:focus:not([readonly]){
   cursor: pointer;
 }
 
-#monthly-time-frame {
+#selected {
+  background: lightgrey;
+}
+
+#unselected {
+  background: grey;
+}
+
+#monthly-time-frame-selected {
   top: 0px;
   height: 49%;
   border-bottom: 1px solid white;
+  background: lightgrey;
 }
 
-#yearly-time-frame {
+#monthly-time-frame-unselected {
+  top: 0px;
+  height: 49%;
+  border-bottom: 1px solid white;
+  background: grey;
+}
+
+#yearly-time-frame-selected {
   bottom: 0px;
   height: 50%;
+  background: lightgrey;
+}
+
+#yearly-time-frame-unselected {
+  bottom: 0px;
+  height: 50%;
+  background: grey;
 }
 
 .trends-buttons:hover {
@@ -552,28 +575,60 @@ input[type=tel]:focus:not([readonly]){
   background: lightgrey;
 }
 
-#overall-emotion {
+#overall-emotion-selected {
   top: 0px;
   height: 24%;
   border-bottom: 1px solid white;
+  background: lightgrey;
 }
 
-#anger-emotion {
+#overall-emotion-unselected {
+  top: 0px;
+  height: 24%;
+  border-bottom: 1px solid white;
+  background: grey;
+}
+
+#anger-emotion-selected {
   top: 25%;
   height: 25%;
   border-bottom: 1px solid white;
+  background: lightgrey;
 }
 
-#fear-emotion {
+#anger-emotion-unselected {
+  top: 25%;
+  height: 25%;
+  border-bottom: 1px solid white;
+  background: grey;
+}
+
+#fear-emotion-selected {
   top: 50%;
   height: 25%;
   border-bottom: 1px solid white;
+  background: lightgrey;
 }
 
-#disgust-emotion {
+#fear-emotion-unselected {
+  top: 50%;
+  height: 25%;
+  border-bottom: 1px solid white;
+  background: grey;
+}
+
+#disgust-emotion-selected {
   top: 75%;
   height: 25%;
   border-bottom: 1px solid white;
+  background: lightgrey;
+}
+
+#disgust-emotion-unselected {
+  top: 75%;
+  height: 25%;
+  border-bottom: 1px solid white;
+  background: grey;
 }
 
 #emotion-container-div {

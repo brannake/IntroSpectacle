@@ -163,11 +163,13 @@ footer {
 
 #panel-day-heading {
   color: white;
-  background: #1BB1CC;
+  background: #44DBA7;
   font-size: 100%;
   text-align: center;
   line-height: 1.6em;
   font-weight: bold;
+  border: 1px solid white;
+  border-radius: 4px;
 }
 
 #side-display-container {
@@ -651,10 +653,7 @@ input[type=tel]:focus:not([readonly]){
   justify-content: center;
   background: rgba(7,1,1, 0.6);
   border: 1px solid white;
-}
-
-#panel-body-heading {
-  border: 1px solid grey;
+  border-radius: 4px;
 }
 
 #media-container {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button, Collapsible, CollapsibleItem} from 'react-materialize'
+import {Button, Collapsible, CollapsibleItem, Toast} from 'react-materialize'
 
 class SideDisplay extends Component {
   state = {
@@ -23,6 +23,7 @@ activateMonthlyButton = () => {
   }
 }
 
+//Need to refactor this**
 activateOverallButton = () => {
   if (this.state.overallButton === "overall-emotion-unselected") {
     this.setState({

@@ -7,9 +7,6 @@ import {AreaChart, Area, linearGradient , XAxis, YAxis, Tooltip, CartesianGrid }
 
 
 class Trends extends Component {
-  state = {
-    rerender: true
-  };
 
   findAverage = (elmt) => {
     let sum = 0;
@@ -18,14 +15,6 @@ class Trends extends Component {
       }
     let avg = sum/elmt.length;
     return avg;
-  }
-
-  rerenderHack = () => {
-    if (this.state.rerender === true) {
-      this.setState({rerender: false});
-    } else if (this.state.rerender === false) {
-      this.setState({rerender:true});
-    }
   }
 
   render() {

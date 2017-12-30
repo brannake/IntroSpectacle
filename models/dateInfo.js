@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       // have a text value
       allowNull: true,
       validate: {
-        len: [1, 140]
+        len: [1, 540]
       }
     },
     anger_score: {

@@ -1,0 +1,3 @@
+# IntroSpectacle
+Find your inner peace
+THIS IS A READ ME THAT I WILL HAVE TO BUILD AT SOME POINT SO DON'T IGNORE THIS

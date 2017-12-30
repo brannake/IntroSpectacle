@@ -75,6 +75,18 @@ app.post('/api/signup',
         console.log('error:', error);
       }
       else {
+        //Every time the user submits an entry, we check to see if there's already an entry for that date
+        //If there is, we delete that one and replace it with the new one
+        //We'll want to remove database deletion if we scale up, but for now this is fine
+        db.dateInfo.findOne({where: {user:userName, month: selectedMonth, day: selectedDate}}).
+        then(dbdateInfo => {
+          console.log(db);
+          // now you see me...
+          return dbdateInfo.destroy();
+        }).then(() => {
+         // now i'm gone :)
+        })
+
         db.dateInfo.create({
           user: userName,
           month: selectedMonth,

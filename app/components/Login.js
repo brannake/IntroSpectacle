@@ -14,7 +14,7 @@ class Login extends Component {
   render() {
     if (this.props.authenticated === true) {
       return (
-          <Redirect to={this.state.linkURL}/>
+          <Redirect className="testable" to={this.state.linkURL}/>
       )} else {
     return (
       <div>

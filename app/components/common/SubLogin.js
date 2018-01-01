@@ -85,6 +85,7 @@ class SubLogin extends Component {
                 </Button>
             </div>
                 <Modal className= "page-footer example"
+                    ref={ref => { this.modalRef = ref }}
                     id='login'
                     header='Login'>
                     <div id="error-display"></div>

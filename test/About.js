@@ -19,27 +19,3 @@ describe('<About/>', () => {
     });
   });
 
-  function once(fn) {
-    var returnValue, called = false;
-	console.log(this);
-    return function () {
-        if (!called) {
-            called = true;
-            console.log(this);
-            console.log(arguments);
-            returnValue = fn.apply(this, arguments);
-        }
-        console.log(returnValue);
-        return returnValue;
-    };
-}
-
-function donk(arg) {
-    console.log(arg);
-    let arg2 = arg +1;
-    return arg2
-}
-
-var honk = once(donk)(1);
-
-honk();

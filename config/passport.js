@@ -103,11 +103,20 @@ module.exports = function(passport) {
         process.nextTick(function() {
         // find a user whose email is the same as the forms email
         // we are checking to see if the user trying to login already exists
-        db.user.findOne({where: {username: username, password: password}})
+        db.user.findOne({where: {username: username}})
         .then((user) => {
             if (user) {
-                return done(null, false, {message:'Username/Password combination already exists.'});
-            } else {
+                return done(null, false, {message:'Username already exists.'});
+            }
+            if (username.length < 8) {
+                console.log("username rejection");
+                return done(null, false, {message:'Username must be at least 8 characters in length.'});
+            } 
+            if (password.length < 8) {
+                console.log("password rejection");
+                return done(null, false, {message:'Password must be at least 8 characters in length.'});
+            } 
+            else {
                 db.dateInfo.create({
                     user: username,
                     month: MM,

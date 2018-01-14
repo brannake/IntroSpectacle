@@ -48,6 +48,16 @@ class SubLogin extends Component {
 
     //Logs the user in and pulls the authentication state back up to the parent component (MainLogin)
   signUpUser = () => {
+
+    if (this.state.username.length < 8) {
+        $('#error-display-1').text("Username must be at least 8 characters in length.");
+        return;
+    }
+
+    if (this.state.password.length < 8) {
+        $('#error-display-1').text("Password must be at least 8 characters in length.");
+        return;
+    }
     
     $.ajax({
         url: 'api/signup',
@@ -57,10 +67,9 @@ class SubLogin extends Component {
             this.successfulLogin(data);
         }
     }).fail(function (jqXHR, textStatus, error) {
-        console.log("why wont this run");
         // Handle failed login here
-        $('#error-display-1').text("This user/password combination already exists");
-    });
+        $('#error-display-1').text("This username already exists");
+        });
     }
 
     componentDidMount = () => {

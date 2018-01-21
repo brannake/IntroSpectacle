@@ -11,11 +11,11 @@ var env = process.env.JAWSDB_URL
 //Creates mySQL connection using Sequelize
 var sequelize = new Sequelize("tm7hodyik26q7v83", "dy388znrr3l2meea", "d6io3wu5dq7wkptn", {
   host: "l7cup2om0gngra77.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
- dialect: "mysql",
- pool: {
+  dialect: "mysql",
+  pool: {
   max: 5,
   min: 0,
-   idle: 10000
+  idle: 10000
  },
 });
 

@@ -7,6 +7,7 @@ var basename  = path.basename(module.filename);
 //var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var env = process.env.JAWSDB_URL
+var db = {}
 
 //Creates mySQL connection using Sequelize
 var sequelize = new Sequelize("tm7hodyik26q7v83", "dy388znrr3l2meea", "d6io3wu5dq7wkptn", {

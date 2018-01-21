@@ -20,11 +20,6 @@ var sequelize = new Sequelize("tm7hodyik26q7v83", "dy388znrr3l2meea", "d6io3wu5d
  },
 });
 
-var sequelize = new Sequelize("Introspectiv_db", "dy388znrr3l2meea", "d6io3wu5dq7wkptn", {
-  host: "127.0.0.1",
-  dialect: 'mysql'
-  });
-
 fs
   .readdirSync(__dirname)
   .filter(function(file) {

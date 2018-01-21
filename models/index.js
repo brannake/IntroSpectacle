@@ -20,7 +20,7 @@ var sequelize = new Sequelize("tm7hodyik26q7v83", "dy388znrr3l2meea", "d6io3wu5d
  },
 });
 
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
+var sequelize = new Sequelize("Introspectiv_db", "dy388znrr3l2meea", "d6io3wu5dq7wkptn", config);
 
 fs
   .readdirSync(__dirname)

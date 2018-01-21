@@ -12,7 +12,7 @@ app.use(session({secret: 'keyboard cat'}))
 
 // Sets up the Express App
 // =============================================================
-var PORT = process.env.PORT || 8086;
+var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");

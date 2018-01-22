@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack -w",
     "start": "node server.js",
-    "test": "mocha --compilers js:babel-register"
+    "test": "mocha --compilers js:babel-register",
+    "build": "webpack -p --config ./webpack.config.js --env.prod"
   },
   "keywords": [],
   "author": "",
@@ -49,6 +50,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
+    "compression-webpack-plugin": "^1.1.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-15": "^1.0.5",
     "enzyme-adapter-react-16": "^1.1.1",

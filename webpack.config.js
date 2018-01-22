@@ -1,4 +1,7 @@
 const webpack = require('webpack');
+var CompressionPlugin = require('compression-webpack-plugin');
+var Visualizer = require('webpack-visualizer-plugin');
+
 
 module.exports = {
 
@@ -28,7 +31,36 @@ module.exports = {
       }
     ]
   },
-  // This lets us debug our react code in chrome dev tools. Errors will have lines and file names
-  // Without this the console says all errors are just coming from bundle.js
-  devtool: "eval-source-map"
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        // This has effect on the react lib size
+        'NODE_ENV': JSON.stringify('production'),
+      }
+    }),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false, // Suppress uglification warnings
+        pure_getters: true,
+        unsafe: true,
+        unsafe_comps: true,
+        screw_ie8: true
+      },
+      output: {
+        comments: false,
+      },
+      exclude: [/\.min\.js$/gi] // skip pre-minified libs
+    }),
+        new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0
+    })
+  ],
 };

@@ -32,7 +32,7 @@ app.post('/api/login',
 
 //Signs the users up, serializes/deserializes with passport
 app.post('/api/signup',
-  passport.authenticate('local-signup',),
+  passport.authenticate('local-signup'),
   function(req, res) {
     //User automatically gets sign-up day filled in with an example entry
       res.send(req.user)
